@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<?pagebreak?>
+<topic id="Общая_информация">
+    <title>Определения, обозначения, сокращения</title>
+    <body>
+        <table id="table_i5f_v12_mkb" rowsep="1" colsep="1" >
+            <tgroup cols="2">
+                <colspec colnum="1" colname="col1" colwidth="2*"/>
+                <colspec colnum="2" colname="col2" colwidth="5*"/>
+                <thead>
+                    <row>
+                        <entry dir="ltr"><b>Термин</b></entry>
+                        <entry dir="ltr"><b>Определение</b></entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry dir="ltr">XML </entry>
+                        <entry>
+                            <p dir="ltr">Расширяемый язык разметки (Extensible Markup Language). XML
+                                представляет собой подмножество SGML, имеющее те же цели (разметка
+                                любого типа данных).</p> 
+                        </entry>
+                    </row>
+                    <row>
+                        <entry dir="ltr">XSD</entry>
+                        <entry dir="ltr"><p dir="ltr">Язык описания структуры XML-документа. Спецификация XML Schema является рекомендацией
+                                W3C.</p></entry>
+                    </row>
+                    <row>
+                        <entry dir="ltr">XSLT</entry>
+                        <entry dir="ltr"><p dir="ltr">Язык преобразования XML-документов. Спецификация XSLT входит в состав XSL и является
+                                рекомендацией W3C.</p></entry>
+                    </row>
+                    <row>
+                        <entry dir="ltr">Декларация версии XML </entry>
+                        <entry>
+                            <p dir="ltr">Декларация в XML-документе, информирующая процессор XML о
+                                конкретной версии спецификации XML, которая использована для
+                                разметки данного документа.</p>
+                        </entry>
+                    </row>                
+                    <row>
+                        <entry>Декларация типа элемента документа XML </entry>
+                        <entry>
+                            <p dir="ltr">Спецификация в W3C XML Schema, которая определяет тип
+                                элемента документов, экземпляры которых могут являться составными
+                                частями документов данного типа. Декларация типа элементов включает
+                                имя типа элементов, декларацию списка атрибутов и модель содержания
+                                элементов данного типа.</p>
+                        </entry>
+                    </row>                    
+                    <row>
+                        <entry dir="ltr">Документ в формате XML </entry>
+                        <entry>
+                            <p dir="ltr">Локальный сметный расчет (Локальная смета), представленный
+                                в файле обмена, размеченный средствами языка XML, в соответствии с
+                                его синтаксисом и семантикой. </p>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>Логическая структура (модель) XML документа </entry>
+                        <entry>
+                            <p dir="ltr">Структура XML-документа, представленная в терминах XML в
+                                графическом или текстовом виде.</p>
+                        </entry>
+                    </row>       
+                    <row>
+                        <entry>ЛСР </entry>
+                        <entry>
+                            <p dir="ltr">Локальный сметный расчет.</p>
+                        </entry>
+                    </row>                          
+                    <row>
+                        <entry dir="ltr">МР</entry>
+                        <entry dir="ltr">Стоимость материалов, изделий и конструкций.</entry>
+                    </row>        
+                   <row>
+                        <entry dir="ltr">НР</entry>
+                        <entry dir="ltr">Накладные расходы.</entry>
+                    </row>
+                    <row>
+                        <entry dir="ltr">ОБ</entry>
+                        <entry dir="ltr">Стоимость оборудования.</entry>
+                    </row>
+                    <row>
+                        <entry dir="ltr">ОТ</entry>
+                        <entry dir="ltr">Оплата труда рабочих.</entry>
+                    </row>
+                    <row>
+                        <entry dir="ltr">ОТМ</entry>
+                        <entry dir="ltr">Оплата труда машинистов.</entry>
+                    </row>                                     
+                    <row>
+                        <entry dir="ltr">ПЗ</entry>
+                        <entry dir="ltr"><p dir="ltr">Прямые затраты (сумма элементов: оплаты труда рабочих, стоимости материалов, изделий и
+                                конструкций и стоимость эксплуатации машин и механизмов.</p></entry>
+                    </row>
+                    <row>
+                        <entry dir="ltr">ПНР</entry>
+                        <entry dir="ltr"><p dir="ltr">Пусконаладочные работы оборудования.</p></entry>
+                    </row>                    
+   
+                    <row>
+                        <entry>Пространство имен XML документов </entry>
+                        <entry>
+                            <p dir="ltr">Пространство имен - логическая группа, в пределах которой
+                                могут определяться уникальные типы, имена показателей
+                                XML-документов. Пространство имен не может иметь вложенных
+                                подпространств имен. </p>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry dir="ltr">РФ</entry>
+                        <entry>
+                            <p dir="ltr">Российская Федерация.</p>
+                        </entry>
+                    </row>                       
+                    <row>
+                        <entry dir="ltr">Сметная стоимость строительства</entry>
+                        <entry>
+                            <p dir="ltr">Стоимость строительных (ремонтных) работ, работ по монтажу
+                                оборудования (монтажных работ) (далее – строительно-монтажные
+                                работы), стоимость оборудования и прочие затраты (в том числе
+                                пусконаладочные работы).</p>
+                        </entry>
+                    </row>        
+                    <row>
+                        <entry dir="ltr">СМР</entry>
+                        <entry dir="ltr">
+                            <p dir="ltr">Стоимость строительно-монтажных работ (сумма элементов:
+                                прямых затрат, накладных расходов и сметной прибыли, а также
+                                отдельных видов затрат, относимых на стоимость строительно-монтажных
+                                работ.</p>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry dir="ltr">СП</entry>
+                        <entry dir="ltr">Сметная прибыль.</entry>
+                    </row>        
+                    <row>
+                        <entry dir="ltr">Файл обмена </entry>
+                        <entry>
+                            <p dir="ltr">Структурированные сведения в электронном виде,
+                                предназначенные для передачи по каналам связи или на магнитном
+                                носителе, подготовленные в соответствии с установленным
+                                форматом.</p>
+                        </entry>
+                    </row>     
+                    <row>
+                        <entry dir="ltr">ФРСН</entry>
+                        <entry>
+                            <p dir="ltr">Федеральный реестр сметных нормативов.</p>
+                        </entry>
+                    </row>                      
+                    <row>
+                        <entry dir="ltr">ЭМ</entry>
+                        <entry dir="ltr">Эксплуатация машин и механизмов.</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+    </body>
+</topic>
