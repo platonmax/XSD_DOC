@@ -473,9 +473,9 @@
         <td colspan="{$column-count}"
             title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo','Исходная смета (номер, наименование, дата)')}">
           <xsl:text>Смета </xsl:text>
-          <xsl:value-of select="normalize-space($source/*:number)"/>
+          <xsl:value-of select="normalize-space($source/*:estimateNumber)"/>
           <xsl:text> - </xsl:text>
-          <xsl:value-of select="normalize-space($source/*:name)"/>
+          <xsl:value-of select="normalize-space($source/*:estimateName)"/>
           <xsl:if test="$source/*:date">
             <xsl:text> (</xsl:text>
             <xsl:value-of select="normalize-space($source/*:date/@display)"/>
@@ -542,10 +542,16 @@
     <xsl:param name="estimate-source" as="element()?"/>
     <xsl:param name="base-stage" as="element()?"/>
     <xsl:param name="depth" as="xs:integer" select="0"/>
+    <xsl:param name="display-prefix" as="xs:string" select="''"/>
 
     <xsl:variable name="indent" select="string-join(for $i in 1 to $depth return '   ', '')"/>
     <xsl:variable name="base-value" select="f:quantity($item, 'base')"/>
-    <xsl:variable name="item-pos" select="string($item/@itemPositionId)"/>
+    <xsl:variable name="raw-position" select="string($item/@itemPositionId)"/>
+    <xsl:variable name="local-position" select="(tokenize($raw-position, '\\.')[last()], $raw-position)[1]"/>
+    <xsl:variable name="display-position"
+      select="if (string-length($display-prefix) gt 0)
+              then concat($display-prefix, '.', $local-position)
+              else $local-position"/>
     <xsl:variable name="item-id" select="generate-id($item)"/>
 
     <xsl:variable name="item-has-issue" select="false()"/>
@@ -562,7 +568,7 @@
                 else $pos-title-base"/>
 
       <td class="center nowrap" title="{$pos-title}">
-        <xsl:value-of select="$item/@itemPositionId"/>
+        <xsl:value-of select="$display-position"/>
       </td>
       <td title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo/estimateNumber','Номер исходной сметы (sourceEstimateInfo/estimateNumber)')}">
         <xsl:value-of select="normalize-space($estimate-source/*:estimateNumber)"/>
@@ -689,6 +695,7 @@
         <xsl:with-param name="estimate-source" select="$estimate-source"/>
         <xsl:with-param name="base-stage" select="$base-stage"/>
         <xsl:with-param name="depth" select="$depth + 1"/>
+        <xsl:with-param name="display-prefix" select="$display-position"/>
       </xsl:call-template>
     </xsl:for-each>
 

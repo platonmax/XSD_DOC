@@ -170,7 +170,7 @@
       <section>
         <name>Устройство прослойки из нетканого синтетического материала (расценка с ресурсомЗР и доп перевозкой)</name>
         <sectionNumber>2</sectionNumber>
-        <itemList><item itemPositionId="3">
+        <itemList><item itemPositionId="1">
           <work>
             <name>Устройство прослойки из нетканого синтетического материала (НСМ) в земляном полотне: сплошной</name>
             <unit>1000 м2</unit>
@@ -217,7 +217,7 @@
               <pageDescription>Лист 13</pageDescription>
             </documentReference>
           </documentationList>
-          <itemList><item itemPositionId="3.1">
+          <itemList><item itemPositionId="1">
             <work>
               <name>Геополотно нетканое полипропиленовое, иглопробивное, термоскрепленное, поверхностная плотность 400 г/м2</name>
               <unit>м2</unit>
@@ -231,7 +231,7 @@
                 <volumeQuantity>888</volumeQuantity>
               </alteration>
             </volumeList>
-            <itemList><item itemPositionId="3.1.1">
+            <itemList><item itemPositionId="1">
               <work>
                 <name>Перевозка грузов I класса автомобилями бортовыми грузоподъемностью до 20 т по дорогам с усовершенствованным (асфальтобетонным, цементобетонным, железобетонным, обработанным органическим вяжущим) дорожным покрытием на расстояние 30 км</name>
                 <unit>т</unit>
@@ -247,7 +247,7 @@
                 </alteration>
               </volumeList>
             </item>
-            <item itemPositionId="3.1.2">
+            <item itemPositionId="2">
               <work>
                 <name>Перевозка грузов I класса автомобилями бортовыми грузоподъемностью до 20 т по дорогам с усовершенствованным (асфальтобетонным, цементобетонным, железобетонным, обработанным органическим вяжущим) дорожным покрытием на расстояние 130 км</name>
                 <unit>т</unit>
@@ -374,7 +374,7 @@
               <pageDescription>Лист 13</pageDescription>
             </documentReference>
           </documentationList>
-          <itemList><item itemPositionId="2.1">
+          <itemList><item itemPositionId="1">
             <work>
               <name>Смеси бетонные тяжелого бетона (БСТ), класс В7,5 (М100)</name>
               <unit>м3</unit>

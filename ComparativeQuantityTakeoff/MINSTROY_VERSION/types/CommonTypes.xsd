@@ -4,7 +4,7 @@
   xmlns:bt="http://types/BaseTypes.xsd"
   xmlns:ct="http://types/CommonTypes.xsd"
   targetNamespace="http://types/CommonTypes.xsd" attributeFormDefault="unqualified"
-  elementFormDefault="qualified" version="1.09">
+  elementFormDefault="qualified" version="1.10">
 
   <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
 
@@ -186,11 +186,14 @@ id строятся по следующему принципу: "alt-ГГГГ-М
       </xs:element>
 
       <xs:element name="sectionList">
+        <xs:annotation>
+          <xs:documentation>Разделы локального сметного расчета</xs:documentation>
+        </xs:annotation>
         <xs:complexType>
           <xs:sequence>
             <xs:element name="section" type="ct:sectionType" minOccurs="0" maxOccurs="unbounded">
               <xs:annotation>
-                <xs:documentation>Раздел сметы</xs:documentation>
+                <xs:documentation>Раздел локального сметного расчета</xs:documentation>
               </xs:annotation>
             </xs:element>
           </xs:sequence>
@@ -216,7 +219,11 @@ id строятся по следующему принципу: "alt-ГГГГ-М
           <xs:documentation>Наименование раздела</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="sectionNumber" type="bt:sectionNumberType"/>
+      <xs:element name="sectionNumber" type="bt:sectionNumberType">
+        <xs:annotation>
+          <xs:documentation>Номер раздела</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="description" type="xs:string" minOccurs="0">
         <xs:annotation>
           <xs:documentation>????
@@ -225,11 +232,14 @@ id строятся по следующему принципу: "alt-ГГГГ-М
         </xs:annotation>
       </xs:element>
       <xs:element name="itemList" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Позиции сметы</xs:documentation>
+        </xs:annotation>
         <xs:complexType>
           <xs:sequence>
             <xs:element name="item" type="ct:itemLevel1Type" minOccurs="0" maxOccurs="unbounded">
               <xs:annotation>
-                <xs:documentation>Позиция сметы</xs:documentation>
+                <xs:documentation>Позиция локального сметного расчета первого уровня</xs:documentation>
               </xs:annotation>
             </xs:element>
           </xs:sequence>
@@ -267,6 +277,9 @@ id строятся по следующему принципу: "alt-ГГГГ-М
       <xs:extension base="ct:itemBaseType">
         <xs:sequence>
             <xs:element name="itemList" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Позиции локального сметного расчета третьего уровня</xs:documentation>
+              </xs:annotation>
               <xs:complexType>
                 <xs:sequence>
                   <xs:element name="item" type="ct:itemLevel3Type" minOccurs="0" maxOccurs="unbounded">
@@ -480,8 +493,7 @@ id строятся по следующему принципу: "alt-ГГГГ-М
     </xs:sequence>
     <xs:attribute name="itemPositionId" type="bt:itemPositionIdType" use="required">
       <xs:annotation>
-        <xs:documentation>Номер позиции. Задается как целым, так и дробным числом.
-          1 или 1.1, 1.1.1</xs:documentation>
+        <xs:documentation>Номер позиции. Задается как целым числом</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -495,6 +507,9 @@ id строятся по следующему принципу: "alt-ГГГГ-М
       <xs:extension base="ct:itemBaseType">
         <xs:sequence>
           <xs:element name="itemList" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Позиции локальной сметы второго уровня</xs:documentation>
+            </xs:annotation>
             <xs:complexType>
               <xs:sequence>
                 <xs:element name="item" type="ct:itemLevel2Type" minOccurs="0" maxOccurs="unbounded">

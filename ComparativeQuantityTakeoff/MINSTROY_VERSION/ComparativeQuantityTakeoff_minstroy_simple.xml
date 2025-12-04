@@ -195,7 +195,7 @@
               </documentationList>
 
               <itemList>
-                <item itemPositionId="2.1">
+                <item itemPositionId="1">
                   <work>
                     <name>Очистка площадки</name>
                     <unit>м³</unit>
@@ -234,7 +234,7 @@
                   </documentationList>
                 </item>
 
-                <item itemPositionId="2.2">
+                <item itemPositionId="2">
                   <work>
                     <name>Устройство опалубки</name>
                     <unit>м³</unit>
@@ -278,7 +278,7 @@
                   </documentationList>
 
                   <itemList>
-                    <item itemPositionId="2.2.1">
+                    <item itemPositionId="1">
                       <work>
                         <name>Подача бетона</name>
                         <unit>м³</unit>
@@ -317,7 +317,7 @@
                       </documentationList>
                     </item>
 
-                    <item itemPositionId="2.2.2">
+                    <item itemPositionId="2">
                       <work>
                         <name>Контроль качества опалубки</name>
                         <unit>шт</unit>

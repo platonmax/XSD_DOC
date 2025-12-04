@@ -3,7 +3,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:bt="http://types/BaseTypes.xsd"
   targetNamespace="http://types/BaseTypes.xsd" attributeFormDefault="unqualified"
-  elementFormDefault="qualified" version="1.09">
+  elementFormDefault="qualified" version="1.10">
 
   <xs:simpleType name="accessLevelCodeType">
     <xs:annotation>
@@ -34,12 +34,10 @@
   <xs:simpleType name="itemPositionIdType">
     <xs:annotation>
       <xs:documentation>
-        <text>Позиция строки сметы по уровням: 1, 2.1, 2.1.3.</text>
+        <text>Позиция строки сметы по уровню: целое число (1, 2, 3).</text>
       </xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:pattern value="\d+(\.\d+)*"/>
-    </xs:restriction>
+    <xs:restriction base="xs:positiveInteger"/>
   </xs:simpleType>
 
   <xs:simpleType name="sectionNumberType">
