@@ -68,7 +68,11 @@
       <sectionList><section>
         <name>Инженерное обеспечение</name>
         <sectionNumber>1</sectionNumber>
-        <itemList><item itemPositionId="1">
+        <itemList>
+          <freeStringItem>
+            <freeStringName>Свободная строка перед первой позицией</freeStringName>
+          </freeStringItem>
+          <item itemPositionId="1">
           <work>
             <name>Разработка грунта с перемещением до 10 м бульдозерами мощностью: 96 кВт (130 л.с.), группа грунтов 1</name>
             <unit>1000 м3</unit>
@@ -116,6 +120,9 @@
             </documentReference>
           </documentationList>
         </item>
+        <freeStringItem>
+          <freeStringName>Свободная строка после первой позиции</freeStringName>
+        </freeStringItem>
         <item itemPositionId="2">
           <work>
             <name>Планировка площадей: механизированным способом, группа грунтов 1</name>

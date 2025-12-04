@@ -233,13 +233,15 @@ id строятся по следующему принципу: "alt-ГГГГ-М
       </xs:element>
       <xs:element name="itemList" minOccurs="0">
         <xs:annotation>
-          <xs:documentation>Позиции сметы</xs:documentation>
+          <xs:documentation>Строки раздела локального сметного расчета (позиции и свободные строки)</xs:documentation>
+          <xs:documentation>Только для уровня раздела: допускаются item и freeStringItem через substitutionGroup itemRow. Свободные строки служат визуальными вставками между позициями.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="item" type="ct:itemLevel1Type" minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="ct:itemRow" minOccurs="0" maxOccurs="unbounded">
               <xs:annotation>
-                <xs:documentation>Позиция локального сметного расчета первого уровня</xs:documentation>
+                <xs:documentation>Строка раздела: позиция сметы или свободная строка</xs:documentation>
+                <xs:documentation>Порядок строк произвольный; свободные строки могут стоять в начале и между позициями.</xs:documentation>
               </xs:annotation>
             </xs:element>
           </xs:sequence>
@@ -258,6 +260,46 @@ id строятся по следующему принципу: "alt-ГГГГ-М
       </xs:element>
     </xs:sequence>
   </xs:complexType>
+
+
+  <xs:element name="itemRow" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Базовый элемент строки раздела: позиция сметы или свободная строка</xs:documentation>
+      <xs:documentation>Используется как голова substitutionGroup для строк первого уровня: допускает подстановки item (позиция) и freeStringItem (свободная строка).</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+
+  <xs:element name="item" type="ct:itemLevel1Type" substitutionGroup="ct:itemRow">
+    <xs:annotation>
+      <xs:documentation>Позиция локального сметного расчета первого уровня</xs:documentation>
+      <xs:documentation>Доступна в itemList раздела через substitutionGroup itemRow. Требует заполнения обязательных полей и участвует в расчётах/нумерации.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+
+  <xs:complexType name="freeStringItemType">
+    <xs:annotation>
+      <xs:documentation>Свободная строка раздела локального сметного расчета</xs:documentation>
+      <xs:documentation>Используется как визуальный разделитель между позициями первого уровня; не участвует в расчётах и нумерации.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="freeStringName" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Наименование свободной строки</xs:documentation>
+          <xs:documentation>Текст выводится отдельной строкой таблицы (colspan на весь раздел).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:element name="freeStringItem" type="ct:freeStringItemType" substitutionGroup="ct:itemRow">
+    <xs:annotation>
+      <xs:documentation>Свободная строка раздела локального сметного расчета</xs:documentation>
+      <xs:documentation>Разрешена только в itemList раздела (первый уровень) через substitutionGroup itemRow.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
 
   <xs:complexType name="itemLevel3Type">
     <xs:annotation>
@@ -282,11 +324,11 @@ id строятся по следующему принципу: "alt-ГГГГ-М
               </xs:annotation>
               <xs:complexType>
                 <xs:sequence>
-                  <xs:element name="item" type="ct:itemLevel3Type" minOccurs="0" maxOccurs="unbounded">
-                    <xs:annotation>
-                      <xs:documentation>Позиция локального сметного расчета третьего уровня вложенности. Например, дополнительная перевозка к ресурсу, который добавлен к работе</xs:documentation>
-                    </xs:annotation>
-                  </xs:element>
+                <xs:element name="item" type="ct:itemLevel3Type" minOccurs="0" maxOccurs="unbounded" block="substitution">
+                  <xs:annotation>
+                    <xs:documentation>Позиция локального сметного расчета третьего уровня вложенности. Например, дополнительная перевозка к ресурсу, который добавлен к работе</xs:documentation>
+                  </xs:annotation>
+                </xs:element>
                 </xs:sequence>
               </xs:complexType>
             </xs:element>
@@ -512,9 +554,10 @@ id строятся по следующему принципу: "alt-ГГГГ-М
             </xs:annotation>
             <xs:complexType>
               <xs:sequence>
-                <xs:element name="item" type="ct:itemLevel2Type" minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="item" type="ct:itemLevel2Type" minOccurs="0" maxOccurs="unbounded" block="substitution">
                   <xs:annotation>
                     <xs:documentation>Позиция локального сметного расчета. Второй уровень вложенности</xs:documentation>
+                    <xs:documentation>Подстановки отключены (block="substitution"), свободные строки на этом уровне недопустимы.</xs:documentation>
                   </xs:annotation>
                 </xs:element>
               </xs:sequence>

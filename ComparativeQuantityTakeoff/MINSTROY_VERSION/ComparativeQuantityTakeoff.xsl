@@ -219,6 +219,7 @@
           .nowrap { white-space: nowrap; word-break: normal; }
           .section-row td { font-weight: 700; background: #f3f4f6; }
           .estimate-row td { font-weight: 700; background: #e0e7ff; }
+          .free-string-row td { font-style: italic; background: #fff9e6; }
           .notes-cell { white-space: pre-wrap; }
           .header-block { margin: 4px 0 12px 0; }
           .header-title { font-size: 16pt; font-weight: 800; text-align: center; text-transform: uppercase; margin: 0 0 12px; letter-spacing: 0.6px; }
@@ -250,6 +251,7 @@
           .nowrap { white-space: nowrap; word-break: normal; }
           .section-row td { font-weight: bold; background: #f0f0f0; }
           .estimate-row td { font-weight: bold; background: #dfe7ff; }
+          .free-string-row td { font-style: italic; background: #fff9e6; }
           .notes-cell { white-space: pre-wrap; }
           .header-block { margin: 8px 0 24px 0; width: 1100px; max-width: 1100px; }
           .header-title { font-size: 14pt; font-weight: bold; text-align: center; text-transform: uppercase; margin: 0 0 18px; }
@@ -512,14 +514,24 @@
           <xsl:value-of select="concat(if ($sectionNumber) then concat($sectionNumber, '. ') else '', $sectionName)"/>
         </td>
       </tr>
-      <xsl:for-each select="*:itemList/*:item">
-        <xsl:call-template name="render-item">
-          <xsl:with-param name="item" select="."/>
-          <xsl:with-param name="stages-order" select="$stages-order"/>
-          <xsl:with-param name="base-label" select="$base-label"/>
-          <xsl:with-param name="estimate-source" select="$estimate-source"/>
-          <xsl:with-param name="base-stage" select="$base-stage"/>
-        </xsl:call-template>
+      <xsl:for-each select="*:itemList/*">
+        <xsl:choose>
+          <xsl:when test="local-name() = 'freeStringItem'">
+            <xsl:call-template name="render-free-string">
+              <xsl:with-param name="free-string" select="."/>
+              <xsl:with-param name="column-count" select="$column-count"/>
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="render-item">
+              <xsl:with-param name="item" select="."/>
+              <xsl:with-param name="stages-order" select="$stages-order"/>
+              <xsl:with-param name="base-label" select="$base-label"/>
+              <xsl:with-param name="estimate-source" select="$estimate-source"/>
+              <xsl:with-param name="base-stage" select="$base-stage"/>
+            </xsl:call-template>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:for-each>
       <xsl:if test="*:sectionList/*:section">
         <xsl:call-template name="render-sections">
@@ -699,6 +711,18 @@
       </xsl:call-template>
     </xsl:for-each>
 
+  </xsl:template>
+
+  <xsl:template name="render-free-string">
+    <xsl:param name="free-string" as="element()"/>
+    <xsl:param name="column-count" as="xs:integer"/>
+
+    <tr class="free-string-row">
+      <td colspan="{$column-count}"
+          title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/freeStringItem/freeStringName','Свободная строка раздела')}">
+        <xsl:value-of select="normalize-space($free-string/*:freeStringName)"/>
+      </td>
+    </tr>
   </xsl:template>
 
 </xsl:stylesheet>

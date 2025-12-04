@@ -1,7 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bt="http://types/BaseTypes.xsd"
-  xmlns:ct="http://types/CommonTypes.xsd" targetNamespace="http://types/CommonTypes.xsd"
-  attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.09">
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:bt="http://types/BaseTypes.xsd"
+  xmlns:ct="http://types/CommonTypes.xsd"
+  targetNamespace="http://types/CommonTypes.xsd" attributeFormDefault="unqualified"
+  elementFormDefault="qualified" version="1.10">
 
   <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
 
@@ -273,20 +276,20 @@ id строятся по следующему принципу: "alt-ГГГГ-М
     <xs:complexContent>
       <xs:extension base="ct:itemBaseType">
         <xs:sequence>
-          <xs:element name="itemList" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>Позиции локального сметного расчета третьего уровня</xs:documentation>
-            </xs:annotation>
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="item" type="ct:itemLevel3Type" minOccurs="0" maxOccurs="unbounded">
-                  <xs:annotation>
-                    <xs:documentation>Позиция локального сметного расчета третьего уровня вложенности. Например, дополнительная перевозка к ресурсу, который добавлен к работе</xs:documentation>
-                  </xs:annotation>
-                </xs:element>
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
+            <xs:element name="itemList" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Позиции локального сметного расчета третьего уровня</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="item" type="ct:itemLevel3Type" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation>Позиция локального сметного расчета третьего уровня вложенности. Например, дополнительная перевозка к ресурсу, который добавлен к работе</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -470,8 +473,7 @@ id строятся по следующему принципу: "alt-ГГГГ-М
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="documentReference" type="ct:documentReferenceType"
-              maxOccurs="unbounded">
+            <xs:element name="documentReference" type="ct:documentReferenceType" maxOccurs="unbounded">
               <xs:annotation>
                 <xs:documentation>
                   <text>
