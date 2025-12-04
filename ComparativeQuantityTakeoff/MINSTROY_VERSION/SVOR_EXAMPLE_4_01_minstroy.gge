@@ -1,0 +1,435 @@
+<?xml version='1.0' encoding='utf-8'?>
+<cqt:comparativeQuantityTakeoff xmlns="http://types/CommonTypes.xsd"
+  xmlns:cqt="http://cqt/ComparativeQuantityTakeoff.xsd"
+  xmlns:bd="http://types/BaseDocument.xsd" xmlns:bt="http://types/BaseTypes.xsd"
+  xmlns:ct="http://types/CommonTypes.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://cqt/ComparativeQuantityTakeoff.xsd ComparativeQuantityTakeoff.xsd http://types/BaseDocument.xsd types/BaseDocument.xsd http://types/CommonTypes.xsd types/CommonTypes.xsd http://types/BaseTypes.xsd types/BaseTypes.xsd">
+  <bd:documentMeta>
+    <soft>
+      <name>Сметная программа</name>
+      <version>1.0</version>
+    </soft>
+    <file>
+      <type>Сводная ведомость объемов работ</type>
+      <version>1.0</version>
+    </file>
+  </bd:documentMeta>
+  <bd:accessLevelCode>общедоступная информация</bd:accessLevelCode>
+  <bd:objectName>Демо объект</bd:objectName>
+  <bd:objectNumber>СВОР 01-01</bd:objectNumber>
+  <bd:documentDate>
+    <year>2025</year>
+    <quarter>1</quarter>
+    <month>03</month>
+    <day>01</day>
+  </bd:documentDate>
+  <bd:customerName>ООО "Демо Заказчик"</bd:customerName>
+  <bd:signatures>
+    <bd:composer>
+      <name>И. О. Составитель</name>
+      <position>Инженер</position>
+    </bd:composer>
+    <bd:verifier>
+      <name>П. П. Проверяющий</name>
+      <position>Главный инженер</position>
+    </bd:verifier>
+  </bd:signatures>
+  <bd:fileList>
+    <bd:file>
+      <id>1</id>
+      <fileName>1310.0.00-01-КР1 том 5.1.pdf</fileName>
+    </bd:file>
+    <bd:file>
+      <id>2</id>
+      <fileName>КР2 том 5.2.pdf</fileName>
+    </bd:file>
+    <bd:file>
+      <id>3</id>
+      <fileName>1310.0.00-01-СМ2 ВОР.pdf</fileName>
+    </bd:file>
+  </bd:fileList>
+  <bd:alterationList>
+    <bd:alteration id="base">
+      <year>2017</year>
+      <month>--05</month>
+    </bd:alteration>
+    <bd:alteration id="alt-2020-11">
+      <year>2020</year>
+      <month>--11</month>
+    </bd:alteration>
+  </bd:alterationList>
+  <bd:estimateList>
+    <bd:estimate id="1">
+      <sourceEstimateInfo>
+        <estimateNumber>02-01-01</estimateNumber>
+        <estimateName>Капитальный ремонт автомобильной дороги А-156 подъездная дорога от автомобильной дороги А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха "Архыз" и к специализированной астрофизической обсерватории Российской академии наук на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</estimateName>
+      </sourceEstimateInfo>
+      <sectionList><section>
+        <name>Инженерное обеспечение</name>
+        <sectionNumber>1</sectionNumber>
+        <itemList><item itemPositionId="1">
+          <work>
+            <name>Разработка грунта с перемещением до 10 м бульдозерами мощностью: 96 кВт (130 л.с.), группа грунтов 1</name>
+            <unit>1000 м3</unit>
+            <prefix>ФЕР</prefix>
+            <code>01-01-023-01</code>
+          </work>
+          <volumeList>
+            <alteration alterationRef="base">
+              <volumeQuantity>2.6</volumeQuantity>
+            </alteration>
+            <alteration alterationRef="alt-2020-11">
+              <volumeQuantity>2.6</volumeQuantity>
+            </alteration>
+          </volumeList>
+          <documentationList>
+            <documentReference alterationRef="base">
+              <fileInternalId>1</fileInternalId>
+              <pageNumbers>8</pageNumbers>
+              <pageDescription>Лист 7</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="base">
+              <fileInternalId>2</fileInternalId>
+              <pageNumbers>8</pageNumbers>
+              <pageDescription>Лист 8</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="base">
+              <fileInternalId>3</fileInternalId>
+              <pageNumbers>12</pageNumbers>
+              <pageDescription>Лист 12</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="alt-2020-11">
+              <fileInternalId>1</fileInternalId>
+              <pageNumbers>8</pageNumbers>
+              <pageDescription>Лист 7</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="alt-2020-11">
+              <fileInternalId>2</fileInternalId>
+              <pageNumbers>9</pageNumbers>
+              <pageDescription>Лист 9</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="alt-2020-11">
+              <fileInternalId>3</fileInternalId>
+              <pageNumbers>13</pageNumbers>
+              <pageDescription>Лист 13</pageDescription>
+            </documentReference>
+          </documentationList>
+        </item>
+        <item itemPositionId="2">
+          <work>
+            <name>Планировка площадей: механизированным способом, группа грунтов 1</name>
+            <unit>10000 м2</unit>
+            <prefix>ФЕР</prefix>
+            <code>01-02-027-01</code>
+          </work>
+          <volumeList>
+            <alteration alterationRef="base">
+              <volumeQuantity>2.6</volumeQuantity>
+            </alteration>
+            <alteration alterationRef="alt-2020-11">
+              <volumeQuantity>3.6</volumeQuantity>
+              <volumeIncrease>1</volumeIncrease>
+              <reason>���४�஢�� �஥���� �襭�� � �裡 � �������⥫�묨 ������୮-��������᪨�� ���᪠��ﬨ ���頤�� ��ந⥫��⢠</reason>
+            </alteration>
+          </volumeList>
+          <documentationList>
+            <documentReference alterationRef="base">
+              <fileInternalId>1</fileInternalId>
+              <pageNumbers>8</pageNumbers>
+              <pageDescription>Лист 7</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="base">
+              <fileInternalId>2</fileInternalId>
+              <pageNumbers>8</pageNumbers>
+              <pageDescription>Лист 8</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="base">
+              <fileInternalId>3</fileInternalId>
+              <pageNumbers>12</pageNumbers>
+              <pageDescription>Лист 12</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="alt-2020-11">
+              <fileInternalId>1</fileInternalId>
+              <pageNumbers>8</pageNumbers>
+              <pageDescription>Лист 7</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="alt-2020-11">
+              <fileInternalId>2</fileInternalId>
+              <pageNumbers>9</pageNumbers>
+              <pageDescription>Лист 9</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="alt-2020-11">
+              <fileInternalId>3</fileInternalId>
+              <pageNumbers>13</pageNumbers>
+              <pageDescription>Лист 13</pageDescription>
+            </documentReference>
+          </documentationList>
+        </item>
+      </itemList></section>
+      <section>
+        <name>Устройство прослойки из нетканого синтетического материала (расценка с ресурсомЗР и доп перевозкой)</name>
+        <sectionNumber>2</sectionNumber>
+        <itemList><item itemPositionId="3">
+          <work>
+            <name>Устройство прослойки из нетканого синтетического материала (НСМ) в земляном полотне: сплошной</name>
+            <unit>1000 м2</unit>
+            <prefix>ФЕР</prefix>
+            <code>27-04-016-04</code>
+          </work>
+          <volumeList>
+            <alteration alterationRef="base">
+              <volumeQuantity>0.74</volumeQuantity>
+            </alteration>
+            <alteration alterationRef="alt-2020-11">
+              <volumeQuantity>0.74</volumeQuantity>
+            </alteration>
+          </volumeList>
+          <documentationList>
+            <documentReference alterationRef="base">
+              <fileInternalId>1</fileInternalId>
+              <pageNumbers>8</pageNumbers>
+              <pageDescription>Лист 7</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="base">
+              <fileInternalId>2</fileInternalId>
+              <pageNumbers>8</pageNumbers>
+              <pageDescription>Лист 8</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="base">
+              <fileInternalId>3</fileInternalId>
+              <pageNumbers>12</pageNumbers>
+              <pageDescription>Лист 12</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="alt-2020-11">
+              <fileInternalId>1</fileInternalId>
+              <pageNumbers>8</pageNumbers>
+              <pageDescription>Лист 7</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="alt-2020-11">
+              <fileInternalId>2</fileInternalId>
+              <pageNumbers>9</pageNumbers>
+              <pageDescription>Лист 9</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="alt-2020-11">
+              <fileInternalId>3</fileInternalId>
+              <pageNumbers>13</pageNumbers>
+              <pageDescription>Лист 13</pageDescription>
+            </documentReference>
+          </documentationList>
+          <itemList><item itemPositionId="3.1">
+            <work>
+              <name>Геополотно нетканое полипропиленовое, иглопробивное, термоскрепленное, поверхностная плотность 400 г/м2</name>
+              <unit>м2</unit>
+              <code>01.7.12.05-0162</code>
+            </work>
+            <volumeList>
+              <alteration alterationRef="base">
+                <volumeQuantity>888</volumeQuantity>
+              </alteration>
+              <alteration alterationRef="alt-2020-11">
+                <volumeQuantity>888</volumeQuantity>
+              </alteration>
+            </volumeList>
+            <itemList><item itemPositionId="3.1.1">
+              <work>
+                <name>Перевозка грузов I класса автомобилями бортовыми грузоподъемностью до 20 т по дорогам с усовершенствованным (асфальтобетонным, цементобетонным, железобетонным, обработанным органическим вяжущим) дорожным покрытием на расстояние 30 км</name>
+                <unit>т</unit>
+                <prefix>ФССЦпг</prefix>
+                <code>03-01-01-030</code>
+              </work>
+              <volumeList>
+                <alteration alterationRef="base">
+                  <volumeQuantity>-0.3552</volumeQuantity>
+                </alteration>
+                <alteration alterationRef="alt-2020-11">
+                  <volumeQuantity>-0.3552</volumeQuantity>
+                </alteration>
+              </volumeList>
+            </item>
+            <item itemPositionId="3.1.2">
+              <work>
+                <name>Перевозка грузов I класса автомобилями бортовыми грузоподъемностью до 20 т по дорогам с усовершенствованным (асфальтобетонным, цементобетонным, железобетонным, обработанным органическим вяжущим) дорожным покрытием на расстояние 130 км</name>
+                <unit>т</unit>
+                <prefix>ФССЦпг</prefix>
+                <code>03-01-01-130</code>
+              </work>
+              <volumeList>
+                <alteration alterationRef="base">
+                  <volumeQuantity>0.3552</volumeQuantity>
+                </alteration>
+                <alteration alterationRef="alt-2020-11">
+                  <volumeQuantity>0.3552</volumeQuantity>
+                </alteration>
+              </volumeList>
+            </item>
+          </itemList></item>
+        </itemList></item>
+      </itemList></section>
+    </sectionList></bd:estimate>
+    <bd:estimate id="2">
+      <sourceEstimateInfo>
+        <estimateNumber>02-01-02</estimateNumber>
+        <estimateName>Конструктивные решения. Фундаменты</estimateName>
+      </sourceEstimateInfo>
+      <sectionList><section>
+        <name>Раздел 1 сметы 02-01-02</name>
+        <sectionNumber>1</sectionNumber>
+        <itemList><item itemPositionId="1">
+          <work>
+            <name>Уплотнение грунта пневматическими трамбовками, группа грунтов: 1-2</name>
+            <unit>100 м3</unit>
+            <prefix>ФЕР</prefix>
+            <code>01-02-005-01</code>
+          </work>
+          <volumeList>
+            <alteration alterationRef="base">
+              <volumeQuantity>10</volumeQuantity>
+            </alteration>
+            <alteration alterationRef="alt-2020-11">
+              <volumeQuantity>8</volumeQuantity>
+              <volumeDecrease>-2</volumeDecrease>
+              <reason>Корректировка проектных решений в связи с дополнительными инженерно-геологическими изысканиями площадки строительства</reason>
+            </alteration>
+          </volumeList>
+          <documentationList>
+            <documentReference alterationRef="base">
+              <fileInternalId>1</fileInternalId>
+              <pageNumbers>8</pageNumbers>
+              <pageDescription>Лист 7</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="base">
+              <fileInternalId>2</fileInternalId>
+              <pageNumbers>8</pageNumbers>
+              <pageDescription>Лист 8</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="base">
+              <fileInternalId>3</fileInternalId>
+              <pageNumbers>12</pageNumbers>
+              <pageDescription>Лист 12</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="alt-2020-11">
+              <fileInternalId>1</fileInternalId>
+              <pageNumbers>8</pageNumbers>
+              <pageDescription>Лист 7</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="alt-2020-11">
+              <fileInternalId>2</fileInternalId>
+              <pageNumbers>9</pageNumbers>
+              <pageDescription>Лист 9</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="alt-2020-11">
+              <fileInternalId>3</fileInternalId>
+              <pageNumbers>13</pageNumbers>
+              <pageDescription>Лист 13</pageDescription>
+            </documentReference>
+          </documentationList>
+        </item>
+        <item itemPositionId="2">
+          <work>
+            <name>Устройство бетонной подготовки</name>
+            <unit>100 м3</unit>
+            <prefix>ФЕР</prefix>
+            <code>06-01-001-01</code>
+          </work>
+          <volumeList>
+            <alteration alterationRef="base">
+              <volumeQuantity>7</volumeQuantity>
+            </alteration>
+            <alteration alterationRef="alt-2020-11">
+              <volumeQuantity>8</volumeQuantity>
+              <volumeIncrease>1</volumeIncrease>
+              <reason>Изменение толщины</reason>
+            </alteration>
+          </volumeList>
+          <documentationList>
+            <documentReference alterationRef="base">
+              <fileInternalId>1</fileInternalId>
+              <pageNumbers>8</pageNumbers>
+              <pageDescription>Лист 7</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="base">
+              <fileInternalId>2</fileInternalId>
+              <pageNumbers>8</pageNumbers>
+              <pageDescription>Лист 8</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="base">
+              <fileInternalId>3</fileInternalId>
+              <pageNumbers>12</pageNumbers>
+              <pageDescription>Лист 12</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="alt-2020-11">
+              <fileInternalId>1</fileInternalId>
+              <pageNumbers>8</pageNumbers>
+              <pageDescription>Лист 7</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="alt-2020-11">
+              <fileInternalId>2</fileInternalId>
+              <pageNumbers>9</pageNumbers>
+              <pageDescription>Лист 9</pageDescription>
+            </documentReference>
+            <documentReference alterationRef="alt-2020-11">
+              <fileInternalId>3</fileInternalId>
+              <pageNumbers>13</pageNumbers>
+              <pageDescription>Лист 13</pageDescription>
+            </documentReference>
+          </documentationList>
+          <itemList><item itemPositionId="2.1">
+            <work>
+              <name>Смеси бетонные тяжелого бетона (БСТ), класс В7,5 (М100)</name>
+              <unit>м3</unit>
+              <code>04.1.02.05-0074</code>
+            </work>
+            <volumeList>
+              <alteration alterationRef="base">
+                <volumeQuantity>800</volumeQuantity>
+              </alteration>
+              <alteration alterationRef="alt-2020-11">
+                <volumeQuantity>950</volumeQuantity>
+                <volumeIncrease>150</volumeIncrease>
+                <reason>Изменение толщины</reason>
+              </alteration>
+            </volumeList>
+            <documentationList>
+              <documentReference alterationRef="base">
+                <fileInternalId>1</fileInternalId>
+                <pageNumbers>8</pageNumbers>
+                <pageDescription>Лист 7</pageDescription>
+              </documentReference>
+              <documentReference alterationRef="base">
+                <fileInternalId>2</fileInternalId>
+                <pageNumbers>8</pageNumbers>
+                <pageDescription>Лист 8</pageDescription>
+              </documentReference>
+              <documentReference alterationRef="base">
+                <fileInternalId>3</fileInternalId>
+                <pageNumbers>12</pageNumbers>
+                <pageDescription>Лист 12</pageDescription>
+              </documentReference>
+              <documentReference alterationRef="alt-2020-11">
+                <fileInternalId>1</fileInternalId>
+                <pageNumbers>8</pageNumbers>
+                <pageDescription>Лист 7</pageDescription>
+              </documentReference>
+              <documentReference alterationRef="alt-2020-11">
+                <fileInternalId>2</fileInternalId>
+                <pageNumbers>9</pageNumbers>
+                <pageDescription>Лист 9</pageDescription>
+              </documentReference>
+              <documentReference alterationRef="alt-2020-11">
+                <fileInternalId>3</fileInternalId>
+                <pageNumbers>13</pageNumbers>
+                <pageDescription>Лист 13</pageDescription>
+              </documentReference>
+            </documentationList>
+          </item>
+        </itemList></item>
+      </itemList></section>
+    </sectionList></bd:estimate>
+  </bd:estimateList>
+  <bd:exportDateTime>2025-03-01T10:00:00Z</bd:exportDateTime>
+</cqt:comparativeQuantityTakeoff>
+
+
+
+

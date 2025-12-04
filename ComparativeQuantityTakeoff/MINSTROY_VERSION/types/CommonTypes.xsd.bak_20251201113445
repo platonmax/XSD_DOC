@@ -1,0 +1,603 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xs:schema xmlns:ns1="http://www.w3.org/2007/XMLSchema-versioning"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:bt="http://types/BaseTypes.xsd"
+  xmlns:ct="http://types/CommonTypes.xsd"
+  targetNamespace="http://types/CommonTypes.xsd" attributeFormDefault="unqualified"
+  elementFormDefault="qualified" version="1.09" ns1:minVersion="1.1">
+
+  <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
+
+
+  <xs:complexType name="fileFormatType">
+    <xs:annotation>
+      <xs:documentation>Комплексный тип для описания типа и версии передаваемого файла
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="type">
+        <xs:annotation>
+          <xs:documentation>Тип передаваемого файла: СВОР - Сопоставительная ведомость объемов работ
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>
+              <text>Описание элемента схемы.</text>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Сводная ведомость объемов работ"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="version" default="1.0">
+        <xs:annotation>
+          <xs:documentation>Номер версии схемы</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:documentation>
+              <text>Описание элемента схемы.</text>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+
+  <xs:complexType name="alterationStageType">
+    <xs:annotation>
+      <xs:documentation>Комплексный тип для корректировки при заходе на экспертизу
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="year" type="xs:gYear">
+        <xs:annotation>
+          <xs:documentation>Год корректировки
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="month" type="xs:gMonth">
+        <xs:annotation>
+          <xs:documentation>Месяц корректировки
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required">
+      <xs:annotation>
+        <xs:documentation>Уникальный идентификатор корректировки
+В наборе стадий должна присутствовать базовая запись с id="base"; остальные id — хронологические стадии.
+id строятся по следующему принципу: "alt-ГГГГ-ММ"
+Где ГГГГ это год корректировки, а ММ - месяц корректировки
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="metaType">
+    <xs:annotation>
+      <xs:documentation>Информация о программном комплексе и версии формата
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="soft">
+        <xs:annotation>
+          <xs:documentation>Программный комплекс
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:annotation>
+            <xs:documentation>
+              <text>Описание программного комплекса.</text>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Наименование программного комплекса
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="version" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Версия программного комплекса
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="file" type="ct:fileFormatType">
+        <xs:annotation>
+          <xs:documentation>Тип и версия передаваемого файла
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dateType">
+    <xs:annotation>
+      <xs:documentation>Дата составления сопоставительной ведомости объемов работ
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="year" type="xs:unsignedShort">
+        <xs:annotation>
+          <xs:documentation>Год
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="month" type="xs:unsignedByte">
+        <xs:annotation>
+          <xs:documentation>Месяц</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="day" type="xs:unsignedByte">
+        <xs:annotation>
+          <xs:documentation>День
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+
+
+  <xs:complexType name="estimateType">
+    <xs:annotation>
+      <xs:documentation>
+        <text>Описание комплексного типа TEstimate.</text>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="sourceEstimate">
+        <xs:annotation>
+
+          <xs:documentation>Информация по локальному сметному расчету (наименование и номер)</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="number" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Номер локального сметного расчета</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="name" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Наименование локального сметного расчета</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="sectionList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="section" type="ct:sectionType" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>������ ���������� �������� �������</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:positiveInteger" use="required">
+      <xs:annotation>
+        <xs:documentation>Идентификатор локальной сметы. Задается целым числом
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="sectionType">
+    <xs:annotation>
+      <xs:documentation>Комплексный тип для разделов/подразделов локального сметного расчета
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Наименование раздела</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numberSection" type="xs:positiveInteger"/>
+      <xs:element name="description" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>????
+Это свободная строка?
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="itemList" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" type="ct:itemL1Type" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>������� ���������� �������� ������� ������� ������</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="sectionList" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="section" type="ct:sectionType" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>��������� ���������� �������� �������</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="itemL3Type">
+    <xs:annotation>
+      <xs:documentation>Комплексный тип для позиции третьего уровня</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ct:itemBaseType"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+
+  <xs:complexType name="itemL2Type">
+    <xs:annotation>
+      <xs:documentation>Комплексный тип для позиции второго уровня</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ct:itemBaseType">
+        <xs:sequence>
+            <xs:element name="itemList" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="item" type="ct:itemL3Type" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation>Позиция локального сметного расчета третьего уровня вложенности. Например, дополнительная перевозка к ресурсу, который добавлен к работе</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+
+  <xs:complexType name="linkType">
+    <xs:annotation>
+      <xs:documentation>Описание связи позиции с обосновывающими документами.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="fileId" type="xs:positiveInteger" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation><text>Уникальный идентификатор файла.</text> </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:sequence>
+          <xs:element name="pageNumber" minOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Номера страниц обосновывающего документа, разделенных пробелом.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:list itemType="xs:positiveInteger"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element minOccurs="1" name="pageDescription" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Текст ссылки на элементы проекта (модели), название элементов (графа 6).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:choice>
+
+
+          <xs:sequence>
+            <xs:element name="ifcGuid">
+              <xs:annotation>
+                <xs:documentation>Список уникальных ifc идентификаторов элементов в файле, разделенных пробелом. Заполняется, если файл на проверку пришёл в формате ifc. Ссылки на объекты делаются через ifc гуиды.</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:list itemType="xs:string"/>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element minOccurs="1" name="ifcDescription" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Текст ссылки на элементы проекта (модели), название элементов (графа 6).</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+          <xs:sequence maxOccurs="1">
+            <xs:sequence>
+              <xs:element name="propertyName" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Название свойства элемента в ifc файле. Заполняется если файл на проверку пришёл в формате ifc и ссылки на объект делаются через свойства ifc объектов.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="propertyDescription" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Текст ссылки на элементы проекта (модели), название элементов (графа 6).</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:element name="propertyValue" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Значение свойства propertyName элемента в ifc файле. Заполняется если файл на проверку пришёл в формате ifc и ссылки на объект делаются через свойства ifc объектов.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:choice>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+
+
+  <xs:complexType name="itemBaseType" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Базовый комплексный тип для позиции сопоставительной ведомости объемов работ</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="work">
+        <xs:annotation>
+          <xs:documentation>Описание позиции сводной ведомости объемов работ.
+            Задается шифр позиции с префиксом, ее наименование и единица измерения
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Наименование позиции локального сметного расчета
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="unit" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Единица измерения локального сметного расчета
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="prefix" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Префикс шифра сметной нормы или единичной расценки локального сметного расчета
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="code" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Шифр сметной нормы или единичной расценки в локальном сметном расчете
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="volumesList">
+        <xs:annotation>
+          <xs:documentation>Объемы работ по корректировкам. 
+            Задается объем позиции, указывается увеличение или снижение по конкретной корректировке, а так же обоснование изменений</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="alteration" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Объем работ по стадиям (заходам на экспертизу). Задается объем позиции, указывается увеличение или снижение по конкретной корректировке, а так же обоснование изменений</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="volumeQuantity" type="xs:decimal">
+                    <xs:annotation>
+                      <xs:documentation>Объем работ по позиции</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="volumeIncrease" type="xs:decimal" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>Увеличение относительно предыдущей корректировки.
+                        Указывается на сколько увеличился объем по позиции относительно предыдущей экспертизы</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="volumeDecrease" type="xs:decimal" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>Снижение относительно предыдущих корректировок.
+                        Указывается на сколько уменьшился объем по позиции относительно предыдущей экспертизы</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="reason" type="xs:string" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>Обоснование изменений.
+                        Элемент обязателен к заполнению, если есть изменения объема работ</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+
+
+
+                <xs:attribute name="alterationRef" type="xs:IDREF" use="required">
+                  <xs:annotation>
+                    <xs:documentation>Ссылка на уникальный идентификатор корректировки.
+                      В наборе стадий должна присутствовать базовая запись с id="base"; остальные id — хронологические стадии.
+                      id строятся по следующему принципу: "alt-ГГГГ-ММ"
+                      Где ГГГГ это год корректировки, а ММ - месяц корректировки</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+
+
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+        <xs:unique name="uniqueAlterationPerItem">
+          <xs:selector xpath="alteration"/>
+          <xs:field xpath="@alterationRef"/>
+        </xs:unique>
+      </xs:element>
+
+      <xs:element name="documentationList" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Файлы обоснований, которые передаются на экспертизу и на которые будут ссылки из данного документа</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="reference" type="ct:documentationRefType" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  <text>
+                    Ссылка на один документ (пояснительная записка, протокол, расчёт и т.п.).
+                    Каждый элемент может быть привязан к отдельной стадии корректировки
+                    через атрибут alterationRef.
+                  </text>
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+
+
+    </xs:sequence>
+    <xs:attribute name="position" type="bt:itemPositionType" use="required">
+      <xs:annotation>
+        <xs:documentation>Номер позиции. Задается как целым, так и дробным числом.
+          1 или 1.1, 1.1.1</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+
+  <xs:complexType name="itemL1Type">
+    <xs:annotation>
+      <xs:documentation>Комплексный тип для позиции первого уровня</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ct:itemBaseType">
+        <xs:sequence>
+          <xs:element name="itemList" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="item" type="ct:itemL2Type" minOccurs="0" maxOccurs="unbounded">
+                  <xs:annotation>
+                    <xs:documentation>Позиция локального сметного расчета. Второй уровень вложенности</xs:documentation>
+                  </xs:annotation>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+
+
+
+  <xs:complexType name="documentationRefType">
+    <xs:annotation>
+      <xs:documentation>
+        <text>
+          Комплексный тип TDocumentationRef.
+          
+          Описывает ссылку на документ, связанную с объектом сметы
+          (пояснительная записка, протокол, расчёт и т.п.).
+          Наследует структуру базового типа TLink и дополняет её
+          атрибутом, указывающим стадию корректировки.
+        </text>
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:complexContent>
+      <xs:extension base="ct:linkType">
+        <xs:annotation>
+          <xs:documentation>Ссылки на чертежи, спецификации в проектной документации (файлы со справочными материалами, чертежами или ЦИМ
+          </xs:documentation>
+        </xs:annotation>
+
+        <xs:attribute name="alterationRef" type="xs:IDREF" use="optional">
+          <xs:annotation>
+            <xs:documentation>Ссылка на уникальный идентификатор корректировки.
+              В наборе стадий должна присутствовать базовая запись с id="base"; остальные id — хронологические стадии.
+              id строятся по следующему принципу: "alt-ГГГГ-ММ"
+              Где ГГГГ это год корректировки, а ММ - месяц корректировки
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+
+
+
+
+
+  <xs:complexType name="signaturesType">
+    <xs:annotation>
+      <xs:documentation>
+        <text>Описание комплексного типа TSignatures.</text>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>ФИО
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="position" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Должность
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+
+  <xs:complexType name="fileType">
+    <xs:annotation>
+      <xs:documentation>Описание для файлов обоснований
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="id" type="xs:positiveInteger">
+        <xs:annotation>
+          <xs:documentation>Уникальный идентификатор файла для ссылок (id)
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fileName" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Название файла (только название с расширением)
+Поле должно содержать только имя файла без определения пути к файлу</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fileGuid" type="bt:guidV4Type" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Глобальный уникальный идентификатор
+Используется GUID v4</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+
+</xs:schema>

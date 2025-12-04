@@ -1,0 +1,405 @@
+<?xml version='1.0' encoding='utf-8'?>
+<cqt:comparativeQuantityTakeoff
+  xmlns="http://types/CommonTypes.xsd"
+  xmlns:cqt="http://cqt/ComparativeQuantityTakeoff.xsd"
+  xmlns:bd="http://types/BaseDocument.xsd"
+  xmlns:bt="http://types/BaseTypes.xsd"
+  xmlns:ct="http://types/CommonTypes.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://cqt/ComparativeQuantityTakeoff.xsd ComparativeQuantityTakeoff.xsd
+                      http://types/BaseDocument.xsd types/BaseDocument.xsd
+                      http://types/CommonTypes.xsd types/CommonTypes.xsd
+                      http://types/BaseTypes.xsd types/BaseTypes.xsd">
+
+  <bd:documentMeta>
+    <soft>
+      <name>CQTF Demo</name>
+      <version>1.0</version>
+    </soft>
+    <file>
+      <type>Сводная ведомость объемов работ</type>
+      <version>1.0</version>
+    </file>
+  </bd:documentMeta>
+
+  <bd:accessLevelCode>общедоступная информация</bd:accessLevelCode>
+  <bd:objectName>Демо объект</bd:objectName>
+  <bd:objectNumber>CQTF-001</bd:objectNumber>
+  <bd:documentDate>
+    <year>2025</year>
+    <quarter>1</quarter>
+    <month>03</month>
+    <day>01</day>
+  </bd:documentDate>
+  <bd:customerName>ООО "Демо Заказчик"</bd:customerName>
+
+  <bd:signatures>
+    <bd:composer>
+      <name>И. О. Составитель</name>
+      <position>Инженер</position>
+    </bd:composer>
+    <bd:verifier>
+      <name>П. П. Проверяющий</name>
+      <position>Главный инженер</position>
+    </bd:verifier>
+  </bd:signatures>
+
+  <bd:fileList>
+    <bd:file>
+      <id>1</id>
+      <fileName>spec-sheet.pdf</fileName>
+    </bd:file>
+    <bd:file>
+      <id>2</id>
+      <fileName>structural-plan.dwg</fileName>
+    </bd:file>
+    <bd:file>
+      <id>3</id>
+      <fileName>ifc-model.ifc</fileName>
+    </bd:file>
+  </bd:fileList>
+
+  <bd:alterationList>
+    <bd:alteration id="base">
+      <year>2024</year>
+      <month>--01</month>
+    </bd:alteration>
+    <bd:alteration id="alt-2025-01">
+      <year>2025</year>
+      <month>--01</month>
+    </bd:alteration>
+    <bd:alteration id="alt-2025-06">
+      <year>2025</year>
+      <month>--06</month>
+    </bd:alteration>
+    <bd:alteration id="alt-2025-12">
+      <year>2025</year>
+      <month>--12</month>
+    </bd:alteration>
+  </bd:alterationList>
+
+  <bd:estimateList>
+    <bd:estimate id="1">
+      <sourceEstimateInfo>
+        <estimateNumber>ЛС-100</estimateNumber>
+        <estimateName>Демо без рекурсии</estimateName>
+      </sourceEstimateInfo>
+
+      <sectionList>
+        <section>
+          <name>Основные работы</name>
+          <sectionNumber>1</sectionNumber>
+          <itemList>
+            <item itemPositionId="1">
+              <work>
+                <name>Бетонирование плиты</name>
+                <unit>м³</unit>
+              </work>
+              <volumeList>
+                <alteration alterationRef="base">
+                  <volumeQuantity>10</volumeQuantity>
+                </alteration>
+                <alteration alterationRef="alt-2025-01">
+                  <volumeQuantity>10.5</volumeQuantity>
+                  <volumeIncrease>0.5</volumeIncrease>
+                  <reason>Увеличение площади</reason>
+                </alteration>
+                <alteration alterationRef="alt-2025-06">
+                  <volumeQuantity>10.9</volumeQuantity>
+                  <volumeIncrease>0.4</volumeIncrease>
+                  <reason>Доп. плита, но часть объёма сняли после уточнения</reason>
+                </alteration>
+                <alteration alterationRef="alt-2025-12">
+                  <volumeQuantity>10.3</volumeQuantity>
+                  <volumeDecrease>-0.6</volumeDecrease>
+                  <reason>Оптимизация и ручная увязка с фактом</reason>
+                </alteration>
+              </volumeList>
+              <documentationList>
+                <documentReference alterationRef="base">
+                  <fileInternalId>1</fileInternalId>
+                  <pageNumbers>2 3</pageNumbers>
+                  <pageDescription>Листы 2-3: спецификация бетона</pageDescription>
+                </documentReference>
+                <documentReference alterationRef="base">
+                  <fileInternalId>3</fileInternalId>
+                  <propertyName>ConcreteClass</propertyName>
+                  <propertyDescription>Класс бетона по прочности</propertyDescription>
+                  <propertyValue>B30</propertyValue>
+                </documentReference>
+                <documentReference alterationRef="alt-2025-01">
+                  <fileInternalId>1</fileInternalId>
+                  <pageNumbers>4</pageNumbers>
+                  <pageDescription>Добавлено армирование</pageDescription>
+                </documentReference>
+                <documentReference alterationRef="alt-2025-06">
+                  <fileInternalId>2</fileInternalId>
+                  <pageNumbers>5 6</pageNumbers>
+                  <pageDescription>Листы усиления плит</pageDescription>
+                </documentReference>
+                <documentReference alterationRef="alt-2025-12">
+                  <fileInternalId>3</fileInternalId>
+                  <ifcGuids>0a1b2c3d-4e5f-6789-abcd-ef0123456789 2222-3333-4444-5555</ifcGuids>
+                  <ifcDescription>Slab-12 финальная модель</ifcDescription>
+                </documentReference>
+              </documentationList>
+            </item>
+
+            <item itemPositionId="2">
+              <work>
+                <name>Подготовка основания</name>
+                <unit>м³</unit>
+              </work>
+              <volumeList>
+                <alteration alterationRef="base">
+                  <volumeQuantity>120</volumeQuantity>
+                </alteration>
+                <alteration alterationRef="alt-2025-01">
+                  <volumeQuantity>126</volumeQuantity>
+                  <volumeIncrease>6</volumeIncrease>
+                  <reason>Уточнение площади</reason>
+                </alteration>
+                <alteration alterationRef="alt-2025-06">
+                  <volumeQuantity>132</volumeQuantity>
+                  <volumeIncrease>6</volumeIncrease>
+                  <reason>Расширение зоны, пересчёт минус 2 и ручная корректировка +1</reason>
+                </alteration>
+                <alteration alterationRef="alt-2025-12">
+                  <volumeQuantity>130</volumeQuantity>
+                  <volumeDecrease>-2</volumeDecrease>
+                  <reason>Оптимизация площади</reason>
+                </alteration>
+              </volumeList>
+              <documentationList>
+                <documentReference alterationRef="base">
+                  <fileInternalId>1</fileInternalId>
+                  <pageNumbers>1</pageNumbers>
+                  <pageDescription>План основания, лист 1</pageDescription>
+                </documentReference>
+                <documentReference alterationRef="alt-2025-01">
+                  <fileInternalId>1</fileInternalId>
+                  <pageNumbers>3</pageNumbers>
+                  <pageDescription>Уточнение площадей под подготовку</pageDescription>
+                </documentReference>
+                <documentReference alterationRef="alt-2025-06">
+                  <fileInternalId>2</fileInternalId>
+                  <propertyName>SoilType</propertyName>
+                  <propertyDescription>Тип грунта после обследования</propertyDescription>
+                  <propertyValue>Супесь</propertyValue>
+                </documentReference>
+                <documentReference alterationRef="alt-2025-12">
+                  <fileInternalId>2</fileInternalId>
+                  <pageNumbers>9</pageNumbers>
+                  <pageDescription>Оптимизация основания</pageDescription>
+                </documentReference>
+              </documentationList>
+
+              <itemList>
+                <item itemPositionId="2.1">
+                  <work>
+                    <name>Очистка площадки</name>
+                    <unit>м³</unit>
+                  </work>
+                  <volumeList>
+                    <alteration alterationRef="base">
+                      <volumeQuantity>300</volumeQuantity>
+                    </alteration>
+                    <alteration alterationRef="alt-2025-01">
+                      <volumeQuantity>315</volumeQuantity>
+                      <volumeIncrease>15</volumeIncrease>
+                      <reason>Изменение границ</reason>
+                    </alteration>
+                    <alteration alterationRef="alt-2025-06">
+                      <volumeQuantity>330</volumeQuantity>
+                      <volumeIncrease>15</volumeIncrease>
+                      <reason>Расширение работ</reason>
+                    </alteration>
+                    <alteration alterationRef="alt-2025-12">
+                      <volumeQuantity>320</volumeQuantity>
+                      <volumeDecrease>-10</volumeDecrease>
+                      <reason>Оптимизация объёмов</reason>
+                    </alteration>
+                  </volumeList>
+                  <documentationList>
+                    <documentReference alterationRef="base">
+                      <fileInternalId>1</fileInternalId>
+                      <pageNumbers>2</pageNumbers>
+                      <pageDescription>Акт очистки площадки</pageDescription>
+                    </documentReference>
+                    <documentReference alterationRef="alt-2025-12">
+                      <fileInternalId>1</fileInternalId>
+                      <pageNumbers>1</pageNumbers>
+                      <pageDescription>Обновление актов после корректировки</pageDescription>
+                    </documentReference>
+                  </documentationList>
+                </item>
+
+                <item itemPositionId="2.2">
+                  <work>
+                    <name>Устройство опалубки</name>
+                    <unit>м³</unit>
+                  </work>
+                  <volumeList>
+                    <alteration alterationRef="base">
+                      <volumeQuantity>80</volumeQuantity>
+                    </alteration>
+                    <alteration alterationRef="alt-2025-01">
+                      <volumeQuantity>84</volumeQuantity>
+                      <volumeIncrease>4</volumeIncrease>
+                      <reason>Добор по проекту</reason>
+                    </alteration>
+                    <alteration alterationRef="alt-2025-06">
+                      <volumeQuantity>82</volumeQuantity>
+                      <volumeDecrease>-2</volumeDecrease>
+                      <reason>Оптимизация щитов</reason>
+                    </alteration>
+                    <alteration alterationRef="alt-2025-12">
+                      <volumeQuantity>83</volumeQuantity>
+                      <volumeIncrease>1</volumeIncrease>
+                      <reason>Коррекция перед сдачей</reason>
+                    </alteration>
+                  </volumeList>
+                  <documentationList>
+                    <documentReference alterationRef="base">
+                      <fileInternalId>1</fileInternalId>
+                      <pageNumbers>4</pageNumbers>
+                      <pageDescription>Опалубка: ведомость материалов</pageDescription>
+                    </documentReference>
+                    <documentReference alterationRef="alt-2025-01">
+                      <fileInternalId>1</fileInternalId>
+                      <pageNumbers>4</pageNumbers>
+                      <pageDescription>Изменение схемы опалубки</pageDescription>
+                    </documentReference>
+                    <documentReference alterationRef="alt-2025-12">
+                      <fileInternalId>2</fileInternalId>
+                      <pageNumbers>8</pageNumbers>
+                      <pageDescription>Итоговая схема опалубки</pageDescription>
+                    </documentReference>
+                  </documentationList>
+
+                  <itemList>
+                    <item itemPositionId="2.2.1">
+                      <work>
+                        <name>Подача бетона</name>
+                        <unit>м³</unit>
+                      </work>
+                      <volumeList>
+                        <alteration alterationRef="base">
+                          <volumeQuantity>8</volumeQuantity>
+                        </alteration>
+                        <alteration alterationRef="alt-2025-01">
+                          <volumeQuantity>8.5</volumeQuantity>
+                          <volumeIncrease>0.5</volumeIncrease>
+                          <reason>Дополнительная поставка</reason>
+                        </alteration>
+                        <alteration alterationRef="alt-2025-06">
+                          <volumeQuantity>8.2</volumeQuantity>
+                          <volumeDecrease>-0.3</volumeDecrease>
+                          <reason>Оптимизация расхода</reason>
+                        </alteration>
+                        <alteration alterationRef="alt-2025-12">
+                          <volumeQuantity>8.6</volumeQuantity>
+                          <volumeIncrease>0.4</volumeIncrease>
+                          <reason>Итоговая корректировка</reason>
+                        </alteration>
+                      </volumeList>
+                      <documentationList>
+                        <documentReference alterationRef="alt-2025-01">
+                          <fileInternalId>1</fileInternalId>
+                          <pageNumbers>1</pageNumbers>
+                          <pageDescription>Подача бетона: лист 1</pageDescription>
+                        </documentReference>
+                        <documentReference alterationRef="alt-2025-12">
+                          <fileInternalId>3</fileInternalId>
+                          <ifcGuids>1111-2222-3333-4444</ifcGuids>
+                          <ifcDescription>Concrete pour record</ifcDescription>
+                        </documentReference>
+                      </documentationList>
+                    </item>
+
+                    <item itemPositionId="2.2.2">
+                      <work>
+                        <name>Контроль качества опалубки</name>
+                        <unit>шт</unit>
+                      </work>
+                      <volumeList>
+                        <alteration alterationRef="base">
+                          <volumeQuantity>2</volumeQuantity>
+                        </alteration>
+                        <alteration alterationRef="alt-2025-01">
+                          <volumeQuantity>3</volumeQuantity>
+                          <volumeIncrease>1</volumeIncrease>
+                          <reason>Дополнительная проверка</reason>
+                        </alteration>
+                        <alteration alterationRef="alt-2025-06">
+                          <volumeQuantity>3</volumeQuantity>
+                        </alteration>
+                        <alteration alterationRef="alt-2025-12">
+                          <volumeQuantity>2</volumeQuantity>
+                          <volumeDecrease>-1</volumeDecrease>
+                          <reason>Оптимизация процедур</reason>
+                        </alteration>
+                      </volumeList>
+                      <documentationList>
+                        <documentReference alterationRef="alt-2025-01">
+                          <fileInternalId>1</fileInternalId>
+                          <pageNumbers>1</pageNumbers>
+                          <pageDescription>Контроль опалубки, промежуточный</pageDescription>
+                        </documentReference>
+                        <documentReference alterationRef="alt-2025-12">
+                          <fileInternalId>1</fileInternalId>
+                          <propertyName>FormworkCheck</propertyName>
+                          <propertyDescription>Итог проверки опалубки</propertyDescription>
+                          <propertyValue>Принято</propertyValue>
+                        </documentReference>
+                      </documentationList>
+                    </item>
+                  </itemList>
+                </item>
+              </itemList>
+            </item>
+
+            <item itemPositionId="3">
+              <work>
+                <name>Армирование</name>
+                <unit>т</unit>
+              </work>
+              <volumeList>
+                <alteration alterationRef="base">
+                  <volumeQuantity>3.2</volumeQuantity>
+                </alteration>
+                <alteration alterationRef="alt-2025-01">
+                  <volumeQuantity>3.2</volumeQuantity>
+                </alteration>
+                <alteration alterationRef="alt-2025-06">
+                  <volumeQuantity>3.6</volumeQuantity>
+                  <volumeIncrease>0.4</volumeIncrease>
+                  <reason>Усиление</reason>
+                </alteration>
+                <alteration alterationRef="alt-2025-12">
+                  <volumeQuantity>3.4</volumeQuantity>
+                  <volumeDecrease>-0.2</volumeDecrease>
+                  <reason>Оптимизация</reason>
+                </alteration>
+              </volumeList>
+              <documentationList>
+                <documentReference alterationRef="alt-2025-06">
+                  <fileInternalId>2</fileInternalId>
+                  <pageNumbers>6 7</pageNumbers>
+                  <pageDescription>Армирование: листы 6-7</pageDescription>
+                </documentReference>
+                <documentReference alterationRef="alt-2025-12">
+                  <fileInternalId>1</fileInternalId>
+                  <ifcGuids>aaaa-bbbb-cccc-dddd</ifcGuids>
+                  <ifcDescription>Армирование финальное в IFC</ifcDescription>
+                </documentReference>
+              </documentationList>
+            </item>
+          </itemList>
+        </section>
+      </sectionList>
+    </bd:estimate>
+  </bd:estimateList>
+
+  <bd:exportDateTime>2025-03-01T10:00:00Z</bd:exportDateTime>
+</cqt:comparativeQuantityTakeoff>

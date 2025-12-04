@@ -1,47 +1,57 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:util="http://www.gge.ru/utils" exclude-result-prefixes="xs" version="2.0">
 	<xsl:output method="html" encoding="UTF-8" indent="yes"/>
 
-	
-	<xsl:function name="util:formatNumberWithZeroCheck">
-		<xsl:param name="number"/>
-		<xsl:param name="decimalPlaces" as="xs:integer"/>
+	<!-- Возвращает строку или пусто. Аргумент теперь допускает последовательность. -->
+	<xsl:function name="util:formatNumberWithZeroCheck" as="xs:string?">
+		<xsl:param name="number" as="item()*"/>
 		
-		<xsl:variable name="decimalPlacesValue" select="if (not($decimalPlaces)) then 2 else $decimalPlaces"/>
+		<!-- Берём первый атомизированный элемент из последовательности -->
+		<xsl:variable name="n" select="(data($number))[1]"/>
 		
 		<xsl:choose>
-			<xsl:when test="not($number) or string($number) = 'NaN'">
+			<!-- Пусто или NaN -->
+			<xsl:when test="empty($n) or not(number($n) = number($n))">
 				<xsl:text/>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:variable name="formatPattern">
-					<xsl:text>#,##0</xsl:text>
-					<xsl:if test="$decimalPlacesValue &gt; 0">
-						<xsl:text>.</xsl:text>
-						<xsl:for-each select="1 to $decimalPlacesValue">
-							<xsl:text>#</xsl:text>
-						</xsl:for-each>
-					</xsl:if>
-				</xsl:variable>
-				
-				<xsl:variable name="formattedNumber">
-					<xsl:value-of select="format-number($number, $formatPattern)"/>
-				</xsl:variable>
-				
-				<xsl:variable name="translatedThousands">
-					<xsl:value-of select="translate($formattedNumber, ',', ' ')"/>
-				</xsl:variable>
-				
-				<xsl:variable name="finalNumber">
-					<xsl:value-of select="translate($translatedThousands, '.', ',')"/>
-				</xsl:variable>
-				
-				<xsl:value-of select="$finalNumber"/>
+				<xsl:variable name="formattedNumber" select="format-number(number($n), '#,##0.00')"/>
+				<xsl:variable name="translatedNumber" select="translate($formattedNumber, ',', ' ')"/>
+				<xsl:value-of select="translate($translatedNumber, '.', ',')"/>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:function>
 	
-	
-	
+	<xsl:function name="util:formatNumberNoRounding" as="xs:string?">
+		<xsl:param name="number" as="item()*"/>
+		<xsl:variable name="n" select="(data($number))[1]"/>
+		
+		<xsl:choose>
+			<xsl:when test="empty($n) or not(number($n) = number($n))">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:variable name="formattedNumber" select="format-number(number($n), '#,##0.####################')"/>
+				<xsl:variable name="translatedNumber" select="translate($formattedNumber, ',', ' ')"/>
+				<xsl:value-of select="translate($translatedNumber, '.', ',')"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:function>
+
+	<xsl:function name="util:formatNumberWithSevenDecimals" as="xs:string?">
+		<xsl:param name="number" as="item()*"/>
+		<xsl:variable name="n" select="(data($number))[1]"/>
+		
+		<xsl:choose>
+			<xsl:when test="empty($n) or not(number($n) = number($n))">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:variable name="formattedNumber" select="format-number(number($n), '#,##0.#######')"/>
+				<xsl:variable name="translatedNumber" select="translate($formattedNumber, ',', ' ')"/>
+				<xsl:value-of select="translate($translatedNumber, '.', ',')"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:function>
 	
 	
 	<!-- Главный шаблон и описание стилей CSS -->
@@ -49,356 +59,70 @@
 		<html xmlns="http://www.w3.org/1999/xhtml">
 			<head>
 				<style type="text/css" id="styles"> 
-					h1 { 
-					font-family: Times New Roman; 
-					font-size: 12pt; 
-					font-weight: bold; 
-					text-align: center; 
-					width: 100%; 
-					margin-top: 2em; 
-					}
+                    h1 { font-family: Times New Roman; font-size: 12pt; font-weight:bold; text-align:center; width:100%; margin-top: 2em; }
+                    body,p,td { font-family: Times New Roman; font-size: 10pt; margin:0;}
+                    
+                    div.heading-left2 { margin-left:1.7em; display:flex; width:30%; margin-top: 0.5em; min-height: 1em;}
+                    div.heading-left2 .headingvalue { border-bottom: 1px solid black; flex: 1; }
+
+					div.heading-left3 { margin-left:1.7em; display:flex; width:50%; margin-top: 0.5em; min-height: 1em;}
+                    div.heading-left3 .headingvalue { border-bottom: 1px solid black; flex: 1; }
+                    
+                    div.helptext { text-align:center; width:100%; margin-top:0;}
+                    
+                    div.headingname { white-space: nowrap; margin-right:0.3em; margin-left:0.3em; flex-grow: *; min-height: 1em;}
+                    div.headingnametop { width:50%; margin-right:0.3em; margin-left:0.3em; flex-grow: *; min-height: 1em;}
+                    
+                    div.heading-left { display:flex; width:50%; margin-bottom: 0.5em; min-height: 1em;}
+                    div.heading-left .headingvalue { border-bottom: 1px solid black; flex-grow: 2;}
+                    
+                    div.spacer {flex: 1; }
+
+                    div.report { margin-bottom: 2em; margin-bottom: 2em; border-bottom:2px solid black; padding:0.5em 2em;}
+                    div.report h3 {font-size: 120%; font-weight; bold}
+
+                    div.heading {margin-right:2em; margin-left:2em; display:flex; margin-top: 1em; }
+                    div.heading .headingvalue { border-bottom: 1px solid black; width:100%; min-height: 1em;}
+                     
+                    div.headingblock { display:flex; flex-direction: column; flex:3; margin-top:2em}
+                    
+                    .fieldError { color: red; }
+                    td.fieldError { border: 1px solid red; }
+                    div.fieldError .headingvalue { border-bottom: 1px solid black; flex-grow: 2;}                     
+
+					.main { margin: 2em; }
+                    .center {text-align:center;}
+                    .right {text-align:right;}
+                    .left {text-align:left;}
+                    .leftmargin { padding-left:3em;}
+                    .nowrap {white-space: nowrap;}
+                    .top {vertical-align: top; }
+					.italic {font-style: italic; }
+					.inline {display: inline; }
+					.breakword {word-wrap: break-word; }
+					.indent {padding-left: 2em;}
+					.indent2 {padding-left: 4em;}
 					
-					body, p, td { 
-					font-family: Times New Roman; 
-					font-size: 10pt; 
-					margin: 0;
-					}
+                    .err { color:red; text-decoration: underline }
+                    .err A { color:red; text-decoration: underline }
+                    
+                    table {border-collapse: collapse; width:100%; margin:2em 0; }
+                    th {border: 1px solid black; padding: 0.5em; vertical-align: top;}
+					td {border: 0px; padding: 0.2em 0.5em; vertical-align: top; text-align:right}
+					td.tborder {border: 1px solid black}
+					td.btop {border-top: 1px solid black}
+					td.bbottom {border-bottom: 1px solid black;}
+					td.bold {font-weight: bold}
 					
-					.heading.leftmargin {
-					white-space: nowrap; /* Запрещаем перенос строк внутри данного блока */
-					}
-					
-					
-					div.heading-left2 { 
-					margin-left: 1.7em; 
-					display: flex; 
-					width: 30%; 
-					margin-top: 0.5em; 
-					min-height: 1em;
-					}
-					
-					div.heading-left2 .headingvalue { 
-					border-bottom: 1px solid black; 
-					flex: 1; 
-					white-space: nowrap;  /* Добавлено */
-					}
-					
-					div.heading-left3 { 
-					margin-left: 1.7em; 
-					display: flex; 
-					width: 50%; 
-					margin-top: 0.5em; 
-					min-height: 1em;
-					}
-					
-					div.heading-left3 .headingvalue { 
-					border-bottom: 1px solid black; 
-					flex: 1; 
-					white-space: nowrap;  /* Добавлено */
-					}
-					
-					div.helptext { 
-					text-align: center; 
-					width: 100%; 
-					margin-top: 0;
-					}
-					
-					div.headingname { 
-					white-space: nowrap; 
-					margin-right: 0.3em; 
-					margin-left: 0.3em; 
-					flex-grow: *; 
-					min-height: 1em;
-					}
-					
-					div.headingnametop {
-					width: 45%;               /* Ограничение по ширине */
-					max-width: 45%;
-					flex-shrink: 0;           /* Запрет на сжатие */
-					overflow-wrap: break-word;
-					word-wrap: break-word;
-					white-space: normal;      /* Разрешить перенос */
-					text-align: left;         /* Выравнивание по левому краю */
-					}
-					
-					div.heading-left { 
-					display: flex; 
-					width: 50%; 
-					margin-bottom: 0.5em; 
-					min-height: 1em;
-					}
-					
-					div.heading-left .headingvalue { 
-					border-bottom: 1px solid black; 
-					flex-grow: 2; 
-					white-space: nowrap;  /* Добавлено */
-					}
-					
-					div.headingline {
-					width: auto;
-					flex-grow: 1;               /* Заполнение оставшегося пространства */
-					overflow-wrap: break-word;
-					word-wrap: break-word;
-					white-space: normal;
-					border-bottom: 1px solid black;
-					position: relative;
-					}
-					
-					div.headingline::after {
-					content: "";
-					display: inline-block;
-					/*border-bottom: 1px solid black; */ /* Черта до конца строки */
-					width: 100%;
-					margin-left: 0.5em;        /* Расстояние между текстом и чертой */
-					vertical-align: middle;
-					}
-					
-					
-					div.spacer {
-					flex: 1;
-					}
-					
-					div.report { 
-					margin-bottom: 2em; 
-					border-bottom: 2px solid black; 
-					padding: 0.5em 2em;
-					}
-					
-					div.report h3 {
-					font-size: 120%; 
-					font-weight: bold;
-					}
-					
-					div.heading {
-					margin-right: 2em; 
-					margin-left: 2em; 
-					display: flex; 
-					margin-top: 1em;
-					}
-					
-					div.heading .headingvalue {
-					border-bottom: 1px solid black; 
-					width: 50%;               /* Ограничение по ширине */
-					max-width: 50%;
-					flex-shrink: 1;           /* Разрешить сжатие */
-					overflow-wrap: break-word;
-					word-wrap: break-word;
-					white-space: normal;      /* Разрешить перенос */
-					   
-					}
-					
-					div.headingblock { 
-					display: flex; 
-					flex-direction: column; 
-					flex: 3; 
-					margin-top: 2em;
-					}
-					
-					.fieldError { 
-					color: red;
-					}
-					
-					td.fieldError { 
-					border: 1px solid red;
-					}
-					
-					div.fieldError .headingvalue { 
-					border-bottom: 1px solid black; 
-					flex-grow: 2;
-					}
-					
-					.main { 
-					margin: 2em;
-					}
-					
-					.center {
-					text-align: center;
-					}
-					
-					.right {
-					text-align: right;
-					white-space: nowrap;  /* Добавлено */
-					}
-					
-					.left {
-					text-align: left;
-					}
-					
-					.leftmargin {
-					padding-left: 3em;
-					}
-					
-					.nowrap {
-					white-space: nowrap;
-					}
-					
-					.top {
-					vertical-align: top;
-					}
-					
-					.italic {
-					font-style: italic;
-					}
-					
-					.inline {
-					display: inline;
-					}
-					
-					.breakword {
-					word-wrap: break-word;
-					}
-					
-					.indent {
-					padding-left: 2em;
-					}
-					
-					.indent2 {
-					padding-left: 4em;
-					}
-					
-					.err {
-					color: red; 
-					text-decoration: underline;
-					}
-					
-					.err A {
-					color: red; 
-					text-decoration: underline;
-					}
-					
-					table {
-					border-collapse: collapse; 
-					width: 100%; 
-					margin: 2em 0;
-					}
-					
-					th {
-					border: 1px solid black; 
-					padding: 0.5em; 
-					vertical-align: top;
-					}
-					
-					td {
-					border: 0px; 
-					padding: 0.2em 0.5em; 
-					vertical-align: top; 
-					text-align: right;
-					
-					}
-					
-					td.tborder {
-					border: 1px solid black;
-					}
-					
-					td.btop {
-					border-top: 1px solid black;
-					}
-					
-					td.bbottom {
-					border-bottom: 1px solid black;
-					}
-					
-					td.bold {
-					font-weight: bold;
-					}
-					
-					.even { 
-					background-color: #f2f2f2;
-					}
-					
-					.odd { 
-					background-color: #ffffff;
-					}
-					
-					.estimate-table {
-					width: 100%;
-					border-collapse: collapse;
-					}
-					
-					.estimate-table td {
-					padding: 5px;
-					vertical-align: top;
-					text-align: left;
-					font-weight: normal; /* Убираем жирный шрифт */
-					}
-					
-					.req-table {
-					width: 96%;
-					border-collapse: collapse;
-					margin-left : 2em;
-					margin-top : 1em;
-					}
-					
-					.req-table td {
-					padding: 12px 2px 1px 2px;
-					vertical-align: top;
-					text-align: left;
-					font-weight: normal; /* Убираем жирный шрифт */
-					}
-					
-					.total-table {
-					width: 94%;
-					border-collapse: collapse;
-					margin-left : 3em;
-					margin-top : 1em;
-					}
-					
-					.total-table td {
-					padding: 12px 2px 1px 2px;
-					vertical-align: top;
-					text-align: left;
-					font-weight: normal; /* Убираем жирный шрифт */
-					}
-					
-					.sign-table {
-					width: 50%;
-					border-collapse: collapse;
-					margin-left : 2em;
-					margin-top : 0.5em;
-					}					
-					
-					.sign-table td {
-					padding: 10px 2px 1px 2px;
-					vertical-align: top;
-					text-align: left;
-					font-weight: normal; /* Убираем жирный шрифт */
-					}
-					
-					td.bordered {
-					border-bottom: 1px solid black; /* Добавляем нижнюю границу только второму столбцу */
-					}
-					
-					td.helptext {
-					padding-top: 1px;
-					}
-					
-					td.centered {
-					text-align: center;
-					}
-					
-					td.bold {
-					font-weight: bold;
-					}
-					
-					td.right {
-					text-align: right;
-					}
-					
-					td.leftindent {
-					text-indent: 2em;
-					}
-					td.nowrap-right {
-					white-space: nowrap;
-					min-width: 120px;
-					text-align: right;
-					}
+		.even { background-color: #f2f2f2; } /* Светло-серый цвет */
+		.odd { background-color: #ffffff; }  /* Белый цвет */
 					
 
                 </style>
 			</head>
 			<body>
-				<xsl:apply-templates select="LocalEstimateResourceIndexMethod | Construction" mode="render"/>
-				<xsl:apply-templates select="LocalEstimateResourceIndexMethod | Construction" mode="validate"/>
+				<xsl:apply-templates select="Construction" mode="render"/>
+				<xsl:apply-templates select="Construction" mode="validate"/>
 			</body>
 		</html>
 	</xsl:template>
@@ -436,126 +160,126 @@
 	</xsl:template>
 
 	<!-- Стройка -->
-	<xsl:template match="LocalEstimateResourceIndexMethod | Construction" mode="render">
+	<xsl:template match="Construction" mode="render">
 		<div class="main">
-			<table class="estimate-table">
-				<tr>				
-					<td>Дата и время выгрузки файла из сметного программного комплекса: </td>
-					<td>
-						<xsl:value-of select="concat(substring(ExportDateTime, 9, 2), '.', substring(ExportDateTime, 6, 2), '.', substring(ExportDateTime, 1, 4), ' ', substring(ExportDateTime, 12, 5))"/>
-					</td>
-				</tr>
-				<tr id="SoftName">
-					<td>Наименование программного продукта</td>
-					<td class="bordered">
-						<xsl:value-of select="concat(Meta/Soft/Name, ' ', Meta/Soft/Version)"/>
-					</td>
-				</tr>
-				<tr id="NormativeName">
-					<td>Наименование редакции сметных нормативов</td>
-					<td id="LegalMainName" class="bordered">
-						<xsl:value-of select="Object/Estimate/Legal/Main/Name"/>
-						<xsl:value-of select="Object/Estimate/Legal/Metodology/Name"/>
-						<xsl:value-of select="Object/Estimate/Legal/Overheads/Name"/>
-						<xsl:value-of select="Object/Estimate/Legal/Profits/Name"/>
-					</td>
-				</tr>
-				<tr id="NormativeName">
-					<td>Реквизиты приказа Минстроя России об утверждении дополнений и изменений к сметным нормативам</td>
-					<td class="bordered">
-						<xsl:value-of select="Object/Estimate/Legal/Main/Orders"/>
-						<xsl:text>;&#160;</xsl:text>
-						<xsl:value-of select="Object/Estimate/Legal/Metodology/Orders"/>
-						<xsl:text>;&#160;</xsl:text>
-						<xsl:value-of select="Object/Estimate/Legal/Overheads/Orders"/>
-						<xsl:text>;&#160;</xsl:text>
-						<xsl:value-of select="Object/Estimate/Legal/Profits/Orders"/>
-					</td>
-				</tr>
-				<tr id="NormativeName">
-					<td>Реквизиты письма Минстроя России об индексах изменения
-						сметной стоимости строительства, включаемые в федеральный реестр сметных
-						нормативов и размещаемые в федеральной государственной информационной системе
-						ценообразования в строительстве, подготовленного в соответствии пунктом 85
-						Методики расчета индексов изменения сметной стоимости строительства,
-						утвержденной приказом Министерства строительства и жилищно-коммунального
-						хозяйства Российской Федерации от 5 июня 2019 г. № 326/пр 1
-					</td>
-					<td class="bordered">
-						<xsl:value-of select="Object/Estimate/Legal/Indexes/Name"/>
-						<xsl:text>;&#160;</xsl:text>
-						<xsl:for-each select="Object/Estimate/Legal/Indexes">
-							<xsl:value-of select="Orders"/>
-							<xsl:if test="not(position() = last())">
-								<xsl:text>,&#160;</xsl:text>
-							</xsl:if>
-						</xsl:for-each>						
-					</td>
-				</tr>
-				<tr id="NormativeName">
-					<td>Реквизиты нормативного правового акта об утверждении
-						оплаты труда, утверждаемый в соответствии с пунктом 22(1) Правилами мониторинга
-						цен, утвержденными постановлением Правительства Российской Федерации от 23
-						декабря 2016 г. № 1452
-					</td>
-					<td class="bordered">
-						<xsl:value-of select="Object/Estimate/Salary"/>
-					</td>
-				</tr>
-				
-				<tr id="NormativeName">
-					<td>Обоснование принятых текущих цен на строительные ресурсы</td>
-					<td class="bordered">
-						ФГИС ЦС&#160;
-						<xsl:variable name="rawIndustry" select="Object/Estimate/Industry"/>
-						<xsl:variable name="industryAbbreviation" select="normalize-space($rawIndustry)"/>
-						
-						<xsl:choose>
-							<xsl:when test="$industryAbbreviation = 'АЛР'">
-								АКЦИОНЕРНАЯ КОМПАНИЯ "АЛРОСА" (ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО)
-							</xsl:when>
-							<xsl:when test="$industryAbbreviation = 'РЖД'">
-								ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО "РОССИЙСКИЕ ЖЕЛЕЗНЫЕ ДОРОГИ"
-							</xsl:when>
-							<xsl:when test="$industryAbbreviation = 'РСС'">
-								ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО "ФЕДЕРАЛЬНАЯ СЕТЕВАЯ КОМПАНИЯ - РОССЕТИ"
-							</xsl:when>
-							<xsl:when test="$industryAbbreviation = 'РСТ'">
-								ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"
-							</xsl:when>
-							<xsl:when test="$industryAbbreviation = 'ТРН'">
-								ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО "ТРАНСНЕФТЬ"
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:value-of select="$industryAbbreviation"/>
-							</xsl:otherwise>
-						</xsl:choose>
-					</td>
-				</tr>
-				
-				<tr id="NormativeName">
-					<td>Наименование субъекта Российской Федерации</td>
-					<td class="bordered">
-						<xsl:value-of select="Object/Estimate/Region/RegionName"/>
-					</td>
-				</tr>
-				<tr id="NormativeName">
-					<td>Наименование зоны субъекта Российской Федерации</td>
-					<td class="bordered">
-						<xsl:value-of select="Object/Estimate/Region/SubRegion/SubRegionName"/>
-					</td>
-				</tr>
-			</table>	
+			
+			<div class="heading-left2">
+				<xsl:text>Дата и время выгрузки файла из сметного программного комплекса: </xsl:text>
+				<xsl:value-of
+					select="concat(substring(ExportDateTime, 9, 2), '.', substring(ExportDateTime, 6, 2), '.', substring(ExportDateTime, 1, 4), ' ', substring(ExportDateTime, 12, 5))"
+				/>
+			</div>
+			
+			<div class="heading" id="SoftName">
+				<div class="headingnametop">Наименование программного продукта</div>
+				<div class="headingvalue">
+					<xsl:value-of select="concat(Meta/Soft/Name, ' ', Meta/Soft/Version)"/>
+				</div>
+			</div>
+			<div class="heading" id="NormativeName">
+				<div class="headingnametop">Наименование редакции сметных нормативов</div>
+				<div class="headingvalue" id="LegalMainName">
+					<xsl:value-of select="Object/Estimate/Legal/Main/Name"/>
+					<xsl:value-of select="Object/Estimate/Legal/Metodology/Name"/>
+					<xsl:value-of select="Object/Estimate/Legal/Overheads/Name"/>
+					<xsl:value-of select="Object/Estimate/Legal/Profits/Name"/>
+				</div>
+			</div>
+			<div class="heading" id="NormativeName">
+				<div class="headingnametop">Реквизиты приказа Минстроя России об утверждении
+					дополнений и изменений к сметным нормативам</div>
+				<div class="headingvalue">
+					<xsl:value-of select="Object/Estimate/Legal/Main/Orders"/>
+					<xsl:text>;&#160;</xsl:text>
+					<xsl:value-of select="Object/Estimate/Legal/Metodology/Orders"/>
+					<xsl:text>;&#160;</xsl:text>
+					<xsl:value-of select="Object/Estimate/Legal/Overheads/Orders"/>
+					<xsl:text>;&#160;</xsl:text>
+					<xsl:value-of select="Object/Estimate/Legal/Profits/Orders"/>
+				</div>
+			</div>
+			<div class="heading" id="NormativeName">
+				<div class="headingnametop">Реквизиты письма Минстроя России об индексах изменения
+					сметной стоимости строительства, включаемые в федеральный реестр сметных
+					нормативов и размещаемые в федеральной государственной информационной системе
+					ценообразования в строительстве, подготовленного в соответствии пунктом 85
+					Методики расчета индексов изменения сметной стоимости строительства,
+					утвержденной приказом Министерства строительства и жилищно-коммунального
+					хозяйства Российской Федерации от 5 июня 2019 г. № 326/пр 1</div>
+				<div class="headingvalue">
+					<xsl:value-of select="Object/Estimate/Legal/Indexes/Name"/>
+					<xsl:text>;&#160;</xsl:text>
+					<xsl:for-each select="Object/Estimate/Legal/Indexes">
+						<xsl:value-of select="Orders"/>
+						<xsl:if test="not(position() = last())">
+							<xsl:text>,&#160;</xsl:text>
+						</xsl:if>
+					</xsl:for-each>
+					
+				</div>
+			</div>
+			<div class="heading" id="NormativeName">
+				<div class="headingnametop">Реквизиты нормативного правового акта об утверждении
+					оплаты труда, утверждаемый в соответствии с пунктом 22(1) Правилами мониторинга
+					цен, утвержденными постановлением Правительства Российской Федерации от 23
+					декабря 2016 г. № 1452</div>
+				<div class="headingvalue">
+					<xsl:value-of select="Object/Estimate/Salary"/>
+				</div>
+			</div>
+			
+			<div class="heading" id="NormativeName">
+				<div class="headingnametop">Обоснование принятых текущих цен на строительные ресурсы</div>
+				<div class="headingvalue">
+					ФГИС ЦС&#160;
+					<xsl:variable name="rawIndustry" select="Object/Estimate/Industry"/>
+					<xsl:variable name="industryAbbreviation" select="normalize-space($rawIndustry)"/>
+					
+					<xsl:choose>
+						<xsl:when test="$industryAbbreviation = 'АЛР'">
+							АКЦИОНЕРНАЯ КОМПАНИЯ "АЛРОСА" (ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО)
+						</xsl:when>
+						<xsl:when test="$industryAbbreviation = 'РЖД'">
+							ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО "РОССИЙСКИЕ ЖЕЛЕЗНЫЕ ДОРОГИ"
+						</xsl:when>
+						<xsl:when test="$industryAbbreviation = 'РСС'">
+							ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО "ФЕДЕРАЛЬНАЯ СЕТЕВАЯ КОМПАНИЯ - РОССЕТИ"
+						</xsl:when>
+						<xsl:when test="$industryAbbreviation = 'РСТ'">
+							ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ"
+						</xsl:when>
+						<xsl:when test="$industryAbbreviation = 'ТРН'">
+							ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО "ТРАНСНЕФТЬ"
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="$industryAbbreviation"/>
+						</xsl:otherwise>
+					</xsl:choose>
+				</div>
+			</div>
+			
+			<div class="heading" id="NormativeName">
+				<div class="headingnametop">Наименование субъекта Российской Федерации</div>
+				<div class="headingvalue">
+					<xsl:value-of select="Object/Estimate/Region/RegionName"/>
+				</div>
+			</div>
+			<div class="heading" id="NormativeName">
+				<div class="headingnametop">Наименование зоны субъекта Российской Федерации</div>
+				<div class="headingvalue">
+					<xsl:value-of select="Object/Estimate/Region/SubRegion/SubRegionName"/>
+				</div>
+			</div>
 
 			<div class="heading">
-				<div class="headingline center">
+				<div class="headingvalue center">
 					<xsl:value-of select="Name"/>
 				</div>
 			</div>
 			<div class="helptext">(наименование стройки)</div>
 
 			<div class="heading">
-				<div class="headingline center">
+				<div class="headingvalue center">
 					<xsl:value-of select="Object/Name"/>
 				</div>
 			</div>
@@ -563,204 +287,205 @@
 
 			<h1 id="EstimateNum">ЛОКАЛЬНЫЙ СМЕТНЫЙ РАСЧЕТ (СМЕТА) №<xsl:value-of select="Object/Estimate/Num"/></h1>
 
-			<table class="req-table" align="center">
-				<tr>
-					<td colspan="3" class="bordered centered"><xsl:value-of select="Object/Estimate/Name"/></td>
-				</tr>
-				<tr>
-					<td colspan="3" class="centered helptext">(наименование работ и затрат)</td>
-				</tr>
-				<tr>
-					<td width="100">Составлен</td>
-					<td class="bordered centered" width="100%">ресурсно-индексным</td>
-					<td width="70">методом</td>
-				</tr>
-				
-				<tr>
-					<td width="100">Основание</td>
-					<td colspan="2" class="bordered" width="100%">
-						<xsl:value-of select="Object/Estimate/Reason"/>
-						<xsl:text> </xsl:text>
-						<xsl:variable name="uniqueFiles" select="/LocalEstimateResourceIndexMethod/Object/Estimate/Sections/Section/Items/Item/QTF/FileNameQTF
-																 | /Construction/Object/Estimate/Sections/Section/Items/Item/QTF/FileNameQTF"/>
-						
-						<xsl:for-each select="$uniqueFiles">
-							<xsl:variable name="current" select="."/>
-							<xsl:if test="not($current = preceding::FileNameQTF)">
-								<xsl:value-of select="$current"/>
-								<xsl:if test="position() != last()">, </xsl:if>
+			<div class="heading">
+				<div class="headingvalue center">
+					<xsl:value-of select="Object/Estimate/Name"/>
+				</div>
+			</div>
+			<div class="helptext">(наименование работ и затрат)</div>
+
+			<div class="heading-left">
+				<div class="headingname">Составлен</div>
+				<div class="headingvalue center">ресурсно-индексным</div>
+				<div class="headingname">методом</div>
+			</div>
+			<div class="heading-left">
+				<div class="headingname">Основание</div>
+				<div class="headingvalue">
+					<xsl:value-of select="Object/Estimate/Reason"/>
+					<xsl:text> </xsl:text>
+					<xsl:variable name="uniqueFiles" select="/Construction/Object/Estimate/Sections/Section/Items/Item/QTF/FileNameQTF"/>
+					
+					<xsl:for-each select="$uniqueFiles">
+						<xsl:variable name="current" select="."/>
+						<xsl:if test="not($current = preceding::FileNameQTF)">
+							<xsl:value-of select="$current"/>
+							<xsl:if test="position() != last()">, </xsl:if>
+						</xsl:if>
+					</xsl:for-each>
+					
+				</div>
+			</div>
+			<div class="heading-left" style="margin-top: 0;">
+				<div class="helptext">(техническая документация)</div>
+			</div>
+
+			<div class="heading">
+				<div class="headingblock">
+					<div class="heading">
+						<div class="headingname">
+							<b>Составлен в уровне цен</b>
+						</div>
+						<div class="headingvalue right">
+							<xsl:if test="Object/Estimate/PriceLevelCur">
+								<xsl:if test="Object/Estimate/PriceLevelCur/Month">
+									<xsl:call-template name="get-month-name">
+										<xsl:with-param name="month"
+											select="Object/Estimate/PriceLevelCur/Month"/>
+									</xsl:call-template>
+								</xsl:if>
+								<xsl:if test="Object/Estimate/PriceLevelCur/Quarter">
+									<xsl:call-template name="get-quarter-name">
+										<xsl:with-param name="quarter"
+											select="Object/Estimate/PriceLevelCur/Quarter"/>
+									</xsl:call-template>
+								</xsl:if>
+								<xsl:value-of select="Object/Estimate/PriceLevelCur/Year"/> г.
 							</xsl:if>
-						</xsl:for-each>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="3" class="centered helptext">(техническая документация)</td>
-				</tr>				
-			</table>
-			
-			<table class="total-table" align="center">
-				<tr>					
-					<td class="bold" width="180">Составлен в уровне цен</td>
-					<td class="bordered right" colspan="2">
-						<xsl:if test="Object/Estimate/PriceLevelCur">
-							<xsl:if test="Object/Estimate/PriceLevelCur/Month">
-								<xsl:call-template name="get-month-name">
-									<xsl:with-param name="month"
-										select="Object/Estimate/PriceLevelCur/Month"/>
-								</xsl:call-template>
+							<xsl:if test="Object/Estimate/PriceLevelBase">
+								(
+								<xsl:variable name="day">
+									<xsl:choose>
+										<xsl:when test="Object/Estimate/PriceLevelBase/Day">
+											<xsl:value-of select="format-number(Object/Estimate/PriceLevelBase/Day, '00')"/>
+										</xsl:when>
+										<xsl:otherwise>01</xsl:otherwise>
+									</xsl:choose>
+								</xsl:variable>
+								
+								<xsl:variable name="month">
+									<xsl:choose>
+										<xsl:when test="Object/Estimate/PriceLevelBase/Month">
+											<xsl:value-of select="format-number(Object/Estimate/PriceLevelBase/Month, '00')"/>
+										</xsl:when>
+										<xsl:when test="Object/Estimate/PriceLevelBase/Quarter">
+											<xsl:choose>
+												<xsl:when test="Object/Estimate/PriceLevelBase/Quarter = '1'">01</xsl:when>
+												<xsl:when test="Object/Estimate/PriceLevelBase/Quarter = '2'">04</xsl:when>
+												<xsl:when test="Object/Estimate/PriceLevelBase/Quarter = '3'">07</xsl:when>
+												<xsl:when test="Object/Estimate/PriceLevelBase/Quarter = '4'">10</xsl:when>
+												<xsl:otherwise>01</xsl:otherwise>
+											</xsl:choose>
+										</xsl:when>
+										<xsl:otherwise>01</xsl:otherwise>
+									</xsl:choose>
+								</xsl:variable>
+								
+								<xsl:variable name="year">
+									<xsl:choose>
+										<xsl:when test="Object/Estimate/PriceLevelBase/Year">
+											<xsl:value-of select="Object/Estimate/PriceLevelBase/Year"/>
+										</xsl:when>
+										<xsl:otherwise>0000</xsl:otherwise>
+									</xsl:choose>
+								</xsl:variable>
+								
+								<xsl:value-of select="concat($day, '.', $month, '.', $year)"/>
+								)
 							</xsl:if>
-							<xsl:if test="Object/Estimate/PriceLevelCur/Quarter">
-								<xsl:call-template name="get-quarter-name">
-									<xsl:with-param name="quarter"
-										select="Object/Estimate/PriceLevelCur/Quarter"/>
-								</xsl:call-template>
+							
+							
+							
+						</div>
+					</div>
+					<div class="heading">
+						<div class="headingname">
+							<b>Сметная стоимость</b>
+						</div>
+						<div class="headingvalue right">
+							<xsl:if test="Object/Estimate/EstimatePrice/Total != 0"> 
+								<xsl:value-of select="format-number(Object/Estimate/EstimatePrice/Total div 1000, '0.00')"/>
 							</xsl:if>
-							<xsl:value-of select="Object/Estimate/PriceLevelCur/Year"/> г.
-						</xsl:if>
-						<xsl:if test="Object/Estimate/PriceLevelBase">
-							(
-							<xsl:variable name="day">
-								<xsl:choose>
-									<xsl:when test="Object/Estimate/PriceLevelBase/Day">
-										<xsl:value-of select="format-number(Object/Estimate/PriceLevelBase/Day, '00')"/>
-									</xsl:when>
-									<xsl:otherwise>01</xsl:otherwise>
-								</xsl:choose>
-							</xsl:variable>
 							
-							<xsl:variable name="month">
-								<xsl:choose>
-									<xsl:when test="Object/Estimate/PriceLevelBase/Month">
-										<xsl:value-of select="format-number(Object/Estimate/PriceLevelBase/Month, '00')"/>
-									</xsl:when>
-									<xsl:when test="Object/Estimate/PriceLevelBase/Quarter">
-										<xsl:choose>
-											<xsl:when test="Object/Estimate/PriceLevelBase/Quarter = '1'">01</xsl:when>
-											<xsl:when test="Object/Estimate/PriceLevelBase/Quarter = '2'">04</xsl:when>
-											<xsl:when test="Object/Estimate/PriceLevelBase/Quarter = '3'">07</xsl:when>
-											<xsl:when test="Object/Estimate/PriceLevelBase/Quarter = '4'">10</xsl:when>
-											<xsl:otherwise>01</xsl:otherwise>
-										</xsl:choose>
-									</xsl:when>
-									<xsl:otherwise>01</xsl:otherwise>
-								</xsl:choose>
-							</xsl:variable>
-							
-							<xsl:variable name="year">
-								<xsl:choose>
-									<xsl:when test="Object/Estimate/PriceLevelBase/Year">
-										<xsl:value-of select="Object/Estimate/PriceLevelBase/Year"/>
-									</xsl:when>
-									<xsl:otherwise>0000</xsl:otherwise>
-								</xsl:choose>
-							</xsl:variable>
-							
-							<xsl:value-of select="concat($day, '.', $month, '.', $year)"/>
-							)
-						</xsl:if>
-					</td>
-					<td width="200"></td>
-					<td width="250"></td>
-					<td width="20%"></td>
-					<td width="70"></td>
-				</tr>
-				<tr>
-					<td class="bold" width="180">Сметная стоимость</td>
-					<td class="bordered right" width="20%">
-						<xsl:if test="Object/Estimate/EstimatePrice/Total != 0"> 
-<!--								<xsl:value-of select="format-number(Object/Estimate/EstimatePrice/Total div 1000, '0.00')"/>-->
-							<xsl:value-of select='util:formatNumberWithZeroCheck(Object/Estimate/EstimatePrice/Total div 1000, 2)'/>
-						</xsl:if>
-					</td>
-					<td width="60">тыс. руб.</td>
-					<td width="200"></td>
-					<td width="250"></td>
-					<td width="20%"></td>
-					<td width="70"></td>
-				</tr>
-				<tr>
-				   <td class="italic leftindent" width="180">в том числе:</td>
-				   <td width="20%"></td>
-				   <td width="60"></td>
-				   <td width="200"></td>
-				   <td width="250"></td>
-				   <td width="20%"></td>
-				   <td width="70"></td>
-				</tr>
-				<tr>					
-					<td class="bold leftindent" width="180">строительных работ</td>
-					<td class="bordered right" width="20%">
-						<xsl:if test="Object/Estimate/EstimatePrice/Building/Total != 0">								
-<!--								<xsl:value-of select="format-number(Object/Estimate/EstimatePrice/Building/Total div 1000, '0.00')"/>-->
-							<xsl:value-of select='util:formatNumberWithZeroCheck(Object/Estimate/EstimatePrice/Building/Total div 1000, 2)'/>
-						</xsl:if>
-					</td>
-					<td width="60">тыс. руб.</td>
-					<td width="200"></td>
-					<td width="250">Средства на оплату труда рабочих</td>
-					<td class="bordered right" width="20%">
-						<xsl:if test="Object/Estimate/EstimatePrice/Summary/WorkersSalary != 0">								
-<!--								<xsl:value-of select="format-number(Object/Estimate/EstimatePrice/Summary/WorkersSalary div 1000, '0.00')"/>-->
-							<xsl:value-of select='util:formatNumberWithZeroCheck(Object/Estimate/EstimatePrice/Summary/WorkersSalary div 1000, 2)'/>
-						</xsl:if>
-					</td>
-					<td width="70">тыс. руб.</td>
-				</tr>
-				<tr>					
-					<td class="bold leftindent" width="180">монтажных работ</td>
-					<td class="bordered right" width="20%">
-						<xsl:if test="Object/Estimate/EstimatePrice/Mounting/Total != 0">								
-<!--								<xsl:value-of select="format-number(Object/Estimate/EstimatePrice/Mounting/Total div 1000, '0.00')"/>-->
-							<xsl:value-of select='util:formatNumberWithZeroCheck(Object/Estimate/EstimatePrice/Mounting/Total div 1000, 2)'/>
-						</xsl:if>
-					</td>
-					<td width="60">тыс. руб.</td>
-					<td width="200"></td>
-					<td width="250">Средства на оплату труда машинистов</td>
-					<td class="bordered right" width="20%">
-						<xsl:if test="Object/Estimate/EstimatePrice/Summary/MachinistSalary != 0">								
-<!--								<xsl:value-of select="format-number(Object/Estimate/EstimatePrice/Summary/MachinistSalary div 1000, '0.00')"/>-->
-							<xsl:value-of select='util:formatNumberWithZeroCheck(Object/Estimate/EstimatePrice/Summary/MachinistSalary div 1000, 2)'/>
-						</xsl:if>
-					</td>
-					<td width="70">тыс. руб.</td>
-				</tr>
-				<tr>					
-					<td class="bold leftindent" width="180">оборудования</td>
-					<td class="bordered right" width="20%">
-						<xsl:if test="Object/Estimate/EstimatePrice/Equipment/Total != 0">								
-<!--								<xsl:value-of select="format-number(Object/Estimate/EstimatePrice/Equipment/Total div 1000, '0.00')"/>-->
-							<xsl:value-of select='util:formatNumberWithZeroCheck(Object/Estimate/EstimatePrice/Equipment/Total div 1000, 2)'/>
-						</xsl:if>
-					</td>
-					<td width="60">тыс. руб.</td>
-					<td width="200"></td>
-					<td width="250">Нормативные затраты труда рабочих</td>
-					<td class="bordered right" width="20%">
-						<xsl:value-of select='util:formatNumberWithZeroCheck(Object/Estimate/EstimatePrice/Summary/LaborCosts, 7)'/>
-					</td>
-					<td width="70">чел.-ч.</td>
-				</tr>
-				<tr>					
-					<td class="bold leftindent" width="180">прочих затрат</td>
-					<td class="bordered right" width="20%">
-						<xsl:if test="Object/Estimate/EstimatePrice/OtherTotal != 0">								
-<!--								<xsl:value-of select="format-number(Object/Estimate/EstimatePrice/OtherTotal div 1000, '0.00')"/>-->
-							<xsl:value-of select='util:formatNumberWithZeroCheck(Object/Estimate/EstimatePrice/OtherTotal div 1000, 2)'/>
-						</xsl:if>
-					</td>
-					<td width="60">тыс. руб.</td>
-					<td width="200"></td>
-					<td width="250">Нормативные затраты труда машинистов</td>
-					<td class="bordered right" width="20%">
-						<xsl:value-of select='util:formatNumberWithZeroCheck(Object/Estimate/EstimatePrice/Summary/MachinistLaborCosts, 7)'/>
-					</td>
-					<td width="70">чел.-ч.</td>
-				</tr>
-			</table>			
+						</div>
+						<div class="headingname">тыс. руб.</div>
+					</div>
+					<div class="heading leftmargin">
+						<div class="headingname italic">в том числе:</div>
+					</div>
+					<div class="heading leftmargin">
+						<div class="headingname">
+							<b>строительных работ</b>
+						</div>
+						<div class="headingvalue right">
+							<xsl:if test="Object/Estimate/EstimatePrice/Building/Total != 0">
+								
+								<xsl:value-of select="format-number(Object/Estimate/EstimatePrice/Building/Total div 1000, '0.00')"/>
+							</xsl:if>
+						</div>
+						<div class="headingname">тыс. руб.</div>
+					</div>
+					<div class="heading leftmargin">
+						<div class="headingname">
+							<b>монтажных работ</b>
+						</div>
+						<div class="headingvalue right">
+							<xsl:if test="Object/Estimate/EstimatePrice/Mounting/Total != 0">
+								
+								<xsl:value-of select="format-number(Object/Estimate/EstimatePrice/Mounting/Total div 1000, '0.00')"/>
+							</xsl:if>
+						</div>
+						<div class="headingname">тыс. руб.</div>
+					</div>
+					<div class="heading leftmargin">
+						<div class="headingname">
+							<b>оборудования</b>
+						</div>
+						<div class="headingvalue right">
+							<xsl:if test="Object/Estimate/EstimatePrice/Equipment/Total != 0">
+								
+								<xsl:value-of select="format-number(Object/Estimate/EstimatePrice/Equipment/Total div 1000, '0.00')"/>
+							</xsl:if>
+						</div>
+						<div class="headingname">тыс. руб.</div>
+					</div>
+					<div class="heading leftmargin">
+						<div class="headingname">
+							<b>прочих затрат</b>
+						</div>
+						<div class="headingvalue right">
+							<xsl:if test="Object/Estimate/EstimatePrice/OtherTotal != 0">
+								
+								<xsl:value-of select="format-number(Object/Estimate/EstimatePrice/OtherTotal div 1000, '0.00')"/>
+							</xsl:if>
+						</div>
+						<div class="headingname">тыс. руб.</div>
+					</div>
+				</div>
+				<div class="spacer"/>
+				<div class="headingblock" style="margin-top: 8em">
+					<div class="heading">
+						<div class="headingname">Средства на оплату труда рабочих</div>
+						<div class="headingvalue right">
+							<xsl:if test="Object/Estimate/EstimatePrice/Summary/WorkersSalary != 0">
+								
+								<xsl:value-of select="format-number(Object/Estimate/EstimatePrice/Summary/WorkersSalary div 1000, '0.00')"/>
+							</xsl:if>
+						</div>
+					</div>
+					<div class="heading">
+						<div class="headingname">Средства на оплату труда машинистов</div>
+						<div class="headingvalue right" style="white-space: nowrap;">
+							<xsl:if test="Object/Estimate/EstimatePrice/Summary/MachinistSalary != 0">
+								
+								<xsl:value-of select="format-number(Object/Estimate/EstimatePrice/Summary/MachinistSalary div 1000, '0.00')"/>
+							</xsl:if>
+						</div>
+					</div>
+					<div class="heading">
+						<div class="headingname">Нормативные затраты труда рабочих</div>
+<!--						<div class="headingvalue right"><xsl:value-of select="util:formatNumberWithZeroCheck(Object/Estimate/EstimatePrice/Summary/LaborCosts)"/> чел.-ч.</div>-->
+						<div class="headingvalue right"><xsl:value-of select="util:formatNumberNoRounding(Object/Estimate/EstimatePrice/Summary/LaborCosts)"/> чел.-ч.</div>
+					</div>
+					<div class="heading">
+						<div class="headingname">Нормативные затраты труда машинистов</div>
+<!--						<div class="headingvalue right"><xsl:value-of select="format-number(Object/Estimate/EstimatePrice/Summary/MachinistLaborCosts, '0.00')"/> чел.-ч.</div>-->
+						<div class="headingvalue right"><xsl:value-of select="util:formatNumberNoRounding(Object/Estimate/EstimatePrice/Summary/MachinistLaborCosts)"/> чел.-ч.</div>
+					</div>
+				</div>
+			</div>
+			<xsl:apply-templates select="./Object"/> 
 		</div>
-		<xsl:apply-templates select="./Object"/> 
-		<!-- </div>-->
 	</xsl:template>
 
 	<!-- Объект -->
@@ -812,24 +537,25 @@
 				<xsl:with-param name="IndexType" select="IndexType"/>
 			</xsl:apply-templates>
 		</table>
-		<table class="sign-table" align="left">
-			<tr>
-				<td width="100">Составил</td>
-				<td class="bordered" width="100%"><xsl:value-of select="Signatures/ComposeFIO"/></td>
-			</tr>
-			<tr>
-				<td width="100"></td>
-				<td class="centered helptext">[должность, подпись (инициалы, фамилия)]</td>
-			</tr>
-			<tr>
-				<td width="100">Проверил</td>
-				<td class="bordered" width="100%"><xsl:value-of select="Signatures/VerifyFIO"/></td>
-			</tr>
-			<tr>
-				<td width="100"></td>
-				<td class="centered helptext">[должность, подпись (инициалы, фамилия)]</td>
-			</tr>
-		</table>	
+		<div class="heading-left3">
+			<div class="headingname">Составил</div>
+			<div class="headingvalue">
+				<xsl:value-of select="Signatures/ComposeFIO"/>
+			</div>
+		</div>
+		<div class="heading-left3" style="margin-top: 0;">
+			<div class="helptext">[должность, подпись (инициалы, фамилия)]</div>
+		</div>
+		<p/>
+		<div class="heading-left3">
+			<div class="headingname">Проверил</div>
+			<div class="headingvalue">
+				<xsl:value-of select="Signatures/VerifyFIO"/>
+			</div>
+		</div>
+		<div class="heading-left3" style="margin-top: 0;">
+			<div class="helptext">[должность, подпись (инициалы, фамилия)]</div>
+		</div>
 		<br/>
 		<br/>
 		
@@ -1051,7 +777,7 @@
 				<tr>
 					<td colspan="2"/>
 					<td class="left indent2 italic" colspan="10">
-						<!--<i>в том числе</i>-->
+						<i>в том числе</i>
 					</td>
 				</tr>
 				<tr>
@@ -1309,19 +1035,16 @@
 					<tr>
 						<td colspan="2"/>
 						<td class="left indent" colspan="4">затраты труда рабочих</td>
-						<!--<td>
+						<td>
 							<xsl:value-of select="Summary/LaborCosts"/>
-							<xsl:apply-templates select="Summary/LaborCosts" mode="SummaryElement"/>
-						</td>-->
-						<xsl:apply-templates select="Summary/LaborCosts" mode="SummaryElement"/>
+						</td>
 					</tr>
 					<tr>
 						<td colspan="2"/>
 						<td class="left indent" colspan="4">затраты труда машинистов</td>
-						<!--<td>
+						<td>
 							<xsl:value-of select="Summary/MachinistLaborCosts"/>
-						</td>-->
-						<xsl:apply-templates select="Summary/MachinistLaborCosts" mode="SummaryElement"/>
+						</td>
 					</tr>
 					<xsl:if test="Commissioning/Idle/Total != 0">
 						<tr>
@@ -1377,8 +1100,7 @@
 			<td/>
 			<td/>
 			<td>
-<!--				<xsl:value-of select="Quantity"/>-->
-				<xsl:value-of select='util:formatNumberWithZeroCheck(Quantity, 7)'/>
+				<xsl:value-of select="Quantity"/>
 			</td>
 			<td/>
 			<td/>
@@ -1431,25 +1153,13 @@
 		<tbody>
 			<tr>
 				<td class="tborder left" colspan="12" id="{concat('Section',Code)}">
-					<!-- если name пуст, добавляем класс fieldError и title -->
 					<xsl:if test="Name = ''">
 						<xsl:attribute name="class">left fieldError</xsl:attribute>
 						<xsl:attribute name="title">Не заполнено название раздела</xsl:attribute>
 					</xsl:if>
-					
-					<!-- если name пуст, выводим предупреждение, иначе — нормальное имя -->
-					<xsl:choose>
-						<xsl:when test="Name = ''">
-							<b>
-								Раздел: <xsl:value-of select="Code"/> — <i>Имя раздела не заполнено</i>
-							</b>
-						</xsl:when>
-						<xsl:otherwise>
-							<b>
-								<xsl:value-of select="concat('Раздел: ', Code, ' ', Name)"/>
-							</b>
-						</xsl:otherwise>
-					</xsl:choose>
+					<b>
+						<xsl:value-of select="concat('Раздел: ', Code, ' ', Name)"/>
+					</b>
 				</td>
 			</tr>
 				<xsl:apply-templates select="Items/*"/> 
@@ -1467,11 +1177,9 @@
 
 	<!-- Значения в итогах -->
 	<xsl:template match="*" mode="SummaryElement">
-		<td class="nowrap-right">
+		<td>
 			<xsl:if test=". != 0">
-				<xsl:value-of select='util:formatNumberWithZeroCheck(., 7)
-
-'/>
+				<xsl:value-of select="."/>
 			</xsl:if>
 		</td>
 	</xsl:template>
@@ -1564,18 +1272,14 @@
 			<td colspan="2"/>
 			<td class="left indent" colspan="4">затраты труда рабочих</td>
 			<td>
-<!--				<xsl:value-of select="Summary/LaborCosts"/>-->
-				<xsl:value-of select='util:formatNumberWithZeroCheck(Summary/LaborCosts, 7)'/>
+				<xsl:value-of select="Summary/LaborCosts"/>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2"/>
 			<td class="left indent" colspan="4">затраты труда машинистов</td>
 			<td>
-<!--				<xsl:value-of select="Summary/MachinistLaborCosts"/>-->
-				<xsl:value-of select='util:formatNumberWithZeroCheck(Summary/MachinistLaborCosts, 7)
-
-'/>
+				<xsl:value-of select="Summary/MachinistLaborCosts"/>
 			</td>
 		</tr>
 	</xsl:template>
@@ -1603,10 +1307,7 @@
 				<td/>
 				<td/>
 				<td>
-<!--					<xsl:value-of select="./Cost/Totals/Current/Salary"/>-->
-					<xsl:value-of select='util:formatNumberWithZeroCheck(./Cost/Totals/Current/Salary, 2)
-
-'/>
+					<xsl:value-of select="./Cost/Totals/Current/Salary"/>
 				</td>
 			</tr>
 			</xsl:if>
@@ -1622,10 +1323,7 @@
 					<td/>
 					<td/>
 					<td>
-<!--						<xsl:value-of select="./Machine/MachinistSalary"/>-->
-						<xsl:value-of select='util:formatNumberWithZeroCheck(./Machine/MachinistSalary, 2)
-
-'/>
+						<xsl:value-of select="./Machine/MachinistSalary"/>
 					</td>
 					<td/>
 					<td/>
@@ -1641,32 +1339,20 @@
 					<td class="left">НР <i>(<xsl:value-of select="./Overheads/Name"/>)</i></td>
 					<td class="center">%</td>
 					<td>
-<!--						<xsl:value-of select="./Overheads/Value"/>-->
-						<xsl:value-of select='util:formatNumberWithZeroCheck(./Overheads/Value, 2)
-
-'/>
+						<xsl:value-of select="./Overheads/Value"/>
 					</td>
 					<td>
-<!--						<xsl:value-of select="./Overheads/Coefficients/Final"/>-->
-						<xsl:value-of select='util:formatNumberWithZeroCheck(./Overheads/Coefficients/Final, 7)
-
-'/>
+						<xsl:value-of select="./Overheads/Coefficients/Final"/>
 					</td>
 					<td>
-<!--						<xsl:value-of select="./Overheads/ValueTotal"/>-->
-						<xsl:value-of select='util:formatNumberWithZeroCheck(./Overheads/ValueTotal, 7)
-
-'/>
+						<xsl:value-of select="./Overheads/ValueTotal"/>
 					</td>
 					<td/>
 					<td/>
 					<td/>
 					<td/>
 					<td>
-<!--						<xsl:value-of select="./Overheads/PriceCur"/>-->
-						<xsl:value-of select='util:formatNumberWithZeroCheck(./Overheads/PriceCur, 2)
-
-'/>
+						<xsl:value-of select="./Overheads/PriceCur"/>
 					</td>
 				</tr>
 			</xsl:if>
@@ -1680,32 +1366,20 @@
 					<td class="left">СП <i>(<xsl:value-of select="./Profits/Name"/>)</i></td>
 					<td class="center">%</td>
 					<td>
-<!--						<xsl:value-of select="./Profits/Value"/>-->
-						<xsl:value-of select='util:formatNumberWithZeroCheck(./Profits/Value, 2)
-
-'/>
+						<xsl:value-of select="./Profits/Value"/>
 					</td>
 					<td>
-<!--						<xsl:value-of select="./Profits/Coefficients/Final"/>-->
-						<xsl:value-of select='util:formatNumberWithZeroCheck(./Profits/Coefficients/Final, 2)
-
-'/>
+						<xsl:value-of select="./Profits/Coefficients/Final"/>
 					</td>
 					<td>
-<!--						<xsl:value-of select="./Profits/ValueTotal"/>-->
-						<xsl:value-of select='util:formatNumberWithZeroCheck(./Profits/ValueTotal, 7)
-
-'/>
+						<xsl:value-of select="./Profits/ValueTotal"/>
 					</td>
 					<td/>
 					<td/>
 					<td/>
 					<td/>
 					<td>
-<!--						<xsl:value-of select="./Profits/PriceCur"/>-->
-						<xsl:value-of select='util:formatNumberWithZeroCheck(./Profits/PriceCur, 2)
-
-'/>
+						<xsl:value-of select="./Profits/PriceCur"/>
 					</td>
 				</tr>
 			</xsl:if>
@@ -1721,15 +1395,11 @@
 			<td class="btop"/>
 			<td class="btop"/>
 			<td class="btop">
-				
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./TotalsUnit/Current, 2)'/>
+				<xsl:value-of select="./TotalsUnit/Current"/>
 			</td>
 			<td class="btop"/>
 			<td class="btop bold">
-
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Totals/Current, 2)
-
-'/>
+				<xsl:value-of select="./Totals/Current"/>
 			</td>
 		</tr>
 		
@@ -1782,13 +1452,11 @@
 					<xsl:attribute name="class">center fieldError</xsl:attribute>
 					<xsl:attribute name="title">Не указан объем</xsl:attribute>
 				</xsl:if>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(Quantity, 7)'/>
+				<xsl:value-of select="Quantity"/>
 			</td>
 			<td>
-
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients/Final[./Scope = "Объем"]/Values/Value[./Target = "Объем"]/CoefValue, 2)'/>
-
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients/Final/Values/Value[./Target = "Объем"]/CoefValue, 2)'/>
+				<xsl:value-of select='./Coefficients/Final[./Scope = "Объем"]/Values/Value[./Target = "Объем"]/CoefValue'/> 
+				<xsl:value-of select='./Coefficients/Final/Values/Value[./Target = "Объем"]/CoefValue'/> 
 				
 				<!--<xsl:variable name="formula" select="QuantityFormula" />
 				<xsl:choose>
@@ -1859,8 +1527,7 @@
 					<xsl:attribute name="class">center fieldError</xsl:attribute>
 					<xsl:attribute name="title">Не указан объем всего</xsl:attribute>
 				</xsl:if>
-<!--				<xsl:value-of select="./QuantityTotal"/>-->
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./QuantityTotal, 7)'/>
+				<xsl:value-of select="./QuantityTotal"/>
 			</td>
 			<td/>
 			<td/>
@@ -1891,43 +1558,109 @@
 
 		<xsl:apply-templates select="./Coefficients/Coefficient" mode="incost"/>
 		
-		<xsl:if test="./Coefficients/Final/Values/Value[string-length(Formula) > 0]">
-			<tr>
-				<td/>
-				<td/>
-				<td class="btop bbottom left bold italic" colspan="10">Результирующие коэффициенты:
-				</td>
-			</tr>
-			<tr>
-				<td/>
-				<td/>
-				<td class="left bold italic">
-					<xsl:for-each select="./Coefficients/Final/Values/Value">
-						<xsl:choose>
-							<xsl:when test="string-length(Formula) > 0">
-								<xsl:value-of select="Target"/>
-								<xsl:text>&#160;</xsl:text>
-								<xsl:value-of select="Formula"/>
-								<br/>
-							</xsl:when>
-							<!--<xsl:otherwise>
-                        <xsl:value-of select="CoefValue"/>
-                    </xsl:otherwise>-->
-						</xsl:choose>
-						
-					</xsl:for-each>
-				</td>
-				<td/>
-				<td/>
-				<td/>
-				<td/>
-				<td/>
-				<td/>
-				<td/>
-				<td/>
-				<td/>
-			</tr>
-		</xsl:if>
+		<xsl:if test="./Coefficients/Final/Values/Value[string-length(Formula) > 0]">	
+		<tr >
+			<td/>
+			<td/>
+			<td class="btop bbottom left bold italic" colspan="10">Результирующие коэффициенты:
+			</td>
+			
+		</tr>
+			<tr >
+			<td/>
+			<td/>
+			<td class="left bold italic">
+				<xsl:variable name="firstWorkerOT" select='./ResourcesInternal/Worker[1]/Coefficients/Final/Values/Value[./Target = "Стоимость"]/Formula' />
+				<xsl:variable name="firstWorkerZT" select='./ResourcesInternal/Worker[1]/Coefficients/Final/Values/Value[./Target = "Расход"]/Formula' />
+				<!-- Проверяем для Worker -->
+				<xsl:for-each select="./ResourcesInternal/Worker[1]/Coefficients/Final/Values/Value">
+					<!-- Проверяем значение Target -->
+					<xsl:choose>
+						<!-- Если значение Target равно 'Стоимость', выводим 'ОТ' -->
+						<xsl:when test="Target = 'Стоимость'">
+							<!--<xsl:variable name="firstWorkerOT" select="Formula" />-->
+							ОТ &#160;</xsl:when>
+						<!-- Если значение Target равно 'Расход', выводим 'ЗТ' -->
+						<xsl:when test="Target = 'Расход'">
+<!--							<xsl:variable name="firstWorkerZT" select="Formula" />-->
+							ЗТ &#160;</xsl:when>
+					</xsl:choose>
+					
+					<!-- Проверяем, что Formula не пуст -->
+					<xsl:if test="string-length(Formula) &gt; 0">
+						<xsl:value-of select="Formula"/><br/>
+					</xsl:if>
+				</xsl:for-each>
+				
+				<!-- Проверяем для Machine -->
+				<xsl:for-each select="./ResourcesInternal/Machine[1]/Coefficients/Final/Values/Value">
+					<!-- Проверяем значение Target -->
+					<xsl:choose>
+						<!-- Если значение Target равно 'Стоимость', выводим 'ЭМ' -->
+						<xsl:when test="Target = 'Стоимость'">ЭМ &#160;</xsl:when>
+						<!-- Если значение Target равно 'Расход', выводим 'ЭМ расход' -->
+						<xsl:when test="Target = 'Расход'">ЭМ расход &#160;</xsl:when>
+					</xsl:choose>
+					
+					<!-- Проверяем, что Formula не пуст -->
+					<xsl:if test="string-length(Formula) &gt; 0">
+						<xsl:value-of select="Formula"/><br/>
+					</xsl:if>
+				</xsl:for-each>
+				
+				
+				
+				
+				<!-- Машинист-->
+				<xsl:for-each select="./ResourcesInternal/Machine[1]/Machinist/Coefficients/Final[1]/Values[1]/Value">
+				<!--<xsl:variable name="firstWorkerValue" select="./ResourcesInternal/Worker[1]/Coefficients/Final/Values/Value[1]" />-->
+				<xsl:variable name="firstMachinistValue" select="./ResourcesInternal/Machine/Machinist[1]/Coefficients/Final/Values/Value[1]" />
+				
+				
+				<xsl:choose>
+					
+					<xsl:when test="Target = 'Стоимость'">ОТм&#160; <xsl:value-of select="$firstWorkerOT"/><br/></xsl:when>
+					
+					<xsl:when test="Target = 'Расход'">ЗТм&#160; <xsl:value-of select="$firstWorkerZT"/><br/></xsl:when>
+				</xsl:choose>
+<!--				<xsl:choose>-->
+					
+					
+<!--					<xsl:when test="$firstWorkerValue/Target = 'Стоимость'"><xsl:value-of select="$firstWorkerValue/Formula"/><br/></xsl:when>-->
+				
+<!--					<xsl:when test="$firstMachinistValue/Target = 'Расход'"><xsl:value-of select="$firstMachinistValue/Formula"/><br/></xsl:when>-->
+					
+				<!--</xsl:choose>-->
+				</xsl:for-each>
+				
+				<!-- Материал-->
+				
+				<xsl:variable name="firstMaterialValue" select="./ResourcesInternal/Material[1]/Coefficients[1]/Final/Values[1]/Value[1]" />
+								
+				<xsl:choose>
+					
+					<xsl:when test="$firstMaterialValue/Target = 'Стоимость'">МР&#160;</xsl:when>
+					
+					<xsl:when test="$firstMaterialValue/Target = 'Расход'">МР расход&#160;</xsl:when>
+				</xsl:choose>
+				
+				
+				
+				<xsl:value-of select="$firstMaterialValue/Formula"/><br/>
+				
+			</td>
+			
+			<td/>
+			<td/>
+			<td/>
+			<td/>
+			<td/>
+			<td/>
+			<td/>
+			<td/>
+			<td/>
+		</tr>
+		</xsl:if>	
 		
 		
 		
@@ -1941,20 +1674,14 @@
 				<td/>
 				<td/>
 				<td>
-<!--					<xsl:value-of select="./Totals/Natural/LaborCosts"/>-->
-					<xsl:value-of select='util:formatNumberWithZeroCheck(./Totals/Natural/LaborCosts, 7)
-
-'/>
+					<xsl:value-of select="./Totals/Natural/LaborCosts"/>
 				</td>
 				<td/>
 				<td/>
 				<td/>
 				<td/>
 				<td class="bold">
-<!--					<xsl:value-of select="./Totals/Current/WorkersSalary"/>-->
-					<xsl:value-of select='util:formatNumberWithZeroCheck(./Totals/Current/WorkersSalary, 2)
-
-'/>
+					<xsl:value-of select="./Totals/Current/WorkersSalary"/>
 				</td>
 			</tr>
 		</xsl:if>
@@ -1973,10 +1700,7 @@
 				<td/>
 				<td/>
 				<td class="bold">
-<!--					<xsl:value-of select="./Totals/Current/Machines"/>-->
-					<xsl:value-of select='util:formatNumberWithZeroCheck(./Totals/Current/Machines, 2)
-
-'/>
+					<xsl:value-of select="./Totals/Current/Machines"/>
 				</td>
 			</tr>
 		</xsl:if>
@@ -1990,20 +1714,14 @@
 				<td/>
 				<td/>
 				<td>
-<!--					<xsl:value-of select="./Totals/Natural/MachinistLaborCosts"/>-->
-					<xsl:value-of select='util:formatNumberWithZeroCheck(./Totals/Natural/MachinistLaborCosts, 7)
-
-'/>
+					<xsl:value-of select="./Totals/Natural/MachinistLaborCosts"/>
 				</td>
 				<td/>
 				<td/>
 				<td/>
 				<td/>
 				<td>
-<!--					<xsl:value-of select="./Totals/Current/MachinistSalary"/>-->
-					<xsl:value-of select='util:formatNumberWithZeroCheck(./Totals/Current/MachinistSalary, 2)
-
-'/>
+					<xsl:value-of select="./Totals/Current/MachinistSalary"/>
 				</td>
 			</tr>
 		</xsl:if>
@@ -2024,10 +1742,7 @@
 				<td/>
 				<td/>
 				<td>
-<!--					<xsl:value-of select="./Totals/Current/Materials"/>-->
-					<xsl:value-of select='util:formatNumberWithZeroCheck(./Totals/Current/Materials, 2)
-
-'/>
+					<xsl:value-of select="./Totals/Current/Materials"/>
 				</td>
 			</tr>
 		</xsl:if>
@@ -2040,10 +1755,7 @@
 				<td class="left">ЗТ</td>
 				<td class="center">чел.-ч</td>
 				<td>
-<!--					<xsl:value-of select="./PerUnit/Natural/LaborCosts"/>-->
-					<xsl:value-of select='util:formatNumberWithZeroCheck(./PerUnit/Natural/LaborCosts, 2)
-
-'/>
+					<xsl:value-of select="./PerUnit/Natural/LaborCosts"/>
 				</td>
 				<td>
 					<xsl:variable name="target">
@@ -2059,17 +1771,10 @@
 					</xsl:variable>
 					
 					
-<!--					<xsl:value-of select="./Coefficients/Final/Values/Value[./Target = $target]/CoefValue"/>-->
-					<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients/Final/Values/Value[./Target = $target]/CoefValue, 2)
-
-'/>
+					<xsl:value-of select="./Coefficients/Final/Values/Value[./Target = $target]/CoefValue"/>
 				</td>
 				<td>
-<!--					<xsl:value-of select="./Totals/Natural/LaborCosts"/>-->
-					<xsl:value-of select='util:formatNumberWithZeroCheck(./Totals/Natural/LaborCosts, 7)
-
-'/>
-					
+					<xsl:value-of select="./Totals/Natural/LaborCosts"/>
 				</td>
 				<td/>
 				<td/>
@@ -2087,10 +1792,7 @@
 				<td class="left">ЗТм</td>
 				<td class="center">чел.-ч</td>
 				<td>
-<!--					<xsl:value-of select="./PerUnit/Natural/MachinistLaborCosts"/>-->
-					<xsl:value-of select='util:formatNumberWithZeroCheck(./PerUnit/Natural/MachinistLaborCosts, 2)
-
-'/>
+					<xsl:value-of select="./PerUnit/Natural/MachinistLaborCosts"/>
 				</td>
 				<td>
 				
@@ -2106,17 +1808,11 @@
 								</xsl:choose>
 							</xsl:variable>
 								
-<!--							<xsl:value-of select="./Coefficients/Final/Values/Value[./Target = $target]/CoefValue"/>-->
-					<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients/Final/Values/Value[./Target = $target]/CoefValue, 2)
-
-'/>
+							<xsl:value-of select="./Coefficients/Final/Values/Value[./Target = $target]/CoefValue"/>
 					
 				</td>
 				<td>
-<!--					<xsl:value-of select="./Totals/Natural/MachinistLaborCosts"/>-->
-					<xsl:value-of select='util:formatNumberWithZeroCheck(./Totals/Natural/MachinistLaborCosts, 2)
-
-'/>
+					<xsl:value-of select="./Totals/Natural/MachinistLaborCosts"/>
 				</td>
 				<td/>
 				<td/>
@@ -2140,10 +1836,7 @@
 			<td class="btop"/>
 			<td class="btop"/>
 			<td class="btop">
-
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Totals/Current/Direct, 2)
-
-'/>
+				<xsl:value-of select="./Totals/Current/Direct"/>
 			</td>
 		</tr>
 	</xsl:template>
@@ -2162,7 +1855,9 @@
 				<xsl:value-of select="./Unit"/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Consumption, 7)'/>
+
+				<xsl:value-of select='util:formatNumberWithSevenDecimals(./Consumption)'/>
+				
 			</td>
 			<td>
 				<xsl:variable name="target">
@@ -2179,41 +1874,28 @@
 				
 				
 				
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients/Final/Values/Value[./Target = &quot;Расход&quot;]/CoefValue, 2)
-
-'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients/Final/Values/Value[./Target = &quot;Расход&quot;]/CoefValue)'/>
 <!--				<xsl:value-of select="./Coefficients/Final/Values/Value[./Target = &quot;Расход&quot;]/CoefValue"/>-->
 			</td>
 			
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./ConsumptionTotal, 7)
 
-'/>
+				<xsl:value-of select='util:formatNumberWithSevenDecimals(./ConsumptionTotal)'/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./PricePerUnitBase, 2)
-
-'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./PricePerUnitBase)'/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Index/Value/IndexValue, 2)
-
-'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./Index/Value/IndexValue)'/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./PricePerUnitCur, 2)
-
-'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./PricePerUnitCur)'/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients/Final/Values/Value[./Target = &quot;Стоимость&quot;]/CoefValue, 2)
-
-'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients/Final/Values/Value[./Target = &quot;Стоимость&quot;]/CoefValue)'/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./PriceTotalCur, 2)
-
-'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./PriceTotalCur)'/>
 			</td>
 		</tr>
 		<xsl:apply-templates select="./Machinist" mode="machinist"/>
@@ -2226,12 +1908,13 @@
 			<td style="max-width: 100px; word-wrap: break-word;" class="right">
 				<xsl:value-of select="./Code"/>
 			</td>
-			<td class="left">ОТм (ЗТм) Средний разряд машинистов <xsl:value-of select="util:formatNumberWithZeroCheck(./Grade, 1)"/></td>
+			<td class="left">ОТм (ЗТм) Средний разряд машинистов <xsl:value-of select="./Grade"/></td>
 			<td class="center">
 				<xsl:value-of select="./Unit"/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Consumption, 7)'/>
+<!--				<xsl:value-of select='util:formatNumberWithZeroCheck(./Consumption)'/>-->
+				<xsl:value-of select='util:formatNumberWithSevenDecimals(./Consumption)'/>
 			</td>
 			<td> 
 				<xsl:variable name="target">
@@ -2247,29 +1930,20 @@
 				</xsl:variable>
 				
 				
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients[1]/Final/Values/Value[./Target = &quot;Расход&quot;]/CoefValue[1], 2)
-
-'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients[1]/Final/Values/Value[./Target = &quot;Расход&quot;]/CoefValue[1])'/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./ConsumptionTotal, 7)
-
-'/>
+<!--				<xsl:value-of select='util:formatNumberWithZeroCheck(./ConsumptionTotal)'/>-->
+				<xsl:value-of select='util:formatNumberWithSevenDecimals(./ConsumptionTotal)'/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./PricePerUnitBase, 2)
-
-'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./PricePerUnitBase)'/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Index/Value/IndexValue, 2)
-
-'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./Index/Value/IndexValue)'/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./PricePerUnitCur, 2)
-
-'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./PricePerUnitCur)'/>
 			</td>
 			<td>
 				
@@ -2286,13 +1960,11 @@
 					</xsl:variable>
 					
 					
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients[1]/Final/Values/Value[./Target = &quot;Стоимость&quot;]/CoefValue[1], 2)
-
-'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients[1]/Final/Values/Value[./Target = &quot;Стоимость&quot;]/CoefValue[1])'/>
 				
 			</td>
 			<td class="bold">
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./PriceTotalCur, 2)'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./PriceTotalCur)'/>
 			</td>
 		</tr>
 	</xsl:template>
@@ -2315,7 +1987,8 @@
 				<xsl:value-of select="./Unit"/>
 			</td>
 			<td>
-				<!--<xsl:value-of select='util:formatNumberWithZeroCheck(./Consumption, 7)'/>-->
+<!--				<xsl:value-of select='util:formatNumberWithZeroCheck(./Consumption)'/>-->
+<!--				<xsl:value-of select='util:formatNumberWithSevenDecimals(./Consumption)'/>-->
 			</td>
 			<td>
 				
@@ -2332,28 +2005,25 @@
 					</xsl:variable>
 					
 					
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients/Coefficient/Values/Value[./Target = &quot;Расход&quot;]/CoefValue, 2)'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients/Coefficient/Values/Value[./Target = &quot;Расход&quot;]/CoefValue)'/>
 				
 			</td>
 			<td>
-<!--				<xsl:value-of select='util:formatNumberWithZeroCheck(./ConsumptionTotal, 7)'/>-->
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./ConsumptionTotal, 7)'/>
+<!--			<xsl:value-of select='util:formatNumberWithZeroCheck(./ConsumptionTotal)'/>-->
+				<xsl:value-of select='util:formatNumberWithSevenDecimals(./ConsumptionTotal)'/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./PricePerUnitBase, 2)'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./PricePerUnitBase)'/>
 			</td>
 			<td>
-				
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Index/Value/Final, 2)'/>	
-
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./Index/Value/Final)'/>
+					
 				
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./PricePerUnitCur, 2)'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./PricePerUnitCur)'/>
 			</td>
 			<td>
-				
-				
 				<xsl:variable name="target">
 					<xsl:choose>
 						<xsl:when test="name() = 'Worker'">ОТ</xsl:when>
@@ -2367,12 +2037,10 @@
 				</xsl:variable>
 				
 				
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients/Final/Values/Value[./Target = &quot;Стоимость&quot;]/CoefValue, 2)'/>
-					
-				
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients/Final/Values/Value[./Target = &quot;Стоимость&quot;]/CoefValue)'/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./PriceTotalCur, 2)'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./PriceTotalCur)'/>
 			</td>
 		</tr>
 	</xsl:template>
@@ -2392,7 +2060,8 @@
 				<xsl:value-of select="./Unit"/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Consumption, 7)'/>
+<!--				<xsl:value-of select="./Consumption"/>-->
+				<xsl:value-of select='util:formatNumberWithSevenDecimals(./Consumption)'/>
 			</td>
 			<td>
 				
@@ -2409,21 +2078,21 @@
 					</xsl:variable>
 					
 					
-				<xsl:value-of select="util:formatNumberWithZeroCheck(./Coefficients/Final/Values/Value[./Target = &quot;Расход&quot;]/CoefValue, 7)"/>
+					<xsl:value-of select="./Coefficients/Final/Values/Value[./Target = &quot;Расход&quot;]/CoefValue"/>
 				
 			</td>
 			<td>
 <!--				<xsl:value-of select="./ConsumptionTotal"/>-->
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./ConsumptionTotal, 7)'/>
+				<xsl:value-of select='util:formatNumberWithSevenDecimals(./ConsumptionTotal)'/>
 			</td>
 			<td>
-				<xsl:value-of select="util:formatNumberWithZeroCheck(./PricePerUnitBase, 2)"/>
+				<xsl:value-of select="./PricePerUnitBase"/>
 			</td>
 			<td>
-				<xsl:value-of select="util:formatNumberWithZeroCheck(./Index/Value/IndexValue, 2)"/>
+				<xsl:value-of select="./Index/Value/IndexValue"/>
 			</td>
 			<td>
-				<xsl:value-of select="util:formatNumberWithZeroCheck(./PricePerUnitCur, 2)"/>
+				<xsl:value-of select="./PricePerUnitCur"/>
 			</td>
 			<td>
 				
@@ -2440,12 +2109,11 @@
 					</xsl:variable>
 					
 					
-					
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients/Final/Values/Value[./Target = &quot;Стоимость&quot;]/CoefValue, 2)'/>
+					<xsl:value-of select="./Coefficients/Final/Values/Value[./Target = &quot;Стоимость&quot;]/CoefValue"/>
 				
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./PriceTotalCur, 2)'/>
+				<xsl:value-of select="./PriceTotalCur"/>
 			</td>
 		</tr>
 		<xsl:apply-templates select="./Transport" mode="transport">
@@ -2454,7 +2122,7 @@
 	</xsl:template>
 
 	<!-- Замененные ресурсы -->
-	<xsl:template match="Machine | Material | Equipment | Transport" mode="item">
+	<xsl:template match="Material | Equipment | Transport" mode="item">
 		<xsl:param name="CostNum" select="0"/>
 		<xsl:param name="IndexType" select="0"/>
 		<tr>
@@ -2471,7 +2139,8 @@
 				<xsl:value-of select="./Unit"/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Consumption, 7)'/>
+<!--				<xsl:value-of select="./Consumption"/>-->
+				<xsl:value-of select='util:formatNumberWithSevenDecimals(./Consumption)'/>
 			</td>
 			<td>
 				
@@ -2488,21 +2157,21 @@
 					</xsl:variable>
 					
 					
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients/Final/Values/Value[./Target = &quot;Расход&quot;]/CoefValue, 2)'/>
+					<xsl:value-of select="./Coefficients/Final/Values/Value[./Target = &quot;Расход&quot;]/CoefValue"/>
 				
 			</td>
 			<td>
 <!--				<xsl:value-of select="./ConsumptionTotal"/>-->
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./ConsumptionTotal, 7)'/>
+				<xsl:value-of select='util:formatNumberWithSevenDecimals(./ConsumptionTotal)'/>
 			</td>
 			<td>
-				<xsl:value-of select="util:formatNumberWithZeroCheck(./PricePerUnitBase, 2)"/>
+				<xsl:value-of select="./PricePerUnitBase"/>
 			</td>
 			<td>
-				<xsl:value-of select="util:formatNumberWithZeroCheck(./Index/Value/IndexValue, 2)"/>
+				<xsl:value-of select="./Index/Value/IndexValue"/>
 			</td>
 			<td>
-				<xsl:value-of select="util:formatNumberWithZeroCheck(./PricePerUnitCur, 2)"/>
+				<xsl:value-of select="./PricePerUnitCur"/>
 			</td>
 			<td>
 				<xsl:variable name="target">
@@ -2518,23 +2187,23 @@
 				</xsl:variable>
 				
 				
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients/Final/Values/Value[./Target = &quot;Стоимость&quot;]/CoefValue, 2)'/>
+				<xsl:value-of select="./Coefficients/Final/Values/Value[./Target = &quot;Стоимость&quot;]/CoefValue"/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./PriceTotalCur, 2)'/>
+				<xsl:value-of select="./PriceTotalCur"/>
 			</td>
 		</tr>
 		
 		<xsl:choose>
 			<xsl:when test="./Coefficients/Coefficient">
 				<tr>
-					<!-- кол.1 № п/п пустая -->
+					<!-- кол.1 № п/п — пусто -->
 					<td/>
-					<!-- кол.2: Шифр -->
+					<!-- кол.2: Шифр (обоснование коэффициента) -->
 					<td class="left">
 						<xsl:value-of select="./Coefficients/Coefficient/Reason"/>
 					</td>
-					<!-- кол.3: Наименование (+ расшифровка значений), растягиваем на 9 колонок -->
+					<!-- кол.3: Наименование коэффициента + расшифровка значений -->
 					<td class="left italic" colspan="9">
 						<xsl:value-of select="./Coefficients/Coefficient/Name"/>
 						<xsl:if test="./Coefficients/Coefficient/Values/Value">
@@ -2542,7 +2211,7 @@
 							<xsl:apply-templates select="./Coefficients/Coefficient/Values/Value" mode="coefDescr"/>
 						</xsl:if>
 					</td>
-					<!-- кол.12: пустая, чтобы сохранить сетку -->
+					<!-- кол.12 — пусто, чтобы сохранить 12 колонок -->
 					<td/>
 				</tr>
 			</xsl:when>
@@ -2576,7 +2245,8 @@
 				<xsl:value-of select="./Unit"/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Consumption, 7)'/>
+<!--				<xsl:value-of select="./Consumption"/>-->
+				<xsl:value-of select='util:formatNumberWithSevenDecimals(./Consumption)'/>
 			</td>
 			<td>
 				
@@ -2593,35 +2263,54 @@
 					</xsl:variable>
 					
 					
-					
-				<xsl:value-of select="util:formatNumberWithZeroCheck(./Coefficients/Final/Values/Value[./Target = &quot;Расход&quot;]/CoefValue, 7)"/>
+					<xsl:value-of select="./Coefficients/Final/Values/Value[./Target = &quot;Расход&quot;]/CoefValue"/>
 				
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./ConsumptionTotal, 7)'/>
+<!--				<xsl:value-of select="./ConsumptionTotal"/>-->
+				<xsl:value-of select='util:formatNumberWithSevenDecimals(./ConsumptionTotal)'/>
 			</td>
 			<td>
-				<xsl:value-of select="util:formatNumberWithZeroCheck(./PricePerUnitBase, 2)"/>
+				<xsl:value-of select="./PricePerUnitBase"/>
 			</td>
 			<td>
-				<xsl:value-of select="util:formatNumberWithZeroCheck(./Index/Value/IndexValue, 2)"/>
+				<xsl:value-of select="./Index/Value/IndexValue"/>
 			</td>
 			<td>
-				<xsl:value-of select="util:formatNumberWithZeroCheck(./PricePerUnitCur, 2)"/>
+				<xsl:value-of select="./PricePerUnitCur"/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Coefficients/Final/Values/Value[./Target = &quot;Стоимость&quot;]/CoefValue, 2)'/>
+				<xsl:value-of select="./Coefficients/Final/Values/Value[./Target = &quot;Стоимость&quot;]/CoefValue"/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./PriceTotalCur, 2)'/>
+				<xsl:value-of select="./PriceTotalCur"/>
 			</td>
 		</tr>
+		
+		<xsl:choose>
+			<xsl:when test="./Coefficients/Coefficient">
+				<tr>
+					<td></td> <td class="left" colspan="11">
+						<xsl:value-of select="./Coefficients/Coefficient/Reason"/>
+						<xsl:text> </xsl:text>
+						<xsl:value-of select="./Coefficients/Coefficient/Name"/>
+					</td>
+				</tr>
+			</xsl:when>
+			<xsl:otherwise>
+				<tr>
+					<td></td> <td class="left" colspan="11">
+<!--						(Детали коэффициента не найдены для этого ресурса)-->
+					</td>
+				</tr>
+			</xsl:otherwise>
+		</xsl:choose>
 		
 		<xsl:if test="../QTF">
 			<tr>
 				<td/>
 				
-				<td class="left" colspan="11">
+				<td class="left" colspan="12">
 					<xsl:value-of select="../QTF/FileNameQTF"/>
 					<xsl:text>. Пункт - </xsl:text>
 					<xsl:for-each select="../QTF">
@@ -2705,60 +2394,56 @@
 
 
 	<!-- Шаблон форматно-логического контроля документа -->
-	<xsl:template match="LocalEstimateResourceIndexMethod | Construction" mode="validate">
+	<xsl:template match="Construction" mode="validate">
 		<div id="reportDiv" style="display:none">
 			<div class="report">
 				<h3>Результаты проверки файла:</h3>
 				<ul>
 					<xsl:if test="not(Object/Estimate/Num) or (Object/Estimate/Num = '')">
 						<li class="err">
-							<a id="erEstimateNum" href="EstimateNum" onclick="window.opener.document.getElementById(this.href).scrollIntoView(true); window.opener.focus(); return false;">Не указан номер локального сметного расчета</a>
+							<a id="erEstimateNum" href="EstimateNum" onclick="window.opener.document.getElementById(this.href).scrollIntoView(true); window.opener.focus(); return false;">blank</a>
 						</li>
 						<script>
 							s='Не указан номер локального сметного расчета'; 
 							EstimateNum.title=s; 
-							EstimateNum.className=EstimateNum.className + " fieldError"; 
-							EstimateNum.className=EstimateNum.className.trim();
+							EstimateNum.classList.add("fieldError"); 
 							erEstimateNum.innerHTML=s;
 						</script>
 					</xsl:if>
 					<xsl:if test="not(Meta/Soft/Name) or (Meta/Soft/Name = '')">
 						<li class="err">
-							<a id="erSoftName" href="SoftName" onclick="window.opener.document.getElementById(this.href).scrollIntoView(true); window.opener.focus(); return false;">Не указано название програмного продукта</a>
+							<a id="erSoftName" href="SoftName" onclick="window.opener.document.getElementById(this.href).scrollIntoView(true); window.opener.focus(); return false;">blank</a>
 						</li>
 						<script>
 							
 							s='Не указано название програмного продукта'; 
 							SoftName.title=s; 
-							SoftName.className=SoftName.className + " fieldError"; 
-							SoftName.className=SoftName.className.trim();
+							SoftName.classList.add("fieldError"); 
 							erSoftName.innerHTML=s; 
 							
 						</script>
 					</xsl:if>
 					<xsl:if test="not(Object/Estimate/Legal/Main/Name) or (Object/Estimate/Legal/Main/Name = '')">
 						<li class="err">
-							<a id="erNormativeName" href="#" onclick="window.opener.document.getElementById(this.id.substr(2)).scrollIntoView(true); window.opener.focus(); return false;">Не указано наименование редакции сметных нормативов</a>
+							<a id="erNormativeName" href="#" onclick="window.opener.document.getElementById(this.id.substr(2)).scrollIntoView(true); window.opener.focus(); return false;">blank</a>
 						</li>
 						<script>
 							
 							s='Не указано наименование редакции сметных нормативов'; 
 							LegalMainName.title=s; 
-							LegalMainName.className=LegalMainName.className + " fieldError"; 
-							LegalMainName.className=LegalMainName.className.trim();
+							LegalMainName.classList.add("fieldError"); 
 							erNormativeName.innerHTML=s;
 							
 						</script>
 					</xsl:if>
 					<xsl:if test="not(Object/Estimate/Legal/Main/Num) or (Object/Estimate/Legal/Main/Num = '')">
 						<li class="err">
-							<a id="erNormativeName" href="#" onclick="window.opener.document.getElementById(this.id.substr(2).scrollIntoView(true); window.opener.focus(); return false;">Не указан регистрационный номер сметного норматива и дата его включения в Федеральный реестр сметных нормативов</a>
+							<a id="erNormativeName" href="#" onclick="window.opener.document.getElementById(this.id.substr(2).scrollIntoView(true); window.opener.focus(); return false;">blank</a>
 						</li>
 						<script> 
 							s='Не указан регистрационный номер сметного норматива и дата его включения в Федеральный реестр сметных нормативов'; 
 							LegalMainName.title=s; 
-							LegalMainName.className=LegalMainName.className + " fieldError"; 
-							LegalMainName.className=LegalMainName.className.trim();
+							LegalMainName.classList.add("fieldError"); 
 							erNormativeLegal.innerHTML=s;
 							
 						</script>
@@ -2813,7 +2498,8 @@
 									<xsl:if test="(not(Unit) or (Unit = '')) and not(starts-with(Code, '999'))">
 										<li class="err">
 											<!-- a href="#" id="l{concat('Сost',Cost/Num)}" onclick="window.opener.document.getElementById(this.id.substr(1)).scrollIntoView(true); window.opener.focus(); return false;"-->
-											<xsl:value-of select="concat('Не указана единица измерения ресурса ', ../../Num)"/>
+											<xsl:value-of select="concat('В позиции № ', ../../Num)"/>
+											<xsl:value-of select="concat(' не указана единица измерения. Код ресурса:  ', Code)"/>
 										</li>
 									</xsl:if>
 								</xsl:for-each>
@@ -2823,7 +2509,7 @@
 				</ul>
 			</div>
 		</div>
-<!--		<script>
+		<script>
 			report = window.open(
 			"",
 			"report",
@@ -2831,7 +2517,7 @@
 			);
 			report.document.title = 'Результаты проверки файла локального сметного расчета';
 			report.document.body.innerHTML = styles.outerHTML + reportDiv.innerHTML; 
-		</script>-->
+		</script>
 	</xsl:template>
 
 </xsl:stylesheet>

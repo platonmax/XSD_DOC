@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:bt="http://types/BaseTypes.xsd"
+  xmlns:ct="http://types/CommonTypes.xsd"
+  xmlns:bd="http://types/BaseDocument.xsd"
+  targetNamespace="http://types/BaseDocument.xsd" attributeFormDefault="unqualified"
+  elementFormDefault="qualified" version="1.09">
+
+  <xs:import namespace="http://types/CommonTypes.xsd" schemaLocation="CommonTypes.xsd"/>
+  <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
+
+
+  <xs:complexType name="cqtfDocumentType">
+    <xs:annotation>
+      <xs:documentation>
+        <text>Описание комплексного типа TCQTFDocument.</text>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="meta" type="ct:metaType">
+        <xs:annotation>
+          <xs:documentation>Информация о программном комплексе, использующемся для составления локального сметного расчета
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="accessLevelCode" type="bt:accessLevelCodeType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Информация о уровне доступа. Возможные варианты заполнения - "общедоступная информация", "для служебного пользования" или "коммерческая тайна"
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="objectName" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Наименование объекта капитального строительства (реконструкции, капитального ремонта)
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="num" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Номер объекта капитального строительства (реконструкции, капитального ремонта)
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="date" type="ct:dateType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Дата составления сопоставительной ведомости объемов работ
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="customer" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Заказчик (наименование организации)
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="signatures">
+        <xs:annotation>
+          <xs:documentation><text>Подписи и ФИО уполномоченных лиц.</text></xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="composer" type="ct:signaturesType">
+              <xs:annotation>
+                <xs:appinfo>Выводится после таблицы ВОР в строку Составил. Сначала Должность, потом ФИО</xs:appinfo>
+                <xs:documentation>Подпись составляющего (ФИО).</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="verifier" type="ct:signaturesType">
+              <xs:annotation>
+                <xs:appinfo>Выводится после таблицы ВОР в строку Проверил. Сначала Должность, затем ФИО</xs:appinfo>
+                <xs:documentation>Подпись проверяющего (ФИО).</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="fileList" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Список файлов, которые относятся к изменениям и к текущему документу. Формат хранения согласно приказу ...</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="file" type="ct:fileType" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Файл, относящийся к изменениям или документу. Требования к файлам соответствуют ...</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="alterationList" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Заходы на экспертизу, описание корректировки. Указывается месяц и год корректировки и ее id для последующих ссылок на нее.
+            В наборе стадий должна присутствовать базовая запись с id="base"; остальные id — хронологические стадии.
+            id строятся по следующему принципу: "alt-ГГГГ-ММ"
+            Где ГГГГ это год корректировки, а ММ - месяц корректировки
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="alteration" type="ct:alterationStageType" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Корректировка. Задается месяц и год корректировки, а также ее уникальный идентификатор
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="estimateList">
+        <xs:annotation>
+          <xs:documentation>Таблица сопоставительной ведомости объемов работ
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="estimate" type="ct:estimateType" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>
+                  Локальный сметный расчет объекта капитального строительства
+                  (реконструкции, капитального ремонта)
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+
+      <xs:element name="exportDateTime" type="xs:dateTime" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Дата и время выгрузки документа из программного продукта (сметной программы) с учетом часового пояса в формате ISO 8601 (ГГГГ-ММ-ДД ЧЧ:ММ:СС)
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+</xs:schema>

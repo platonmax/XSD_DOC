@@ -1,0 +1,1344 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.01"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1">
+    <xs:simpleType name="TGuid">
+        <xs:annotation>
+            <xs:documentation>Глобальный уникальный идентификатор сводного сметного расчета стоимости строительства.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\{[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}\}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TAccessLevel">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="общедоступная информация"/>
+            <xs:enumeration value="для служебного пользования"/>
+            <xs:enumeration value="коммерческая тайна"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="TFileFormat">
+        <xs:annotation>
+            <xs:documentation>Комплексный тип для описания типа и версии передаваемого файла.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Type">
+                <xs:annotation>
+                    <xs:documentation>Тип передаваемого файла: ССРCC - Сводный сметный расчет стоимости строительства.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="ССР"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Version">
+                <xs:annotation>
+                    <xs:documentation>Номер версии схемы.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:fractionDigits value="2"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TMeta">
+        <xs:annotation>
+            <xs:documentation>Информация о программном комплексе и версии формата.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Soft">
+                <xs:annotation>
+                    <xs:documentation>Программный комплекс.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Name" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>Наименование программного комплекса.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="Version" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>Версия программного комплекса.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="File" type="TFileFormat">
+                <xs:annotation>
+                    <xs:documentation>Тип и версия передаваемого файла.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TChapterName">
+        <xs:annotation>
+            <xs:documentation>Комплексный тип для хранения Наименования Главы сводного сметного расчета стоимости строительства (ССРСС).</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <!-- ConstantNameChapter: Имя главы по Постановлению Правительства -->
+            <xs:element minOccurs="1" name="ConstantNameChapter" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Элемент для хранения названия главы сводного сметного расчета стоимости строительства в соответствии с постановлением Правительства Российской Федерации от 16 февраля 2008 г. № 87.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <!-- CustomerNameChapter: Имя главы, которое может ввести пользователь -->
+            <xs:element minOccurs="0" name="CustomerNameChapter" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Элемент предназначен для хранения названия главы, которое может быть введено пользователем.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="TChapter">
+        <xs:annotation>
+            <xs:documentation>Базовый тип для глав ССРСС определяемый на основании итоговых стоимостных показателей объектных и (или) локальных сметных расчетов (смет), а также сметных расчетов на отдельные виды затрат (калькуляции, расчеты).</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ChapterName" type="TChapterName">
+                <xs:annotation>
+                    <xs:documentation>Комплексный тип содержащий имя главы ССР. </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element name="LocalEstimate" type="TLocalEstimate">
+                    <xs:annotation>
+                        <xs:documentation>Итоговые стоимостные показатели локальных сметных расчетов (смет).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ObjectEstimate" type="TObjectEstimate">
+                    <xs:annotation>
+                        <xs:documentation>Итоговые стоимостные показатели объектных сметных расчетов (смет).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Calculation" type="TCalculation">
+                    <xs:annotation>
+                        <xs:documentation>Итоговые стоимостные показатели сметных расчетов на отдельные виды затрат (калькуляции, расчеты).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+            <xs:element name="Summary" type="TPriceElements">
+                <xs:annotation>
+                    <xs:documentation>Итого по главе ССРСС: сметная стоимость строительных (ремонтно-строительных, ремонтно-реставрационных) работ, монтажных работ, оборудования, прочих затрат, всего.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RelatedStage" type="TStage" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Этап в ССРСС. Место хранения всей необходимой информации об этапе.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+
+
+
+
+        <xs:attribute name="numberOfChapter">
+            <xs:simpleType>
+                <xs:annotation>
+                    <xs:documentation>Номер главы. Целое положительное число. От 1 до 14.</xs:documentation>
+                </xs:annotation>
+                <xs:restriction base="xs:positiveInteger">
+                    <xs:minInclusive value="1"/>
+                    <xs:maxInclusive value="14"/>
+                </xs:restriction>
+
+            </xs:simpleType>
+
+        </xs:attribute>
+
+
+
+
+    </xs:complexType>
+
+    <xs:complexType name="TChapterWithSubSummary">
+        <xs:annotation>
+            <xs:documentation>Базовый тип для глав ССРСС определяемый на основании итоговых стоимостных показателей объектных и (или) локальных сметных расчетов (смет), а также сметных расчетов на отдельные виды затрат (калькуляции, расчеты) с учетом итогов предыдущих глав.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="TChapter">
+                <xs:sequence>
+                    <xs:element name="SubSummary" type="TPriceElements">
+                        <xs:annotation>
+                            <xs:documentation>Итоги с учетом предыдущих глав.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+
+                    <xs:element name="SubSummaryStage" type="TStage" minOccurs="0"
+                        maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>Итоги по этапам с учетом предыдущих глав.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+
+
+
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="TChapterExt">
+        <xs:annotation>
+            <xs:documentation>Базовый тип для глав ССРСС определяемый на основании итоговых стоимостных показателей сметных расчетов на отдельные виды затрат (калькуляции, расчеты) и дополнительных затрат.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ChapterName" type="TChapterName">
+                <xs:annotation>
+                    <xs:documentation>Комплексный тип содержащий имя главы ССР. </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element name="Calculation" type="TCalculation">
+                    <xs:annotation>
+                        <xs:documentation>Итоговые стоимостные показатели сметных расчетов на отдельные виды затрат (калькуляции, расчеты).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Addition" type="TItem">
+                    <xs:annotation>
+                        <xs:documentation>Итоговые стоимостные показатели дополнительных затрат.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+            <xs:element name="Summary" type="TPriceElements">
+                <xs:annotation>
+                    <xs:documentation>Итого по главе ССРСС.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+        </xs:sequence>
+        <xs:attribute name="numberOfChapter">
+            <xs:simpleType>
+                <xs:annotation>
+                    <xs:documentation>Номер главы. Целое положительное число. От 1 до 14.</xs:documentation>
+                </xs:annotation>
+                <xs:restriction base="xs:positiveInteger">
+                    <xs:minInclusive value="1"/>
+                    <xs:maxInclusive value="14"/>
+                </xs:restriction>
+
+            </xs:simpleType>
+
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="TChapterExtStage">
+        <xs:annotation>
+            <xs:documentation>Базовый тип для глав ССРСС c этапами, определяемый на основании итоговых стоимостных показателей сметных расчетов на отдельные виды затрат (калькуляции, расчеты) и дополнительных затрат.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ChapterName" type="TChapterName">
+                <xs:annotation>
+                    <xs:documentation>Комплексный тип содержащий имя главы ССР. </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element name="Calculation" type="TCalculation">
+                    <xs:annotation>
+                        <xs:documentation>Итоговые стоимостные показатели сметных расчетов на отдельные виды затрат (калькуляции, расчеты).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Addition" type="TItem">
+                    <xs:annotation>
+                        <xs:documentation>Итоговые стоимостные показатели дополнительных затрат.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+            <xs:element name="Summary" type="TPriceElements">
+                <xs:annotation>
+                    <xs:documentation>Итого по главе ССРСС</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RelatedStage" type="TStage" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Этап в ССРСС. Место хранения всей необходимой информации об этапе.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="numberOfChapter">
+            <xs:simpleType>
+                <xs:annotation>
+                    <xs:documentation>Номер главы. Целое положительное число. От 1 до 14.</xs:documentation>
+                </xs:annotation>
+                <xs:restriction base="xs:positiveInteger">
+                    <xs:minInclusive value="1"/>
+                    <xs:maxInclusive value="14"/>
+                </xs:restriction>
+
+            </xs:simpleType>
+
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="TChapterExtWithSubSummary">
+        <xs:annotation>
+            <xs:documentation>Базовый тип для глав ССРСС определяемый на основании итоговых стоимостных показателей сметных расчетов на отдельные виды затрат (калькуляции, расчеты) и дополнительных затрат с учетом итогов предыдущих глав.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="TChapterExt">
+                <xs:sequence>
+                    <xs:element name="SubSummary" type="TPriceElements">
+                        <xs:annotation>
+                            <xs:documentation>Итоги с учетом предыдущих глав.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+
+                    <xs:element name="RelatedStage" type="TStage" minOccurs="0"
+                        maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>Этап в ССРСС. Место хранения всей необходимой информации об этапе.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="SubSummaryStage" type="TStage" minOccurs="0"
+                        maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>Элемент комплексного типа, который содержит данные по этапам в рамках главы.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="TChapterFull">
+        <xs:annotation>
+            <xs:documentation>Базовый тип для глав ССРСС определяемый на основании итоговых стоимостных показателей объектных и (или) локальных сметных расчетов (смет), а также сметных расчетов на отдельные виды затрат (калькуляции, расчеты) и дополнительных затрат.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ChapterName" type="TChapterName">
+                <xs:annotation>
+                    <xs:documentation>Комплексный тип содержащий имя главы ССРСС. </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element name="LocalEstimate" type="TLocalEstimate">
+                    <xs:annotation>
+                        <xs:documentation>Итоговые стоимостные показатели локальных сметных расчетов (смет).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ObjectEstimate" type="TObjectEstimate">
+                    <xs:annotation>
+                        <xs:documentation>Итоговые стоимостные показатели объектных сметных расчетов (смет).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Calculation" type="TCalculation">
+                    <xs:annotation>
+                        <xs:documentation>Итоговые стоимостные показатели сметных расчетов на отдельные виды затрат (калькуляции, расчеты).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Addition" type="TItem">
+                    <xs:annotation>
+                        <xs:documentation>Итоговые стоимостные показатели дополнительных затрат.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+            <xs:element name="Summary" type="TPriceElements">
+                <xs:annotation>
+                    <xs:documentation>Итого по главе ССРСС.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SubSummary" type="TPriceElements">
+                <xs:annotation>
+                    <xs:documentation>Итоги с учетом предыдущих глав.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RelatedStage" type="TStage" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Этап в ССРСС. Место хранения всей необходимой информации об этапе.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SubSummaryStage" type="TStage" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Элемент комплексного типа, который содержит данные по этапам в рамках главы.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+
+
+    <xs:complexType name="TPriceElements">
+        <xs:annotation>
+            <xs:documentation>Итоговые составляющие элементов сметной стоимости: сметная стоимость строительных (ремонтно-строительных, ремонтно-реставрационных) работ, монтажных работ, оборудования, прочих затрат, всего.
+</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element minOccurs="0" name="NumSummary" type="xs:integer">
+                <xs:annotation>
+                    <xs:documentation>Порядковый номер строки Итога по главе. </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Building" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><text>Сметная стоимость строительных (ремонтно-строительных, ремонтно-реставрационных) работ (графа 4 ССРСС).</text>
+<formula>
+                            В текущем уровне цен:
+                            Building.Price(Сметная стоимость строительных работ в текущем уровне цен) = Сумма Building.Price (Итоговая сметная стоимость строительных работ в текущем уровне цен показателей объектных и (или) локальных сметных расчетов (смет), а также сметных расчетов на отдельные виды затрат).
+                            В базисном уровне цен:
+                            Building.Price (Сметная стоимость строительных работ в базисном уровне цен) = Сумма Building.Price (Итоговая сметная стоимость строительных работ в базисном уровне цен показателей объектных и (или) локальных сметных расчетов (смет), а также сметных расчетов на отдельные виды затрат).
+                            
+Округление до 2-х знаков после запятой в тысячах рублей. Округление производится один раз после всех математических операций.
+                        </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Mounting" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>  <text>Сметная стоимость монтажных работ (графа 5 ССРСС).</text>
+                                <formula>
+                                В текущем уровне цен:
+                            Mounting.Price (Сметная стоимость монтажных работ в текущем уровне цен) = Сумма Mounting.Price (Итоговая сметная стоимость монтажных работ в текущем уровне цен показателей объектных и (или) локальных сметных расчетов (смет), а также сметных расчетов на отдельные виды затрат).
+                            В базисном уровне цен:
+                            Mounting.Price (Сметная стоимость монтажных работ в базисном уровне цен) = Сумма Mounting.Price (Итоговая сметная стоимость монтажных работ в базисном уровне цен показателей объектных и (или) локальных сметных расчетов (смет), а также сметных расчетов на отдельные виды затрат).
+                            
+                            Округление до 2-х знаков после запятой в тысячах рублей. Округление производится один раз после всех математических операций.
+                                </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="Equipment" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><text>Сметная стоимость оборудования, мебели, инвентаря и произведений искусства (графа 6 ССРСС).</text>
+      <formula>
+В текущем уровне цен:
+      Equipment.Price (Сметная стоимость оборудования в текущем уровне цен) = Сумма Equipment.Price (Итоговая сметная стоимость оборудования в текущем уровне цен показателей объектных и (или) локальных сметных расчетов (смет), а также сметных расчетов на отдельные виды затрат).
+В базисном уровне цен:
+      Equipment.Price (Сметная стоимость оборудования в базисном уровне цен) = Сумма Equipment.Price(Итоговая сметная стоимость оборудования в базисном уровне цен показателей объектных и (или) локальных сметных расчетов (смет), а также сметных расчетов на отдельные виды затрат).
+
+Округление до 2-х знаков после запятой в тысячах рублей. Округление производится один раз после всех математических операций.
+                        </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Other" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><text>Сметная стоимость прочих работ и затрат (графа 7 ССРСС).</text>
+                        <formula>
+                       В текущем уровне цен:
+                            Other.Price (Сметная стоимость прочих работ и затрат в текущем уровне цен) = Сумма Other.Price (Итоговая сметная стоимость прочих работ и затрат в текущем уровне цен показателей объектных и (или) локальных сметных расчетов (смет), а также сметных расчетов на отдельные виды затрат).
+                            В базисном уровне цен:
+                            Other.Price (Сметная стоимость прочих работ и затрат в базисном уровне цен) = Сумма Other.Price (Итоговая сметная стоимость прочих работ и затрат в базисном уровне цен показателей объектных и (или) локальных сметных расчетов (смет), а также сметных расчетов на отдельные виды затрат).
+
+Округление до 2-х знаков после запятой в тысячах рублей. Округление производится один раз после всех математических операций.
+                        </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Total" type="xs:decimal" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation><text>Общая сметная стоимость (всего) (графа 8 ОСР (ОС)). Построчно в сводном сметном расчете указываются итого по объектным/локальным сметным расчетам (сметам) с распределением затрат по элементам сметной стоимости строительных (ремонтно-строительных, ремонтно-реставрационных) работ, монтажных работ, оборудования, прочих затрат, с последующим их суммированием по графе "всего". Результаты в тысячах рублей с округлением до двух знаков после запятой.</text>
+	<formula>
+	В текущем уровне цен:
+Total.Price (Общая сметная стоимость (всего) в текущем уровне цен) = Сумма Total.Price (Общая сметная стоимость (всего) в текущем уровне цен показателей объектных и (или) локальных сметных расчетов (смет), а также сметных расчетов на отдельные виды затрат).
+    В базисном уровне цен:
+Total.Price (Общая сметная стоимость (всего) в базисном уровне цен) = Сумма Total.Price (Общая сметная стоимость (всего) в базисном уровне цен показателей объектных и (или) локальных сметных расчетов (смет), а также сметных расчетов на отдельные виды затрат).
+
+Округление до 2-х знаков после запятой в тысячах рублей. Округление производится один раз после всех математических операций.
+	</formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+
+    </xs:complexType>
+
+    <xs:complexType name="TBaseItem">
+        <xs:annotation>
+            <xs:documentation>Итоговые составляющие сметной стоимости позиции в сводном сметном расчете стоимости строительства (ССРСС): сметная стоимость строительных (ремонтно-строительных, ремонтно-реставрационных) работ, монтажных работ, оборудования, прочих затрат, всего.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="TPriceElements">
+                <xs:sequence>
+                    <xs:element name="Name">
+                        <xs:annotation>
+                            <xs:documentation>Наименование позиции (наименование работ и затрат).</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="TItem">
+        <xs:annotation>
+            <xs:documentation>Позиция в сводном сметном расчете стоимости строительства (ССРСС).</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="TBaseItem">
+                <xs:sequence>
+                    <xs:element name="Num" type="xs:positiveInteger">
+                        <xs:annotation>
+                            <xs:documentation>Номер строки сводного сметного расчета.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Reason" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Обоснование позиции.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="TLocalEstimate">
+        <xs:annotation>
+            <xs:documentation>Итоговые стоимостные показатели локальных сметных расчетов (смет) - ЛСР(ЛС).
+Номер ЛСР(ЛС) содержит три группы цифр: первые две группы цифр соответствуют номеру ОСР(ОС), третья группа цифр - порядковому номеру ЛСР(ЛС) в ОСР(ОС). Например, ЛС-02-01-01. Нумерация локальных и объектных сметных расчетов (смет), а также сметных расчетов на отдельные виды затрат может быть дополнена группой цифр, соответствующих номеру этапа строительства.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="TItem">
+                <xs:sequence>
+                    <xs:element name="Details" type="TSummary">
+                        <xs:annotation>
+                            <xs:documentation>Детальная информация локального сметного расчета</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Link" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Ссылка на файл локального сметного расчета. Поле должно содержать только имя файла без определения пути к файлу.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="StageID" type="xs:nonNegativeInteger" minOccurs="1"
+                        default="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>Идентификатор этапа. Является ключом для связи LocalEstimate, ObjectEstimate, Calculation с элементом этапа RelatedStage, который содержит элемент с таким же именем.
+Может содержаться в элементе только один раз. Соотвественно, например, это показывает, что Локальная смета может принадлежать только одному этапу. Если этапа нет, устанавливается значение = 0</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="StageName" type="xs:string" minOccurs="1" default="Без этапа"
+                        maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>Имя этапа в ССР</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="TObjectEstimate">
+        <xs:annotation>
+            <xs:documentation>Итоговые стоимостные показатели объектных сметных расчетов (смет) - ОСР(ОС).
+Номер ОСР(ОС) содержит две группы цифр: первые две цифры соответствуют номеру главы ССРСС, вторые две цифры - порядковому номеру строки в главе ССРСС. Например, ОС-02-01.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="TItem">
+                <xs:sequence>
+                    <xs:element name="Details" type="TSummary">
+                        <xs:annotation>
+                            <xs:documentation>Детальная информация объектного сметного расчета.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Link" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Ссылка на файл объектного сметного расчета. Поле должно содержать только имя файла без определения пути к файлу.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="StageID" type="xs:nonNegativeInteger" minOccurs="1"
+                        default="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>Идентификатор этапа. Является ключом для связи LocalEstimate, ObjectEstimate, Calculation с элементом этапа RelatedStage, который содержит элемент с таким же именем.
+Может содержаться в элементе только один раз. Соотвественно, например, это показывает, что Объектная смета может принадлежать только одному этапу.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+
+                    <xs:element name="StageName" type="xs:string" minOccurs="1" default="Без этапа"
+                        maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>Имя этапа в ССР.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+
+
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="TCalculation">
+        <xs:annotation>
+            <xs:documentation>Итоговые стоимостные показатели сметных расчетов на отдельные виды затрат (калькуляции, расчеты) - СР.
+Сквозная нумерация СР производится целыми числами в порядке их включения в сметную документацию. Например, СР-1.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="TItem">
+                <xs:sequence>
+                    <xs:element name="Link" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Ссылка на файл сметного расчета на отдельные виды затрат (калькуляции, расчеты). Поле должно содержать только имя файла без определения пути к файлу.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="StageID" type="xs:nonNegativeInteger" minOccurs="1"
+                        default="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>Идентификатор этапа. Является ключом для связи LocalEstimate, ObjectEstimate, Calculation с элементом этапа RelatedStage, который содержит элемент с таким же именем.
+Может содержаться в элементе только один раз. Соотвественно, например, это показывает, что Калькуляция может принадлежать только одному этапу.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="StageName" type="xs:string" minOccurs="1" default="Без этапа"
+                        maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>Имя этапа в ССР.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="TSummary">
+        <xs:annotation>
+            <xs:documentation>Детализированные показатели сметной стоимости: общие и по видам основных работ (элементы строительства).</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Building" type="TSummaryItems">
+                <xs:annotation>
+                    <xs:documentation><text>Общие итоги по локальному сметному расчету (смете) по строительным (ремонтно-строительным) работам с раскладкой по элементам затрат в базисном или в текущем уровнях цен.</text>
+	<formula>
+	Для базисного уровня - итоги по ЛСР в базисном уровне цен с раскладкой по элементам затрат.
+	Для текущего уровня при применении "индекса СМР": итоги по ЛСР в текущем уровне цен (без раскладки по элементам затрат).
+	Для текущего уровня при применении "индексов по элементам ПЗ": итоги по ЛСР в текущем уровне цен с раскладкой по элементам затрат.
+	</formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Mounting" type="TSummaryItems">
+                <xs:annotation>
+                    <xs:documentation><text>Общие итоги по локальному сметному расчету (смете) по монтажным работам с раскладкой по элементам затрат в базисном или в текущем уровнях цен</text>
+	<formula>
+	Для базисного уровня - итоги по ЛСР в базисном уровне цен с раскладкой по элементам затрат.
+	Для текущего уровня при применении "индекса СМР": итоги по ЛСР в текущем уровне цен (без раскладки по элементам затрат).
+	Для текущего уровня при применении "индексов по элементам ПЗ": итоги по ЛСР в текущем уровне цен с раскладкой по элементам затрат.
+	</formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Equipment" type="TSummaryDetails">
+                <xs:annotation>
+                    <xs:documentation>	<text>Общие итоги по локальному сметному расчету (смете) по оборудованию с указанием стоимости дополнительной перевозки. В текущем или базисном уровнях цен</text>
+	<formula>
+	Для базисного уровня - итоги по ЛСР в базисном уровне цен: стоимость оборудования и дополнительной перевозки.
+	Для текущего уровня -  итоги по ЛСР в текущем уровне цен: стоимость оборудования и дополнительной перевозки.
+	</formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Other" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><text>Общие итоги по локальному сметному расчету (смете) по прочим работам и затратам. В текущем или базисном уровнях цен.</text>
+	<formula>
+	Для базисного уровня:
+	Other.Price (Всего по прочим работам и затратам в базисном уровне цен)=Other.PriceBase(Всего стоимость прочих работ и затрат по ЛСР в базисном уровне цен).
+	Для текущего уровня:
+	Other.Price (Всего по прочим работам и затратам в текущем уровне цен) = Other.Price(Всего стоимость прочих работ и затрат по ЛСР в текущем уровне цен).
+	</formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Commissioning" type="TSummaryItems" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><text>Общие итоги по локальному сметному расчету (смете) по пусконаладочным работам с раскладкой по элементам затрат в базисном или в текущем уровнях цен.</text>
+	<formula>
+	Для базисного уровня - итоги по ЛСР в базисном уровне цен с раскладкой по элементам затрат.
+	Для текущего уровня при применении "индекса СМР" (ПНР): итоги по ЛСР в текущем уровне цен (без раскладки по элементам затрат).
+	Для текущего уровня при применении "индексов по элементам ПЗ": итоги по ЛСР в текущем уровне цен с раскладкой по элементам затрат.
+	</formula>
+                  </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Total" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><text>Всего по локальному сметному расчету (смете) в базисном или в текущем уровнях цен.
+	</text>
+	<formula>
+	Для базисного уровня:
+	Total.Price (Всего по ЛСР в базисном уровне цен)=Building.Total.Price (Всего сметная стоимость по строительным (ремонтно-строительным) работам ЛСР в базисном уровне цен) + Mounting.Total.Price (Всего сметная стоимость по монтажным работам ЛСР в базисном уровне цен) + Equipment.Total.Price (Всего сметная стоимость оборудования ЛСР в базисном уровне цен) + Other.Price (Всего стоимость прочих затрат ЛСР в базисном уровне цен) + Commissioning.Total.Price (Всего стоимость ПНР ЛСР в базисном уровне цен).
+	Для текущего уровня:
+	Total.Price (Всего по ЛСР в текущем уровне цен)=Building.Total.Price (Всего сметная стоимость по строительным (ремонтно-строительным) работам  ЛСР в текущем уровне цен) + Mounting.Total.Price (Всего сметная стоимость по монтажным работам ЛСР в текущем уровне цен) + Equipment.Total.Price (Всего сметная стоимость оборудования ЛСР в текущем уровне цен) + Other.Price (Всего стоимость прочих затрат ЛСР в текущем уровне цен) + Commissioning.Total.Price (Всего стоимость ПНР ЛСР в текущем уровне цен).
+	</formula>
+</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Summary" type="xs:decimal">
+                <xs:annotation>
+                    <xs:documentation><text>Общие итоги по локальному сметному расчету (смете) с раскладкой по элементам затрат в базисном или в текущем уровнях цен (СМР и ПНР) и стоимость перевозки в двух уровнях цен.</text>
+	<formula>
+	Для базисного уровня - итоги по ЛСР в базисном уровне цен с раскладкой по элементам затрат.
+	Для текущего уровня при применении "индексов по элементам ПЗ": итоги по ЛСР в текущем уровне цен с раскладкой по элементам затрат.
+	Для текущего уровня при применении "индекса СМР": итоги по ЛСР в текущем уровне цен без раскладки по элементам затрат. Текущая стоимость перевозки и дополнительной перевозки.
+	</formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TSummaryDetails">
+        <xs:annotation>
+            <xs:documentation>Комплексный тип для передачи итоговых показателей отдельных элементов сметной стоимости локального сметного расчета.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Total" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>                        <text>
+                        Всего сметная стоимость элемента ЛСР по локальному сметному расчету (смете).</text>
+                        <formula>
+                            Для базисного уровня цен: 
+                            Total.Price (Всего сметная стоимость элемента ЛСР в базисном уровне цен) = Price.Price (Итоговая сметная стоимость элемента ЛСР в базисном уровне цен) + Transport.Price (Сметная стоимость дополнительной перевозки элемента ЛСР в базисном уровне цен).
+                            
+                            Для текущего уровня цен: 
+                            Total.Price (Всего сметная стоимость элемента ЛСР в текущем уровне цен) = Price.Price (Итоговая сметная стоимость элемента ЛСР в текущем уровне цен) + Transport.Price (Сметная стоимость дополнительной перевозки элемента ЛСР в текущем уровне цен).
+                        </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Price" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>                        <text>
+                        Итоговая сметная стоимость элемента ЛСР по локальному сметному расчету (смете), в том числе стоимость элемента, отсутствующего в ФРСН (без учета стоимости дополнительной перевозки).
+                    </text>
+                        <formula>
+                            Для базисного уровня цен: 
+                            Price.Price (Итоговая сметная стоимость элемента ЛСР в базисном уровне цен).
+                            
+                            Для текущего уровня цен: 
+                            Price.Price (Итоговая сметная стоимость элемента ЛСР в текущем уровне цен).
+                            
+                        </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="External" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>                        <text>
+                        Итоговая сметная стоимость элемента ЛСР, отсутствующего в ФРСН, по локальному сметному расчету (смете). Определяется справочно.
+                    </text>
+                        <formula>
+                            Для базисного уровня цен:
+External.Price (Сметная стоимость элемента ЛСР, отсутствующего в ФРСН, по ЛСР в базисном уровне цен).                                
+                            Для текущего уровня цен: 
+External.Price (Сметная стоимость элемента ЛСР, отсутствующего в ФРСН, по ЛСР в текущем уровне цен).
+                            
+                        </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Transport" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation> <text>Итоговая сметная стоимость дополнительной перевозки элемента ЛСР по локальному сметному расчету (смете).                      
+                    </text>
+<formula>
+Для базисного уровня цен: 
+Transport.Price (Сметная стоимость дополнительной перевозки элемента ЛСР по ЛСР в базисном уровне цен). 
+Для текущего уровня цен: 
+Transport.Price (Сметная стоимость дополнительной перевозки элемента ЛСР по ЛСР в текущем уровне цен).
+</formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TSummaryItems">
+        <xs:annotation>
+            <xs:documentation>Итоговые показатели сметной стоимости локального сметного расчета по элементам затрат заданного вида работ или общие по всем видам, за исключением оборудования и прочих затрат.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Total" type="xs:decimal">
+                <xs:annotation>
+                    <xs:documentation>
+                                <text>Итоговая сметная стоимость по локальному сметному расчету (смете) в текущем или в базисном уровнях цен. Включает: стоимость элементов прямых затрат, накладные расходы, сметная прибыль, затраты на перевозку.</text>
+                                
+                                <formula>
+Для базисного уровня цен (при применении "индексов к элементам ПЗ" и "индекса к СМР"):
+                                    Total.Price (Итоговая сметная стоимость вида работ по ЛСР в базисном уровне цен) = WorkersSalary.Price (Итоговая оплата труда по ЛСР в базисном уровне цен) + Machines.Price(Итоговая стоимость эксплуатации машин и механизмов по ЛСР в базисном уровне цен) + Materials.Price (Итоговая стоимость материалов по ЛСР в базисном уровне цен) + Overhead.Price (Итоговые накладные расходы по ЛСР в базисном уровне цен) + Profit.Price (Итоговая сметная прибыль по ЛСР в базисном уровне цен) + Transport.Price (Сметная стоимость перевозки грузов по ЛСР в базисном уровне цен) + TransportAdd.Price (Сметная стоимость дополнительной перевозки грузов по ЛСР в базисном уровне цен).            
+                               
+Для текущего уровня цен (при применении "индексов к элементам ПЗ"):
+                                      Total.PriceCur (Итоговая сметная стоимость по ЛСР в текущем уровне цен) = WorkersSalary.Price (Итоговая оплата труда по ЛСР в текущем уровне цен) + Machines.Price (Итоговая стоимость эксплуатации машин и механизмов по ЛСР в текущем уровне цен) + Materials.Price (Итоговая стоимость материалов по ЛСР в текущем уровне цен) + Overhead.Price (Итоговые накладные расходы по ЛСР в текущем уровне цен) + Profit.Price(Итоговая сметная прибыль по ЛСР в текущем уровне цен) + Transport.Price (Сметная стоимость перевозки грузов по ЛСР в текущем уровне цен) + TransportAdd.Price(Сметная стоимость дополнительной перевозки грузов по ЛСР в текущем уровне цен).
+
+Для текущего уровня цен (при применении "индекса к СМР"):
+                                      Total.Price (Итоговая сметная стоимость вида работ по ЛСР в текущем уровне цен).
+
+                                </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="WorkersSalary" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><text>Итоговая оплата труда рабочих и работников-исполнителей составе заданного вида работ по локальному сметному расчету (смете).</text>
+                        <formula>
+Для базисного уровня цен (при применении "индексов к элементам ПЗ" и "индекса к СМР"): 
+                 WorkersSalary.Price (Итоговая оплата труда по ЛСР в базисном уровне цен).
+                 
+Для текущего уровня цен (при применении "индексов к элементам ПЗ"): 
+                 WorkersSalary.Price (Итоговая оплата труда по ЛСР в текущем уровне цен).
+                 
+                            </formula>
+                            
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MachinistSalary" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        <text>Итоговая оплата труда машинистов (рабочих, занятых управлением и обслуживанием строительных машин и механизмов) по локальному сметному расчету (смете) заданного вида работ.</text>
+                        <formula>
+                           Для базисного уровня цен (при применении "индексов к элементам ПЗ" и "индекса к СМР"): 
+                           MachinistSalary.Price (Итоговая оплата труда машинистов по ЛСР в базисном уровне цен).
+
+                           Для текущего уровня цен (при применении "индексов к элементам ПЗ"): 
+                           MachinistSalary.Price (Итоговая оплата труда машинистов по ЛСР в текущем уровне цен).
+                        </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Salary" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>	<text>
+	Фонд оплаты труда (ФОТ) по локальному сметному расчету (смете) заданного вида работ. ФОТ является справочной дополнительной информацией в составе сметной стоимости.
+	</text>
+	<formula>
+	Для базисного уровня цен при применении "индекса к СМР" и "индексов к элементам прямых затрат":
+Salary.Price (ФОТ по ЛСР в базисном уровне) = WorkersSalary.Price (Оплата труда по ЛСР в базисном уровне цен) + MachinistSalary.PriceBase (Оплата труда машинистов по ЛСР в базисном уровне цен).
+
+	Для текущего уровня цен при применении "индексов к элементам прямых затрат": 
+Salary.Price (ФОТ по ЛСР в текущем уровне) = WorkersSalary.Price (Оплата труда по ЛСР в текущем уровне цен) + MachinistSalary.Price (Оплата труда машинистов по ЛСР в текущем уровне цен).
+	</formula>
+
+</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Overhead" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>                        <text>
+                        Итоговые накладные расходы по локальному сметному расчету (смете) в составе сметной стоимости, в базисном или в текущем уровнях цен.
+                        </text>
+                        <formula>
+                        Для базисного уровня цен при применении "индекса СМР" и "индексов к элементам ПЗ": 
+                        Overhead.Price (Итоговые накладные расходы по ЛСР в базисном уровне цен).   
+                        
+                        Для текущего уровня цен при применении "индексов к элементам ПЗ": 
+                        Overhead.Price (Итоговые накладные расходы по ЛСР в текущем уровне цен).
+                        </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Profit" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>                        <text>
+                        Итоговая сметная прибыль по локальному сметному расчету (смете) в составе сметной стоимости, в базисном или в текущем уровнях цен.                        </text>
+                        <formula>
+                            Для базисного уровня цен при применении "индекса СМР" и "индексов к элементам ПЗ": 
+                            Profit.Price(Итоговая сметная прибыль по ЛСР в базисном уровне цен).
+                            
+                            Для текущего уровня цен при применении "индексов к элементам ПЗ": 
+                           Profit.Price (Итоговая сметная прибыль по ЛСР в текущем уровне цен).
+                        </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Machines" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>                        <text>
+                        Итоговая сметная стоимость эксплуатации строительных машин, автотранспортных средств, механизированных инструментов и механизмов по локальному сметному расчету (смете).</text>
+                        <formula>
+                         Для базисного уровня цен (при применении "индексов к элементам ПЗ" и "индекса к СМР"): 
+                           Machines.Price (Итоговая сметная стоимость эксплуатации строительных машин и механизмов по ЛСР в базисном уровне цен).
+                           
+                            Для текущего уровня цен (при применении "индексов к элементам ПЗ"): 
+                            Machines.Price (Итоговая сметная стоимость эксплуатации строительных машин и механизмов по ЛСР в текущем уровне цен). 
+                        </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Materials" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>                        <text>
+                        Итоговая сметная стоимость материалов, изделий и конструкции по локальному сметному расчету (смете), в том числе стоимость материалов, отсутствующих в ФРСН.
+                    </text>
+                        <formula>
+                            Для базисного уровня цен (при применении "индекса к СМР" и "индексов к элементам ПЗ"):
+                            Materials.Price (Итоговая сметная стоимость материалов по ЛСР в базисном уровне цен).
+                            
+                            Для текущего уровня цен (при применении "индексов к элементам ПЗ"): 
+Materials.Price (Итоговая сметная стоимость материалов по ЛСР в текущем уровне цен).
+                        </formula>
+                    </xs:documentation>
+                </xs:annotation>
+
+
+            </xs:element>
+            <xs:element name="Direct" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+        <text>Итоговые прямые затраты по локальному сметному расчету.</text>
+        
+	<formula>
+	В базисном уровне цен (при применении "индексов к элементам ПЗ" и "индекса к СМР"):
+	Direct.Price (Итоговые прямые затраты по локальному сметному расчету в базисном уровне цен) = WorkersSalary.Price(Итогова оплата труда по ЛСР в базисном уровне цен) + Machines.Price (Итоговая стоимость эксплуатации машин и механизмов по ЛСР в базисном уровне цен) + Materials.Price (Итоговая стоимость материалов по ЛСР в базисном уровне цен) + Transport.Price (Сметная стоимость перевозки грузов по ЛСР в базисном уровне цен) + TransportAdd.Price (Сметная стоимость дополнительной перевозки грузов по ЛСР в базисном уровне цен).
+	
+	В текущем уровне цен (при применении "индексов к элементам ПЗ"):
+Direct.Price (Итоговые прямые затраты по локальному сметному расчету в текущем уровне цен) = WorkersSalary.Price (Итоговая оплата труда по ЛСР в текущем уровне цен) + Machines.Price (Итоговая стоимость эксплуатации машин и механизмов по ЛСР в текущем уровне цен) + Materials.Price (Итоговая стоимость материалов по ЛСР в текущем уровне цен) + Transport.Price (Сметная стоимость перевозки грузов по ЛСР в текущем уровне цен) + TransportAdd.Price (Сметная стоимость дополнительной перевозки грузов по ЛСР в текущем уровне цен).
+
+	</formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TotalLaborCosts" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>	<text>Итоговые затраты труда по локальному сметному расчету (смете) для заданного вида работ.</text>
+                        <formula>
+                        TotalLaborCosts (Итоговые затраты труда) = LaborCosts (Итоговые затраты труда рабочих или пусконаладочного персонала) + MachinistLaborCosts (Итоговые затраты труда машинистов).
+Округление до 7-ми знаков. Округление производится один раз после всех математических операций.                                               </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="LaborCosts" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>	<text>Итоговые затраты труда рабочих по локальному сметному расчету (смете) и работников-исполнителей пусконаладочных работ не занятых обслуживанием машин заданного вида работ.</text>
+                        <formula>
+                       LaborCosts (Итоговые затраты труда рабочих или пусконаладочного персонала  ЛСР).
+                        </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MachinistLaborCosts" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>                        <text>Итоговые затраты труда машинистов (рабочих, управляющих машинами) по локальному сметному расчету (смете) заданного вида работ.</text>
+                        <formula>
+                       MachinistLaborCosts (Итоговые затраты труда машинистов по ЛСР).
+                        </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TransportTotal" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><text>Всего сметная стоимость перевозки по локальному сметному расчету (смете). Определяется суммированием значений стоимости перевозки грузов (грунт, мусор и подобное) и дополнительной перевозки, согласно пункта 63 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр). </text>
+                        <formula>
+                            Для базисного уровня цен: 
+                            TransporTotal.Price (Всего cметная стоимость перевозки по ЛСР в базисном уровне цен) = Transport.Price (Итоговая сметная стоимость перевозки грузов по ЛСР в базисном уровне цен) + TransportAdd.Price (Итоговая сметная стоимость дополнительной перевозки грузов по ЛСР в базисном уровне цен).
+                          Для текущего уровня цен: 
+                            TransportTotal.Price (Всего сметная стоимость перевозки по ЛСР в текущем уровне цен) = Transport.Price (Итоговая сметная стоимость перевозки грузов по ЛСР в текущем уровне цен) + TransportAdd.Price (Итоговая сметная стоимость дополнительной перевозки грузов по ЛСР в текущем уровне цен).
+                        </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TransportAdd" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><text>Итоговая сметная стоимость дополнительной перевозки грузов по локальному сметному расчету (смете). Определяется суммированием значений соответствующих позиций по перевозке грузов, указанных в пункте 63 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр).</text>
+                        <formula>
+                            Для базисного уровня цен: 
+                            TransportAdd.Price (Итоговая сметная стоимость дополнительной перевозки грузов по ЛСР в базисном уровне цен).            
+                            Для текущего уровня цен: 
+                            Transport.Price (Итоговая сметная стоимость дополнительной перевозки грузов по ЛСР в текущем уровне цен).
+                        </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Transport" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>                        <text>
+                        Итоговая сметная стоимость перевозки по локальному сметному расчету (смете). Определяется суммированием значений соответствующих позиций по перевозке грузов (грунт, мусор и подобное), за исключением указанных в пункте 63 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр).                       
+                        </text>
+                        <formula>
+                            Для базисного уровня цен: 
+                            Transport.Price (Итоговая сметная стоимость перевозки грузов по ЛСР в базисном уровне цен).   
+                            Для текущего уровня цен: 
+                           Transport.Price (Итоговая сметная стоимость перевозки грузов по ЛСР в текущем уровне цен).
+                        </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Price" type="xs:decimal">
+                <xs:annotation>
+                    <xs:documentation><text>Итоговая сметная стоимость по локальному сметному расчету (смете) в текущем или в базисном уровнях цен.
+Включает: стоимость элементов прямых затрат, накладные расходы, сметная прибыль. Затраты на перевозку (грунт, мусор), дополнительная перевозка не учитываются при индексации СМР. Затраты на перевозку (грунт, мусор) не учитывается при индексации по элементам ПЗ, дополнительная перевозка учитывается при индексации по элементам ПЗ.</text>
+                                <formula>
+Для базисного уровня цен (при применении "индекса к СМР"):
+                                    Total.Price (Итоговая сметная стоимость вида работ по ЛСР в базисном уровне цен) = WorkersSalary.Price (Итоговая оплата труда по ЛСР в базисном уровне цен) +  Machines.Price (Итоговая стоимость эксплуатации машин и механизмов по ЛСР в базисном уровне цен) + Materials.Price (Итоговая стоимость материалов по ЛСР в базисном уровне цен) + Overhead.Price (Итоговые накладные расходы по ЛСР в базисном уровне цен) + Profit.Price (Итоговая сметная прибыль по ЛСР в базисном уровне цен).            
+
+Для базисного уровня цен (при применении "индексов к элементам ПЗ"):
+                                   Total.Price (Итоговая сметная стоимость вида работ по ЛСР в базисном уровне цен) = WorkersSalary.Price(Итоговая оплата труда по ЛСР в базисном уровне цен) + Machines.Price (Итоговая стоимость эксплуатации машин и механизмов по ЛСР в базисном уровне цен) + Materials.Price (Итоговая стоимость материалов по ЛСР в базисном уровне цен) + Overhead.Price (Итоговые накладные расходы по ЛСР в базисном уровне цен) + Profit.Price (Итоговая сметная прибыль по ЛСР в базисном уровне цен) + TransportAdd.Price (Сметная стоимость дополнительной перевозки грузов по ЛСР в базисном уровне цен).            
+                               
+Для текущего уровня цен (при применении "индекса к СМР"):
+                                      Total.Price (Итоговая сметная стоимость вида работ по ЛСР в текущем уровне цен).
+                                      
+Для текущего уровня цен (при применении "индексов к элементам ПЗ"):
+                                      Total.Price (Итоговая сметная стоимость по ЛСР в текущем уровне цен) = WorkersSalary.Price (Итоговая оплата труда по ЛСР в текущем уровне цен) + Machines.Price (Итоговая стоимость эксплуатации машин и механизмов по ЛСР в текущем уровне цен) + Materials.Price (Итоговая стоимость материалов по ЛСР в текущем уровне цен) + Overhead.Price (Итоговые накладные расходы по ЛСР в текущем уровне цен) + Profit.Price (Итоговая сметная прибыль по ЛСР в текущем уровне цен) + TransportAdd.Price (Сметная стоимость дополнительной перевозки грузов по ЛСР в текущем уровне цен).
+                                </formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TPriceLevel">
+        <xs:annotation>
+            <xs:documentation>Составляющие элементы уровня цен в сводном сметном расчете стоимости строительства (ССРСС).</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Year">
+                <xs:annotation>
+                    <xs:documentation>Год.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedShort">
+                        <xs:minInclusive value="1964"/>
+                        <xs:maxInclusive value="2100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Month" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Месяц.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element minOccurs="0" name="Day" type="xs:unsignedByte">
+                <xs:annotation>
+                    <xs:documentation>День.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Quarter">
+                <xs:annotation>
+                    <xs:documentation>Квартал.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+
+            <xs:element name="BasicPrice" type="xs:boolean">
+                <xs:annotation>
+                    <xs:documentation>Признак уровня цен. True - Базисный уровень.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+
+            <xs:element name="Note" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Примечание.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TSignature">
+        <xs:annotation>
+            <xs:documentation>Подпись в сводном сметном расчете стоимости строительства (ССРСС).</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name">
+                <xs:annotation>
+                    <xs:documentation>Значение подписи ССРСС.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TDptSignature">
+        <xs:annotation>
+            <xs:documentation>Подпись от отдела (подразделения организации).</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="TSignature">
+                <xs:sequence>
+                    <xs:element name="Department">
+                        <xs:annotation>
+                            <xs:documentation>Отдел (подразделение организации).</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="TExtSignature">
+        <xs:annotation>
+            <xs:documentation>Подпись должностного лица.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="TSignature">
+                <xs:sequence>
+                    <xs:element name="Position">
+                        <xs:annotation>
+                            <xs:documentation>Должность.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="TSignatures">
+        <xs:annotation>
+            <xs:documentation>Подписи в сводном сметном расчете стоимости строительства (ССРСС).</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ProjectOrg" type="TSignature" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Руководитель проектной организации (ФИО).</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ChiefProjectEngineer" type="TSignature" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Главный инженер проекта (ФИО).</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Chief" minOccurs="1" type="TDptSignature">
+                <xs:annotation>
+                    <xs:documentation>Начальник отдела (ФИО), наименование отдела.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Customer" type="TExtSignature" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Подпись заказчика (должность, ФИО).</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Composer" type="TExtSignature" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Подпись составляющего (должность, ФИО).</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Verifier" minOccurs="0" type="TExtSignature">
+                <xs:annotation>
+                    <xs:documentation>Подпись проверяющего (должность, ФИО).</xs:documentation>
+                </xs:annotation>
+
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="TStage">
+        <xs:annotation>
+            <xs:documentation>Тип данных для определения этапа в сводном сметном расчете стоимости строительства (ССРСС).</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="StageID" type="xs:integer" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>ID этапа. Идентификационный код этапа в ССР.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="StageName" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Имя этапа в ССР.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element minOccurs="0" name="StageSummary" type="MoneyType">
+                <xs:annotation>
+                    <xs:documentation>Накопительная сумма по предыдущим главам и данному этапу. Сумма, которая определяется: Итого по Главам 1-[Номер текущей главы] ([Номер текущего этапа] этап), например: 
+Итого по Главам 1-2 (1 этап).</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="StageTotal" type="TPriceElements" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Сумма по этапу для данной главы.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="MoneyType">
+        <xs:annotation>
+            <xs:documentation>Тип для элементов содержащих денежные показатели. Ограничения 2 цифры после запятой.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="10"/>
+            <!-- Общее количество цифр -->
+            <xs:fractionDigits value="2"/>
+            <!-- Количество десятичных знаков -->
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="Construction">
+        <xs:annotation>
+            <xs:documentation>Сводный сметный расчет стоимости строительства (ССРСС) объекта капитального строительства (реконструкции, капитального ремонта). Элемент обязан содержать атрибуты, указывающие на применяемый xsd-шаблон описания сметы:
+xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance";
+xsi:noNamespaceSchemaLocation = "SummaryEstimate-3_01.xsd".
+Электронные документы, представляемые для проведения государственной экспертизы проектной документации и (или) результатов инженерных изысканий и проверки достоверности определения сметной стоимости строительства, реконструкции, капитального ремонта, должны иметь расширение файла .gge.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Meta" type="TMeta">
+                    <xs:annotation>
+                        <xs:documentation>Информация о программном комплексе и версии формата, используемых для составления ССРСС.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element minOccurs="0" name="AccessLevel" type="TAccessLevel">
+                    <xs:annotation>
+                        <xs:documentation>Информация о уровне доступа. Возможные варианты заполнения - "общедоступная информация", "для служебного пользования" или "коммерческая тайна".</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Num" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Номер ССРСС.
+Сводный сметный расчет стоимости строительства содержит буквенное обозначение "ССРСС".
+В случае, когда подготовка проектной документации осуществляется применительно к отдельным этапам строительства, к ССРСС добавляется номер этапа строительства.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Name" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Наименование объекта капитального строительства, реконструкции, капитального ремонта (наименование стройки).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Customer">
+                    <xs:annotation>
+                        <xs:documentation>Заказчик (наименование организации).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Created" type="xs:date">
+                    <xs:annotation>
+                        <xs:documentation>Дата составления ССРСС.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Approved" type="xs:date">
+                    <xs:annotation>
+                        <xs:documentation>Дата утверждения ССРСС.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="PriceLevel" type="TPriceLevel" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Текущий или базовый уровень цен ССРСС.
+Отображение уровня цен в таблице визуализации:
+если заполнены Year + Month + Day то выводиться 01.01.2000 , (а точнее поля «Day» + «.» + «Month» + «.» + «Year»
+
+если Month или Day не заполнены то выводить «Quarter» + « » + «Year»</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Summary" type="TPriceElements">
+                    <xs:annotation>
+                        <xs:documentation>Итоговые стоимостные показатели ССРСС.
+ССРСС разрабатывается на объект (или этап) строительства (стройку) на основании суммирования итоговых стоимостных показателей объектных и (или) локальных сметных расчетов (смет), а также сметных расчетов на отдельные виды затрат с распределением затрат по следующим элементам сметной стоимости строительства: стоимость строительных (ремонтно-строительных) работ, монтажных работ, оборудования, прочих затрат, всего.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+
+                <xs:element name="SubSummaryStageALL" type="TStage" minOccurs="0"
+                    maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Элемент комплексного типа, который содержит данные по этапам всего ССРСС.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+
+                <xs:element name="Chapter1" type="TChapter" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Глава 1. Подготовка территории строительства, реконструкции, капитального ремонта. В главу 1 включаются затраты, связанные с оформлением земельного участка, с созданием геодезической разбивочной основы для строительства и освоением территории строительства, произведенных на момент подготовки проектной документации и (или) планируемых к осуществлению в период строительства. Перечень работ и затрат, включаемых в главу 1 сводного сметного расчета, приведен в Приложении № 9 к Методике, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Chapter2" type="TChapter" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Глава 2.  Основные объекты строительства, реконструкции, капитального ремонта. В главу 2 сводного сметного расчета включается сметная стоимость строительства объектов капитального строительства, являющихся основными для объекта строительства.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Chapter3" type="TChapter" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Глава 3.  Объекты подсобного и обслуживающего назначения. При определении сметной стоимости строительства объектов производственного назначения в главу 3 включается сметная стоимость строительства предназначенных для подсобных производственных целей объектов капитального строительства, (не относящихся к энергетическим объектам и объектам транспортного хозяйства и связи, предусматриваемым в соответствующих главах), а также для обслуживания предприятия. К ним относятся подсобные цеха, газогенераторные, компрессорные, складские здания, эстакады, галереи, административные здания, лаборатории, здания предприятий общественного питания, медицинского и бытового обслуживания работников производства, относящегося к строительству объекта производственного назначения, и другие.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Chapter4" type="TChapter" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Глава 4.  Объекты энергетического хозяйства. В главу 4 сводного сметного расчета включается сметная стоимость строительства объектов энергетического хозяйства, входящих в объект строительства: трансформаторных подстанций, линий электропередач (воздушных и кабельных) и др. Сметная стоимость электротехнических установок, запроектированных в составе объектов капитального строительства, учитывается в их сметной стоимости.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Chapter5" type="TChapter" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Глава 5.  Объекты транспортного хозяйства и связи. В главу 5 включается сметная стоимость объектов транспортного хозяйства (подъездные дороги к предприятиям и дороги на территории предприятий (автомобильные, железнодорожные), причальные и прочие портовые сооружения, площадки для стоянки транспортных средств, автозаправочные станции, здания и сооружения по техническому обслуживанию, гаражи и другие подобные объекты) и связи. Для объектов строительства железнодорожного транспорта в главу 5 включаются также автодорожные путепроводы, транспортные тоннели, пешеходные мосты и тоннели, не связанные с обслуживанием пассажиров. В главе 5 сводного сметного расчета предусматриваются средства на устройство сетей связи всех видов, в том числе технических средств обеспечения транспортной безопасности (телефонной, телевизионной, радиосвязи и другой) с относящимися к ним зданиями и сооружениями.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Chapter6" type="TChapter" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Глава 6.  Наружные сети и сооружения водоснабжения, водоотведения, теплоснабжения и газоснабжения. В главу 6 сводного сметного расчета включается сметная стоимость сетей водоснабжения, водоотведения, теплоснабжения и газоснабжения. К ним относятся трубопроводы с относящимися к ним зданиями и сооружениями, в том числе плотинами, водозаборными сооружениями, насосными станциями, зданиями перекачки, водонапорными башнями, очистными сооружениями, фильтрами, котельными и другими сооружениями. В главу 6 не включаются сметные затраты на устройство систем инженерно-технического обеспечения, учитываемые в сметной стоимости соответствующих объектов капитального строительства.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Chapter7" type="TChapterWithSubSummary" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Глава 7.  Благоустройство и озеленение территории. В главу 7 сводного сметного расчета включается сметная стоимость затрат по благоустройству и озеленению территории объекта строительства, в том числе работ по вертикальной планировке (без образования рельефа), устройству дорожек, тротуаров, малых архитектурных форм, ограждению территории, наружному освещению, посадке деревьев, кустарников, устройству газонов и клумб и других элементов благоустройства и озеленения.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Chapter8" type="TChapterFull" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Глава 8.  Временные здания и сооружения. В главу 8 сводного сметного расчета включаются затраты на устройство и ликвидацию титульных временных зданий и сооружений, за исключением временных специальных вспомогательных сооружений и устройств, учитываемых дополнительно непосредственно в объектных сметных расчетах (сметах) соответствующих глав сводного сметного расчета в соответствии со сметными нормативами, сведения о которых включены в ФРСН.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Chapter9" type="TChapterFull" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Глава 9.  Прочие работы и затраты. В главу 9 сводного сметного расчета включается сметная стоимость прочих работ и затрат, не учитываемых в других главах сводного сметного расчета. Рекомендуемый перечень работ и затрат, учитываемых в главах 1 и 9 сводного сметного расчета стоимости, приведен в Приложении № 9 к Методике, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Chapter10" type="TChapterExtWithSubSummary" maxOccurs="1"
+                    minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Глава 10.  Содержание службы заказчика. Строительный контроль. В главу 10 сводного сметного расчета включаются затраты на содержание технического заказчика и затраты заказчика на проведение строительного контроля при строительстве (графы 7 и 8).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Chapter11" type="TChapterFull" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Глава 11. Подготовка эксплуатационных кадров для строящегося объекта капитального строительства. В главу 11 сводного сметного расчета (графы 7 и 8) включаются затраты, связанные с подготовкой эксплуатационных кадров для строящихся (реконструируемых) объектов капитального строительства, определяемые по сметным расчетам на отдельный вид затрат на основании проектной и (или) иной технической документации.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Chapter12" type="TChapterFull" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Глава 12. Публичный технологический и ценовой аудит, подготовка обоснования инвестиций, осуществляемых в инвестиционный проект по созданию объекта капитального строительства, в отношении которого планируется заключение контракта, предметом которого является одновременно выполнение работ по проектированию, строительству и вводу в эксплуатацию объекта капитального строительства, технологический и ценовой аудит такого обоснования инвестиций, аудит проектной документации, проектные и изыскательские работы.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Chapter13" type="TChapterExtWithSubSummary" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Резерв средств на непредвиденные работы и затраты. Определяется от итогов по главам 1-12 ССРСС и  учитывается отдельной строкой с распределением по графам 4 - 8.
+Резерв средств на непредвиденные работы и затраты предназначен для возмещения стоимости работ и затрат, потребность в которых возникает в процессе разработки рабочей документации и (или) в ходе строительства в результате уточнения проектных решений и (или) условий строительства, предусмотренных проектной документацией.
+</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Chapter14" type="TChapterExtStage" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Налоги и обязательные платежи. Определяются от итогов глав 1 - 12 ССРСС с учетом резерва средств на непредвиденные работы и затраты, за исключением стоимости работ и услуг, не подлежащих налогообложению в соответствии со статьей 149 Налогового кодекса Российской Федерации (Собрание законодательства Российской Федерации, 2000, № 32, ст. 3340; 2020, № 31, ст.5024). Учитывается отдельной строкой с распределением по графам 4 - 8. Ставка НДС, принимается в размере, установленном законодательством Российской Федерации.
+</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Signatures" type="TSignatures">
+                    <xs:annotation>
+                        <xs:documentation>Подписи ССРСС.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+
+                <xs:element name="ExportDateTime" type="xs:dateTime" minOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>Дата и время выгрузки документа из программного продукта (сметной программы) с учетом часового пояса в формате ISO 8601 (ГГГГ-ММ-ДД ЧЧ:ММ:СС+03:00).</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+
+                <xs:element minOccurs="0" name="StatementDoc" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation>Ссылка на документ об утверждении</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

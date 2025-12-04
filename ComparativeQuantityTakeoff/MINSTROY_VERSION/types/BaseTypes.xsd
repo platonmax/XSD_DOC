@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:bt="http://types/BaseTypes.xsd"
+  targetNamespace="http://types/BaseTypes.xsd" attributeFormDefault="unqualified"
+  elementFormDefault="qualified" version="1.09">
+
+  <xs:simpleType name="accessLevelCodeType">
+    <xs:annotation>
+      <xs:documentation>
+        <text>Описание простого типа TAccessLevel.</text>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="общедоступная информация"/>
+      <xs:enumeration value="для служебного пользования"/>
+      <xs:enumeration value="коммерческая тайна"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="guidIdType">
+    <xs:annotation>
+      <xs:documentation>
+        <text>Описание простого типа TGuidV4.</text>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern
+        value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}"
+      />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="itemPositionIdType">
+    <xs:annotation>
+      <xs:documentation>
+        <text>Позиция строки сметы по уровням: 1, 2.1, 2.1.3.</text>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d+(\.\d+)*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="sectionNumberType">
+    <xs:restriction base="xs:positiveInteger"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="alterationIdType">
+    <xs:restriction base="xs:ID"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="ifcGuidIdType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9A-Fa-f-]{4,64}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="alterationIdRefType">
+    <xs:restriction base="xs:IDREF"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="estimateIdType">
+    <xs:restriction base="xs:positiveInteger"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="fileInternalIdType">
+    <xs:restriction base="xs:positiveInteger"/>
+  </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,623 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:util="http://www.gge.ru/utils">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <style type="text/css" id="styles"> 
+                    h1 { font-family: Times New Roman; font-size: 12pt; font-weight:bold; text-align:center; width:100%; margin-top: 2em; }
+                    body,p,td { font-family: Times New Roman; font-size: 10pt; margin:0;}
+                    
+                    div.heading-left2 { margin-left:1.7em; display:flex; width:30%; margin-top: 0.5em; min-height: 1em;}
+                    div.heading-left2 .headingvalue { border-bottom: 1px solid black; flex: 1; }
+
+					div.heading-left3 { margin-left:1.7em; display:flex; width:50%; margin-top: 0.5em; min-height: 1em;}
+                    div.heading-left3 .headingvalue { border-bottom: 1px solid black; flex: 1; }
+                    
+                    div.helptext { text-align:center; width:100%; margin-top:0;}
+                    
+                    div.headingname { white-space: nowrap; margin-right:0.3em; margin-left:0.3em; flex-grow: *; min-height: 1em;}
+                    div.headingnametop { width:50%; margin-right:0.3em; margin-left:0.3em; flex-grow: *; min-height: 1em;}
+                    
+                    div.heading-left { display:flex; width:50%; margin-bottom: 0.5em; min-height: 1em;}
+                    div.heading-left .headingvalue { border-bottom: 1px solid black; flex-grow: 2;}
+                    
+                    div.spacer {flex: 1; }
+
+                    div.report { margin-bottom: 2em; margin-bottom: 2em; border-bottom:2px solid black; padding:0.5em 2em;}
+                    div.report h3 {font-size: 120%; font-weight; bold}
+
+                    div.heading {margin-right:2em; margin-left:2em; display:flex; margin-top: 1em; }
+                    div.heading .headingvalue { border-bottom: 1px solid black; width:100%; min-height: 1em;}
+                     
+                    div.headingblock { display:flex; flex-direction: column; flex:3; margin-top:2em}
+                    
+                    .fieldError { color: red; }
+                    td.fieldError { border: 1px solid red; }
+                    div.fieldError .headingvalue { border-bottom: 1px solid black; flex-grow: 2;}                     
+
+					.main { margin: 2em; }
+                    .center {text-align:center;}
+                    .right {text-align:right;}
+                    .left {text-align:left;}
+                    .leftmargin { padding-left:3em;}
+                    .nowrap {white-space: nowrap;}
+                    .top {vertical-align: top; }
+					.italic {font-style: italic; }
+					.inline {display: inline; }
+					.breakword {word-wrap: break-word; }
+					.indent {padding-left: 2em;}
+					.indent2 {padding-left: 4em;}
+					
+                    .err { color:red; text-decoration: underline }
+                    .err A { color:red; text-decoration: underline }
+                    
+                    table {border-collapse: collapse; width:100%; margin:2em 0; }
+                    th {border: 1px solid black; padding: 0.5em; vertical-align: top;}
+					td {border: 0px; padding: 0.2em 0.5em; vertical-align: top; text-align:right}
+					td.tborder {border: 1px solid black}
+					td.btop {border-top: 1px solid black}
+					td.bbottom {border-bottom: 1px solid black;}
+					td.bold {font-weight: bold}
+					
+		.even { background-color: #f2f2f2; } /* Светло-серый цвет */
+		.odd { background-color: #ffffff; }  /* Белый цвет */
+					
+
+                </style>
+   </head>
+   <body>
+      <div xmlns="" class="main">
+         <div class="heading-left2">Дата и время выгрузки файла из сметного программного комплекса: 27.11.2025 18:37</div>
+         <div class="heading" id="SoftName">
+            <div class="headingnametop">Наименование программного продукта</div>
+            <div class="headingvalue">ГРАНД-Смета 2025.3 Windows x64 (сборка 15.3.5)</div>
+         </div>
+         <div class="heading" id="NormativeName">
+            <div class="headingnametop">Наименование редакции сметных нормативов</div>
+            <div class="headingvalue" id="LegalMainName">Приказ Минстроя России от 30.12.2021 № 1046/пр; Приказ Минстроя России от 04.08.2020
+               № 421/пр; Приказ Минстроя России от 21.12.2020 № 812/пр; Приказ Минстроя России от
+               11.12.2020 № 774/пр; Приказ Минстроя России от 02.08.2023 № 551/пр; Приказ Минстроя
+               России от 14.11.2023 № 817/пр; Приказ Минстроя России от 16.02.2024 № 102/пр; Приказ
+               Минстроя России от 13.05.2024 №323/пр; Приказ Минстроя России от 09.08.2024 №524/пр;
+               Приказ Минстроя России от 07.11.2024 №747/пр; Приказ Минстроя России от 21.03.2025
+               №30/пр; Приказ Минстроя России от 07.02.2025 №69/пр; Приказ Минстроя России от 19.05.2025
+               №299/пр; Приказ Минстроя России от 14.08.2025 №490/прПриказ Минстроя России от 30.12.2021 № 1046/пр; Приказ Минстроя России от 04.08.2020
+               № 421/пр; Приказ Минстроя России от 21.12.2020 № 812/пр; Приказ Минстроя России от
+               11.12.2020 № 774/пр; Приказ Минстроя России от 02.08.2023 № 551/пр; Приказ Минстроя
+               России от 14.11.2023 № 817/пр; Приказ Минстроя России от 16.02.2024 № 102/пр; Приказ
+               Минстроя России от 13.05.2024 №323/пр; Приказ Минстроя России от 09.08.2024 №524/пр;
+               Приказ Минстроя России от 07.11.2024 №747/пр; Приказ Минстроя России от 21.03.2025
+               №30/пр; Приказ Минстроя России от 07.02.2025 №69/пр; Приказ Минстроя России от 19.05.2025
+               №299/пр; Приказ Минстроя России от 14.08.2025 №490/прМетодика по разработке и применению нормативов накладных расходов при определении
+               сметной стоимости строительства, реконструкции, капитального ремонта, сноса объектов
+               капитального строительства. Утверждена приказом Минстроя России от 21 декабря 2020
+               г. № 812/пр. Внесены изменения приказом Минстроя России от 02.09.2021 г. № 636/пр.
+               Внесены изменения приказом Минстроя России от 26.07.2022 г. № 611/пр.Методика по разработке и применению нормативов сметной прибыли при определении сметной
+               стоимости строительства, реконструкции, капитального ремонта, сноса объектов капитального
+               строительства. Утверждена приказом Минстроя России от 11 декабря 2020 г. № 774/пр.
+               Внесены изменения приказом Минстроя России от 22.04.2022 г. № 317/пр.</div>
+         </div>
+         <div class="heading" id="NormativeName">
+            <div class="headingnametop">Реквизиты приказа Минстроя России об утверждении
+               					дополнений и изменений к сметным нормативам</div>
+            <div class="headingvalue">Приказ Минстроя России от 18 мая 2022 г. № 378/пр, Приказ Минстроя России от 26 августа
+               2022 г. № 703/пр, Приказ Минстроя России от 26 октября 2022 г. № 905/пр, Приказ Минстроя
+               России от 27 декабря 2022 г. № 1133/пр, Приказ Минстроя России от 10 февраля 2023
+               г. № 84/пр, Приказ Минстроя России от 11.05.2023 №335/пр; Приказ Минстроя России от
+               07.07.2022 № 557/пр; Приказ Минстроя России от 02.09.2021 № 636/пр, Приказ Минстроя
+               России от 26.07.2022 № 611/пр; Приказ Минстроя России от 22.04.2022 № 317/пр; Приказ
+               Минстроя России от 02.08.2023 № 551/пр; Приказ Минстроя России от 14.11.2023 № 817/пр;
+               Приказ Минстроя России от 30.01.2024 № 55/пр;  Приказ Минстроя России от 16.02.2024
+               № 102/пр;  Приказ Минстроя России от 13.05.2024 №323/пр; Приказ Минстроя России от
+               09.08.2024 №524/пр; Приказ Минстроя России от 07.11.2024 №747/пр; Приказ Минстроя
+               России от 21.03.2025 №30/пр; Приказ Минстроя России от 07.02.2025 №69/пр; Приказ Минстроя
+               России от 19.05.2025 №299/пр; Приказ Минстроя России от 14.08.2025 №490/пр;&nbsp;Приказ Минстроя России от 18 мая 2022 г. № 378/пр, Приказ Минстроя России от 26 августа
+               2022 г. № 703/пр, Приказ Минстроя России от 26 октября 2022 г. № 905/пр, Приказ Минстроя
+               России от 27 декабря 2022 г. № 1133/пр, Приказ Минстроя России от 10 февраля 2023
+               г. № 84/пр, Приказ Минстроя России от 11.05.2023 №335/пр; Приказ Минстроя России от
+               07.07.2022 № 557/пр; Приказ Минстроя России от 02.09.2021 № 636/пр, Приказ Минстроя
+               России от 26.07.2022 № 611/пр; Приказ Минстроя России от 22.04.2022 № 317/пр; Приказ
+               Минстроя России от 02.08.2023 № 551/пр; Приказ Минстроя России от 14.11.2023 № 817/пр;
+               Приказ Минстроя России от 30.01.2024 № 55/пр;  Приказ Минстроя России от 16.02.2024
+               № 102/пр;  Приказ Минстроя России от 13.05.2024 №323/пр; Приказ Минстроя России от
+               09.08.2024 №524/пр; Приказ Минстроя России от 07.11.2024 №747/пр; Приказ Минстроя
+               России от 21.03.2025 №30/пр; Приказ Минстроя России от 07.02.2025 №69/пр; Приказ Минстроя
+               России от 19.05.2025 №299/пр; Приказ Минстроя России от 14.08.2025 №490/пр;&nbsp;Приказы Минстроя России № 812/пр от 21.12.2020, № 636/пр от 02.09.2021, № 611/пр от
+               26.07.2022;&nbsp;Приказы Минстроя России № 774/пр от 11.12.2020, № 317/пр от 22.04.2022</div>
+         </div>
+         <div class="heading" id="NormativeName">
+            <div class="headingnametop">Реквизиты письма Минстроя России об индексах изменения
+               					сметной стоимости строительства, включаемые в федеральный реестр сметных
+               					нормативов и размещаемые в федеральной государственной информационной системе
+               					ценообразования в строительстве, подготовленного в соответствии пунктом 85
+               					Методики расчета индексов изменения сметной стоимости строительства,
+               					утвержденной приказом Министерства строительства и жилищно-коммунального
+               					хозяйства Российской Федерации от 5 июня 2019 г. № 326/пр 1</div>
+            <div class="headingvalue">Сплит-форма индексов и сметных цен для ценовой зоны Ленинградская область на 3 квартал
+               2025 года;&nbsp;Письмо Минстроя России от 22.08.2025 № 49743-АЛ/09</div>
+         </div>
+         <div class="heading" id="NormativeName">
+            <div class="headingnametop">Реквизиты нормативного правового акта об утверждении
+               					оплаты труда, утверждаемый в соответствии с пунктом 22(1) Правилами мониторинга
+               					цен, утвержденными постановлением Правительства Российской Федерации от 23
+               					декабря 2016 г. № 1452</div>
+            <div class="headingvalue">Распоряжение Комитета по строительству Администрации Ленинградской области от 06.05.2025
+               № 126</div>
+         </div>
+         <div class="heading" id="NormativeName">
+            <div class="headingnametop">Обоснование принятых текущих цен на строительные ресурсы</div>
+            <div class="headingvalue">
+               					ФГИС ЦС&nbsp;
+               					</div>
+         </div>
+         <div class="heading" id="NormativeName">
+            <div class="headingnametop">Наименование субъекта Российской Федерации</div>
+            <div class="headingvalue">Ленинградская область</div>
+         </div>
+         <div class="heading" id="NormativeName">
+            <div class="headingnametop">Наименование зоны субъекта Российской Федерации</div>
+            <div class="headingvalue">Ленинградская область</div>
+         </div>
+         <div class="heading">
+            <div class="headingvalue center">Разработка ПСД по капитальному ремонту помещения расположенного по адресу: Сланцевский
+               район Ленинградской области, г.Сланцы, ул.Кирова,д.52, в рамках приведения к требованиям
+               ЗС ГО</div>
+         </div>
+         <div class="helptext">(наименование стройки)</div>
+         <div class="heading">
+            <div class="headingvalue center">Разработка ПСД по капитальному ремонту помещения расположенного по адресу: Сланцевский
+               район Ленинградской области, г.Сланцы, ул.Кирова,д.52, в рамках приведения к требованиям
+               ЗС ГО</div>
+         </div>
+         <div class="helptext">(наименование объекта капитального строительства)</div>
+         <h1 id="EstimateNum">ЛОКАЛЬНЫЙ СМЕТНЫЙ РАСЧЕТ (СМЕТА) №ЛСР №09-01-01</h1>
+         <div class="heading">
+            <div class="headingvalue center">Строительный мусор, утилизация отходов</div>
+         </div>
+         <div class="helptext">(наименование работ и затрат)</div>
+         <div class="heading-left">
+            <div class="headingname">Составлен</div>
+            <div class="headingvalue center">ресурсно-индексным</div>
+            <div class="headingname">методом</div>
+         </div>
+         <div class="heading-left">
+            <div class="headingname">Основание</div>
+            <div class="headingvalue">Ведомость объемов работ №09-01-01 ВОР №09-01-01.gge</div>
+         </div>
+         <div class="heading-left" style="margin-top: 0;">
+            <div class="helptext">(техническая документация)</div>
+         </div>
+         <div class="heading">
+            <div class="headingblock">
+               <div class="heading">
+                  <div class="headingname"><b>Составлен в уровне цен</b></div>
+                  <div class="headingvalue right">III квартал 2025 г.
+                     							
+                     								(
+                     								01.01.2022
+                     								)
+                     							</div>
+               </div>
+               <div class="heading">
+                  <div class="headingname"><b>Сметная стоимость</b></div>
+                  <div class="headingvalue right">5.96</div>
+                  <div class="headingname">тыс. руб.</div>
+               </div>
+               <div class="heading leftmargin">
+                  <div class="headingname italic">в том числе:</div>
+               </div>
+               <div class="heading leftmargin">
+                  <div class="headingname"><b>строительных работ</b></div>
+                  <div class="headingvalue right"></div>
+                  <div class="headingname">тыс. руб.</div>
+               </div>
+               <div class="heading leftmargin">
+                  <div class="headingname"><b>монтажных работ</b></div>
+                  <div class="headingvalue right"></div>
+                  <div class="headingname">тыс. руб.</div>
+               </div>
+               <div class="heading leftmargin">
+                  <div class="headingname"><b>оборудования</b></div>
+                  <div class="headingvalue right"></div>
+                  <div class="headingname">тыс. руб.</div>
+               </div>
+               <div class="heading leftmargin">
+                  <div class="headingname"><b>прочих затрат</b></div>
+                  <div class="headingvalue right">5.96</div>
+                  <div class="headingname">тыс. руб.</div>
+               </div>
+            </div>
+            <div class="spacer"></div>
+            <div class="headingblock" style="margin-top: 8em">
+               <div class="heading">
+                  <div class="headingname">Средства на оплату труда рабочих</div>
+                  <div class="headingvalue right"></div>
+               </div>
+               <div class="heading">
+                  <div class="headingname">Средства на оплату труда машинистов</div>
+                  <div class="headingvalue right" style="white-space: nowrap;"></div>
+               </div>
+               <div class="heading">
+                  <div class="headingname">Нормативные затраты труда рабочих</div>
+                  <div class="headingvalue right"> чел.-ч.</div>
+               </div>
+               <div class="heading">
+                  <div class="headingname">Нормативные затраты труда машинистов</div>
+                  <div class="headingvalue right"> чел.-ч.</div>
+               </div>
+            </div>
+         </div>
+         <table>
+            <thead>
+               <tr>
+                  <th scope="col" rowspan="2">№ п.п.</th>
+                  <th scope="col" rowspan="2" nowrap>Обоснование</th>
+                  <th scope="col" rowspan="2">Наименование работ и затрат</th>
+                  <th scope="col" rowspan="2">Единица измерения</th>
+                  <th colspan="3">Количество</th>
+                  <th colspan="5">Сметная стоимость, руб. </th>
+               </tr>
+               <tr>
+                  <th scope="col">на единицу измерения</th>
+                  <th scope="col">коэффи-циенты</th>
+                  <th scope="col">всего с учетом коэффи-циента</th>
+                  <th scope="col">на единицу измерения в базисном уровне цен</th>
+                  <th scope="col">индекс</th>
+                  <th scope="col">на единицу измерения в текущем уровне цен</th>
+                  <th scope="col">коэффи-циенты</th>
+                  <th scope="col">всего в текущем уровне цен</th>
+               </tr>
+               <tr>
+                  <td class="tborder center">1</td>
+                  <td class="tborder center">2</td>
+                  <td class="tborder center">3</td>
+                  <td class="tborder center">4</td>
+                  <td class="tborder center">5</td>
+                  <td class="tborder center">6</td>
+                  <td class="tborder center">7</td>
+                  <td class="tborder center">8</td>
+                  <td class="tborder center">9</td>
+                  <td class="tborder center">10</td>
+                  <td class="tborder center">11</td>
+                  <td class="tborder center">12</td>
+               </tr>
+            </thead>
+            
+            <tbody>
+               <tr>
+                  <td class="tborder left" colspan="12" id="Section1"><b>Раздел: 1 Мусор строительный и утилизация на полигоне</b></td>
+               </tr>
+               <tr>
+                  <td class="center">1</td>
+                  <td class="left breakword" style="max-width: 100px;">ТЦ_47_4703061004_01.01.2025_40.1</td>
+                  <td class="left">Прием смешанных отходов 4-5 классов опасности (кроме ТКО)</td>
+                  <td class="center">тн</td>
+                  <td>8,825508</td>
+                  <td></td>
+                  <td>8,825508</td>
+                  <td></td>
+                  <td></td>
+                  <td>675</td>
+                  <td></td>
+                  <td>5957.22</td>
+               </tr>
+               <tr>
+                  <td></td>
+                  <td class="left" colspan="11"></td>
+               </tr>
+               <tr>
+                  <td></td>
+                  <td class="left" colspan="12">ВОР №09-01-01.gge. Пункт - 1</td>
+               </tr>
+               <tr>
+                  <td></td>
+                  <td></td>
+                  <td class="left">ОТм</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td class="btop"></td>
+                  <td class="btop"></td>
+                  <td class="btop bold left">Всего по позиции</td>
+                  <td class="btop"></td>
+                  <td class="btop"></td>
+                  <td class="btop"></td>
+                  <td class="btop"></td>
+                  <td class="btop"></td>
+                  <td class="btop"></td>
+                  <td class="btop">675</td>
+                  <td class="btop"></td>
+                  <td class="btop bold">5957.22</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left bold" colspan="9">Итого прямые затраты по разделу 1.Мусор строительный и утилизация на полигоне</td>
+                  <td>5957.22</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent italic" colspan="10"><i>в том числе</i></td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">оплата труда (ОТ)</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">эксплуатация машин и механизмов</td>
+                  <td>5957.22</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">оплата труда машинистов (ОТм)</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">материальные ресурсы </td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">перевозка</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">Итого ФОТ</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">Итого накладные расходы</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">Итого сметная прибыль</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">Итого оборудование</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">Итого прочие затраты</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left bold" colspan="9">Итого по разделу 1.Мусор строительный и утилизация на полигоне</td>
+                  <td>5957.22</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left bold" colspan="9">Справочно</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">материальные ресурсы, отсутствующие в ФРСН</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">оборудование, отсутствующее в ФРСН</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="4">затраты труда рабочих</td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="4">затраты труда машинистов</td>
+                  <td></td>
+               </tr>
+            </tbody>
+            
+            <tbody>
+               <tr>
+                  <td style="border-top:1px solid black">&nbsp;</td>
+                  <td style="border-top:1px solid black">&nbsp;</td>
+                  <td colspan="10" class="bold left" style="border-top:1px solid black;">ИТОГИ ПО СМЕТЕ</td>
+               </tr>
+               <tr>
+                  <td colspan="12">&nbsp;</td>
+               </tr>
+               <tr class="bold">
+                  <td colspan="2"></td>
+                  <td class="left bold" colspan="9">ВСЕГО прочие затраты</td>
+                  <td>5957.22</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left italic" colspan="9"><i>в том числе</i></td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">прочие затраты</td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">прочие работы</td>
+                  <td>5957.22</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">Всего прямые затраты</td>
+                  <td>5957.22</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent italic" colspan="9"><i>в том числе</i></td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">оплата труда (ОТ)</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">эксплуатация машин и механизмов</td>
+                  <td>5957.22</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">оплата труда машинистов (ОТм)</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">материальные ресурсы</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent2 italic" colspan="10"><i>в том числе</i></td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent2" colspan="9">материальные ресурсы без учета дополнительной перевозки</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent2" colspan="9">дополнительная перевозка материальных ресурсов</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">перевозка</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">всего ФОТ (справочно)</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">Всего накладные расходы</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">Всего сметная прибыль</td>
+               </tr>
+               <tr>
+                  <td colspan="12">&nbsp;</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left bold" colspan="9">ВСЕГО по смете</td>
+                  <td>5957.22</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">Всего прямые затраты</td>
+                  <td>5957.22</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent italic" colspan="9"><i>в том числе</i></td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">оплата труда (ОТ)</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">эксплуатация машин и механизмов</td>
+                  <td>5957.22</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">оплата труда машинистов (ОТм)</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">материальные ресурсы</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent italic" colspan="10"></td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">перевозка</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">Всего ФОТ </td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">Всего накладные расходы</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">Всего сметная прибыль</td>
+               </tr>
+               <tr class="bold">
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">Всего оборудование</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent italic" colspan="9"></td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left" colspan="9">Всего прочие затраты</td>
+                  <td>5957.22</td>
+               </tr>
+               <tr>
+                  <td colspan="12">&nbsp;</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left bold italic" colspan="10">Справочно</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">материальные ресурсы, отсутствующие в ФРСН</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="9">оборудование, отсутствующее в ФРСН</td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="4">затраты труда рабочих</td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td colspan="2"></td>
+                  <td class="left indent" colspan="4">затраты труда машинистов</td>
+                  <td></td>
+               </tr>
+            </tbody>
+         </table>
+         <div class="heading-left3">
+            <div class="headingname">Составил</div>
+            <div class="headingvalue">Курчавова А.Е.</div>
+         </div>
+         <div class="heading-left3" style="margin-top: 0;">
+            <div class="helptext">[должность, подпись (инициалы, фамилия)]</div>
+         </div>
+         <p></p>
+         <div class="heading-left3">
+            <div class="headingname">Проверил</div>
+            <div class="headingvalue">Вавилов Е.Л.</div>
+         </div>
+         <div class="heading-left3" style="margin-top: 0;">
+            <div class="helptext">[должность, подпись (инициалы, фамилия)]</div>
+         </div><br><br></div>
+      <div xmlns="" id="reportDiv" style="display:none">
+         <div class="report">
+            <h3>Результаты проверки файла:</h3>
+            <ul></ul>
+         </div>
+      </div><script xmlns="">
+			report = window.open(
+			"",
+			"report",
+			"left=0, top=0, width=500, scrollbars, resizable" //resizable,
+			);
+			report.document.title = 'Результаты проверки файла локального сметного расчета';
+			report.document.body.innerHTML = styles.outerHTML + reportDiv.innerHTML; 
+		</script></body>
+</html>
