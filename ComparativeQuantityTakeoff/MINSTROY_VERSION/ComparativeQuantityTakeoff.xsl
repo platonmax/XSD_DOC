@@ -37,20 +37,6 @@
                                                  if ($month) then concat('-', $month) else ''))"/>
   </xsl:function>
 
-  <xsl:function name="f:quarter-label" as="xs:string?">
-    <xsl:param name="date" as="element()?"/>
-    <xsl:variable name="year" select="normalize-space($date/*:year)"/>
-    <xsl:variable name="quarter-raw" select="normalize-space($date/*:quarter)"/>
-    <xsl:variable name="month" select="if ($date/*:month castable as xs:integer) then xs:integer($date/*:month) else ()"/>
-    <xsl:variable name="quarter"
-                  select="if ($quarter-raw castable as xs:integer)
-                          then xs:integer($quarter-raw)
-                          else if ($month) then xs:integer(floor(($month - 1) div 3) + 1) else ()"/>
-    <xsl:sequence select="if ($year and $quarter ge 1 and $quarter le 4)
-                          then concat(('I','II','III','IV')[$quarter], ' квартал ' , $year, ' г')
-                          else ()"/>
-  </xsl:function>
-
   <xsl:function name="f:full-date" as="xs:string?">
     <xsl:param name="date" as="element()?"/>
     <xsl:variable name="year" select="normalize-space($date/*:year)"/>
@@ -273,7 +259,6 @@
         <xsl:variable name="doc-date" select="$doc/bd:documentDate"/>
         <xsl:variable name="customer" select="normalize-space($doc/bd:customerName)"/>
         <xsl:variable name="object-name" select="normalize-space($doc/bd:objectName)"/>
-        <xsl:variable name="quarter-label" select="f:quarter-label($doc-date)"/>
         <xsl:variable name="full-date" select="f:full-date($doc-date)"/>
 
           <div class="page">
@@ -304,12 +289,6 @@
                   <td class="line">
                     <div class="line-text">
                       <xsl:choose>
-                        <xsl:when test="$quarter-label">
-                          <xsl:value-of select="$quarter-label"/>
-                          <xsl:if test="$full-date">
-                            <xsl:text> (или </xsl:text><span class="date-alt"><xsl:value-of select="$full-date"/></span><xsl:text>)</xsl:text>
-                          </xsl:if>
-                        </xsl:when>
                         <xsl:when test="$full-date">
                           <xsl:value-of select="$full-date"/>
                         </xsl:when>
@@ -508,9 +487,9 @@
     <xsl:for-each select="$sections">
       <tr class="section-row">
         <td colspan="{$column-count}"
-            title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/(sectionNumber|name)','Номер и наименование раздела сметы')}">
-          <xsl:variable name="sectionNumber" select="normalize-space(*:sectionNumber)"/>
-          <xsl:variable name="sectionName" select="normalize-space(*:name)"/>
+            title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/(@sectionNumber|sectionName)','Номер и наименование раздела сметы')}">
+          <xsl:variable name="sectionNumber" select="normalize-space(@sectionNumber)"/>
+          <xsl:variable name="sectionName" select="normalize-space(*:sectionName)"/>
           <xsl:value-of select="concat(if ($sectionNumber) then concat($sectionNumber, '. ') else '', $sectionName)"/>
         </td>
       </tr>
@@ -588,11 +567,11 @@
       <td class="col-estimate-name" title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo/estimateName','Наименование исходной сметы (sourceEstimateInfo/estimateName)')}">
         <xsl:value-of select="normalize-space($estimate-source/*:estimateName)"/>
       </td>
-      <td class="col-work" title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work','Работа (Work/Name, Work/Prefix, Work/Code)')}">
+      <td class="col-work" title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work','Работа (workName, normCodePrefix, normCode)')}">
         <xsl:value-of select="$indent"/>
-        <xsl:value-of select="normalize-space($item/*:work/*:name)"/>
-        <xsl:variable name="prefix" select="normalize-space($item/*:work/*:prefix)"/>
-        <xsl:variable name="code" select="normalize-space($item/*:work/*:code)"/>
+        <xsl:value-of select="normalize-space($item/*:work/*:workName)"/>
+        <xsl:variable name="prefix" select="normalize-space($item/*:work/*:normCodePrefix)"/>
+        <xsl:variable name="code" select="normalize-space($item/*:work/*:normCode)"/>
         <xsl:if test="$prefix or $code">
           <xsl:text> (</xsl:text>
           <xsl:if test="$prefix">
@@ -609,8 +588,8 @@
         </xsl:if>
       </td>
       <td class="center"
-          title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/Unit','Единица измерения (Work/Unit)')}">
-        <xsl:value-of select="$item/*:work/*:unit"/>
+          title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit','Единица измерения (measurementUnit)')}">
+        <xsl:value-of select="$item/*:work/*:measurementUnit"/>
       </td>
       <td class="right"
           title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&quot;base&quot;]/volumeQuantity','Объем базы (volumeList/alteration, alterationRef=base)')}">

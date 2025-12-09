@@ -20,7 +20,6 @@
   <bd:objectNumber>СВОР 01-01</bd:objectNumber>
   <bd:documentDate>
     <year>2025</year>
-    <quarter>1</quarter>
     <month>03</month>
     <day>01</day>
   </bd:documentDate>
@@ -65,19 +64,18 @@
         <estimateNumber>02-01-01</estimateNumber>
         <estimateName>Капитальный ремонт автомобильной дороги А-156 подъездная дорога от автомобильной дороги А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха "Архыз" и к специализированной астрофизической обсерватории Российской академии наук на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</estimateName>
       </sourceEstimateInfo>
-      <sectionList><section>
-        <name>Инженерное обеспечение</name>
-        <sectionNumber>1</sectionNumber>
+      <sectionList><section sectionNumber="1">
+        <sectionName>Инженерное обеспечение</sectionName>
         <itemList>
           <freeStringItem>
             <freeStringName>Свободная строка перед первой позицией</freeStringName>
           </freeStringItem>
           <item itemPositionId="1">
           <work>
-            <name>Разработка грунта с перемещением до 10 м бульдозерами мощностью: 96 кВт (130 л.с.), группа грунтов 1</name>
-            <unit>1000 м3</unit>
-            <prefix>ФЕР</prefix>
-            <code>01-01-023-01</code>
+            <workName>Разработка грунта с перемещением до 10 м бульдозерами мощностью: 96 кВт (130 л.с.), группа грунтов 1</workName>
+            <measurementUnit>1000 м3</measurementUnit>
+            <normCodePrefix>ФЕР</normCodePrefix>
+            <normCode>01-01-023-01</normCode>
           </work>
           <volumeList>
             <alteration alterationRef="base">
@@ -125,10 +123,10 @@
         </freeStringItem>
         <item itemPositionId="2">
           <work>
-            <name>Планировка площадей: механизированным способом, группа грунтов 1</name>
-            <unit>10000 м2</unit>
-            <prefix>ФЕР</prefix>
-            <code>01-02-027-01</code>
+            <workName>Планировка площадей: механизированным способом, группа грунтов 1</workName>
+            <measurementUnit>10000 м2</measurementUnit>
+            <normCodePrefix>ФЕР</normCodePrefix>
+            <normCode>01-02-027-01</normCode>
           </work>
           <volumeList>
             <alteration alterationRef="base">
@@ -174,15 +172,14 @@
           </documentationList>
         </item>
       </itemList></section>
-      <section>
-        <name>Устройство прослойки из нетканого синтетического материала (расценка с ресурсомЗР и доп перевозкой)</name>
-        <sectionNumber>2</sectionNumber>
+      <section sectionNumber="2">
+        <sectionName>Устройство прослойки из нетканого синтетического материала (расценка с ресурсомЗР и доп перевозкой)</sectionName>
         <itemList><item itemPositionId="1">
           <work>
-            <name>Устройство прослойки из нетканого синтетического материала (НСМ) в земляном полотне: сплошной</name>
-            <unit>1000 м2</unit>
-            <prefix>ФЕР</prefix>
-            <code>27-04-016-04</code>
+            <workName>Устройство прослойки из нетканого синтетического материала (НСМ) в земляном полотне: сплошной</workName>
+            <measurementUnit>1000 м2</measurementUnit>
+            <normCodePrefix>ФЕР</normCodePrefix>
+            <normCode>27-04-016-04</normCode>
           </work>
           <volumeList>
             <alteration alterationRef="base">
@@ -226,9 +223,9 @@
           </documentationList>
           <itemList><item itemPositionId="1">
             <work>
-              <name>Геополотно нетканое полипропиленовое, иглопробивное, термоскрепленное, поверхностная плотность 400 г/м2</name>
-              <unit>м2</unit>
-              <code>01.7.12.05-0162</code>
+              <workName>Геополотно нетканое полипропиленовое, иглопробивное, термоскрепленное, поверхностная плотность 400 г/м2</workName>
+              <measurementUnit>м2</measurementUnit>
+              <normCode>01.7.12.05-0162</normCode>
             </work>
             <volumeList>
               <alteration alterationRef="base">
@@ -240,10 +237,10 @@
             </volumeList>
             <itemList><item itemPositionId="1">
               <work>
-                <name>Перевозка грузов I класса автомобилями бортовыми грузоподъемностью до 20 т по дорогам с усовершенствованным (асфальтобетонным, цементобетонным, железобетонным, обработанным органическим вяжущим) дорожным покрытием на расстояние 30 км</name>
-                <unit>т</unit>
-                <prefix>ФССЦпг</prefix>
-                <code>03-01-01-030</code>
+                <workName>Перевозка грузов I класса автомобилями бортовыми грузоподъемностью до 20 т по дорогам с усовершенствованным (асфальтобетонным, цементобетонным, железобетонным, обработанным органическим вяжущим) дорожным покрытием на расстояние 30 км</workName>
+                <measurementUnit>т</measurementUnit>
+                <normCodePrefix>ФССЦпг</normCodePrefix>
+                <normCode>03-01-01-030</normCode>
               </work>
               <volumeList>
                 <alteration alterationRef="base">
@@ -256,10 +253,10 @@
             </item>
             <item itemPositionId="2">
               <work>
-                <name>Перевозка грузов I класса автомобилями бортовыми грузоподъемностью до 20 т по дорогам с усовершенствованным (асфальтобетонным, цементобетонным, железобетонным, обработанным органическим вяжущим) дорожным покрытием на расстояние 130 км</name>
-                <unit>т</unit>
-                <prefix>ФССЦпг</prefix>
-                <code>03-01-01-130</code>
+                <workName>Перевозка грузов I класса автомобилями бортовыми грузоподъемностью до 20 т по дорогам с усовершенствованным (асфальтобетонным, цементобетонным, железобетонным, обработанным органическим вяжущим) дорожным покрытием на расстояние 130 км</workName>
+                <measurementUnit>т</measurementUnit>
+                <normCodePrefix>ФССЦпг</normCodePrefix>
+                <normCode>03-01-01-130</normCode>
               </work>
               <volumeList>
                 <alteration alterationRef="base">
@@ -279,15 +276,14 @@
         <estimateNumber>02-01-02</estimateNumber>
         <estimateName>Конструктивные решения. Фундаменты</estimateName>
       </sourceEstimateInfo>
-      <sectionList><section>
-        <name>Раздел 1 сметы 02-01-02</name>
-        <sectionNumber>1</sectionNumber>
+      <sectionList><section sectionNumber="1">
+        <sectionName>Раздел 1 сметы 02-01-02</sectionName>
         <itemList><item itemPositionId="1">
           <work>
-            <name>Уплотнение грунта пневматическими трамбовками, группа грунтов: 1-2</name>
-            <unit>100 м3</unit>
-            <prefix>ФЕР</prefix>
-            <code>01-02-005-01</code>
+            <workName>Уплотнение грунта пневматическими трамбовками, группа грунтов: 1-2</workName>
+            <measurementUnit>100 м3</measurementUnit>
+            <normCodePrefix>ФЕР</normCodePrefix>
+            <normCode>01-02-005-01</normCode>
           </work>
           <volumeList>
             <alteration alterationRef="base">
@@ -334,10 +330,10 @@
         </item>
         <item itemPositionId="2">
           <work>
-            <name>Устройство бетонной подготовки</name>
-            <unit>100 м3</unit>
-            <prefix>ФЕР</prefix>
-            <code>06-01-001-01</code>
+            <workName>Устройство бетонной подготовки</workName>
+            <measurementUnit>100 м3</measurementUnit>
+            <normCodePrefix>ФЕР</normCodePrefix>
+            <normCode>06-01-001-01</normCode>
           </work>
           <volumeList>
             <alteration alterationRef="base">
@@ -383,9 +379,9 @@
           </documentationList>
           <itemList><item itemPositionId="1">
             <work>
-              <name>Смеси бетонные тяжелого бетона (БСТ), класс В7,5 (М100)</name>
-              <unit>м3</unit>
-              <code>04.1.02.05-0074</code>
+              <workName>Смеси бетонные тяжелого бетона (БСТ), класс В7,5 (М100)</workName>
+              <measurementUnit>м3</measurementUnit>
+              <normCode>04.1.02.05-0074</normCode>
             </work>
             <volumeList>
               <alteration alterationRef="base">

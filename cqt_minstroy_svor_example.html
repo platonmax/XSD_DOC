@@ -58,6 +58,7 @@
           .nowrap { white-space: nowrap; word-break: normal; }
           .section-row td { font-weight: 700; background: #f3f4f6; }
           .estimate-row td { font-weight: 700; background: #e0e7ff; }
+          .free-string-row td { font-style: italic; background: #fff9e6; }
           .notes-cell { white-space: pre-wrap; }
           .header-block { margin: 4px 0 12px 0; }
           .header-title { font-size: 16pt; font-weight: 800; text-align: center; text-transform: uppercase; margin: 0 0 12px; letter-spacing: 0.6px; }
@@ -89,6 +90,7 @@
           .nowrap { white-space: nowrap; word-break: normal; }
           .section-row td { font-weight: bold; background: #f0f0f0; }
           .estimate-row td { font-weight: bold; background: #dfe7ff; }
+          .free-string-row td { font-style: italic; background: #fff9e6; }
           .notes-cell { white-space: pre-wrap; }
           .header-block { margin: 8px 0 24px 0; width: 1100px; max-width: 1100px; }
           .header-title { font-size: 14pt; font-weight: bold; text-align: center; text-transform: uppercase; margin: 0 0 18px; }
@@ -129,7 +131,7 @@
                   <tr>
                      <td class="label">Дата составления:</td>
                      <td class="line">
-                        <div class="line-text">I квартал 2025 г (или <span class="date-alt">01.03.2025</span>)</div>
+                        <div class="line-text">01.03.2025</div>
                      </td>
                   </tr>
                </table>
@@ -187,10 +189,16 @@
                </thead>
                <tbody>
                   <tr class="estimate-row">
-                     <td colspan="12" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo&#xA;Назначение: Исходная смета (номер, наименование, дата)">Смета  - </td>
+                     <td colspan="12" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo&#xA;Назначение: Исходная смета (номер, наименование, дата)">Смета 02-01-01 - Капитальный ремонт автомобильной дороги А-156 подъездная дорога от автомобильной дороги
+                        А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха
+                        "Архыз" и к специализированной астрофизической обсерватории Российской академии наук
+                        на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</td>
                   </tr>
                   <tr class="section-row">
                      <td colspan="12" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/(sectionNumber|name)&#xA;Назначение: Номер и наименование раздела сметы">1. Инженерное обеспечение</td>
+                  </tr>
+                  <tr class="free-string-row">
+                     <td colspan="12" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/freeStringItem/freeStringName&#xA;Назначение: Свободная строка раздела">Свободная строка перед первой позицией</td>
                   </tr>
                   <tr title="">
                      <td class="center nowrap" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">1</td>
@@ -199,9 +207,9 @@
                         А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха
                         "Архыз" и к специализированной астрофизической обсерватории Российской академии наук
                         на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (Work/Name, Work/Prefix, Work/Code)">Разработка грунта с перемещением до 10 м бульдозерами мощностью: 96 кВт (130 л.с.),
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">Разработка грунта с перемещением до 10 м бульдозерами мощностью: 96 кВт (130 л.с.),
                         группа грунтов 1 (ФЕР, код: 01-01-023-01)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/Unit&#xA;Назначение: Единица измерения (Work/Unit)">1000 м3</td>
+                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">1000 м3</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/alteration, alterationRef=base)">2.6</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020-11">2.6</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020-11"></td>
@@ -210,6 +218,9 @@
                      <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;Назначение: Документы, привязанные к базе (подпись ссылки)">1310.0.00-01-КР1 том 5.1.pdf (стр. ) - Лист 7<br>КР2 том 5.2.pdf (стр. ) - Лист 8<br>1310.0.00-01-СМ2 ВОР.pdf (стр. ) - Лист 12</td>
                      <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020-11 (подпись ссылки)">1310.0.00-01-КР1 том 5.1.pdf (стр. ) - Лист 7<br>КР2 том 5.2.pdf (стр. ) - Лист 9<br>1310.0.00-01-СМ2 ВОР.pdf (стр. ) - Лист 13</td>
                   </tr>
+                  <tr class="free-string-row">
+                     <td colspan="12" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/freeStringItem/freeStringName&#xA;Назначение: Свободная строка раздела">Свободная строка после первой позиции</td>
+                  </tr>
                   <tr title="">
                      <td class="center nowrap" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">2</td>
                      <td title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo/estimateNumber&#xA;Назначение: Номер исходной сметы (sourceEstimateInfo/estimateNumber)">02-01-01</td>
@@ -217,8 +228,8 @@
                         А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха
                         "Архыз" и к специализированной астрофизической обсерватории Российской академии наук
                         на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (Work/Name, Work/Prefix, Work/Code)">Планировка площадей: механизированным способом, группа грунтов 1 (ФЕР, код: 01-02-027-01)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/Unit&#xA;Назначение: Единица измерения (Work/Unit)">10000 м2</td>
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">Планировка площадей: механизированным способом, группа грунтов 1 (ФЕР, код: 01-02-027-01)</td>
+                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">10000 м2</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/alteration, alterationRef=base)">2.6</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020-11">3.6</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020-11">1</td>
@@ -238,9 +249,9 @@
                         А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха
                         "Архыз" и к специализированной астрофизической обсерватории Российской академии наук
                         на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (Work/Name, Work/Prefix, Work/Code)">Устройство прослойки из нетканого синтетического материала (НСМ) в земляном полотне:
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">Устройство прослойки из нетканого синтетического материала (НСМ) в земляном полотне:
                         сплошной (ФЕР, код: 27-04-016-04)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/Unit&#xA;Назначение: Единица измерения (Work/Unit)">1000 м2</td>
+                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">1000 м2</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/alteration, alterationRef=base)">0.74</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020-11">0.74</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020-11"></td>
@@ -256,9 +267,9 @@
                         А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха
                         "Архыз" и к специализированной астрофизической обсерватории Российской академии наук
                         на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (Work/Name, Work/Prefix, Work/Code)">   Геополотно нетканое полипропиленовое, иглопробивное, термоскрепленное, поверхностная
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">   Геополотно нетканое полипропиленовое, иглопробивное, термоскрепленное, поверхностная
                         плотность 400 г/м2 (код: 01.7.12.05-0162)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/Unit&#xA;Назначение: Единица измерения (Work/Unit)">м2</td>
+                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">м2</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/alteration, alterationRef=base)">888</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020-11">888</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020-11"></td>
@@ -274,10 +285,10 @@
                         А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха
                         "Архыз" и к специализированной астрофизической обсерватории Российской академии наук
                         на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (Work/Name, Work/Prefix, Work/Code)">      Перевозка грузов I класса автомобилями бортовыми грузоподъемностью до 20 т по дорогам
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">      Перевозка грузов I класса автомобилями бортовыми грузоподъемностью до 20 т по дорогам
                         с усовершенствованным (асфальтобетонным, цементобетонным, железобетонным, обработанным
                         органическим вяжущим) дорожным покрытием на расстояние 30 км (ФССЦпг, код: 03-01-01-030)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/Unit&#xA;Назначение: Единица измерения (Work/Unit)">т</td>
+                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">т</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/alteration, alterationRef=base)">-0.355</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020-11">-0.355</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020-11"></td>
@@ -293,10 +304,10 @@
                         А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха
                         "Архыз" и к специализированной астрофизической обсерватории Российской академии наук
                         на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (Work/Name, Work/Prefix, Work/Code)">      Перевозка грузов I класса автомобилями бортовыми грузоподъемностью до 20 т по дорогам
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">      Перевозка грузов I класса автомобилями бортовыми грузоподъемностью до 20 т по дорогам
                         с усовершенствованным (асфальтобетонным, цементобетонным, железобетонным, обработанным
                         органическим вяжущим) дорожным покрытием на расстояние 130 км (ФССЦпг, код: 03-01-01-130)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/Unit&#xA;Назначение: Единица измерения (Work/Unit)">т</td>
+                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">т</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/alteration, alterationRef=base)">0.355</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020-11">0.355</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020-11"></td>
@@ -306,7 +317,7 @@
                      <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020-11 (подпись ссылки)"></td>
                   </tr>
                   <tr class="estimate-row">
-                     <td colspan="12" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo&#xA;Назначение: Исходная смета (номер, наименование, дата)">Смета  - </td>
+                     <td colspan="12" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo&#xA;Назначение: Исходная смета (номер, наименование, дата)">Смета 02-01-02 - Конструктивные решения. Фундаменты</td>
                   </tr>
                   <tr class="section-row">
                      <td colspan="12" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/(sectionNumber|name)&#xA;Назначение: Номер и наименование раздела сметы">1. Раздел 1 сметы 02-01-02</td>
@@ -315,8 +326,8 @@
                      <td class="center nowrap" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">1</td>
                      <td title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo/estimateNumber&#xA;Назначение: Номер исходной сметы (sourceEstimateInfo/estimateNumber)">02-01-02</td>
                      <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo/estimateName&#xA;Назначение: Наименование исходной сметы (sourceEstimateInfo/estimateName)">Конструктивные решения. Фундаменты</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (Work/Name, Work/Prefix, Work/Code)">Уплотнение грунта пневматическими трамбовками, группа грунтов: 1-2 (ФЕР, код: 01-02-005-01)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/Unit&#xA;Назначение: Единица измерения (Work/Unit)">100 м3</td>
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">Уплотнение грунта пневматическими трамбовками, группа грунтов: 1-2 (ФЕР, код: 01-02-005-01)</td>
+                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">100 м3</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/alteration, alterationRef=base)">10</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020-11">8</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020-11"></td>
@@ -330,8 +341,8 @@
                      <td class="center nowrap" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">2</td>
                      <td title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo/estimateNumber&#xA;Назначение: Номер исходной сметы (sourceEstimateInfo/estimateNumber)">02-01-02</td>
                      <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo/estimateName&#xA;Назначение: Наименование исходной сметы (sourceEstimateInfo/estimateName)">Конструктивные решения. Фундаменты</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (Work/Name, Work/Prefix, Work/Code)">Устройство бетонной подготовки (ФЕР, код: 06-01-001-01)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/Unit&#xA;Назначение: Единица измерения (Work/Unit)">100 м3</td>
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">Устройство бетонной подготовки (ФЕР, код: 06-01-001-01)</td>
+                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">100 м3</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/alteration, alterationRef=base)">7</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020-11">8</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020-11">1</td>
@@ -344,8 +355,8 @@
                      <td class="center nowrap" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">2.1</td>
                      <td title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo/estimateNumber&#xA;Назначение: Номер исходной сметы (sourceEstimateInfo/estimateNumber)">02-01-02</td>
                      <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo/estimateName&#xA;Назначение: Наименование исходной сметы (sourceEstimateInfo/estimateName)">Конструктивные решения. Фундаменты</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (Work/Name, Work/Prefix, Work/Code)">   Смеси бетонные тяжелого бетона (БСТ), класс В7,5 (М100) (код: 04.1.02.05-0074)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/Unit&#xA;Назначение: Единица измерения (Work/Unit)">м3</td>
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">   Смеси бетонные тяжелого бетона (БСТ), класс В7,5 (М100) (код: 04.1.02.05-0074)</td>
+                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">м3</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/alteration, alterationRef=base)">800</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020-11">950</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020-11">150</td>

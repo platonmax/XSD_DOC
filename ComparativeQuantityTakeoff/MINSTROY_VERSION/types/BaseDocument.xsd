@@ -5,7 +5,7 @@
   xmlns:ct="http://types/CommonTypes.xsd"
   xmlns:bd="http://types/BaseDocument.xsd"
   targetNamespace="http://types/BaseDocument.xsd" attributeFormDefault="unqualified"
-  elementFormDefault="qualified" version="1.09">
+  elementFormDefault="qualified" version="1.10">
 
   <xs:import namespace="http://types/CommonTypes.xsd" schemaLocation="CommonTypes.xsd"/>
   <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
@@ -42,7 +42,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="documentDate" type="ct:dateType" minOccurs="0">
+      <xs:element name="documentDate" type="ct:dateType">
         <xs:annotation>
           <xs:documentation>Дата составления сопоставительной ведомости объемов работ
           </xs:documentation>

@@ -1,10 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<xs:schema
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:bt="http://types/BaseTypes.xsd"
-  xmlns:ct="http://types/CommonTypes.xsd"
-  targetNamespace="http://types/CommonTypes.xsd" attributeFormDefault="unqualified"
-  elementFormDefault="qualified" version="1.10">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bt="http://types/BaseTypes.xsd"
+  xmlns:ct="http://types/CommonTypes.xsd" targetNamespace="http://types/CommonTypes.xsd"
+  attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.13">
 
   <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
 
@@ -127,17 +124,13 @@ id строятся по следующему принципу: "alt-ГГГГ-М
     <xs:annotation>
       <xs:documentation>Дата составления сопоставительной ведомости объемов работ
       </xs:documentation>
+      <xs:documentation>Дата указывается календарной датой (дд.мм.гггг); элементы year, month и day обязательны.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element name="year" type="xs:unsignedShort">
         <xs:annotation>
           <xs:documentation>Год
           </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="quarter" type="xs:unsignedByte">
-        <xs:annotation>
-          <xs:documentation>Квартал</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="month" type="xs:unsignedByte">
@@ -191,7 +184,7 @@ id строятся по следующему принципу: "alt-ГГГГ-М
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="section" type="ct:sectionType" minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="section" type="ct:sectionType" minOccurs="1" maxOccurs="unbounded">
               <xs:annotation>
                 <xs:documentation>Раздел локального сметного расчета</xs:documentation>
               </xs:annotation>
@@ -214,21 +207,9 @@ id строятся по следующему принципу: "alt-ГГГГ-М
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="name" type="xs:string">
+      <xs:element name="sectionName" type="xs:string">
         <xs:annotation>
           <xs:documentation>Наименование раздела</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="sectionNumber" type="bt:sectionNumberType">
-        <xs:annotation>
-          <xs:documentation>Номер раздела</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="description" type="xs:string" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation>????
-Это свободная строка?
-          </xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="itemList" minOccurs="0">
@@ -259,6 +240,11 @@ id строятся по следующему принципу: "alt-ГГГГ-М
         </xs:complexType>
       </xs:element>
     </xs:sequence>
+    <xs:attribute name="sectionNumber" type="bt:sectionNumberType" use="required">
+      <xs:annotation>
+        <xs:documentation>Номер раздела</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
 
@@ -318,20 +304,21 @@ id строятся по следующему принципу: "alt-ГГГГ-М
     <xs:complexContent>
       <xs:extension base="ct:itemBaseType">
         <xs:sequence>
-            <xs:element name="itemList" minOccurs="0">
-              <xs:annotation>
-                <xs:documentation>Позиции локального сметного расчета третьего уровня</xs:documentation>
-              </xs:annotation>
-              <xs:complexType>
-                <xs:sequence>
-                <xs:element name="item" type="ct:itemLevel3Type" minOccurs="0" maxOccurs="unbounded" block="substitution">
+          <xs:element name="itemList" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Позиции локального сметного расчета третьего уровня</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="item" type="ct:itemLevel3Type" minOccurs="0" maxOccurs="unbounded"
+                  block="substitution">
                   <xs:annotation>
                     <xs:documentation>Позиция локального сметного расчета третьего уровня вложенности. Например, дополнительная перевозка к ресурсу, который добавлен к работе</xs:documentation>
                   </xs:annotation>
                 </xs:element>
-                </xs:sequence>
-              </xs:complexType>
-            </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -421,25 +408,25 @@ id строятся по следующему принципу: "alt-ГГГГ-М
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="name" type="xs:string">
+            <xs:element name="workName" type="xs:string">
               <xs:annotation>
                 <xs:documentation>Наименование позиции локального сметного расчета
                 </xs:documentation>
               </xs:annotation>
             </xs:element>
-            <xs:element name="unit" type="xs:string">
+            <xs:element name="measurementUnit" type="xs:string">
               <xs:annotation>
                 <xs:documentation>Единица измерения локального сметного расчета
                 </xs:documentation>
               </xs:annotation>
             </xs:element>
-            <xs:element name="prefix" type="xs:string" minOccurs="0">
+            <xs:element name="normCodePrefix" type="xs:string" minOccurs="0">
               <xs:annotation>
                 <xs:documentation>Префикс шифра сметной нормы или единичной расценки локального сметного расчета
                 </xs:documentation>
               </xs:annotation>
             </xs:element>
-            <xs:element name="code" type="xs:string" minOccurs="0">
+            <xs:element name="normCode" type="xs:string" minOccurs="0">
               <xs:annotation>
                 <xs:documentation>Шифр сметной нормы или единичной расценки в локальном сметном расчете
                 </xs:documentation>
@@ -515,7 +502,8 @@ id строятся по следующему принципу: "alt-ГГГГ-М
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="documentReference" type="ct:documentReferenceType" maxOccurs="unbounded">
+            <xs:element name="documentReference" type="ct:documentReferenceType"
+              maxOccurs="unbounded">
               <xs:annotation>
                 <xs:documentation>
                   <text>
@@ -554,7 +542,8 @@ id строятся по следующему принципу: "alt-ГГГГ-М
             </xs:annotation>
             <xs:complexType>
               <xs:sequence>
-                <xs:element name="item" type="ct:itemLevel2Type" minOccurs="0" maxOccurs="unbounded" block="substitution">
+                <xs:element name="item" type="ct:itemLevel2Type" minOccurs="0" maxOccurs="unbounded"
+                  block="substitution">
                   <xs:annotation>
                     <xs:documentation>Позиция локального сметного расчета. Второй уровень вложенности</xs:documentation>
                     <xs:documentation>Подстановки отключены (block="substitution"), свободные строки на этом уровне недопустимы.</xs:documentation>

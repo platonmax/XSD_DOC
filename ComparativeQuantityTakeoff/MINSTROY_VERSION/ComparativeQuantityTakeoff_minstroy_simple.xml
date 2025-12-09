@@ -27,7 +27,6 @@
   <bd:objectNumber>CQTF-001</bd:objectNumber>
   <bd:documentDate>
     <year>2025</year>
-    <quarter>1</quarter>
     <month>03</month>
     <day>01</day>
   </bd:documentDate>
@@ -86,14 +85,13 @@
       </sourceEstimateInfo>
 
       <sectionList>
-        <section>
-          <name>Основные работы</name>
-          <sectionNumber>1</sectionNumber>
+        <section sectionNumber="1">
+          <sectionName>Основные работы</sectionName>
           <itemList>
             <item itemPositionId="1">
               <work>
-                <name>Бетонирование плиты</name>
-                <unit>м³</unit>
+                <workName>Бетонирование плиты</workName>
+                <measurementUnit>м³</measurementUnit>
               </work>
               <volumeList>
                 <alteration alterationRef="base">
@@ -147,8 +145,8 @@
 
             <item itemPositionId="2">
               <work>
-                <name>Подготовка основания</name>
-                <unit>м³</unit>
+                <workName>Подготовка основания</workName>
+                <measurementUnit>м³</measurementUnit>
               </work>
               <volumeList>
                 <alteration alterationRef="base">
@@ -197,8 +195,8 @@
               <itemList>
                 <item itemPositionId="1">
                   <work>
-                    <name>Очистка площадки</name>
-                    <unit>м³</unit>
+                    <workName>Очистка площадки</workName>
+                    <measurementUnit>м³</measurementUnit>
                   </work>
                   <volumeList>
                     <alteration alterationRef="base">
@@ -236,8 +234,8 @@
 
                 <item itemPositionId="2">
                   <work>
-                    <name>Устройство опалубки</name>
-                    <unit>м³</unit>
+                    <workName>Устройство опалубки</workName>
+                    <measurementUnit>м³</measurementUnit>
                   </work>
                   <volumeList>
                     <alteration alterationRef="base">
@@ -280,8 +278,8 @@
                   <itemList>
                     <item itemPositionId="1">
                       <work>
-                        <name>Подача бетона</name>
-                        <unit>м³</unit>
+                        <workName>Подача бетона</workName>
+                        <measurementUnit>м³</measurementUnit>
                       </work>
                       <volumeList>
                         <alteration alterationRef="base">
@@ -319,8 +317,8 @@
 
                     <item itemPositionId="2">
                       <work>
-                        <name>Контроль качества опалубки</name>
-                        <unit>шт</unit>
+                        <workName>Контроль качества опалубки</workName>
+                        <measurementUnit>шт</measurementUnit>
                       </work>
                       <volumeList>
                         <alteration alterationRef="base">
@@ -361,8 +359,8 @@
 
             <item itemPositionId="3">
               <work>
-                <name>Армирование</name>
-                <unit>т</unit>
+                <workName>Армирование</workName>
+                <measurementUnit>т</measurementUnit>
               </work>
               <volumeList>
                 <alteration alterationRef="base">
