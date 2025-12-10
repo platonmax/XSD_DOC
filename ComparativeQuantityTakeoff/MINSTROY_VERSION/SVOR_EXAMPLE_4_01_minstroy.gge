@@ -6,13 +6,13 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://cqt/ComparativeQuantityTakeoff.xsd ComparativeQuantityTakeoff.xsd http://types/BaseDocument.xsd types/BaseDocument.xsd http://types/CommonTypes.xsd types/CommonTypes.xsd http://types/BaseTypes.xsd types/BaseTypes.xsd">
   <bd:documentMeta>
-    <soft>
-      <name>Сметная программа</name>
-      <version>1.0</version>
-    </soft>
+    <software>
+      <softwareName>Сметная программа</softwareName>
+      <softwareVersion>1.0</softwareVersion>
+    </software>
     <file>
-      <type>Сводная ведомость объемов работ</type>
-      <version>1.0</version>
+      <fileType>Сводная ведомость объемов работ</fileType>
+      <schemaVersion>1.0</schemaVersion>
     </file>
   </bd:documentMeta>
   <bd:accessLevelCode>общедоступная информация</bd:accessLevelCode>
@@ -26,25 +26,25 @@
   <bd:customerName>ООО "Демо Заказчик"</bd:customerName>
   <bd:signatures>
     <bd:composer>
-      <name>И. О. Составитель</name>
-      <position>Инженер</position>
+      <personName>И. О. Составитель</personName>
+      <positionName>Инженер</positionName>
     </bd:composer>
     <bd:verifier>
-      <name>П. П. Проверяющий</name>
-      <position>Главный инженер</position>
+      <personName>П. П. Проверяющий</personName>
+      <positionName>Главный инженер</positionName>
     </bd:verifier>
   </bd:signatures>
   <bd:fileList>
     <bd:file>
-      <id>1</id>
+      <fileInternalId>1</fileInternalId>
       <fileName>1310.0.00-01-КР1 том 5.1.pdf</fileName>
     </bd:file>
     <bd:file>
-      <id>2</id>
+      <fileInternalId>2</fileInternalId>
       <fileName>КР2 том 5.2.pdf</fileName>
     </bd:file>
     <bd:file>
-      <id>3</id>
+      <fileInternalId>3</fileInternalId>
       <fileName>1310.0.00-01-СМ2 ВОР.pdf</fileName>
     </bd:file>
   </bd:fileList>
@@ -59,11 +59,8 @@
     </bd:alteration>
   </bd:alterationList>
   <bd:estimateList>
-    <bd:estimate id="1">
-      <sourceEstimateInfo>
-        <estimateNumber>02-01-01</estimateNumber>
-        <estimateName>Капитальный ремонт автомобильной дороги А-156 подъездная дорога от автомобильной дороги А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха "Архыз" и к специализированной астрофизической обсерватории Российской академии наук на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</estimateName>
-      </sourceEstimateInfo>
+    <bd:estimate estimateNumber="02-01-01">
+      <estimateName>Капитальный ремонт автомобильной дороги А-156 подъездная дорога от автомобильной дороги А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха "Архыз" и к специализированной астрофизической обсерватории Российской академии наук на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</estimateName>
       <sectionList><section sectionNumber="1">
         <sectionName>Инженерное обеспечение</sectionName>
         <itemList>
@@ -271,11 +268,8 @@
         </itemList></item>
       </itemList></section>
     </sectionList></bd:estimate>
-    <bd:estimate id="2">
-      <sourceEstimateInfo>
-        <estimateNumber>02-01-02</estimateNumber>
-        <estimateName>Конструктивные решения. Фундаменты</estimateName>
-      </sourceEstimateInfo>
+    <bd:estimate estimateNumber="02-01-02">
+      <estimateName>Конструктивные решения. Фундаменты</estimateName>
       <sectionList><section sectionNumber="1">
         <sectionName>Раздел 1 сметы 02-01-02</sectionName>
         <itemList><item itemPositionId="1">

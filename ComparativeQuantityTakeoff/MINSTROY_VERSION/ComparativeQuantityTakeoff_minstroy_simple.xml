@@ -12,13 +12,13 @@
                       http://types/BaseTypes.xsd types/BaseTypes.xsd">
 
   <bd:documentMeta>
-    <soft>
-      <name>CQTF Demo</name>
-      <version>1.0</version>
-    </soft>
+    <software>
+      <softwareName>CQTF Demo</softwareName>
+      <softwareVersion>1.0</softwareVersion>
+    </software>
     <file>
-      <type>Сводная ведомость объемов работ</type>
-      <version>1.0</version>
+      <fileType>Сводная ведомость объемов работ</fileType>
+      <schemaVersion>1.0</schemaVersion>
     </file>
   </bd:documentMeta>
 
@@ -34,26 +34,26 @@
 
   <bd:signatures>
     <bd:composer>
-      <name>И. О. Составитель</name>
-      <position>Инженер</position>
+      <personName>И. О. Составитель</personName>
+      <positionName>Инженер</positionName>
     </bd:composer>
     <bd:verifier>
-      <name>П. П. Проверяющий</name>
-      <position>Главный инженер</position>
+      <personName>П. П. Проверяющий</personName>
+      <positionName>Главный инженер</positionName>
     </bd:verifier>
   </bd:signatures>
 
   <bd:fileList>
     <bd:file>
-      <id>1</id>
+      <fileInternalId>1</fileInternalId>
       <fileName>spec-sheet.pdf</fileName>
     </bd:file>
     <bd:file>
-      <id>2</id>
+      <fileInternalId>2</fileInternalId>
       <fileName>structural-plan.dwg</fileName>
     </bd:file>
     <bd:file>
-      <id>3</id>
+      <fileInternalId>3</fileInternalId>
       <fileName>ifc-model.ifc</fileName>
     </bd:file>
   </bd:fileList>
@@ -78,11 +78,8 @@
   </bd:alterationList>
 
   <bd:estimateList>
-    <bd:estimate id="1">
-      <sourceEstimateInfo>
-        <estimateNumber>ЛС-100</estimateNumber>
-        <estimateName>Демо без рекурсии</estimateName>
-      </sourceEstimateInfo>
+    <bd:estimate estimateNumber="ЛС-100">
+      <estimateName>Демо без рекурсии</estimateName>
 
       <sectionList>
         <section sectionNumber="1">

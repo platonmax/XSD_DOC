@@ -4,7 +4,7 @@
   xmlns:cqt="http://cqt/ComparativeQuantityTakeoff.xsd"
   xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
   targetNamespace="http://cqt/ComparativeQuantityTakeoff.xsd" attributeFormDefault="unqualified"
-  elementFormDefault="qualified" version="1.14">
+  elementFormDefault="qualified" version="1.13">
 
   <xs:import namespace="http://types/BaseDocument.xsd" schemaLocation="types/BaseDocument.xsd"/>
   <xs:import namespace="http://types/CommonTypes.xsd" schemaLocation="types/CommonTypes.xsd"/>
@@ -37,7 +37,7 @@ xsi:noNamespaceSchemaLocation = "ConsolidateQuantityTakeoff-4_01.xsd".
     </xs:key>
     <xs:key name="fileById">
       <xs:selector xpath="bd:fileList/bd:file"/>
-      <xs:field xpath="ct:fileInternalId"/>
+      <xs:field xpath="ct:id"/>
     </xs:key>
   </xs:element>
 

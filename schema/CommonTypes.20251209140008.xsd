@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bt="http://types/BaseTypes.xsd"
   xmlns:ct="http://types/CommonTypes.xsd" targetNamespace="http://types/CommonTypes.xsd"
-  attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.15">
+  attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.13">
 
   <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
 
@@ -12,7 +12,7 @@
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="fileType">
+      <xs:element name="type">
         <xs:annotation>
           <xs:documentation>Тип передаваемого файла: СВОР - Сопоставительная ведомость объемов работ
           </xs:documentation>
@@ -28,7 +28,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
-      <xs:element name="schemaVersion" default="1.0">
+      <xs:element name="version" default="1.0">
         <xs:annotation>
           <xs:documentation>Номер версии схемы</xs:documentation>
         </xs:annotation>
@@ -84,7 +84,7 @@ id строятся по следующему принципу: "alt-ГГГГ-М
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="software">
+      <xs:element name="soft">
         <xs:annotation>
           <xs:documentation>Программный комплекс
           </xs:documentation>
@@ -96,13 +96,13 @@ id строятся по следующему принципу: "alt-ГГГГ-М
             </xs:documentation>
           </xs:annotation>
           <xs:sequence>
-            <xs:element name="softwareName" type="xs:string">
+            <xs:element name="name" type="xs:string">
               <xs:annotation>
                 <xs:documentation>Наименование программного комплекса
                 </xs:documentation>
               </xs:annotation>
             </xs:element>
-            <xs:element name="softwareVersion" type="xs:string">
+            <xs:element name="version" type="xs:string">
               <xs:annotation>
                 <xs:documentation>Версия программного комплекса
                 </xs:documentation>
@@ -157,10 +157,25 @@ id строятся по следующему принципу: "alt-ГГГГ-М
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="estimateName" type="xs:string">
+      <xs:element name="sourceEstimateInfo">
         <xs:annotation>
-          <xs:documentation>Наименование локального сметного расчета</xs:documentation>
+
+          <xs:documentation>Информация по локальному сметному расчету (наименование и номер)</xs:documentation>
         </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="estimateNumber" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Номер локального сметного расчета</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="estimateName" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Наименование локального сметного расчета</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
       </xs:element>
 
       <xs:element name="sectionList">
@@ -178,9 +193,10 @@ id строятся по следующему принципу: "alt-ГГГГ-М
         </xs:complexType>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="estimateNumber" type="xs:string" use="required">
+    <xs:attribute name="id" type="bt:estimateIdType" use="required">
       <xs:annotation>
-        <xs:documentation>Номер локального сметного расчета</xs:documentation>
+        <xs:documentation>Идентификатор локальной сметы. Задается целым числом
+        </xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -314,7 +330,7 @@ id строятся по следующему принципу: "alt-ГГГГ-М
       <xs:documentation>Описание связи позиции с обосновывающими документами.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="fileInternalId" type="bt:fileInternalIdType" minOccurs="1">
+      <xs:element name="fileInternalId" type="xs:positiveInteger" minOccurs="1">
         <xs:annotation>
           <xs:documentation><text>Уникальный идентификатор файла.</text> </xs:documentation>
         </xs:annotation>
@@ -590,13 +606,13 @@ id строятся по следующему принципу: "alt-ГГГГ-М
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="personName" type="xs:string">
+      <xs:element name="name" type="xs:string">
         <xs:annotation>
           <xs:documentation>ФИО
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="positionName" type="xs:string">
+      <xs:element name="position" type="xs:string">
         <xs:annotation>
           <xs:documentation>Должность
           </xs:documentation>
@@ -613,7 +629,7 @@ id строятся по следующему принципу: "alt-ГГГГ-М
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="fileInternalId" type="bt:fileInternalIdType">
+      <xs:element name="id" type="bt:fileInternalIdType">
         <xs:annotation>
           <xs:documentation>Уникальный идентификатор файла для ссылок (id)
           </xs:documentation>

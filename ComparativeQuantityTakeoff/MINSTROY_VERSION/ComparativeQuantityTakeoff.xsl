@@ -65,7 +65,7 @@
 
     <xsl:variable name="fileInternalId" select="$ref/*:fileInternalId"/>
 
-    <xsl:variable name="fileName" select="(root($ref)/cqt:comparativeQuantityTakeoff/bd:fileList/bd:file[ct:id=$fileInternalId]/ct:fileName)[1]"/>
+    <xsl:variable name="fileName" select="(root($ref)/cqt:comparativeQuantityTakeoff/bd:fileList/bd:file[ct:fileInternalId=$fileInternalId]/ct:fileName)[1]"/>
 
     <xsl:variable name="fileLabel" select="if ($fileName) then $fileName else concat('Файл #', $fileInternalId)"/>
 
@@ -449,19 +449,15 @@
 
     <xsl:for-each select="$estimates">
       <xsl:variable name="estimate" select="."/>
-      <xsl:variable name="source" select="$estimate/*:sourceEstimateInfo"/>
+      <xsl:variable name="estimate-number" select="normalize-space(@estimateNumber)"/>
+      <xsl:variable name="estimate-name" select="normalize-space(*:estimateName)"/>
       <tr class="estimate-row">
         <td colspan="{$column-count}"
-            title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo','Исходная смета (номер, наименование, дата)')}">
+            title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber|estimateName','Исходная смета (номер, наименование)')}">
           <xsl:text>Смета </xsl:text>
-          <xsl:value-of select="normalize-space($source/*:estimateNumber)"/>
+          <xsl:value-of select="$estimate-number"/>
           <xsl:text> - </xsl:text>
-          <xsl:value-of select="normalize-space($source/*:estimateName)"/>
-          <xsl:if test="$source/*:date">
-            <xsl:text> (</xsl:text>
-            <xsl:value-of select="normalize-space($source/*:date/@display)"/>
-            <xsl:text>)</xsl:text>
-          </xsl:if>
+          <xsl:value-of select="$estimate-name"/>
         </td>
       </tr>
         <xsl:call-template name="render-sections">
@@ -470,7 +466,8 @@
           <xsl:with-param name="stages-order" select="$stages-order"/>
           <xsl:with-param name="base-label" select="$base-label"/>
           <xsl:with-param name="column-count" select="$column-count"/>
-          <xsl:with-param name="estimate-source" select="$source"/>
+          <xsl:with-param name="estimate-number" select="$estimate-number"/>
+          <xsl:with-param name="estimate-name" select="$estimate-name"/>
           <xsl:with-param name="base-stage" select="$base-stage"/>
         </xsl:call-template>
     </xsl:for-each>
@@ -481,7 +478,8 @@
     <xsl:param name="stages-order" as="element()*"/>
     <xsl:param name="base-label" as="xs:string"/>
     <xsl:param name="column-count" as="xs:integer"/>
-    <xsl:param name="estimate-source" as="element()?"/>
+    <xsl:param name="estimate-number" as="xs:string"/>
+    <xsl:param name="estimate-name" as="xs:string"/>
     <xsl:param name="base-stage" as="element()?"/>
 
     <xsl:for-each select="$sections">
@@ -506,7 +504,8 @@
               <xsl:with-param name="item" select="."/>
               <xsl:with-param name="stages-order" select="$stages-order"/>
               <xsl:with-param name="base-label" select="$base-label"/>
-              <xsl:with-param name="estimate-source" select="$estimate-source"/>
+              <xsl:with-param name="estimate-number" select="$estimate-number"/>
+              <xsl:with-param name="estimate-name" select="$estimate-name"/>
               <xsl:with-param name="base-stage" select="$base-stage"/>
             </xsl:call-template>
           </xsl:otherwise>
@@ -519,7 +518,8 @@
           <xsl:with-param name="stages-order" select="$stages-order"/>
           <xsl:with-param name="base-label" select="$base-label"/>
           <xsl:with-param name="column-count" select="$column-count"/>
-          <xsl:with-param name="estimate-source" select="$estimate-source"/>
+          <xsl:with-param name="estimate-number" select="$estimate-number"/>
+          <xsl:with-param name="estimate-name" select="$estimate-name"/>
           <xsl:with-param name="base-stage" select="$base-stage"/>
         </xsl:call-template>
       </xsl:if>
@@ -530,7 +530,8 @@
     <xsl:param name="item" as="element()"/>
     <xsl:param name="stages-order" as="element()*"/>
     <xsl:param name="base-label" as="xs:string"/>
-    <xsl:param name="estimate-source" as="element()?"/>
+    <xsl:param name="estimate-number" as="xs:string"/>
+    <xsl:param name="estimate-name" as="xs:string"/>
     <xsl:param name="base-stage" as="element()?"/>
     <xsl:param name="depth" as="xs:integer" select="0"/>
     <xsl:param name="display-prefix" as="xs:string" select="''"/>
@@ -561,11 +562,11 @@
       <td class="center nowrap" title="{$pos-title}">
         <xsl:value-of select="$display-position"/>
       </td>
-      <td title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo/estimateNumber','Номер исходной сметы (sourceEstimateInfo/estimateNumber)')}">
-        <xsl:value-of select="normalize-space($estimate-source/*:estimateNumber)"/>
+      <td title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber','Номер исходной сметы (атрибут estimateNumber)')}">
+        <xsl:value-of select="$estimate-number"/>
       </td>
-      <td class="col-estimate-name" title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sourceEstimateInfo/estimateName','Наименование исходной сметы (sourceEstimateInfo/estimateName)')}">
-        <xsl:value-of select="normalize-space($estimate-source/*:estimateName)"/>
+      <td class="col-estimate-name" title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/estimateName','Наименование исходной сметы (estimateName)')}">
+        <xsl:value-of select="$estimate-name"/>
       </td>
       <td class="col-work" title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work','Работа (workName, normCodePrefix, normCode)')}">
         <xsl:value-of select="$indent"/>
@@ -683,7 +684,8 @@
         <xsl:with-param name="item" select="."/>
         <xsl:with-param name="stages-order" select="$stages-order"/>
         <xsl:with-param name="base-label" select="$base-label"/>
-        <xsl:with-param name="estimate-source" select="$estimate-source"/>
+        <xsl:with-param name="estimate-number" select="$estimate-number"/>
+        <xsl:with-param name="estimate-name" select="$estimate-name"/>
         <xsl:with-param name="base-stage" select="$base-stage"/>
         <xsl:with-param name="depth" select="$depth + 1"/>
         <xsl:with-param name="display-prefix" select="$display-position"/>
