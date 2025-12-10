@@ -2174,7 +2174,7 @@
 				<xsl:value-of select="./Unit"/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Consumption, 7)'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./Quantity, 7)'/>
 			</td>
 			<td>
 				<xsl:variable name="target">
@@ -2198,7 +2198,7 @@
 			</td>
 			
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./ConsumptionTotal, 7)
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./QuantityTotal, 7)
 
 '/>
 			</td>
@@ -2243,7 +2243,7 @@
 				<xsl:value-of select="./Unit"/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Consumption, 7)'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./Quantity, 7)'/>
 			</td>
 			<td> 
 				<xsl:variable name="target">
@@ -2264,7 +2264,7 @@
 '/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./ConsumptionTotal, 7)
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./QuantityTotal, 7)
 
 '/>
 			</td>
@@ -2327,7 +2327,7 @@
 				<xsl:value-of select="./Unit"/>
 			</td>
 			<td>
-				<!--<xsl:value-of select='util:formatNumberWithZeroCheck(./Consumption, 7)'/>-->
+				<!--<xsl:value-of select='util:formatNumberWithZeroCheck(./Quantity, 7)'/>-->
 			</td>
 			<td>
 				
@@ -2348,8 +2348,8 @@
 				
 			</td>
 			<td>
-<!--				<xsl:value-of select='util:formatNumberWithZeroCheck(./ConsumptionTotal, 7)'/>-->
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./ConsumptionTotal, 7)'/>
+<!--				<xsl:value-of select='util:formatNumberWithZeroCheck(./QuantityTotal, 7)'/>-->
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./QuantityTotal, 7)'/>
 			</td>
 			<td>
 				<xsl:value-of select='util:formatNumberWithZeroCheck(./PricePerUnitBase, 2)'/>
@@ -2404,7 +2404,7 @@
 				<xsl:value-of select="./Unit"/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Consumption, 7)'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./Quantity, 7)'/>
 			</td>
 			<td>
 				
@@ -2425,8 +2425,8 @@
 				
 			</td>
 			<td>
-<!--				<xsl:value-of select="./ConsumptionTotal"/>-->
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./ConsumptionTotal, 7)'/>
+<!--				<xsl:value-of select="./QuantityTotal"/>-->
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./QuantityTotal, 7)'/>
 			</td>
 			<td>
 				<xsl:value-of select="util:formatNumberWithZeroCheck(./PricePerUnitBase, 2)"/>
@@ -2483,7 +2483,7 @@
 				<xsl:value-of select="./Unit"/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Consumption, 7)'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./Quantity, 7)'/>
 			</td>
 			<td>
 				
@@ -2504,8 +2504,8 @@
 				
 			</td>
 			<td>
-<!--				<xsl:value-of select="./ConsumptionTotal"/>-->
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./ConsumptionTotal, 7)'/>
+<!--				<xsl:value-of select="./QuantityTotal"/>-->
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./QuantityTotal, 7)'/>
 			</td>
 			<td>
 				<xsl:value-of select="util:formatNumberWithZeroCheck(./PricePerUnitBase, 2)"/>
@@ -2588,7 +2588,7 @@
 				<xsl:value-of select="./Unit"/>
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./Consumption, 7)'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./Quantity, 7)'/>
 			</td>
 			<td>
 				
@@ -2610,7 +2610,7 @@
 				
 			</td>
 			<td>
-				<xsl:value-of select='util:formatNumberWithZeroCheck(./ConsumptionTotal, 7)'/>
+				<xsl:value-of select='util:formatNumberWithZeroCheck(./QuantityTotal, 7)'/>
 			</td>
 			<td>
 				<xsl:value-of select="util:formatNumberWithZeroCheck(./PricePerUnitBase, 2)"/>

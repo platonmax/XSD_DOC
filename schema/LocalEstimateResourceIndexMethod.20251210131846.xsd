@@ -476,68 +476,6 @@ xsi:noNamespaceSchemaLocation = "LocalEstimateResourceIndexMethod-3_01.xsd".
         </xs:sequence>
     </xs:complexType>
 
-    <xs:group name="transportQuantityGroup">
-        <xs:sequence>
-            <xs:element name="Quantity" type="xs:decimal" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation><text>Количество в соответствии с проектной и (или) иной технической документацией и с учетом единицы измерения позиции (затрат на перевозку)</text>
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="QuantityTotal" type="xs:decimal">
-                <xs:annotation>
-                    <xs:documentation>Результирующее количество на весь объем и с учетом коэффициентов к количеству. 
-Округление до 7-ми знаков. Округление производится один раз после всех математических операций.
-                       
-                        
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
-        </xs:sequence>
-    </xs:group>
-
-    <xs:group name="machinistQuantityGroup">
-        <xs:sequence>
-            <xs:element name="Quantity" type="xs:decimal">
-                <xs:annotation>
-                    <xs:documentation><text>Количество чел.-ч. машиниста на единицу измерения сметной нормы.</text>
-<formula> Consumption = Machine.Consumption (Количество маш.-ч. машины на единицу измерения сметной нормы) * Count (Количество машинистов в составе машины)). Округление до 7-ми знаков. Округление производится один раз после всех математических операций.</formula>
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="QuantityTotal" type="xs:decimal">
-                <xs:annotation>
-                    <xs:documentation><text>Результирующее количество строительного ресурса на весь объем сметной нормы и с учетом коэффициентов к количеству</text>
-                        <formula> ConsumptionTotal = Machinist.Consumption (Количество чел.-ч. машиниста на единицу измерения сметной нормы) * QuantityTotal (Результирующий объем работ по расценке) * Coefficients (Коэффициенты применяемые к количеству). Округление до 7-ми знаков. Округление производится один раз после всех математических операций.</formula>
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
-        </xs:sequence>
-    </xs:group>
-
-    <xs:group name="resourceQuantityGroup">
-        <xs:sequence>
-            <xs:element name="Quantity" type="xs:decimal">
-                <xs:annotation>
-                    <xs:documentation><text>Количество строительного ресурса на единицу измерения сметной нормы.</text>
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="QuantityFormula" type="xs:string" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>Формула, использовавшаяся для расчета количества строительного ресурса. Информационное поле.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="QuantityTotal" type="xs:decimal">
-                <xs:annotation>
-                    <xs:documentation><text>Результирующее количество строительного ресурса на весь объем сметной нормы и с учетом коэффициентов к количеству.</text>
-                        <formula> ConsumptionTotal = Consumption (Количество ресурса на единицу измерения сметной нормы) * QuantityTotal (Результирующий объем работ по расценке) * Coefficients (Коэффициенты применяемые к количеству). Округление до 7-ми знаков. Округление производится один раз после всех математических операций.</formula>
-                        
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
-        </xs:sequence>
-    </xs:group>
     <xs:complexType name="TDate">
         <xs:annotation>
             <xs:documentation>Дата составления локального сметного расчета.</xs:documentation>
@@ -1189,10 +1127,15 @@ xsi:noNamespaceSchemaLocation = "LocalEstimateResourceIndexMethod-3_01.xsd".
                     <xs:documentation>Признак того, что стоимость перевозки определена по результатам конъюнктурного анализа. True - да, False или отсутствие - нет.</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:group ref="transportQuantityGroup"/>
+            <xs:element name="Consumption" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><text>Количество в соответствии с проектной и (или) иной технической документацией и с учетом единицы измерения позиции (затрат на перевозку)</text>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
             <xs:element name="Unit" type="xs:string">
                 <xs:annotation>
-                    <xs:documentation><text>Единица измерения позиции (затрат на перевозку)</text>
+                    <xs:documentation><text>Единица измерения позиции (затрат на перевозку)</text>  
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -1300,7 +1243,13 @@ xsi:noNamespaceSchemaLocation = "LocalEstimateResourceIndexMethod-3_01.xsd".
                     <xs:documentation>Средний разряд машиниста.</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:group ref="machinistQuantityGroup"/>
+            <xs:element name="Consumption" type="xs:decimal">
+                <xs:annotation>
+                    <xs:documentation><text>Количество чел.-ч. машиниста на единицу измерения сметной нормы.</text>
+<formula> Consumption = Machine.Consumption (Количество маш.-ч. машины на единицу измерения сметной нормы) * Count (Количество машинистов в составе машины)). Округление до 7-ми знаков. Округление производится один раз после всех математических операций.</formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
             <xs:element name="Count">
                 <xs:annotation>
                     <xs:documentation><text>Количество машинистов в составе машины.</text>
@@ -1424,7 +1373,17 @@ xsi:noNamespaceSchemaLocation = "LocalEstimateResourceIndexMethod-3_01.xsd".
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:group ref="resourceQuantityGroup"/>
+            <xs:element name="Consumption" type="xs:decimal">
+                <xs:annotation>
+                    <xs:documentation><text>Количество строительного ресурса на единицу измерения сметной нормы.</text>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ConsumptionFormula" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Формула, использовавшаяся для расчета количества строительного ресурса. Информационное поле.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
             <xs:element name="Unit" type="xs:string">
                 <xs:annotation>
                     <xs:documentation><text>Единица измерения расхода ресурса.</text>  
