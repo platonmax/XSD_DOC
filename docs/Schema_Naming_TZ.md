@@ -39,7 +39,6 @@
    ```
 4. Поиск неиспользуемых типов:
    ```powershell
-   python tools/xsd-tools/find_unused_types.py ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff.xsd
    python tools/xsd-tools/check_unused_types_xmlschema.py ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff.xsd
    ```
 5. Валидация XSD и примера:

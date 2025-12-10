@@ -4,6 +4,11 @@
 
 Локальные дополнения для XSD_DOC (если появятся) добавляйте ниже.
 
+## Учёт задач по трекингу
+- Если работаем по задаче с номером из трекинг-системы (например, 1129), ведём короткую историю и текущий статус в Markdown-файле `<номер>.md`, который лежит в папке самой задачи (где её материалы/артефакты).
+- Имя файла — только номер задачи без префиксов/суффиксов.
+- В файле держим два блока: краткий контекст (понятный, но без бизнес-терминов/речи для бизнеса) и историю. В истории каждое значимое действие/ответ фиксируем лаконично: дата/время, что сделано, что осталось/блокеры; обновляем по мере прогресса.
+
 ## Дополнения из SVOR
 Перед любыми изменениями основной схемы ComparativeQuantityTakeoff (файлы `ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff.xsd` и зеркальные копии в `schema/ComparativeQuantityTakeoff*.xsd`) выполняйте полный чек-лист:
 
@@ -26,15 +31,11 @@
      ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff.xsd `
      ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff.<timestamp>.xsd
    ```
-3. **Запустите быстрый поиск неиспользуемых типов**:
-   ```powershell
-   python tools/xsd-tools/find_unused_types.py ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff.xsd
-   ```
-4. **Подтвердите результаты через xmlschema**:
+3. **Подтвердите результаты через xmlschema (неиспользуемые типы)**:
    ```powershell
    python tools/xsd-tools/check_unused_types_xmlschema.py ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff.xsd
    ```
-5. **Проверьте валидность**:
+4. **Проверьте валидность**:
    ```powershell
    python -c "import xmlschema; xmlschema.XMLSchema('ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff.xsd'); print('Schema valid')"
    python -c "import xmlschema; schema = xmlschema.XMLSchema11('ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff.xsd'); schema.validate('ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff_minstroy_simple.xml'); print('Sample valid (XSD 1.1)')"
@@ -45,8 +46,8 @@
      ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff.xsd `
      ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff.<timestamp>.xsd
    ```
-6. **Всегда включайте в ответ пользователю/отчёт**: вывод `compare_xsd_types.py`, обоих скриптов про неиспользуемые типы и результаты валидаций (схема + примеры), даже если изменений нет.
-7. **После внесения правок повторно запустите `compare_xsd_types.py`** с тем же baseline, чтобы зафиксировать итоговый diff и приложить его в отчёт.
+5. **Всегда включайте в ответ пользователю/отчёт**: вывод `compare_xsd_types.py`, `check_unused_types_xmlschema.py` и результаты валидаций (схема + примеры), даже если изменений нет.
+6. **После внесения правок повторно запустите `compare_xsd_types.py`** с тем же baseline, чтобы зафиксировать итоговый diff и приложить его в отчёт.
 
 Только после выполнения шагов 1-7 можно редактировать схему (и завершать работу после повторного diff).
 
@@ -68,7 +69,6 @@
     ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff.xsd `
     ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff.<timestamp>.xsd
   # поиск неиспользуемых типов
-  python tools/xsd-tools/find_unused_types.py ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff.xsd
   python tools/xsd-tools/check_unused_types_xmlschema.py ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff.xsd
   # валидация XSD и примера
   python -c "import xmlschema; xmlschema.XMLSchema('ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff.xsd'); print('Schema valid')"
