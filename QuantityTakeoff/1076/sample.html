@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <style type="text/css" id="styles"> 
+                    h1 { font-family: Times New Roman; font-size: 14pt; font-weight:bold; text-align:center; width:100%; margin-top: 2em; }
+                    body,p,td { font-family: Times New Roman; font-size: 10pt; margin:0;}
+                    
+                    div.heading-left2 { margin-left:1.7em; display:flex; width:30%; margin-top: 0.5em; min-height: 1em;}
+                    div.heading-left2 .headingvalue { border-bottom: 1px solid black; flex: 1; }
+
+					div.heading-left3 { margin-left:1.7em; display:flex; width:50%; margin-top: 0.5em; min-height: 1em;}
+                    div.heading-left3 .headingvalue { border-bottom: 1px solid black; flex: 1; }
+                    
+                    div.helptext { text-align:center; width:100%; margin-top:0;}
+                    div.helptext-left{ text-align:left; width:100%; margin-top:0;}
+                    
+                    
+                    div.headingname { white-space: nowrap; margin-right:0.3em; margin-left:0.3em; flex-grow: *; min-height: 1em;}
+                    div.headingnametop { width:50%; margin-right:0.3em; margin-left:0.3em; flex-grow: *; min-height: 1em;}
+                    
+                    div.heading-left { display:flex; width:50%; margin-bottom: 0.5em; min-height: 1em;}
+                    div.heading-left .headingvalue { border-bottom: 1px solid black; flex-grow: 2;}
+                    
+                    div.spacer {flex: 1; }
+
+                    div.report { margin-bottom: 2em; margin-bottom: 2em; border-bottom:2px solid black; padding:0.5em 2em;}
+                    div.report h3 {font-size: 120%; font-weight; bold}
+
+                    div.heading {margin-right:2em; margin-left:2em; display:flex; margin-top: 1em; }
+                    div.heading .headingvalue { border-bottom: 1px solid black; width:100%; min-height: 1em;}
+                     
+                    div.headingblock { display:flex; flex-direction: column; flex:3; margin-top:2em}
+                    
+                    .fieldError { color: red; }
+                    td.fieldError { border: 1px solid red; }
+                    div.fieldError .headingvalue { border-bottom: 1px solid black; flex-grow: 2;}                     
+
+					.main { margin: 2em; }
+                    .center {text-align:center;}
+                    .right {text-align:right;}
+                    .left {text-align:left;}
+                    .leftmargin { padding-left:3em;}
+                    .nowrap {white-space: nowrap;}
+                    .top {vertical-align: top; }
+					.italic {font-style: italic; }
+					.bold {
+					font-weight: bold;
+					}
+					.inline {display: inline; }
+					.breakword {word-wrap: break-word; }
+					.indent {padding-left: 2em;}
+					.indent2 {padding-left: 4em;}
+					.indent3 {padding-left: 6em;}
+					
+                    .err { color:red; text-decoration: underline }
+                    .err A { color:red; text-decoration: underline }
+                    
+                    table {border-collapse: collapse; width:100%; margin:2em 0; }
+                    th {border: 1px solid black; padding: 0.5em; vertical-align: top;}
+					td {border: 0px; padding: 0.2em 0.5em; vertical-align: top; text-align:right}
+					td.tborder {border: 1px solid black}
+					td.btop {border-top: 1px solid black}
+					
+					
+					td.btop, td.bbottom {
+					border-top: 1px solid black;
+					border-bottom: 1px solid black;
+					}
+					
+					.nowrap {
+					white-space: nowrap;
+					}
+					
+
+                </style>
+   </head>
+   <body>
+      <div xmlns="" class="main">
+         <div class="heading-left2 nowrap">Дата и время выгрузки файла из сметного программного комплекса: .. </div>
+         <div class="heading" id="SoftName">
+            <div class="headingnametop">Наименование программного продукта</div>
+            <div class="headingvalue"> </div>
+         </div>
+         <div class="heading">
+            <div class="headingvalue center"></div>
+         </div>
+         <div class="helptext">(наименование стройки)</div>
+         <div class="heading">
+            <div class="headingvalue center"></div>
+         </div>
+         <div class="helptext">(наименование объекта капитального строительства)</div>
+         <h1 id="EstimateNum">Ведомость объемов работ № </h1>
+         <div class="heading">
+            <div class="headingvalue left">Основание:  </div>
+         </div>
+         <div class="helptext">(наименование раздела (подраздела) проектной документации)</div>
+         <div class="heading">
+            <div class="headingname">Дата составления: ..</div>
+         </div>
+         <table>
+            <thead>
+               <tr>
+                  <th>№ п.п.</th>
+                  <th>Наименование работ, ресурсов, затрат по проекту</th>
+                  <th>Ед. изм.</th>
+                  <th>Объем работ / Количество</th>
+                  <th>Формула расчета объемов работ и расхода материалов, потребности ресурсов</th>
+                  <th>Ссылка на чертежи, спецификации в проектной документации</th>
+                  <th>Дополнительная информация (комментарий).</th>
+               </tr>
+               <tr>
+                  <td class="tborder center">1</td>
+                  <td class="tborder center">2</td>
+                  <td class="tborder center">3</td>
+                  <td class="tborder center">4</td>
+                  <td class="tborder center">5</td>
+                  <td class="tborder center">6</td>
+                  <td class="tborder center">7</td>
+               </tr>
+            </thead>
+            <tr>
+               <td class="bbottom left bold" colspan="7">
+                  				Раздел: 1. Раздел 1</td>
+            </tr>
+            <tr>
+               <td class="center">1</td>
+               <td class="left">Работа 1</td>
+               <td class="center">шт</td>
+               <td>10</td>
+               <td class="left">2*5</td>
+               <td class="left">
+                  					Файл: link.pdf<br>
+                  						Страница: 1,2<br>desc</td>
+               <td class="left">комм</td>
+            </tr>
+            <tr>
+               <td class="center">1.1</td>
+               <td class="left">Ресурс вложенный</td>
+               <td class="center">м</td>
+               <td>3</td>
+               <td class="left">3</td>
+               <td class="left">
+                  						Файл: link.pdf<br></td>
+               <td class="left">р комм</td>
+            </tr>
+            <tr>
+               <td class="center">2</td>
+               <td class="left">Свободный ресурс</td>
+               <td class="center">кг</td>
+               <td>5</td>
+               <td class="left">5</td>
+               <td class="left">
+                  						Файл: link.pdf<br></td>
+               <td class="left">free</td>
+            </tr>
+            <tr>
+               <td colspan="7">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="7">&nbsp;</td>
+            </tr>
+            <tr>
+               <td class=" left " colspan="7">Составил: .  _________________________</td>
+            </tr>
+            <tr>
+               <td class="left italic" colspan="7">[должность, подпись (инициалы, фамилия)]</td>
+            </tr>
+            <tr>
+               <td class=" left " colspan="7">Проверил: .  _________________________</td>
+            </tr>
+            <tr>
+               <td class="left italic" colspan="7">[должность, подпись (инициалы, фамилия)]</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

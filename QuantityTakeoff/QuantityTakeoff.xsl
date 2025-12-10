@@ -260,7 +260,8 @@
 		</tr>
 		
 		<xsl:apply-templates select="FreeString"/>
-		<xsl:apply-templates select="Works/Work"/>
+		<!-- Сохраняем порядок элементов Work/Resource/FreeString -->
+		<xsl:apply-templates select="Works/*"/>
 		
 		<xsl:apply-templates select="Section">
 			<xsl:with-param name="num_prefix" select="$current_num"/>
@@ -300,10 +301,44 @@
 		<xsl:apply-templates select="Resources/Resource"/>
 	</xsl:template>
 	
-		<!-- Work в ВОР -->
-	<xsl:template match="Resource">
+	<!-- Ресурс внутри работы -->
+	<xsl:template match="Work/Resources/Resource">
 		<tr>
 			<td class= "center"><xsl:value-of select="../../Num"/>.<xsl:value-of select="Num"/></td>
+			<td class= "left"><xsl:value-of select="Name"/></td>
+			<td class= "center"><xsl:value-of select="Unit"/></td>
+			<td><xsl:value-of select="Quantity"/></td>
+			<td class= "left"><xsl:value-of select="QuantityFormula"/></td>
+			<td class= "left">
+				<xsl:for-each select="Links/Link">
+					<xsl:variable name="fileName">
+						<xsl:for-each select="/Construction/Files/File[ID = current()/FileID]">
+							<xsl:value-of select="FileName"/>
+						</xsl:for-each>
+					</xsl:variable>
+					<xsl:if test="$fileName">
+						Файл: <xsl:value-of select="$fileName"/> <br/>
+					</xsl:if>
+					<xsl:if test="PageNumber">
+						Страница: <xsl:value-of select="translate(PageNumber, ' ', ', ')"/> <br/>
+					</xsl:if>
+					<xsl:value-of select="PageDescription"/>
+					<xsl:if test="position() != last()">
+						<br/>
+					</xsl:if>
+				</xsl:for-each>
+				<xsl:if test="not(Links/Link)">
+					Нет данных
+				</xsl:if>
+			</td>
+			<td class= "left"><xsl:value-of select="Comment"/></td>
+		</tr>
+	</xsl:template>
+	
+	<!-- Свободный ресурс на уровне Works (без родительского Work) -->
+	<xsl:template match="Works/Resource">
+		<tr>
+			<td class= "center"><xsl:value-of select="Num"/></td>
 			<td class= "left"><xsl:value-of select="Name"/></td>
 			<td class= "center"><xsl:value-of select="Unit"/></td>
 			<td><xsl:value-of select="Quantity"/></td>

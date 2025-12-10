@@ -1,0 +1,59 @@
+<Construction>
+  <Files>
+    <File>
+      <ID>1</ID>
+      <FileName>link.pdf</FileName>
+    </File>
+  </Files>
+  <Sections>
+    <Section>
+      <Num>1</Num>
+      <Name>Раздел 1</Name>
+      <Works>
+        <Work>
+          <Num>1</Num>
+          <Name>Работа 1</Name>
+          <Unit>шт</Unit>
+          <Quantity>10</Quantity>
+          <QuantityFormula>2*5</QuantityFormula>
+          <Links>
+            <Link>
+              <FileID>1</FileID>
+              <PageNumber>1 2</PageNumber>
+              <PageDescription>desc</PageDescription>
+            </Link>
+          </Links>
+          <Comment>комм</Comment>
+          <Resources>
+            <Resource>
+              <Num>1</Num>
+              <Name>Ресурс вложенный</Name>
+              <Unit>м</Unit>
+              <Quantity>3</Quantity>
+              <QuantityFormula>3</QuantityFormula>
+              <Links>
+                <Link>
+                  <FileID>1</FileID>
+                </Link>
+              </Links>
+              <Comment>р комм</Comment>
+            </Resource>
+          </Resources>
+        </Work>
+        <Resource>
+          <Num>2</Num>
+          <Name>Свободный ресурс</Name>
+          <Unit>кг</Unit>
+          <Quantity>5</Quantity>
+          <QuantityFormula>5</QuantityFormula>
+          <Links>
+            <Link>
+              <FileID>1</FileID>
+            </Link>
+          </Links>
+          <Comment>free</Comment>
+        </Resource>
+      </Works>
+    </Section>
+  </Sections>
+</Construction>
