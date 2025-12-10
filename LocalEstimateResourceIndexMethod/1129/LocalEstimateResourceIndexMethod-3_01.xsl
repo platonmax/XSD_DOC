@@ -607,11 +607,13 @@
 					<td class="left indent" colspan="9">эксплуатация машин и механизмов</td>
 					<xsl:apply-templates select="./Building/Machines" mode="SummaryElement"/>
 				</tr>
-				<tr>
-					<td colspan="2"/>
-					<td class="left indent" colspan="9">оплата труда машинистов (ОТм)</td>
-					<xsl:apply-templates select="./Building/MachinistSalary" mode="SummaryElement"/>
-				</tr>
+				<xsl:if test="number(./Building/MachinistSalary) &gt; 0">
+					<tr>
+						<td colspan="2"/>
+						<td class="left indent" colspan="9">оплата труда машинистов (ОТм)</td>
+						<xsl:apply-templates select="./Building/MachinistSalary" mode="SummaryElement"/>
+					</tr>
+				</xsl:if>
 				<tr>
 					<td colspan="2"/>
 					<td class="left indent" colspan="9">материальные ресурсы</td>
@@ -675,11 +677,13 @@
 					<td class="left indent" colspan="9">эксплуатация машин и механизмов</td>
 					<xsl:apply-templates select="./Mounting/Machines" mode="SummaryElement"/>
 				</tr>
-				<tr>
-					<td colspan="2"/>
-					<td class="left indent" colspan="9">оплата труда машинистов (ОТм)</td>
-					<xsl:apply-templates select="./Mounting/MachinistSalary" mode="SummaryElement"/>
-				</tr>
+				<xsl:if test="number(./Mounting/MachinistSalary) &gt; 0">
+					<tr>
+						<td colspan="2"/>
+						<td class="left indent" colspan="9">оплата труда машинистов (ОТм)</td>
+						<xsl:apply-templates select="./Mounting/MachinistSalary" mode="SummaryElement"/>
+					</tr>
+				</xsl:if>
 				<tr>
 					<td colspan="2"/>
 					<td class="left indent" colspan="9">материальные ресурсы</td>
@@ -764,11 +768,13 @@
 					<td class="left indent" colspan="9">эксплуатация машин и механизмов</td>
 					<xsl:apply-templates select="./OtherWorks/Machines" mode="SummaryElement"/>
 				</tr>
-				<tr>
-					<td colspan="2"/>
-					<td class="left indent" colspan="9">оплата труда машинистов (ОТм)</td>
-					<xsl:apply-templates select="./OtherWorks/MachinistSalary" mode="SummaryElement"/>
-				</tr>
+				<xsl:if test="number(./OtherWorks/MachinistSalary) &gt; 0">
+					<tr>
+						<td colspan="2"/>
+						<td class="left indent" colspan="9">оплата труда машинистов (ОТм)</td>
+						<xsl:apply-templates select="./OtherWorks/MachinistSalary" mode="SummaryElement"/>
+					</tr>
+				</xsl:if>
 				<tr>
 					<td colspan="2"/>
 					<td class="left indent" colspan="9">материальные ресурсы</td>
@@ -862,17 +868,19 @@
 						<td class="left indent" colspan="9">эксплуатация машин и механизмов</td>
 						<xsl:apply-templates select="./Summary/Machines" mode="SummaryElement"/>
 					</tr>
-					<tr>
-						<td colspan="2"/>
-						<td class="left indent italic" colspan="9">
-							<i>в том числе</i>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2"/>
-						<td class="left indent" colspan="9">оплата труда машинистов (ОТм)</td>
-						<xsl:apply-templates select="./Summary/MachinistSalary" mode="SummaryElement"/>
-					</tr>
+					<xsl:if test="number(./Summary/MachinistSalary) &gt; 0">
+						<tr>
+							<td colspan="2"/>
+							<td class="left indent italic" colspan="9">
+								<i>в том числе</i>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"/>
+							<td class="left indent" colspan="9">оплата труда машинистов (ОТм)</td>
+							<xsl:apply-templates select="./Summary/MachinistSalary" mode="SummaryElement"/>
+						</tr>
+					</xsl:if>
 					<tr>
 						<td colspan="2"/>
 						<td class="left indent" colspan="9">материальные ресурсы</td>
@@ -943,11 +951,13 @@
 						<td class="left indent" colspan="9">эксплуатация машин и механизмов</td>
 						<xsl:apply-templates select="./Summary/Machines" mode="SummaryElement"/>
 					</tr>
-					<tr>
-						<td colspan="2"/>
-						<td class="left indent" colspan="9">оплата труда машинистов (ОТм)</td>
-						<xsl:apply-templates select="./Summary/MachinistSalary" mode="SummaryElement"/>
-					</tr>
+					<xsl:if test="number(./Summary/MachinistSalary) &gt; 0">
+						<tr>
+							<td colspan="2"/>
+							<td class="left indent" colspan="9">оплата труда машинистов (ОТм)</td>
+							<xsl:apply-templates select="./Summary/MachinistSalary" mode="SummaryElement"/>
+						</tr>
+					</xsl:if>
 					<tr>
 						<td colspan="2"/>
 						<td class="left indent" colspan="9">материальные ресурсы</td>
@@ -1209,11 +1219,13 @@
 			<td class="left indent" colspan="9">эксплуатация машин и механизмов</td>
 			<xsl:apply-templates select="Summary/Machines" mode="SummaryElement"/>
 		</tr>
-		<tr>
-			<td colspan="2"/>
-			<td class="left indent" colspan="9">оплата труда машинистов (ОТм)</td>
-			<xsl:apply-templates select="Summary/MachinistSalary" mode="SummaryElement"/>
-		</tr>
+		<xsl:if test="number(Summary/MachinistSalary) &gt; 0">
+			<tr>
+				<td colspan="2"/>
+				<td class="left indent" colspan="9">оплата труда машинистов (ОТм)</td>
+				<xsl:apply-templates select="Summary/MachinistSalary" mode="SummaryElement"/>
+			</tr>
+		</xsl:if>
 		<tr>
 			<td colspan="2"/>
 			<td class="left indent" colspan="9">материальные ресурсы </td>
@@ -1311,7 +1323,7 @@
 				</td>
 			</tr>
 			</xsl:if>
-			<xsl:if test="Machine">
+			<xsl:if test="number(./Machine/MachinistSalary) &gt; 0">
 				<tr>
 					<td/>
 					<td/>
