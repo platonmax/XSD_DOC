@@ -275,7 +275,7 @@
       <body>
         <xsl:variable name="doc-date" select="$doc/bd:documentDate"/>
         <xsl:variable name="customer" select="normalize-space($doc/bd:customerName)"/>
-        <xsl:variable name="object-name" select="normalize-space($doc/bd:objectName)"/>
+        <xsl:variable name="construction-name" select="normalize-space($doc/bd:constructionName)"/>
         <xsl:variable name="full-date" select="f:full-date($doc-date)"/>
 
           <div class="page">
@@ -306,10 +306,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="label">&#160;</td>
+                  <td class="label">Наименование стройки</td>
                   <td class="line">
                     <div class="line-text">
-                      <xsl:value-of select="$object-name"/>
+                      <xsl:value-of select="$construction-name"/>
                     </div>
                     <div class="hint">(наименование стройки)</div>
                   </td>

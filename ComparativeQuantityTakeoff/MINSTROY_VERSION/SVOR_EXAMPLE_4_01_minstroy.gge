@@ -17,6 +17,7 @@
   </bd:documentMeta>
   <bd:accessLevelCode>общедоступная информация</bd:accessLevelCode>
   <bd:objectName>Демо объект</bd:objectName>
+  <bd:constructionName>Демо объект</bd:constructionName>
   <bd:objectNumber>СВОР 01-01</bd:objectNumber>
   <bd:documentDate>
     <year>2025</year>

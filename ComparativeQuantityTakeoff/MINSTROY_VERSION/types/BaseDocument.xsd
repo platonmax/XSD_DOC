@@ -5,7 +5,7 @@
   xmlns:ct="http://types/CommonTypes.xsd"
   xmlns:bd="http://types/BaseDocument.xsd"
   targetNamespace="http://types/BaseDocument.xsd" attributeFormDefault="unqualified"
-  elementFormDefault="qualified" version="1.12">
+  elementFormDefault="qualified" version="1.13">
 
   <xs:import namespace="http://types/CommonTypes.xsd" schemaLocation="CommonTypes.xsd"/>
   <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
@@ -33,6 +33,12 @@
       <xs:element name="objectName" type="xs:string" minOccurs="0">
         <xs:annotation>
           <xs:documentation>Наименование объекта капитального строительства (реконструкции, капитального ремонта)
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="constructionName" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Наименование стройки
           </xs:documentation>
         </xs:annotation>
       </xs:element>
