@@ -3,7 +3,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:bt="http://types/BaseTypes.xsd"
   targetNamespace="http://types/BaseTypes.xsd" attributeFormDefault="unqualified"
-  elementFormDefault="qualified" version="1.12">
+  elementFormDefault="qualified" version="1.13">
 
   <xs:simpleType name="accessLevelCodeType">
     <xs:annotation>
@@ -42,10 +42,6 @@
 
   <xs:simpleType name="sectionNumberType">
     <xs:restriction base="xs:positiveInteger"/>
-  </xs:simpleType>
-
-  <xs:simpleType name="alterationIdType">
-    <xs:restriction base="xs:ID"/>
   </xs:simpleType>
 
   <xs:simpleType name="ifcGuidIdType">

@@ -1,12 +1,16 @@
 <?xml version='1.0' encoding='utf-8'?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bt="http://types/BaseTypes.xsd"
   xmlns:ct="http://types/CommonTypes.xsd" targetNamespace="http://types/CommonTypes.xsd"
-  attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.19">
+  attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.20">
 
   <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
 
   <xs:simpleType name="alterationIdRefType">
     <xs:restriction base="xs:IDREF"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="alterationIdType">
+    <xs:restriction base="xs:ID"/>
   </xs:simpleType>
 
 
@@ -71,7 +75,7 @@
         </xs:annotation>
       </xs:element>
     </xs:sequence>
-    <xs:attribute name="id" type="bt:alterationIdType" use="required">
+    <xs:attribute name="id" type="ct:alterationIdType" use="required">
       <xs:annotation>
         <xs:documentation>Уникальный идентификатор корректировки
 В наборе стадий должна присутствовать базовая запись с id="base"; остальные id — хронологические стадии.
