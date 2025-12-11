@@ -91,24 +91,24 @@
                 <measurementUnit>м³</measurementUnit>
               </work>
               <volumeList>
-                <alteration alterationRef="base">
+                <volume alterationRef="base">
                   <volumeQuantity>10</volumeQuantity>
-                </alteration>
-                <alteration alterationRef="alt-2025-01">
+                </volume>
+                <volume alterationRef="alt-2025-01">
                   <volumeQuantity>10.5</volumeQuantity>
                   <volumeIncrease>0.5</volumeIncrease>
                   <reason>Увеличение площади</reason>
-                </alteration>
-                <alteration alterationRef="alt-2025-06">
+                </volume>
+                <volume alterationRef="alt-2025-06">
                   <volumeQuantity>10.9</volumeQuantity>
                   <volumeIncrease>0.4</volumeIncrease>
                   <reason>Доп. плита, но часть объёма сняли после уточнения</reason>
-                </alteration>
-                <alteration alterationRef="alt-2025-12">
+                </volume>
+                <volume alterationRef="alt-2025-12">
                   <volumeQuantity>10.3</volumeQuantity>
                   <volumeDecrease>-0.6</volumeDecrease>
                   <reason>Оптимизация и ручная увязка с фактом</reason>
-                </alteration>
+                </volume>
               </volumeList>
               <documentationList>
                 <documentReference alterationRef="base">
@@ -146,24 +146,24 @@
                 <measurementUnit>м³</measurementUnit>
               </work>
               <volumeList>
-                <alteration alterationRef="base">
+                <volume alterationRef="base">
                   <volumeQuantity>120</volumeQuantity>
-                </alteration>
-                <alteration alterationRef="alt-2025-01">
+                </volume>
+                <volume alterationRef="alt-2025-01">
                   <volumeQuantity>126</volumeQuantity>
                   <volumeIncrease>6</volumeIncrease>
                   <reason>Уточнение площади</reason>
-                </alteration>
-                <alteration alterationRef="alt-2025-06">
+                </volume>
+                <volume alterationRef="alt-2025-06">
                   <volumeQuantity>132</volumeQuantity>
                   <volumeIncrease>6</volumeIncrease>
                   <reason>Расширение зоны, пересчёт минус 2 и ручная корректировка +1</reason>
-                </alteration>
-                <alteration alterationRef="alt-2025-12">
+                </volume>
+                <volume alterationRef="alt-2025-12">
                   <volumeQuantity>130</volumeQuantity>
                   <volumeDecrease>-2</volumeDecrease>
                   <reason>Оптимизация площади</reason>
-                </alteration>
+                </volume>
               </volumeList>
               <documentationList>
                 <documentReference alterationRef="base">
@@ -196,24 +196,24 @@
                     <measurementUnit>м³</measurementUnit>
                   </work>
                   <volumeList>
-                    <alteration alterationRef="base">
+                    <volume alterationRef="base">
                       <volumeQuantity>300</volumeQuantity>
-                    </alteration>
-                    <alteration alterationRef="alt-2025-01">
+                    </volume>
+                    <volume alterationRef="alt-2025-01">
                       <volumeQuantity>315</volumeQuantity>
                       <volumeIncrease>15</volumeIncrease>
                       <reason>Изменение границ</reason>
-                    </alteration>
-                    <alteration alterationRef="alt-2025-06">
+                    </volume>
+                    <volume alterationRef="alt-2025-06">
                       <volumeQuantity>330</volumeQuantity>
                       <volumeIncrease>15</volumeIncrease>
                       <reason>Расширение работ</reason>
-                    </alteration>
-                    <alteration alterationRef="alt-2025-12">
+                    </volume>
+                    <volume alterationRef="alt-2025-12">
                       <volumeQuantity>320</volumeQuantity>
                       <volumeDecrease>-10</volumeDecrease>
                       <reason>Оптимизация объёмов</reason>
-                    </alteration>
+                    </volume>
                   </volumeList>
                   <documentationList>
                     <documentReference alterationRef="base">
@@ -235,24 +235,24 @@
                     <measurementUnit>м³</measurementUnit>
                   </work>
                   <volumeList>
-                    <alteration alterationRef="base">
+                    <volume alterationRef="base">
                       <volumeQuantity>80</volumeQuantity>
-                    </alteration>
-                    <alteration alterationRef="alt-2025-01">
+                    </volume>
+                    <volume alterationRef="alt-2025-01">
                       <volumeQuantity>84</volumeQuantity>
                       <volumeIncrease>4</volumeIncrease>
                       <reason>Добор по проекту</reason>
-                    </alteration>
-                    <alteration alterationRef="alt-2025-06">
+                    </volume>
+                    <volume alterationRef="alt-2025-06">
                       <volumeQuantity>82</volumeQuantity>
                       <volumeDecrease>-2</volumeDecrease>
                       <reason>Оптимизация щитов</reason>
-                    </alteration>
-                    <alteration alterationRef="alt-2025-12">
+                    </volume>
+                    <volume alterationRef="alt-2025-12">
                       <volumeQuantity>83</volumeQuantity>
                       <volumeIncrease>1</volumeIncrease>
                       <reason>Коррекция перед сдачей</reason>
-                    </alteration>
+                    </volume>
                   </volumeList>
                   <documentationList>
                     <documentReference alterationRef="base">
@@ -279,24 +279,24 @@
                         <measurementUnit>м³</measurementUnit>
                       </work>
                       <volumeList>
-                        <alteration alterationRef="base">
+                        <volume alterationRef="base">
                           <volumeQuantity>8</volumeQuantity>
-                        </alteration>
-                        <alteration alterationRef="alt-2025-01">
+                        </volume>
+                        <volume alterationRef="alt-2025-01">
                           <volumeQuantity>8.5</volumeQuantity>
                           <volumeIncrease>0.5</volumeIncrease>
                           <reason>Дополнительная поставка</reason>
-                        </alteration>
-                        <alteration alterationRef="alt-2025-06">
+                        </volume>
+                        <volume alterationRef="alt-2025-06">
                           <volumeQuantity>8.2</volumeQuantity>
                           <volumeDecrease>-0.3</volumeDecrease>
                           <reason>Оптимизация расхода</reason>
-                        </alteration>
-                        <alteration alterationRef="alt-2025-12">
+                        </volume>
+                        <volume alterationRef="alt-2025-12">
                           <volumeQuantity>8.6</volumeQuantity>
                           <volumeIncrease>0.4</volumeIncrease>
                           <reason>Итоговая корректировка</reason>
-                        </alteration>
+                        </volume>
                       </volumeList>
                       <documentationList>
                         <documentReference alterationRef="alt-2025-01">
@@ -318,22 +318,22 @@
                         <measurementUnit>шт</measurementUnit>
                       </work>
                       <volumeList>
-                        <alteration alterationRef="base">
+                        <volume alterationRef="base">
                           <volumeQuantity>2</volumeQuantity>
-                        </alteration>
-                        <alteration alterationRef="alt-2025-01">
+                        </volume>
+                        <volume alterationRef="alt-2025-01">
                           <volumeQuantity>3</volumeQuantity>
                           <volumeIncrease>1</volumeIncrease>
                           <reason>Дополнительная проверка</reason>
-                        </alteration>
-                        <alteration alterationRef="alt-2025-06">
+                        </volume>
+                        <volume alterationRef="alt-2025-06">
                           <volumeQuantity>3</volumeQuantity>
-                        </alteration>
-                        <alteration alterationRef="alt-2025-12">
+                        </volume>
+                        <volume alterationRef="alt-2025-12">
                           <volumeQuantity>2</volumeQuantity>
                           <volumeDecrease>-1</volumeDecrease>
                           <reason>Оптимизация процедур</reason>
-                        </alteration>
+                        </volume>
                       </volumeList>
                       <documentationList>
                         <documentReference alterationRef="alt-2025-01">
@@ -360,22 +360,22 @@
                 <measurementUnit>т</measurementUnit>
               </work>
               <volumeList>
-                <alteration alterationRef="base">
+                <volume alterationRef="base">
                   <volumeQuantity>3.2</volumeQuantity>
-                </alteration>
-                <alteration alterationRef="alt-2025-01">
+                </volume>
+                <volume alterationRef="alt-2025-01">
                   <volumeQuantity>3.2</volumeQuantity>
-                </alteration>
-                <alteration alterationRef="alt-2025-06">
+                </volume>
+                <volume alterationRef="alt-2025-06">
                   <volumeQuantity>3.6</volumeQuantity>
                   <volumeIncrease>0.4</volumeIncrease>
                   <reason>Усиление</reason>
-                </alteration>
-                <alteration alterationRef="alt-2025-12">
+                </volume>
+                <volume alterationRef="alt-2025-12">
                   <volumeQuantity>3.4</volumeQuantity>
                   <volumeDecrease>-0.2</volumeDecrease>
                   <reason>Оптимизация</reason>
-                </alteration>
+                </volume>
               </volumeList>
               <documentationList>
                 <documentReference alterationRef="alt-2025-06">

@@ -75,12 +75,12 @@
             <normCode>01-01-023-01</normCode>
           </work>
           <volumeList>
-            <alteration alterationRef="base">
+            <volume alterationRef="base">
               <volumeQuantity>2.6</volumeQuantity>
-            </alteration>
-            <alteration alterationRef="alt-2020-11">
+            </volume>
+            <volume alterationRef="alt-2020-11">
               <volumeQuantity>2.6</volumeQuantity>
-            </alteration>
+            </volume>
           </volumeList>
           <documentationList>
             <documentReference alterationRef="base">
@@ -126,14 +126,14 @@
             <normCode>01-02-027-01</normCode>
           </work>
           <volumeList>
-            <alteration alterationRef="base">
+            <volume alterationRef="base">
               <volumeQuantity>2.6</volumeQuantity>
-            </alteration>
-            <alteration alterationRef="alt-2020-11">
+            </volume>
+            <volume alterationRef="alt-2020-11">
               <volumeQuantity>3.6</volumeQuantity>
               <volumeIncrease>1</volumeIncrease>
               <reason>���४�஢�� �஥���� �襭�� � �裡 � �������⥫�묨 ������୮-��������᪨�� ���᪠��ﬨ ���頤�� ��ந⥫��⢠</reason>
-            </alteration>
+            </volume>
           </volumeList>
           <documentationList>
             <documentReference alterationRef="base">
@@ -179,12 +179,12 @@
             <normCode>27-04-016-04</normCode>
           </work>
           <volumeList>
-            <alteration alterationRef="base">
+            <volume alterationRef="base">
               <volumeQuantity>0.74</volumeQuantity>
-            </alteration>
-            <alteration alterationRef="alt-2020-11">
+            </volume>
+            <volume alterationRef="alt-2020-11">
               <volumeQuantity>0.74</volumeQuantity>
-            </alteration>
+            </volume>
           </volumeList>
           <documentationList>
             <documentReference alterationRef="base">
@@ -225,12 +225,12 @@
               <normCode>01.7.12.05-0162</normCode>
             </work>
             <volumeList>
-              <alteration alterationRef="base">
+              <volume alterationRef="base">
                 <volumeQuantity>888</volumeQuantity>
-              </alteration>
-              <alteration alterationRef="alt-2020-11">
+              </volume>
+              <volume alterationRef="alt-2020-11">
                 <volumeQuantity>888</volumeQuantity>
-              </alteration>
+              </volume>
             </volumeList>
             <itemList><item itemPositionId="1">
               <work>
@@ -240,12 +240,12 @@
                 <normCode>03-01-01-030</normCode>
               </work>
               <volumeList>
-                <alteration alterationRef="base">
+                <volume alterationRef="base">
                   <volumeQuantity>-0.3552</volumeQuantity>
-                </alteration>
-                <alteration alterationRef="alt-2020-11">
+                </volume>
+                <volume alterationRef="alt-2020-11">
                   <volumeQuantity>-0.3552</volumeQuantity>
-                </alteration>
+                </volume>
               </volumeList>
             </item>
             <item itemPositionId="2">
@@ -256,12 +256,12 @@
                 <normCode>03-01-01-130</normCode>
               </work>
               <volumeList>
-                <alteration alterationRef="base">
+                <volume alterationRef="base">
                   <volumeQuantity>0.3552</volumeQuantity>
-                </alteration>
-                <alteration alterationRef="alt-2020-11">
+                </volume>
+                <volume alterationRef="alt-2020-11">
                   <volumeQuantity>0.3552</volumeQuantity>
-                </alteration>
+                </volume>
               </volumeList>
             </item>
           </itemList></item>
@@ -280,14 +280,14 @@
             <normCode>01-02-005-01</normCode>
           </work>
           <volumeList>
-            <alteration alterationRef="base">
+            <volume alterationRef="base">
               <volumeQuantity>10</volumeQuantity>
-            </alteration>
-            <alteration alterationRef="alt-2020-11">
+            </volume>
+            <volume alterationRef="alt-2020-11">
               <volumeQuantity>8</volumeQuantity>
               <volumeDecrease>-2</volumeDecrease>
               <reason>Корректировка проектных решений в связи с дополнительными инженерно-геологическими изысканиями площадки строительства</reason>
-            </alteration>
+            </volume>
           </volumeList>
           <documentationList>
             <documentReference alterationRef="base">
@@ -330,14 +330,14 @@
             <normCode>06-01-001-01</normCode>
           </work>
           <volumeList>
-            <alteration alterationRef="base">
+            <volume alterationRef="base">
               <volumeQuantity>7</volumeQuantity>
-            </alteration>
-            <alteration alterationRef="alt-2020-11">
+            </volume>
+            <volume alterationRef="alt-2020-11">
               <volumeQuantity>8</volumeQuantity>
               <volumeIncrease>1</volumeIncrease>
               <reason>Изменение толщины</reason>
-            </alteration>
+            </volume>
           </volumeList>
           <documentationList>
             <documentReference alterationRef="base">
@@ -378,14 +378,14 @@
               <normCode>04.1.02.05-0074</normCode>
             </work>
             <volumeList>
-              <alteration alterationRef="base">
+              <volume alterationRef="base">
                 <volumeQuantity>800</volumeQuantity>
-              </alteration>
-              <alteration alterationRef="alt-2020-11">
+              </volume>
+              <volume alterationRef="alt-2020-11">
                 <volumeQuantity>950</volumeQuantity>
                 <volumeIncrease>150</volumeIncrease>
                 <reason>Изменение толщины</reason>
-              </alteration>
+              </volume>
             </volumeList>
             <documentationList>
               <documentReference alterationRef="base">

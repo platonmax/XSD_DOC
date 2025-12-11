@@ -78,10 +78,11 @@
 - Визуализация (Saxon на Windows):
   ```powershell
   Set-Location -Path 'D:\MAX\projects\XSD_DOC'
-  & 'C:\Program Files\Eclipse Adoptium\jre-21.0.7.6-hotspot\bin\java.exe' `
+  & 'C:\Program Files\Eclipse Adoptium\jdk-24.0.1.9-hotspot\bin\java.exe' `
     -cp 'tools\saxon-he-12.4.jar;tools\xmlresolver-5.2.1.jar' `
     net.sf.saxon.Transform `
     -s:ComparativeQuantityTakeoff\MINSTROY_VERSION\ComparativeQuantityTakeoff_minstroy_simple.xml `
     -xsl:ComparativeQuantityTakeoff\MINSTROY_VERSION\ComparativeQuantityTakeoff.xsl `
     -o:ComparativeQuantityTakeoff\MINSTROY_VERSION\ComparativeQuantityTakeoff_minstroy_simple.html
   ```
+  Если java лежит в другом месте, замените первую строку на доступный `java.exe`.

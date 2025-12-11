@@ -3,7 +3,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:bt="http://types/BaseTypes.xsd"
   targetNamespace="http://types/BaseTypes.xsd" attributeFormDefault="unqualified"
-  elementFormDefault="qualified" version="1.11">
+  elementFormDefault="qualified" version="1.12">
 
   <xs:simpleType name="accessLevelCodeType">
     <xs:annotation>
@@ -52,10 +52,6 @@
     <xs:restriction base="xs:string">
       <xs:pattern value="[0-9A-Fa-f-]{4,64}"/>
     </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="alterationIdRefType">
-    <xs:restriction base="xs:IDREF"/>
   </xs:simpleType>
 
   <xs:simpleType name="fileInternalIdType">

@@ -1,9 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bt="http://types/BaseTypes.xsd"
   xmlns:ct="http://types/CommonTypes.xsd" targetNamespace="http://types/CommonTypes.xsd"
-  attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.15">
+  attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.18">
 
   <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
+
+  <xs:simpleType name="alterationIdRefType">
+    <xs:restriction base="xs:IDREF"/>
+  </xs:simpleType>
 
 
   <xs:complexType name="fileFormatType">
@@ -196,14 +200,14 @@ id строятся по следующему принципу: "alt-ГГГГ-М
           <xs:documentation>Наименование раздела</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="itemList" minOccurs="0">
+      <xs:element name="itemList" minOccurs="1">
         <xs:annotation>
           <xs:documentation>Строки раздела локального сметного расчета (позиции и свободные строки)</xs:documentation>
           <xs:documentation>Только для уровня раздела: допускаются item и freeStringItem через substitutionGroup itemRow. Свободные строки служат визуальными вставками между позициями.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element ref="ct:itemRow" minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="ct:itemRow" minOccurs="1" maxOccurs="unbounded">
               <xs:annotation>
                 <xs:documentation>Строка раздела: позиция сметы или свободная строка</xs:documentation>
                 <xs:documentation>Порядок строк произвольный; свободные строки могут стоять в начале и между позициями.</xs:documentation>
@@ -427,7 +431,7 @@ id строятся по следующему принципу: "alt-ГГГГ-М
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="alteration" maxOccurs="unbounded">
+            <xs:element name="volume" maxOccurs="unbounded">
               <xs:annotation>
                 <xs:documentation>Объем работ по стадиям (заходам на экспертизу). Задается объем позиции, указывается увеличение или снижение по конкретной корректировке, а так же обоснование изменений</xs:documentation>
               </xs:annotation>
@@ -460,7 +464,7 @@ id строятся по следующему принципу: "alt-ГГГГ-М
 
 
 
-                <xs:attribute name="alterationRef" type="bt:alterationIdRefType" use="required">
+                <xs:attribute name="alterationRef" type="ct:alterationIdRefType" use="required">
                   <xs:annotation>
                     <xs:documentation>Ссылка на уникальный идентификатор корректировки.
                       В наборе стадий должна присутствовать базовая запись с id="base"; остальные id — хронологические стадии.
@@ -475,7 +479,7 @@ id строятся по следующему принципу: "alt-ГГГГ-М
           </xs:sequence>
         </xs:complexType>
         <xs:unique name="uniqueAlterationPerItem">
-          <xs:selector xpath="alteration"/>
+          <xs:selector xpath="volume"/>
           <xs:field xpath="@alterationRef"/>
         </xs:unique>
       </xs:element>
@@ -565,7 +569,7 @@ id строятся по следующему принципу: "alt-ГГГГ-М
           </xs:documentation>
         </xs:annotation>
 
-        <xs:attribute name="alterationRef" type="bt:alterationIdRefType" use="optional">
+        <xs:attribute name="alterationRef" type="ct:alterationIdRefType" use="optional">
           <xs:annotation>
             <xs:documentation>Ссылка на уникальный идентификатор корректировки.
               В наборе стадий должна присутствовать базовая запись с id="base"; остальные id — хронологические стадии.

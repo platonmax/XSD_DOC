@@ -20,8 +20,8 @@
     <xsl:param name="stageId" as="xs:string"/>
     <xsl:variable name="node"
                   select="if ($stageId = 'base')
-                          then $item/*:volumeList/*:alteration[@alterationRef='base']/*:volumeQuantity
-                          else $item/*:volumeList/*:alteration[@alterationRef=$stageId]/*:volumeQuantity"/>
+                          then $item/*:volumeList/*:volume[@alterationRef='base']/*:volumeQuantity
+                          else $item/*:volumeList/*:volume[@alterationRef=$stageId]/*:volumeQuantity"/>
     <xsl:sequence select="if ($node) then xs:decimal($node) else ()"/>
   </xsl:function>
 
@@ -30,11 +30,25 @@
     <xsl:variable name="year" select="normalize-space($stage/*:year)"/>
     <xsl:variable name="month-raw" select="normalize-space($stage/*:month)"/>
     <xsl:variable name="month"
-                  select="if ($month-raw)
-                          then format-number(number(substring($month-raw, string-length($month-raw) - 1)), '00')
+                  select="if ($month-raw castable as xs:integer)
+                          then xs:integer($month-raw)
+                          else if (matches($month-raw, '\\d\\d$'))
+                               then xs:integer(substring($month-raw, string-length($month-raw) - 1))
+                               else ()"/>
+    <xsl:variable name="quarter" select="if ($month) then xs:integer(ceiling($month div 3)) else ()"/>
+    <xsl:variable name="quarter-roman"
+                  select="if ($quarter = 1) then 'I'
+                          else if ($quarter = 2) then 'II'
+                          else if ($quarter = 3) then 'III'
+                          else if ($quarter = 4) then 'IV'
+                          else ()"/>
+    <xsl:variable name="quarter-label"
+                  select="if ($quarter-roman)
+                          then concat($quarter-roman, ' квартал')
                           else ''"/>
-    <xsl:sequence select="normalize-space(concat($year,
-                                                 if ($month) then concat('-', $month) else ''))"/>
+    <xsl:sequence select="normalize-space(string-join((
+                          $quarter-label,
+                          if ($year) then concat($year, ' г.') else ''), ' '))"/>
   </xsl:function>
 
   <xsl:function name="f:full-date" as="xs:string?">
@@ -216,6 +230,7 @@
           table.header-table .line-text { border-bottom: 1px solid var(--border); min-height: 20px; padding: 2px 6px 4px 6px; text-align: center; }
           table.header-table .hint { font-size: 9pt; color: var(--muted); text-align: center; font-style: italic; white-space: nowrap; padding-top: 2px; }
           table.header-table .date-alt { color: #c00; font-style: italic; }
+          .export-info { font-size: 9pt; color: var(--muted); margin-bottom: 6px; text-align: left; }
           .row-issue { position: relative; }
           .row-issue:hover::after {
             content: attr(data-error);
@@ -253,6 +268,8 @@
           .col-work { min-width: 780px; max-width: 920px; width: 780px; white-space: normal; word-break: break-word; }
           .col-reason { max-width: 400px; white-space: normal; word-break: break-word; }
           .col-docs { max-width: 480px; white-space: normal; word-break: break-word; }
+          .th-label-muted { display: block; font-size: 8pt; color: var(--muted); line-height: 1.2; margin-bottom: 2px; }
+          .th-label-strong { display: block; font-weight: 700; line-height: 1.3; }
         </style>
       </head>
       <body>
@@ -262,13 +279,26 @@
         <xsl:variable name="full-date" select="f:full-date($doc-date)"/>
 
           <div class="page">
-          <div class="card">
-            <div class="header-block">
-              <div class="header-title">СОПОСТАВИТЕЛЬНАЯ ВЕДОМОСТЬ ОБЪЕМОВ РАБОТ</div>
-              <table class="header-table">
-                <tr>
-                  <td class="label">Заказчик</td>
-                  <td class="line">
+      <div class="card">
+        <div class="header-block">
+          <div class="export-info">
+            <xsl:text>Документ экспортирован </xsl:text>
+            <xsl:variable name="export-dt" select="$doc/bd:exportDateTime"/>
+            <xsl:choose>
+              <xsl:when test="$export-dt">
+                <xsl:variable name="dt" select="xs:dateTime($export-dt)"/>
+                <xsl:value-of select="format-dateTime($dt, '[D01].[M01].[Y0001]')"/>
+                <xsl:text> </xsl:text>
+                <xsl:value-of select="format-dateTime($dt, '[H01]:[m01]')"/>
+              </xsl:when>
+              <xsl:otherwise>&#160;</xsl:otherwise>
+            </xsl:choose>
+          </div>
+          <div class="header-title">СОПОСТАВИТЕЛЬНАЯ ВЕДОМОСТЬ ОБЪЕМОВ РАБОТ</div>
+          <table class="header-table">
+            <tr>
+              <td class="label">Заказчик</td>
+              <td class="line">
                     <div class="line-text">
                       <xsl:value-of select="$customer"/>
                     </div>
@@ -383,11 +413,9 @@
           <th class="center" rowspan="2">
             <xsl:value-of select="$base-label"/>
           </th>
-          <xsl:for-each select="$stages-order">
-            <th class="center" rowspan="2">
-              <xsl:value-of select="f:stage-label(.)"/>
-            </th>
-          </xsl:for-each>
+          <xsl:if test="$stage-count &gt; 0">
+            <th class="center" colspan="{$stage-count}">С учетом изменений</th>
+          </xsl:if>
           <xsl:for-each select="$stages-order">
             <xsl:variable name="stage-index" select="position()"/>
             <th class="center" colspan="{1 + $stage-index}">
@@ -404,6 +432,16 @@
           </th>
           <xsl:for-each select="$stages-order">
             <th class="center" rowspan="2">
+              <span class="th-label-muted">С учетом изменений</span>
+              <span class="th-label-strong">
+                <xsl:value-of select="f:stage-label(.)"/>
+              </span>
+            </th>
+          </xsl:for-each>
+        </tr>
+        <tr>
+          <xsl:for-each select="$stages-order">
+            <th class="center">
               <xsl:value-of select="f:stage-label(.)"/>
             </th>
           </xsl:for-each>
@@ -575,15 +613,15 @@
         <xsl:variable name="code" select="normalize-space($item/*:work/*:normCode)"/>
         <xsl:if test="$prefix or $code">
           <xsl:text> (</xsl:text>
-          <xsl:if test="$prefix">
-            <xsl:value-of select="$prefix"/>
-            <xsl:if test="$code">
-              <xsl:text>, </xsl:text>
-            </xsl:if>
-          </xsl:if>
           <xsl:if test="$code">
             <xsl:text>код: </xsl:text>
             <xsl:value-of select="$code"/>
+            <xsl:if test="$prefix">
+              <xsl:text>, </xsl:text>
+            </xsl:if>
+          </xsl:if>
+          <xsl:if test="$prefix">
+            <xsl:value-of select="$prefix"/>
           </xsl:if>
           <xsl:text>)</xsl:text>
         </xsl:if>
@@ -593,7 +631,7 @@
         <xsl:value-of select="$item/*:work/*:measurementUnit"/>
       </td>
       <td class="right"
-          title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&quot;base&quot;]/volumeQuantity','Объем базы (volumeList/alteration, alterationRef=base)')}">
+          title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&quot;base&quot;]/volumeQuantity','Объем базы (volumeList/volume, alterationRef=base)')}">
         <xsl:value-of select="f:format($base-value)"/>
       </td>
       <xsl:for-each select="$stages-order">
@@ -601,7 +639,7 @@
         <xsl:variable name="stageLabel" select="f:stage-label(.)"/>
         <xsl:variable name="value" select="f:quantity($item, $stageId)"/>
         <td class="right"
-            title="{f:tooltip(concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&quot;',$stageId,'&quot;]/volumeQuantity'), concat('Объем по стадии ', $stageLabel))}">
+            title="{f:tooltip(concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&quot;',$stageId,'&quot;]/volumeQuantity'), concat('Объем по стадии ', $stageLabel))}">
           <xsl:value-of select="f:format($value)"/>
         </td>
       </xsl:for-each>
@@ -612,8 +650,8 @@
         <xsl:variable name="has-schematron-issue" select="false()"/>
         <xsl:variable name="stage-issue-msgs" select="()"/>
         <xsl:variable name="stage-pos" select="position()"/>
-        <xsl:variable name="inc" select="$item/*:volumeList/*:alteration[@alterationRef=$stageId]/*:volumeIncrease[1]"/>
-        <xsl:variable name="dec" select="$item/*:volumeList/*:alteration[@alterationRef=$stageId]/*:volumeDecrease[1]"/>
+        <xsl:variable name="inc" select="$item/*:volumeList/*:volume[@alterationRef=$stageId]/*:volumeIncrease[1]"/>
+        <xsl:variable name="dec" select="$item/*:volumeList/*:volume[@alterationRef=$stageId]/*:volumeDecrease[1]"/>
         <xsl:variable name="prior-stages" select="reverse(($base-stage, $stages-order[position() lt $stage-pos]))"/>
         <xsl:variable name="prev-stage-id" select="( ($stages-order[position() lt $stage-pos])[last()]/@id, 'base')[1]"/>
 
@@ -622,7 +660,7 @@
             <xsl:attribute name="style">background:#ffe6e6;border:2px solid #cc0000;</xsl:attribute>
           </xsl:if>
           <xsl:attribute name="title">
-            <xsl:value-of select="f:tooltip(concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&quot;',$stageId,'&quot;]/volumeIncrease'), concat('Увеличение объема на стадии ', $stageLabel))"/>
+            <xsl:value-of select="f:tooltip(concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&quot;',$stageId,'&quot;]/volumeIncrease'), concat('Увеличение объема на стадии ', $stageLabel))"/>
           </xsl:attribute>
           <xsl:value-of select="f:format($inc)"/>
         </td>
@@ -630,11 +668,11 @@
           <xsl:variable name="target-stage" select="."/>
           <xsl:variable name="target-id" select="@id"/>
           <xsl:variable name="target-label" select="if ($target-id = 'base') then f:stage-label($base-stage) else f:stage-label($target-stage)"/>
-          <xsl:variable name="difference" select="$item/*:volumeList/*:alteration[@alterationRef=$stageId]/*:Delta/*:Difference[@fromRef=$target-id]"/>
+        <xsl:variable name="difference" select="$item/*:volumeList/*:volume[@alterationRef=$stageId]/*:Delta/*:Difference[@fromRef=$target-id]"/>
           <xsl:variable name="raw-dec" select="if ($difference) then xs:decimal($difference) else if ($target-id = $prev-stage-id and $dec) then xs:decimal($dec) else ()"/>
           <xsl:variable name="dec-value" select="if (exists($raw-dec) and $raw-dec lt 0) then $raw-dec else ()"/>
           <td class="right"
-              title="{f:tooltip(concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&quot;',$stageId,'&quot;]/Delta/Difference[@fromRef=&quot;',$target-id,'&quot;]'), concat('Снижение объема от ', if ($target-id = 'base') then 'базы' else concat('стадии ', $target-label), ' до стадии ', $stageLabel))}">
+              title="{f:tooltip(concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&quot;',$stageId,'&quot;]/Delta/Difference[@fromRef=&quot;',$target-id,'&quot;]'), concat('Снижение объема от ', if ($target-id = 'base') then 'базы' else concat('стадии ', $target-label), ' до стадии ', $stageLabel))}">
             <xsl:value-of select="f:format($dec-value)"/>
           </td>
         </xsl:for-each>
@@ -642,14 +680,14 @@
       <xsl:for-each select="$stages-order">
         <xsl:variable name="stageId" select="@id"/>
         <xsl:variable name="stageLabel" select="f:stage-label(.)"/>
-        <xsl:variable name="reasons" select="$item/*:volumeList/*:alteration[@alterationRef=$stageId]/*:reason"/>
+        <xsl:variable name="reasons" select="$item/*:volumeList/*:volume[@alterationRef=$stageId]/*:reason"/>
         <xsl:variable name="has-schematron-issue" select="false()"/>
         <td class="notes-cell col-reason">
           <xsl:if test="$has-schematron-issue">
             <xsl:attribute name="style">background:#ffe6e6;border:2px solid #cc0000;</xsl:attribute>
           </xsl:if>
           <xsl:attribute name="title">
-            <xsl:value-of select="f:tooltip(concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/alteration[@alterationRef=&quot;',$stageId,'&quot;]/reason'), concat('Причины изменения по стадии ', $stageLabel))"/>
+            <xsl:value-of select="f:tooltip(concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&quot;',$stageId,'&quot;]/reason'), concat('Причины изменения по стадии ', $stageLabel))"/>
           </xsl:attribute>
           <xsl:for-each select="$reasons">
             <xsl:if test="position() gt 1"><br/></xsl:if>
