@@ -1,0 +1,1507 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" attributeFormDefault="unqualified"
+  elementFormDefault="qualified" version="1.1" vc:minVersion="1.1">
+
+
+  <xs:element name="MarketAnalysis">
+    <xs:annotation>
+      <xs:documentation>Конъюнктурный анализ для объекта капитального строительства (реконструкции, капитального ремонта). При отсутствии во ФГИС ЦС данных о сметных ценах в базисном или текущем уровне цен на отдельные материальные ресурсы и оборудование, а также сметных нормативов на отдельные виды работ и услуг допускается определение их сметной стоимости по наиболее экономичному варианту, определенному на основании сбора информации о текущих ценах. Элемент обязан содержать атрибуты, указывающие на применяемый xsd-шаблон описания конъюнктурного анализа:
+        xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance";
+        xsi:noNamespaceSchemaLocation = "MarketAnalysis-4_02.xsd".
+        Электронные документы, представляемые для проведения государственной экспертизы проектной документации и (или) результатов инженерных изысканий и проверки достоверности определения сметной стоимости строительства, реконструкции, капитального ремонта, должны иметь расширение файла .gge.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Meta" type="TMeta">
+          <xs:annotation>
+            <xs:documentation>Информация о программном продукте (сметной программе) и версии формата.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <xs:element name="PriceLevel" type="TPriceLevel" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Уровень цен сметной документации</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <xs:element name="Legal">
+          <xs:annotation>
+            <xs:documentation>Описание данных, используемых для составления сводной таблицы результатов конъюнктурного анализа</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Metodology" type="TLegal">
+                <xs:annotation>
+                  <xs:documentation>Информация о Методике определения сметной стоимости строительства, реконструкции, капитального ремонта, сноса объектов капитального строительства, работ по сохранению объектов культурного наследия (памятников истории и культуры) народов Российской Федерации на территории Российской Федерации.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element minOccurs="0" name="Industry" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Условное обозначение корпорации или отрасли. В качестве значения поля берется буквенная аббревиатура названия корпорации, например, “АЛР” или “РЖД” .
+              Обозначение присваивается в соответствии с информацией, размещенной в ФГИС ЦС (примечания в формах цен строительных ресурсов). 
+              АКЦИОНЕРНАЯ КОМПАНИЯ "АЛРОСА" (ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО) – АЛР; 
+              ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО"РОССИЙСКИЕ ЖЕЛЕЗНЫЕ ДОРОГИ" - РЖД; 
+              ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО "ФЕДЕРАЛЬНАЯ СЕТЕВАЯ КОМПАНИЯ - РОССЕТИ" - РСС; 
+              ГОСУДАРСТВЕННАЯКОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ" – РСТ; ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО "ТРАНСНЕФТЬ" – ТРН.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <xs:element minOccurs="0" name="AccessLevel" type="TAccessLevel">
+          <xs:annotation>
+            <xs:documentation>Информация об уровне доступа. Возможные варианты заполнения - "общедоступная информация", "для служебного пользования" или "коммерческая тайна".</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="ObjectName" type="TClearString">
+          <xs:annotation>
+            <xs:documentation><text>Наименование объекта строительства</text>
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <xs:element name="Region" type="TRegion">
+          <xs:annotation>
+            <xs:documentation>Территориальное расположение объекта строительства (регион, субъект Российской Федерации).</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <xs:element name="Signatures">
+          <xs:annotation>
+            <xs:documentation>Подписи и ФИО уполномоченных лиц застройщика или технического заказчика, производителя и (или) поставщика соответствующих материальных ресурсов и оборудования, работ, услуг (в том числе услуг по перевозке грузов) в соответствии с положениями п.п.13 - 14 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр).
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Composer" type="TSignatures" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Подпись составляющего (ФИО).</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+
+              <xs:element name="Verifier" type="TSignatures" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Подпись проверяющего (ФИО).</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="Developer" type="TSignatures" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Подпись застройщика (технического заказчика) (ФИО).</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ExportDateTime" type="xs:dateTime" minOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Дата и время выгрузки документа из программного продукта (сметной программы) с учетом часового пояса в формате ISO 8601 (ГГГГ-ММ-ДД ЧЧ:ММ:СС+03:00).</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <xs:element name="Sections">
+          <xs:annotation>
+            <xs:documentation>Разделы конъюнктурного анализа</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Section" maxOccurs="1" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Раздел 1 конъюнктурного анализа
+                    
+                    В Раздел 1 выгружаются ресурсы по мониторингу (согласно Приложению 1 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025г. № 30/пр))</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Code" type="xs:positiveInteger">
+                      <xs:annotation>
+                        <xs:documentation>Номер раздела конъюнктурного анализа</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Name" type="TClearString">
+                      <xs:annotation>
+                        <xs:documentation>Наименование раздела конъюнктурного анализа</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Items" minOccurs="1" maxOccurs="1">
+                      <xs:annotation>
+                        <xs:documentation><text>Таблица с результатами конъюнктурного анализа.</text> 
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                          <xs:element name="Item" minOccurs="1" maxOccurs="unbounded" type="TItem">
+                            <xs:annotation>
+                              <xs:documentation><text>Позиция конъюнктурного анализа.</text>
+                              </xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element name="FreeString" type="TClearString" maxOccurs="unbounded"
+                            minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Свободная строка
+                                
+                                выводится между позициями (между которыми добавлена)</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                        </xs:choice>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="FreeString" type="TClearString" maxOccurs="unbounded"
+                      minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Свободная строка
+                          
+                          Нигде не визуализируется</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <xs:element name="SectionFSBC" maxOccurs="1" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Раздел 2 конъюнктурного анализа
+                    
+                    В раздел 2 выгружаются ресурсы по ФГИС ЦС (согласно Приложению 1 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025г. № 30/пр))</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Code" type="xs:positiveInteger">
+                      <xs:annotation>
+                        <xs:documentation>Номер раздела конъюнктурного анализа</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Name" type="TClearString">
+                      <xs:annotation>
+                        <xs:documentation>Наименование раздела конъюнктурного анализа</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Items" minOccurs="1" maxOccurs="1">
+                      <xs:annotation>
+                        <xs:documentation><text>Таблица с результатами конъюнктурного анализа.</text> 
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+
+                          <xs:element name="ItemFSBC" minOccurs="1" maxOccurs="unbounded"
+                            type="TItemFSBC">
+                            <xs:annotation>
+                              <xs:documentation><text>Позиция конъюнктурного анализа, взятая по ФГИС ЦС.</text>
+                              </xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element name="FreeString" type="TClearString" maxOccurs="unbounded"
+                            minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>Свободная строка
+                                
+                                выводится между позициями (между которыми добавлена)</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                        </xs:choice>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="FreeString" type="TClearString" maxOccurs="unbounded"
+                      minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Свободная строка
+                          Нигде не визуализируется</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="FreeString" type="TClearString" maxOccurs="unbounded" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Свободная строка
+                    
+                    Выводится над разделом перед которым добавлена</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:simpleType name="TAccessLevel">
+    <xs:annotation>
+      <xs:documentation><text>Классификация информации по грифу ограничения доступа.</text></xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="общедоступная информация"/>
+      <xs:enumeration value="для служебного пользования"/>
+      <xs:enumeration value="коммерческая тайна"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="TFileFormat">
+    <xs:annotation>
+      <xs:documentation><text>Комплексный тип для описания типа и версии передаваемого файла.</text></xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Type">
+        <xs:annotation>
+          <xs:documentation>Тип передаваемого файла: КА - Конъюнктурный анализ.</xs:documentation>
+        </xs:annotation>
+
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="TClearString">
+              <xs:assert test="normalize-space(.) = 'КА'"/>
+
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Version" default="4.03">
+        <xs:annotation>
+          <xs:documentation>Номер версии схемы.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="TClearString"/>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TMeta">
+    <xs:annotation>
+      <xs:documentation><text>Информация о программном комплексе и версии формата.</text></xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Soft">
+        <xs:annotation>
+          <xs:documentation>Наименование программного продукта (сметной программы).</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Name" type="TClearString">
+              <xs:annotation>
+                <xs:documentation>Наименование программного комплекса.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Version" type="TClearString">
+              <xs:annotation>
+                <xs:documentation>Версия программного комплекса.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="File" type="TFileFormat">
+        <xs:annotation>
+          <xs:documentation>Тип и версия передаваемого файла.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TLinkFile">
+    <xs:annotation>
+      <xs:documentation>Описание связи позиции КАЦ с обосновывающими документами.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FileName" type="TClearString" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation><text> Ссылки на файлы c обосновывающими документами, подписанные производителями и (или) поставщиками соответствующих материальных ресурсов и оборудования (работ, услуг) и (или) заверенными подписями уполномоченного лица производителей и (или) поставщиков, при использовании обосновывающих документов из открытых источников - подписанные уполномоченным лицом заказчика. Поле должно содержать только имя файла без определения пути к файлу.</text> </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Page" type="xs:positiveInteger">
+        <xs:annotation>
+          <xs:documentation>Номер страницы обосновывающего документа.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:complexType name="TDate">
+    <xs:annotation>
+      <xs:documentation>Дата составления коньюнктурного анализа.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Year" type="xs:unsignedShort">
+        <xs:annotation>
+          <xs:documentation>Год.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Quarter" type="xs:unsignedShort">
+        <xs:annotation>
+          <xs:documentation>Квартал.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Date" type="xs:date" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Дата коммерческого предложения.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TPriceLevel">
+    <xs:annotation>
+      <xs:documentation>Составляющие элементы уровня цен сметной документации</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Year">
+        <xs:annotation>
+          <xs:documentation>Год</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="TClearString"/>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Month" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Месяц</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="TClearString"/>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Day" type="xs:unsignedByte">
+        <xs:annotation>
+          <xs:documentation>День</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Quarter">
+        <xs:annotation>
+          <xs:documentation>Квартал</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="TClearString"/>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="Note" type="TClearString" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Примечание.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="ExpenseType" final="restriction">
+    <xs:annotation>
+      <xs:documentation><text>Виды затрат, учтенные в сметной цене материальных ресурсов или оборудования, связанные с их приобретением в соответствии с п.88 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г № 30/пр).</text>
+</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Тара, упаковка, реквизит (пункт 88 Методики)"/>
+      <xs:enumeration value="Стоимость комплекта запасных частей (пункт 88 Методики)"/>
+      <xs:enumeration value="Снабженческие наценки (пункт 88 Методики)"/>
+      <xs:enumeration value="Расходы на уплату пошлин (пункт 88 Методики)"/>
+      <xs:enumeration value="Расходы на уплату налогов (пункт 88 Методики)"/>
+      <xs:enumeration value="Расходы на уплату сборов (пункт 88 Методики)"/>
+      <xs:enumeration value="Другие таможенные платежи (пункт 88 Методики)"/>
+      <xs:enumeration value="Шефмонтаж (подпункт &quot;а&quot; пункта 117 Методики)"/>
+      <xs:enumeration value="Шефналадка (подпункт &quot;а&quot; пункта 117 Методики)"/>
+      <xs:enumeration value="Доводка (калибровка) (подпункт &quot;б&quot; пункта 117 Методики)"/>
+      <xs:enumeration value="Доизготовление (подпункт &quot;в&quot; пункта 117 Методики)"/>
+      <xs:enumeration
+        value="Изготовление специальной оснастки (подпункт &quot;г&quot; пункта 117 Методики)"/>
+      <xs:enumeration
+        value="Предварительно установленное программное обеспечение (подпункт &quot;д&quot; пункта 117 Методики)"/>
+      <xs:enumeration
+        value="Затраты по оценке соответствия оборудования (подпункт &quot;е&quot; пункта 117 Методики)"/>
+      <xs:enumeration value="Другие затраты (подпункт &quot;ж&quot; пункта 117 Методики)"/>
+      <xs:enumeration value="Комплектация оборудования (пункт 119 Методики)"/>
+
+    </xs:restriction>
+
+  </xs:simpleType>
+
+  <xs:simpleType name="TClearString">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\p{L}\p{N}\p{P}\p{S}\s]*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="TCompany">
+    <xs:annotation>
+      <xs:documentation><text>Комплексный тип для описания организации производителя/поставщика материальных ресурсов или оборудования, а также организации производителя/поставщика отдельных видов работ или оказания услуг (в том числе услуг по перевозке грузов).</text></xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CompanyName" type="TClearString" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Полное и (или) сокращенное (при наличии) наименования производителя/поставщика
+</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="KPP" type="TClearString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>КПП организации производителя/поставщика</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="INN" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation><text>ИНН организации производителя/поставщика, находящейся в Российской Федерации, п.п. 23, 23.1 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр) (при проведении КАЦ за границей, при отсутствии кода ИНН заполняется аналогом такого кода (при наличии), либо номером, состоящим из 10 цифр вида "0000000001" (последняя цифра должна меняться 1,2,3 по порядку, номер для организации должен быть уникальный в рамках КАЦ).</text>
+</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="TClearString"> </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Site" type="TClearString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation><text>Гиперссылка на веб-сайт производителя/поставщика.
+Требуется использовать CDATA для инкапсуляции содержимого.
+Пример использования: "...[CDATA[Ваша ссылка]]..."
+(При отсутствии у производителя (поставщика) сайта в информационно-телекоммуникационной сети "Интернет" не заполняется.
+(согласно Приложения 1 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр))).</text>
+</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="Email" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>E-mail производителя/поставщика</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string"> </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+
+      <xs:element name="Status" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Статус организации (производитель(1) / поставщик (2))
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="TClearString">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="StorePlace" type="TClearString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation><text>Населенный пункт (адрес) расположения склада производителя/поставщика (Приложение № 1 к Методике от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр)).</text>
+</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element minOccurs="0" name="CompanyNote" type="TClearString">
+        <xs:annotation>
+          <xs:documentation>Примечание.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TSignatures">
+    <xs:annotation>
+      <xs:documentation><text>Комплексный тип для передачи данных об уполномоченных лицах застройщика или технического заказчика, производителя и (или) поставщика соответствующих материальных ресурсов и оборудования, работ, услуг (в том числе услуг по перевозке грузов) в соответствии с положениями п.п.13-14 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр).</text>
+</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name">
+        <xs:annotation>
+          <xs:documentation><text>ФИО уполномоченных лиц застройщика или технического заказчика, производителя и (или) поставщика соответствующих материальных ресурсов и оборудования, работ, услуг (в том числе услуг по перевозке грузов) в соответствии с положениями п.п.13 - 14 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр) </text>
+</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Position">
+        <xs:annotation>
+          <xs:documentation><text>Должности уполномоченных лиц застройщика или технического заказчика, производителя и (или) поставщика соответствующих материальных ресурсов и оборудования, работ, услуг (в том числе услуг по перевозке грузов) в соответствии с положениями п.п.13 - 14 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр) </text>
+</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TRegion">
+    <xs:annotation>
+      <xs:documentation>Территориальное расположение объекта строительства (регион, подрайон, ценовая зона в составе основного региона (субъект Российской Федерации).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+
+      <xs:element name="State" type="TClearString" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Наименование государства, на территории которого находится объект строительства.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RegionCode">
+        <xs:annotation>
+          <xs:documentation>Код региона (субъекта Российской Федерации) (при отсутствии кода субъекта заполняется "00").</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="TClearString"/>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RegionName" type="TClearString" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Наименование региона (субъекта Российской Федерации), в котором расположен объект строительства.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SubRegion">
+        <xs:annotation>
+          <xs:documentation>Подрайон, ценовая зона в составе основного региона (субъект Российской Федерации), в котором расположен объект строительства.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="SubRegionCode">
+              <xs:annotation>
+                <xs:documentation>Код подрайона, ценовой зоны (при отсутствии кода заполняется "00").</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="TClearString"/>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="SubRegionName" type="TClearString">
+              <xs:annotation>
+                <xs:documentation>Наименование подрайона, ценовой зоны (Зона).</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:complexType name="TOffer">
+    <xs:annotation>
+      <xs:documentation><text> Обоснование результатов конъюнктурного анализа в текущих ценах не менее 3 (трех) (при наличии) производителей и (или) поставщиков в соответствии с положениями пунктов 13 - 21 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр); пунктов 6  - 10 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 15 июня 2020 г. № 317/пр (с изменениями от 25 августа 2022 г. № 698/пр, от 22 декабря 2023 г. № 968/пр).</text>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="OfferNum">
+        <xs:annotation>
+          <xs:documentation>Номер по порядку коммерческого предложения для кодируемого материального ресурса, оборудования, вида работ или услуг (в том числе услуг по перевозке грузов), указываемый в графе 1 рекомендуемого образца формы конъюнктурного анализа в соответствии с п.п. 23 - 24 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр)
+
+           </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:positiveInteger">
+              <xs:attribute name="OfferNumComment" type="xs:string"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OfferCode" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Код строительного ресурса (код материального ресурса, оборудования или затрат на работы и услуги, определение сметной стоимости которых выполняется в соответствии с пунктом 13 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр)</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="OfferCodeComment" type="xs:string"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OfferName" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Полное наименование ресурса, затрат в обосновывающем документе
+</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="OfferNameComment" type="xs:string"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OfferUnit" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Единица измерения ресурса, затрат в обосновывающем документе
+</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="OfferUnitComment" type="xs:string"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OfferDate" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Месяц и год составления обосновывающего документа
+ / 
+Квартал (для сметных цен строительных ресурсов в  текущем уровне цен и индексов по ГОСР, размещенных в ФГИС ЦС, применяемых при РИМ)
+           </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="TDate">
+              <xs:attribute name="OfferDateComment" type="xs:string"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OfferCompany" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Информация о производителе/поставщике
+           </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="TCompany">
+              <xs:attribute name="OfferCompanyComment" type="xs:string"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="State" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation><text>Наименование государства, на территории которого находится производитель/поставщик (расположение склада производителя/поставщика)</text>
+</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="StateComment" type="xs:string"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Region" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation><text>Наименование субъекта государства, на территории которого находится производитель/поставщик (расположение склада производителя/поставщика).</text>
+</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="TRegion">
+              <xs:attribute name="RegionComment" type="xs:string"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OfferPrice" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation><text> Сметная цена ресурса, затрат, работ, услуг (в том числе услуг по перевозке грузов) по результатам конъюнктурного анализа</text>
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:sequence>
+              <xs:sequence>
+                <xs:element name="OfferWithVAT" minOccurs="0" maxOccurs="1">
+                  <xs:annotation>
+                    <xs:documentation>Текущая отпускная цена в обосновывающем документе с НДС, рублей</xs:documentation>
+                  </xs:annotation>
+                  <xs:complexType>
+                    <xs:simpleContent>
+                      <xs:extension base="xs:decimal">
+                        <xs:attribute name="OfferWithVATComment" type="xs:string"/>
+                      </xs:extension>
+                    </xs:simpleContent>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="PercentVAT" type="xs:decimal" minOccurs="1" maxOccurs="1">
+                  <xs:annotation>
+                    <xs:documentation><text>Ставка НДС, %.</text>
+                 </xs:documentation>
+                  </xs:annotation>
+                </xs:element>
+              </xs:sequence>
+              <xs:element name="OfferWithoutVAT" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Текущая отпускная цена за единицу измерения в обосновывающем документе без НДС, руб.  / 
+Сметная цена строительного ресурса в базисном или в текущем уровне цен, размещенная в ФГИС ЦС, применяемая при РИМ, руб.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:decimal">
+                      <xs:attribute name="OfferWithoutVATComment" type="xs:string"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:element name="OfferUnitWithoutVAT" maxOccurs="1" minOccurs="1">
+              <xs:annotation>
+                <xs:documentation>Текущая отпускная цена за единицу измерения без НДС, рублей в соответствии с графой 5
+              в уровне цен составления сметной документации</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:decimal">
+                    <xs:attribute name="OfferUnitWithoutVATComment" type="xs:string"/>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+
+
+            <xs:element name="DeflationCoefficient" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Значение индекса фактической инфляции / индекса по ГОСР
+                            Округление индекса производится до 4х знаков после запятой, согласно п. 187 последний абзац Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025г. № 30/пр)</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:decimal">
+                    <xs:attribute name="DeflationCoefficientComment" type="xs:string"/>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ConversionFactor" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Коэффициент пересчета в единицу измерения в соответствии с графой 5
+                            Округление элемента производить до трех значимых чисел после запятой</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:decimal">
+                    <xs:attribute name="ConversionFactorComment" type="xs:string"/>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="OfferUnitFormula" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation><text> Формула расчета текущей отпускной цены без НДС, руб. за единицу измерения ресурса, в соответствии с графой 5 формы конъюнктурного анализа (за единицу измерения в соответствии с классификатором строительных ресурсов) при различных единицах измерения ресурсов по ценовому предложению и по проекту.</text></xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="TClearString">
+                    <xs:attribute name="OfferUnitFormulaComment" type="xs:string"/>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element maxOccurs="1" minOccurs="0" name="DeliveryTerms" type="TClearString">
+              <xs:annotation>
+                <xs:documentation><text> Вид франко (условия поставки), указание на учет в отпускной цене затрат на перевозку строительного ресурса в соответствии с п. 23 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр) (пятая группа цифр содержит указание на учет в отпускной цене затрат на перевозку строительного ресурса (01 – с учетом затрат на перевозку до приобъектного склада; 01-1 – с учетом затрат на перевозку до промежуточной точки по маршруту перевозки, когда требуется включение затрат на перевозку до приобъектного склада по расчету дополнительно; 02 – без учета затрат на перевозку).</text>
+</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="DeliveryTermsCode" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>
+                  <text>
+                    Код франко, в соответствии с п. 23 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр 
+                    (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр).
+                    Пятая группа цифр содержит указание на учет в отпускной цене затрат на перевозку строительного ресурса:
+                    - 01 – с учетом затрат на перевозку до приобъектного склада;
+                    - 01-1 – с учетом затрат на перевозку до промежуточной точки по маршруту перевозки, когда требуется включение затрат на перевозку до приобъектного склада по расчету дополнительно;
+                    - 02 – без учета затрат на перевозку.
+                  </text>
+                </xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="TClearString">
+                  <xs:enumeration value="01"/>
+                  <xs:enumeration value="01-1"/>
+                  <xs:enumeration value="02"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="EstimateWithoutVAT" minOccurs="1" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>Сметная цена без НДС, рублей за единицу измерения в соответствии с графой 5
+              </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:decimal">
+                    <xs:attribute name="EstimateWithoutVATComment" type="xs:string"/>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="OfferPriceComment" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="Netto">
+        <xs:annotation>
+          <xs:documentation>Вес нетто строительного ресурса за единицу измерения, кг.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:decimal">
+              <xs:attribute name="NettoComment" type="xs:string"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="Brutto">
+        <xs:annotation>
+          <xs:documentation>Вес брутто строительного ресурса за единицу измерения, кг.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:decimal">
+              <xs:attribute name="BruttoComment" type="xs:string"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Transportation">
+        <xs:annotation>
+          <xs:documentation>Затраты на перевозку</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Percent" type="xs:decimal" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Затраты на перевозку в процентах
+
+Заполняется в случае, если затраты на перевозку оборудования определяются в процентах в соответствии с пунктом 91 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр) </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Price" type="xs:decimal" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>Затраты на перевозку в рублях за единицу измерения в соответствии с графой 5 без НДС
+                  </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="TransportationComment" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Storage" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Заготовительно-складские расходы</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Percent" type="xs:decimal" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>Заготовительно-складские расходы в процентах</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Price" type="xs:decimal" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>Заготовительно-складские расходы в руб</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="StorageComment" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Expenses" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation> Дополнительные затраты, предусмотренные пунктами 88, 117, 119 а также Приложением № 1 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр).
+ 
+ </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence maxOccurs="16" minOccurs="0">
+            <xs:element name="Expense">
+              <xs:annotation>
+                <xs:documentation><text> Параметры дополнительных затрат, предусмотренных пунктами 88, 117, 119 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр).</text>
+                 </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ExpenseNum" type="xs:positiveInteger">
+                    <xs:annotation>
+                      <xs:documentation>Порядковый номер затрат.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="ExpenseType" type="ExpenseType">
+                    <xs:annotation>
+                      <xs:documentation>Наименование (вид) дополнительных затрат, предусмотренных пунктами 88, 117, 119 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр).
+
+Затраты по пп 120-121 не включены в перечень, в связи с тем, что они считаются от сметной цены оборудования.
+Затраты на сборку и установку мебели и другие затраты перечисленные в пунктах 120 и 121 методики 421/пр рекомендуется вносить непосредственно в локальную смету в виде поправочных коэффициентов к стоимости оборудования.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="ExpensePrice" type="xs:decimal">
+                    <xs:annotation>
+                      <xs:documentation>Стоимость вида дополнительных затрат без НДС, руб. за единицу измерения ресурса.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="ExpensePercent" type="xs:decimal" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>Стоимость вида дополнительных затрат в процентах.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="ExpenseDate" type="TDate" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                      <xs:documentation><text> Уровень цен результатов конъюнктурного анализа.</text>
+         </xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element minOccurs="0" name="ExpenseCompany" type="TCompany">
+                    <xs:annotation>
+                      <xs:documentation>Организации производитель/поставщик материальных ресурсов или оборудования, или организация производитель отдельных видов работ или оказания услуг (в том числе услуг по перевозке грузов).</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="ExpenseLinkFile" type="TLinkFile" minOccurs="0"
+                    maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation><text> Ссылки на файлы c обосновывающими документами, подписанные производителями и (или) поставщиками соответствующих материальных ресурсов и оборудования (работ, услуг) и (или) заверенными подписями уполномоченного лица производителей и (или) поставщиков, при использовании обосновывающих документов из открытых источников - подписанные уполномоченным лицом заказчика. Поле должно содержать только имя файла без определения пути к файлу.</text> 
+</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="ExpenseNote" type="TClearString" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>Примечание</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="ExpensesComment" type="xs:string"/>
+        </xs:complexType>
+        <xs:unique name="ExpUniq">
+          <xs:selector xpath="Expense"/>
+          <xs:field xpath="ExpenseType"/>
+        </xs:unique>
+
+      </xs:element>
+      <xs:element minOccurs="0" name="ExpensesTotal">
+        <xs:annotation>
+          <xs:documentation><text> Итоговая стоимость дополнительных затрат без НДС, руб. за единицу измерения, предусмотренных пунктами 88, 117, 119 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр).</text>
+
+ Затраты по пп 120-121 не включены в перечень, в связи с тем, что они считаются от сметной цены оборудования.
+            Затраты на сборку и установку мебели и другие затраты перечисленные в пунктах 120 и 121 методики 421/пр рекомендуется вносить непосредственно в локальную смету в виде поправочных коэффициентов к стоимости оборудования.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:decimal">
+              <xs:attribute name="ExpensesTotalComment" type="xs:string"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="OriginCountry">
+        <xs:annotation>
+          <xs:documentation>Страна производителя оборудования, производственного и хозяйственного инвентаря</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="OriginCountryComment" type="xs:string"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Manufacturer">
+        <xs:annotation>
+          <xs:documentation><text> Наименование производителя оборудования, производственного и хозяйственного инвентаря в случе, если поставщик и производитель являются разными организациями (Наименование производителя материального ресурса).</text></xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="ManufacturerComment" type="xs:string"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OfferLinkFile" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation><text> Ссылки на файлы c обосновывающими документами, подписанные производителями и (или) поставщиками соответствующих материальных ресурсов и оборудования (работ, услуг) и (или) заверенными подписями уполномоченного лица производителей и (или) поставщиков, при использовании обосновывающих документов из открытых источников - подписанные уполномоченным лицом заказчика. 
+Поле должно содержать только имя файла без определения пути к файлу.</text> 
+</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="TLinkFile">
+              <xs:attribute name="OfferLinkFileComment" type="xs:string"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+
+
+      <xs:element name="Winner">
+        <xs:annotation>
+          <xs:documentation><text> Признак ресурса с минимальной ценой (ресурс-победитель), должен выгружаться первым коммерческим предложением. Выбор наиболее экономичного варианта выполняется на основании сравнения показателей сметной цены без НДС, руб. за единицу измерения, для каждого ресурса в соответствии с положениями пункта 13 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр).</text></xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:boolean">
+              <xs:attribute name="WinnerComment" type="xs:string"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OfferNote" type="TClearString" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Примечание.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TOfferFSBC">
+    <xs:annotation>
+      <xs:documentation><text> Обоснование результатов конъюнктурного анализа в текущих ценах (сокращенная версия для FSBC).</text>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+
+      <xs:element name="OfferNum">
+        <xs:annotation>
+          <xs:documentation>Номер по порядку коммерческого предложения для кодируемого материального ресурса, оборудования, вида работ или услуг (в том числе услуг по перевозке грузов), указываемый в графе 1 рекомендуемого образца формы конъюнктурного анализа в соответствии с п. 23 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр)</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:positiveInteger">
+              <xs:attribute name="OfferNumComment" type="xs:string"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+
+
+      <xs:element name="OfferCode" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Код строительного ресурса</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="OfferCodeComment" type="xs:string"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="OfferName" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Полное наименование ресурса, затрат в обосновывающем документе
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="OfferNameComment" type="xs:string"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="OfferUnit" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Единица измерения ресурса, затрат в обосновывающем документе
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="OfferUnitComment" type="xs:string"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="OfferPrice" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation><text> Сметная цена ресурса, затрат, работ, услуг (в том числе услуг по перевозке грузов) по результатам конъюнктурного анализа</text>
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="OfferWithoutVAT" minOccurs="1" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>Текущая отпускная цена за единицу измерения в обосновывающем документе без НДС, руб.  / 
+Сметная цена строительного ресурса в базисном или в текущем уровне цен, размещенная в ФГИС ЦС, применяемая при РИМ, руб.</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:decimal">
+                    <xs:attribute name="OfferWithoutVATComment" type="xs:string"/>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+
+            <xs:element name="OfferUnitWithoutVAT" maxOccurs="1" minOccurs="1">
+              <xs:annotation>
+                <xs:documentation>Текущая отпускная цена за единицу измерения без НДС, руб. в соответствии с графой 5
+              в уровне цен составления сметной документации</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:decimal">
+                    <xs:attribute name="OfferUnitWithoutVATComment" type="xs:string"/>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+
+
+            <xs:element name="DeflationCoefficient" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Значение индекса фактической инфляции / индекса по ГОСР
+                            Округление индекса производится до 4х знаков после запятой, согласно п. 187 последний абзац Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025г. № 30/пр)</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:decimal">
+                    <xs:attribute name="DeflationCoefficientComment" type="xs:string"/>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="OfferUnitFormula" maxOccurs="1" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation><text> Формула расчета текущей отпускной цены без НДС, руб. за единицу измерения ресурса, в соответствии с графой 5 формы конъюнктурного анализа (за единицу измерения в соответствии с классификатором строительных ресурсов) при различных единицах измерения ресурсов по ценовому предложению и по проекту.</text></xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="TClearString">
+                    <xs:attribute name="OfferUnitFormulaComment" type="xs:string"/>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="EstimateWithoutVAT" minOccurs="1" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation>Сметная цена без НДС, руб., за единицу измерения в соответствии с графой 5
+              </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:decimal">
+                    <xs:attribute name="EstimateWithoutVATComment" type="xs:string"/>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+
+            <xs:element name="ConversionFactor" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Коэффициент пересчета в единицу измерения в соответствии с графой 5
+                            Округление элемента производить до трех значимых чисел после запятой</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:decimal">
+                    <xs:attribute name="ConversionFactorComment" type="xs:string"/>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="OfferPriceComment" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Expenses" minOccurs="0">
+        <xs:annotation>
+
+          <xs:documentation> Дополнительные затраты, предусмотренные пунктами 88, 117, 119 а также Приложением № 1 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр).
+            
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence maxOccurs="16" minOccurs="0">
+            <xs:element name="Expense">
+              <xs:annotation>
+                <xs:documentation><text> Параметры дополнительных затрат, предусмотренных пунктами 88, 117, 119 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр).</text>
+                </xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ExpenseNum" type="xs:positiveInteger">
+                    <xs:annotation>
+                      <xs:documentation>Порядковый номер затрат.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="ExpenseType" type="ExpenseType">
+                    <xs:annotation>
+                      <xs:documentation>Наименование (вид) дополнительных затрат, предусмотренных пунктами 88, 117, 119 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр).
+
+ Затраты по пп 120-121 не включены в перечень, в связи с тем, что они считаются от сметной цены оборудования.
+            Затраты на сборку и установку мебели и другие затраты перечисленные в пунктах 120 и 121 методики 421/пр рекомендуется вносить непосредственно в локальную смету в виде поправочных коэффициентов к стоимости оборудования.
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="ExpensePrice" type="xs:decimal">
+                    <xs:annotation>
+                      <xs:documentation>Стоимость вида дополнительных затрат без НДС, руб. за единицу измерения ресурса.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="ExpensePercent" type="xs:decimal" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>Стоимость вида дополнительных затрат в процентах.</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="ExpenseDate" type="TDate" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                      <xs:documentation><text> Уровень цен результатов конъюнктурного анализа.</text>
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element minOccurs="0" name="ExpenseCompany" type="TCompany">
+                    <xs:annotation>
+                      <xs:documentation>Организации производитель/поставщик материальных ресурсов или оборудования, или организация производитель отдельных видов работ или оказания услуг (в том числе услуг по перевозке грузов).</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="ExpenseLinkFile" type="TLinkFile" minOccurs="0"
+                    maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation><text> Ссылки на файлы c обосновывающими документами, подписанные производителями и (или) поставщиками соответствующих материальных ресурсов и оборудования (работ, услуг) и (или) заверенными подписями уполномоченного лица производителей и (или) поставщиков, при использовании обосновывающих документов из открытых источников - подписанные уполномоченным лицом заказчика. Поле должно содержать только имя файла без определения пути к файлу.</text> 
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="ExpenseNote" type="TClearString" minOccurs="0">
+                    <xs:annotation>
+                      <xs:documentation>Примечание</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="ExpensesComment" type="xs:string"/>
+        </xs:complexType>
+        <xs:unique name="ExpUniqFSBC">
+          <xs:selector xpath="Expense"/>
+          <xs:field xpath="ExpenseType"/>
+        </xs:unique>
+      </xs:element>
+      <xs:element minOccurs="0" name="ExpensesTotal">
+        <xs:annotation>
+          <xs:documentation><text> Итоговая стоимость дополнительных затрат без НДС, руб. за единицу измерения, предусмотренных пунктами 88, 117, 119 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр).</text>
+</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:decimal">
+              <xs:attribute name="ExpensesTotalComment" type="xs:string"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OfferNote" type="TClearString" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Примечание.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TItem">
+    <xs:annotation>
+      <xs:documentation><text>Комплексный тип для группировки результатов коньюнктурного анализа для позиции конъюнктурного анализа.</text>
+       </xs:documentation>
+    </xs:annotation>
+
+    <xs:sequence>
+      <xs:element name="Num" type="xs:positiveInteger" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Порядковый номер позиции строительного ресурса, работ, услуг (в том числе услуг по перевозке грузов), относительно которой проводится конъюнктурный анализ
+            </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Code" type="TClearString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Код строительного ресурса (код материального ресурса, оборудования или затрат на работы и услуги, определение сметной стоимости которых выполняется в соответствии с пунктом 13 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025 г. № 30/пр))</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Name" type="TClearString" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Наименование ресурса, затрат в соответствии с проектной документацией
+         </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Unit" type="TClearString" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Единица измерения ресурса, затрат в соответствии с проектной документацией
+</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="Type">
+        <xs:annotation>
+          <xs:documentation>Тип позиции: материал, оборудование, работа, машина, перевозка грузов (при формировании цены работ и услуг в ЛСР и ОС данные относятся на стоимость прочих затрат, в ССРСС данные заносятся в Главу 9 в стоимость прочих затрат).
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="TClearString">
+            <xs:enumeration value="материал"/>
+            <xs:enumeration value="оборудование"/>
+            <xs:enumeration value="работа"/>
+            <xs:enumeration value="машина"/>
+            <xs:enumeration value="перевозка"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="Offer" minOccurs="1" maxOccurs="unbounded" type="TOffer">
+        <xs:annotation>
+          <xs:documentation><text> Обоснование результатов конъюнктурного анализа в текущих ценах не менее 3 (трех) (при наличии) производителей и (или) поставщиков в соответствии с положениями пунктов 13 - 21 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025г. № 30/пр); пунктов 6 - 10 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 15 июня 2020 г. № 317/пр (с изменениями от 25 августа 2022 г. № 698/пр, от 22 декабря 2023 г. № 968/пр).</text>
+     </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ClientLetter" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Ссылка на файл c письмом от Заказчика. Прикладывается в случае отсутствия информации о 3х (трех) текущих ценах производителей и (или) поставщиков услуг на день проведения конъюнктурного анализа
+Поле должно содержать только имя файла без определения пути к файлу</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="FileName" type="TClearString">
+              <xs:annotation>
+                <xs:documentation>Ссылка на PDF файл письма Заказчика
+Поле должно содержать только имя файла без определения пути к файлу</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Title" type="TClearString">
+              <xs:annotation>
+                <xs:documentation>Текст названия письма (отображается при просмотре ссылки).</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="FreeString" type="TClearString">
+        <xs:annotation>
+          <xs:documentation>Строка, содержащая справочную информацию в свободной форме.
+
+Выводится над позицией, к которой относится</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:complexType name="TItemFSBC">
+    <xs:annotation>
+      <xs:documentation><text>Комплексный тип для группировки результатов коньюнктурного анализа для позиции по ФГИС ЦС.</text>
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:sequence>
+      <xs:element name="Num" type="xs:positiveInteger" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Порядковый номер позиции строительного ресурса, работ, услуг (в том числе услуг по перевозке грузов), относительно которой проводится конъюнктурный анализ
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Name" type="TClearString" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Наименование ресурса, затрат, в соответствии с проектной документацией
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Unit" type="TClearString" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Единица измерения ресурса, затрат в соответствии с проектной документацией
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="Type">
+        <xs:annotation>
+          <xs:documentation>Тип позиции: материал, оборудование</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="TClearString">
+            <xs:enumeration value="материал"/>
+            <xs:enumeration value="оборудование"/>
+            <xs:enumeration value="работа"/>
+            <xs:enumeration value="машина"/>
+            <xs:enumeration value="перевозка"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="Offer" minOccurs="1" maxOccurs="unbounded" type="TOfferFSBC">
+        <xs:annotation>
+          <xs:documentation>Обоснование результатов конъюнктурного анализа в текущих ценах в соответствии с положениями пунктов 23 и 44 Методики, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 4 августа 2020 г. № 421/пр (с изменениями от 7 июля 2022 г. № 557/пр, от 30 января 2024 г. № 55/пр, от 23 января 2025г. № 30/пр)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ClientLetter" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Ссылка на файл c письмом от Заказчика.
+Поле должно содержать только имя файла без определения пути к файлу</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="FileName" type="TClearString">
+              <xs:annotation>
+                <xs:documentation>Ссылка на PDF файл письма Заказчика
+Поле должно содержать только имя файла без определения пути к файлу</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Title" type="TClearString">
+              <xs:annotation>
+                <xs:documentation>Текст названия письма (отображается при просмотре ссылки).</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="FreeString" type="TClearString">
+        <xs:annotation>
+          <xs:documentation>Строка, содержащая справочную информацию в свободной форме.
+
+Выводится над позицией, к которой относится</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TLegal">
+    <xs:annotation>
+      <xs:documentation>Описание данных, используемых для определения стоимости работ и затрат в локальном сметном расчете (сметные нормативы, индексы,  и др.).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Наименование редакции (приказ, дата, номер) исходных нормативов.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Type" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Тип нормативов из федерального реестра сметных нормативов.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="ГСН"/>
+            <xs:enumeration value="ОСН"/>
+            <xs:enumeration value="ТЕР"/>
+            <xs:enumeration value="ИСН"/>
+            <xs:enumeration value="НЗ"/>
+            <xs:enumeration value="Справочная информация"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Date" type="TDate" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Дата включения в федеральный реестр сметных нормативов.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Num" type="xs:positiveInteger" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Регистрационный номер в федеральном реестре сметных нормативов.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Orders" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Наименование редакции (приказ, дата, номер) дополнений к нормативам.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
