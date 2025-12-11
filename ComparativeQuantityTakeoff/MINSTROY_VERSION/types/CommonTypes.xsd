@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bt="http://types/BaseTypes.xsd"
   xmlns:ct="http://types/CommonTypes.xsd" targetNamespace="http://types/CommonTypes.xsd"
-  attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.18">
+  attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.19">
 
   <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
 
@@ -154,7 +154,7 @@ id строятся по следующему принципу: "alt-ГГГГ-М
 
 
 
-  <xs:complexType name="estimateType">
+  <xs:complexType name="estimateCqtType">
     <xs:annotation>
       <xs:documentation>
         <text>Описание комплексного типа TEstimate.</text>

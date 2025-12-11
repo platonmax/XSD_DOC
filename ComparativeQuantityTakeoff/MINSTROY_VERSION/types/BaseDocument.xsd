@@ -5,7 +5,7 @@
   xmlns:ct="http://types/CommonTypes.xsd"
   xmlns:bd="http://types/BaseDocument.xsd"
   targetNamespace="http://types/BaseDocument.xsd" attributeFormDefault="unqualified"
-  elementFormDefault="qualified" version="1.13">
+  elementFormDefault="qualified" version="1.14">
 
   <xs:import namespace="http://types/CommonTypes.xsd" schemaLocation="CommonTypes.xsd"/>
   <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
@@ -124,7 +124,7 @@
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="estimate" type="ct:estimateType" maxOccurs="unbounded">
+            <xs:element name="estimate" type="ct:estimateCqtType" maxOccurs="unbounded">
               <xs:annotation>
                 <xs:documentation>
                   Локальный сметный расчет объекта капитального строительства
