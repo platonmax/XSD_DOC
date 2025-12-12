@@ -26,11 +26,7 @@
   <bd:objectName>Демо объект</bd:objectName>
   <bd:constructionName>Демо объект</bd:constructionName>
   <bd:objectNumber>CQTF-001</bd:objectNumber>
-  <bd:documentDate>
-    <year>2025</year>
-    <month>03</month>
-    <day>01</day>
-  </bd:documentDate>
+  <bd:documentDate>2025-03-01</bd:documentDate>
   <bd:customerName>ООО "Демо Заказчик"</bd:customerName>
 
   <bd:signatures>

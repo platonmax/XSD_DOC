@@ -4,7 +4,7 @@
   xmlns:cqt="http://cqt/ComparativeQuantityTakeoff.xsd"
   xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
   targetNamespace="http://cqt/ComparativeQuantityTakeoff.xsd" attributeFormDefault="unqualified"
-  elementFormDefault="qualified" version="1.16">
+  elementFormDefault="qualified" version="1.15">
 
   <xs:import namespace="http://types/BaseDocument.xsd" schemaLocation="types/BaseDocument.xsd"/>
   <xs:import namespace="http://types/CommonTypes.xsd" schemaLocation="types/CommonTypes.xsd"/>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bt="http://types/BaseTypes.xsd"
   xmlns:ct="http://types/CommonTypes.xsd" targetNamespace="http://types/CommonTypes.xsd"
-  attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.21">
+  attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.22">
 
   <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
 
@@ -128,32 +128,9 @@ id строятся по следующему принципу: "alt-ГГГГ-М
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="dateType">
-    <xs:annotation>
-      <xs:documentation>Дата составления сопоставительной ведомости объемов работ
-      </xs:documentation>
-      <xs:documentation>Дата указывается календарной датой (дд.мм.гггг); элементы year, month и day обязательны.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="year" type="xs:unsignedShort">
-        <xs:annotation>
-          <xs:documentation>Год
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="month" type="xs:unsignedByte">
-        <xs:annotation>
-          <xs:documentation>Месяц</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="day" type="xs:unsignedByte">
-        <xs:annotation>
-          <xs:documentation>День
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
+  <xs:simpleType name="dateType">
+    <xs:restriction base="xs:date"/>
+  </xs:simpleType>
 
 
 

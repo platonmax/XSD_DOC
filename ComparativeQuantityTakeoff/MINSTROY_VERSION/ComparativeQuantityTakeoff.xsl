@@ -52,13 +52,8 @@
   </xsl:function>
 
   <xsl:function name="f:full-date" as="xs:string?">
-    <xsl:param name="date" as="element()?"/>
-    <xsl:variable name="year" select="normalize-space($date/*:year)"/>
-    <xsl:variable name="month" select="if ($date/*:month castable as xs:integer) then xs:integer($date/*:month) else ()"/>
-    <xsl:variable name="day" select="if ($date/*:day castable as xs:integer) then xs:integer($date/*:day) else ()"/>
-    <xsl:sequence select="if ($year and $month and $day)
-                          then concat(format-number($day, '00'), '.', format-number($month, '00'), '.', $year)
-                          else ()"/>
+    <xsl:param name="date" as="xs:date?"/>
+    <xsl:sequence select="if ($date) then format-date($date, '[D01].[M01].[Y0001]') else ()"/>
   </xsl:function>
 
 
@@ -273,7 +268,7 @@
         </style>
       </head>
       <body>
-        <xsl:variable name="doc-date" select="$doc/bd:documentDate"/>
+        <xsl:variable name="doc-date" select="if ($doc/bd:documentDate) then xs:date($doc/bd:documentDate) else ()"/>
         <xsl:variable name="customer" select="normalize-space($doc/bd:customerName)"/>
         <xsl:variable name="construction-name" select="normalize-space($doc/bd:constructionName)"/>
         <xsl:variable name="full-date" select="f:full-date($doc-date)"/>
@@ -745,5 +740,4 @@
   </xsl:template>
 
 </xsl:stylesheet>
-
 

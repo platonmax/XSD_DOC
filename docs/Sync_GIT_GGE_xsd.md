@@ -14,10 +14,10 @@
    - `git status` должен показать изменения только по ожидаемым схемам/визуалкам.
    - Проверить, что никакие файлы не удалены/переименованы лишним образом.
 4. Коммит:
-   - Формат сообщения: `<TYPE>(<SCOPE>): <кратко что сделано>`
-     - `TYPE` — согласованный префикс (например, `СВОР` или `feat`).
-     - `SCOPE` — схема/область, например `ComparativeQuantityTakeoff`.
-   - Пример: `СВОР(ComparativeQuantityTakeoff): обязательный fileCheckSum (CRC32)`.
+   - Формат сообщения: `<TYPE>(<SCOPE>): <кратко что сделано>`.
+   - `TYPE` — по общепринятым префиксам (conventional commits): `feat`, `fix`, `chore`, `refactor`, `docs`, `test`, `build` и т.п.
+   - `SCOPE` — схема/область, например `ComparativeQuantityTakeoff`.
+   - Пример: `feat(ComparativeQuantityTakeoff): обязательный fileCheckSum (CRC32)`.
 5. Pull/Push:
    - `git pull`; при конфликтах — остановиться и сообщить.
    - `git push` после успешного pull и отсутствия конфликтов.

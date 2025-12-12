@@ -5,7 +5,7 @@
   xmlns:ct="http://types/CommonTypes.xsd"
   xmlns:bd="http://types/BaseDocument.xsd"
   targetNamespace="http://types/BaseDocument.xsd" attributeFormDefault="unqualified"
-  elementFormDefault="qualified" version="1.15">
+  elementFormDefault="qualified" version="1.16">
 
   <xs:import namespace="http://types/CommonTypes.xsd" schemaLocation="CommonTypes.xsd"/>
   <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
