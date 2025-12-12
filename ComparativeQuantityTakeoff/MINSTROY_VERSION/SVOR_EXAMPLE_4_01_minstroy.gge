@@ -39,14 +39,17 @@
     <bd:file>
       <fileInternalId>1</fileInternalId>
       <fileName>1310.0.00-01-КР1 том 5.1.pdf</fileName>
+      <fileId>44444444-4444-4444-8444-444444444444</fileId>
     </bd:file>
     <bd:file>
       <fileInternalId>2</fileInternalId>
       <fileName>КР2 том 5.2.pdf</fileName>
+      <fileId>55555555-5555-4555-8555-555555555555</fileId>
     </bd:file>
     <bd:file>
       <fileInternalId>3</fileInternalId>
       <fileName>1310.0.00-01-СМ2 ВОР.pdf</fileName>
+      <fileId>66666666-6666-4666-8666-666666666666</fileId>
     </bd:file>
   </bd:fileList>
   <bd:alterationList>
@@ -427,7 +430,5 @@
   </bd:estimateList>
   <bd:exportDateTime>2025-03-01T10:00:00Z</bd:exportDateTime>
 </cqt:comparativeQuantityTakeoff>
-
-
 
 

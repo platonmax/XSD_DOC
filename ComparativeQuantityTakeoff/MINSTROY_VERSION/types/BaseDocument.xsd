@@ -5,7 +5,7 @@
   xmlns:ct="http://types/CommonTypes.xsd"
   xmlns:bd="http://types/BaseDocument.xsd"
   targetNamespace="http://types/BaseDocument.xsd" attributeFormDefault="unqualified"
-  elementFormDefault="qualified" version="1.14">
+  elementFormDefault="qualified" version="1.15">
 
   <xs:import namespace="http://types/CommonTypes.xsd" schemaLocation="CommonTypes.xsd"/>
   <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
@@ -97,7 +97,7 @@
         </xs:complexType>
       </xs:element>
 
-      <xs:element name="alterationList" minOccurs="0">
+      <xs:element name="alterationList">
         <xs:annotation>
           <xs:documentation>Заходы на экспертизу, описание корректировки. Указывается месяц и год корректировки и ее id для последующих ссылок на нее.
             В наборе стадий должна присутствовать базовая запись с id="base"; остальные id — хронологические стадии.

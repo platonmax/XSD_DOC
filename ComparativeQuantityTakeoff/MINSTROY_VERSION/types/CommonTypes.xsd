@@ -633,7 +633,7 @@ id строятся по следующему принципу: "alt-ГГГГ-М
 Поле должно содержать только имя файла без определения пути к файлу</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="fileId" type="bt:guidIdType" minOccurs="0">
+      <xs:element name="fileId" type="bt:guidIdType" minOccurs="1">
         <xs:annotation>
           <xs:documentation>Глобальный уникальный идентификатор
 Используется GUID v4</xs:documentation>

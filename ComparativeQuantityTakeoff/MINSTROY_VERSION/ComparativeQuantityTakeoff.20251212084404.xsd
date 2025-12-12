@@ -4,7 +4,7 @@
   xmlns:cqt="http://cqt/ComparativeQuantityTakeoff.xsd"
   xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
   targetNamespace="http://cqt/ComparativeQuantityTakeoff.xsd" attributeFormDefault="unqualified"
-  elementFormDefault="qualified" version="1.11">
+  elementFormDefault="qualified" version="1.14">
 
   <xs:import namespace="http://types/BaseDocument.xsd" schemaLocation="types/BaseDocument.xsd"/>
   <xs:import namespace="http://types/CommonTypes.xsd" schemaLocation="types/CommonTypes.xsd"/>
@@ -35,18 +35,10 @@ xsi:noNamespaceSchemaLocation = "ConsolidateQuantityTakeoff-4_01.xsd".
       <xs:selector xpath="bd:alterationList/bd:alteration"/>
       <xs:field xpath="@id"/>
     </xs:key>
-    <xs:key name="estimateById">
-      <xs:selector xpath="bd:estimateList/bd:estimate"/>
-      <xs:field xpath="@id"/>
-    </xs:key>
     <xs:key name="fileById">
       <xs:selector xpath="bd:fileList/bd:file"/>
-      <xs:field xpath="ct:id"/>
+      <xs:field xpath="ct:fileInternalId"/>
     </xs:key>
-    <xs:keyref name="estimateFileRef" refer="cqt:fileById">
-      <xs:selector xpath="bd:estimateList/bd:estimate"/>
-      <xs:field xpath="@id"/>
-    </xs:keyref>
   </xs:element>
 
 </xs:schema>
