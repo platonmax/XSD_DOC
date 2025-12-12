@@ -46,9 +46,7 @@
               <text>Описание элемента схемы.</text>
             </xs:documentation>
           </xs:annotation>
-          <xs:restriction base="xs:decimal">
-            <xs:fractionDigits value="2"/>
-          </xs:restriction>
+          <xs:restriction base="xs:string"/>
         </xs:simpleType>
       </xs:element>
     </xs:sequence>
