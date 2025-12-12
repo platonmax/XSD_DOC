@@ -456,11 +456,9 @@
             <th class="center" rowspan="2">
               <xsl:value-of select="$base-label"/>
             </th>
-            <xsl:for-each select="$stages-order">
-              <th class="center" rowspan="2">
-                <xsl:value-of select="f:stage-label(.)"/>
-              </th>
-            </xsl:for-each>
+            <xsl:if test="$stage-count &gt; 0">
+              <th class="center" colspan="{$stage-count}">С учетом изменений</th>
+            </xsl:if>
             <xsl:for-each select="$stages-order">
               <xsl:variable name="stage-index" select="position()"/>
               <th class="center" colspan="{1 + $stage-index}">
@@ -482,6 +480,31 @@
             </xsl:for-each>
           </tr>
           <tr>
+            <xsl:for-each select="$stages-order">
+              <xsl:variable name="year" select="normalize-space(*:year)"/>
+              <xsl:variable name="month-raw" select="normalize-space(*:month)"/>
+              <xsl:variable name="month-digits" select="replace($month-raw, '[^0-9]', '')"/>
+              <xsl:variable name="month-num"
+                            select="if (string-length($month-digits) &gt;= 2)
+                                    then xs:integer(substring($month-digits, 1, 2))
+                                    else if ($month-raw castable as xs:integer)
+                                         then xs:integer($month-raw)
+                                         else ()"/>
+              <xsl:variable name="month"
+                            select="if ($month-num)
+                                    then format-number($month-num, '00')
+                                    else ''"/>
+              <th class="center">
+                <xsl:choose>
+                  <xsl:when test="$month and $year">
+                    <xsl:value-of select="concat($month, ' ', $year)"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="f:stage-label(.)"/>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </th>
+            </xsl:for-each>
             <xsl:for-each select="$stages-order">
               <xsl:variable name="stage-index" select="position()"/>
               <xsl:variable name="stage-label" select="f:stage-label(.)"/>
