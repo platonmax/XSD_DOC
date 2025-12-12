@@ -1,0 +1,380 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>╨б╨▓╨╛╨┤╨╜╨░╤П ╨▓╨╡╨┤╨╛╨╝╨╛╤Б╤В╤М ╨╛╨▒╤К╨╡╨╝╨╛╨▓ ╤А╨░╨▒╨╛╤В</title>
+      <style type="text/css">
+          :root {
+            --bg: #f5f7fb;
+            --card: #ffffff;
+            --border: #dfe3ec;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --primary: #1d4ed8;
+            --accent: #0ea5e9;
+            --danger: #cc0000;
+            --danger-bg: #ffe6e6;
+          }
+          body {
+            font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+            font-size: 10pt;
+            margin: 0;
+            padding: 24px;
+            background: linear-gradient(135deg, #f7f9fc 0%, #eef2f7 100%);
+            color: var(--text);
+          }
+          h1 { font-size: 18pt; text-align: center; margin: 20px 0; letter-spacing: 0.4px; }
+          .page { width: 100%; max-width: 100%; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+          .card { background: transparent; border: none; border-radius: 0; box-shadow: none; padding: 0; width: 100%; overflow: visible; }
+          .table-card { padding: 0; overflow: visible; }
+          .meta { margin: 12px 0; }
+          .meta div { margin: 2px 0; color: var(--muted); }
+          table { width: auto; min-width: 2600px; border-collapse: separate; border-spacing: 0; margin: 8px 0; }
+          thead th {
+            border: 1px solid var(--border);
+            padding: 6px 6px;
+            font-size: 9pt;
+            background: #f0f4ff;
+            vertical-align: middle;
+            text-align: center;
+            white-space: normal;
+            word-break: break-word;
+          }
+          thead th.numbering { background: #eef1f6; font-size: 8pt; font-weight: 600; }
+          tbody td {
+            border: 1px solid var(--border);
+            padding: 6px 6px;
+            vertical-align: top;
+            white-space: normal;
+            word-break: break-word;
+            line-height: 1.25;
+          }
+          tbody tr:nth-child(even) { background: #fafbfe; }
+          .alert { border: 1px solid var(--danger); background: #ffecec; padding: 10px 12px; margin: 0 0 4px; border-radius: 10px; }
+          .alert ul { margin: 6px 0 0 18px; padding: 0; }
+          .alert li { margin: 4px 0; }
+          .center { text-align: center; }
+          .right { text-align: right; white-space: nowrap; }
+          .nowrap { white-space: nowrap; word-break: normal; }
+          .section-row td { font-weight: 700; background: #f3f4f6; }
+          .estimate-row td { font-weight: 700; background: #e0e7ff; }
+          .free-string-row td { font-style: italic; background: #fff9e6; }
+          .notes-cell { white-space: pre-wrap; }
+          .header-block { margin: 4px 0 12px 0; }
+          .header-title { font-size: 16pt; font-weight: 800; text-align: center; text-transform: uppercase; margin: 0 0 12px; letter-spacing: 0.6px; }
+          table.header-table { width: 100%; min-width: 0; margin: 0; border-collapse: collapse; table-layout: fixed; }
+          table.header-table td { border: none; padding: 6px 4px; font-size: 11pt; vertical-align: bottom; }
+          table.header-table .label { width: 14%; min-width: 80px; white-space: nowrap; text-align: left; padding-right: 6px; color: var(--muted); font-weight: 600; }
+          table.header-table .line { width: auto; padding-left: 0; }
+          table.header-table .line-text { border-bottom: 1px solid var(--border); min-height: 20px; padding: 2px 6px 4px 6px; text-align: center; }
+          table.header-table .hint { font-size: 9pt; color: var(--muted); text-align: center; font-style: italic; white-space: nowrap; padding-top: 2px; }
+          table.header-table .date-alt { color: #c00; font-style: italic; }
+          .export-info { font-size: 9pt; color: var(--muted); margin-bottom: 6px; text-align: left; }
+          .row-issue { position: relative; }
+          .row-issue:hover::after {
+            content: attr(data-error);
+            position: absolute;
+            left: 0;
+            top: -6px;
+            transform: translateY(-100%);
+            background: var(--danger-bg);
+            color: var(--danger);
+            border: 1px solid var(--danger);
+            padding: 6px 8px;
+            white-space: pre-wrap;
+            max-width: 520px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            z-index: 5;
+          }
+          .center { text-align: center; }
+          .right { text-align: right; white-space: nowrap; }
+          .nowrap { white-space: nowrap; word-break: normal; }
+          .section-row td { font-weight: bold; background: #f0f0f0; }
+          .estimate-row td { font-weight: bold; background: #dfe7ff; }
+          .free-string-row td { font-style: italic; background: #fff9e6; }
+          .notes-cell { white-space: pre-wrap; }
+          .header-block { margin: 8px 0 24px 0; width: 1100px; max-width: 1100px; }
+          .header-title { font-size: 14pt; font-weight: bold; text-align: center; text-transform: uppercase; margin: 0 0 18px; }
+          table.header-table { width: 1100px; max-width: 1100px; min-width: 0; margin: 0; border-collapse: collapse; table-layout: fixed; }
+          table.header-table td { border: none; padding: 4px 4px; font-size: 11pt; vertical-align: bottom; }
+          table.header-table .label { width: 12%; min-width: 80px; white-space: nowrap; text-align: left; padding-right: 4px; }
+          table.header-table .line { width: auto; padding-left: 0; }
+          table.header-table .line-text { border-bottom: 1px solid #000; min-height: 18px; padding: 0 4px 2px 4px; text-align: center; }
+          table.header-table .hint { font-size: 9pt; color: #666; text-align: center; font-style: italic; white-space: nowrap; padding-top: 2px; }
+          table.header-table .date-alt { color: #c00; font-style: italic; }
+          table.data-table { table-layout: fixed; }
+          .col-estimate-name { min-width: 520px; max-width: 640px; width: 520px; white-space: normal; word-break: break-word; }
+          .col-work { min-width: 780px; max-width: 920px; width: 780px; white-space: normal; word-break: break-word; }
+          .col-reason { max-width: 400px; white-space: normal; word-break: break-word; }
+          .col-docs { max-width: 480px; white-space: normal; word-break: break-word; }
+          .th-label-muted { display: block; font-size: 8pt; color: var(--muted); line-height: 1.2; margin-bottom: 2px; }
+          .th-label-strong { display: block; font-weight: 700; line-height: 1.3; }
+        </style>
+   </head>
+   <body>
+      <div class="page">
+         <div class="card">
+            <div class="header-block">
+               <div class="export-info">╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В ╤Н╨║╤Б╨┐╨╛╤А╤В╨╕╤А╨╛╨▓╨░╨╜ 01.03.2025 10:00</div>
+               <div class="header-title">╨б╨Ю╨Я╨Ю╨б╨в╨Р╨Т╨Ш╨в╨Х╨Ы╨м╨Э╨Р╨п ╨Т╨Х╨Ф╨Ю╨Ь╨Ю╨б╨в╨м ╨Ю╨С╨к╨Х╨Ь╨Ю╨Т ╨а╨Р╨С╨Ю╨в</div>
+               <table class="header-table">
+                  <tr>
+                     <td class="label">╨Ч╨░╨║╨░╨╖╤З╨╕╨║</td>
+                     <td class="line">
+                        <div class="line-text">╨Ю╨Ю╨Ю "╨Ф╨╡╨╝╨╛ ╨Ч╨░╨║╨░╨╖╤З╨╕╨║"</div>
+                        <div class="hint">(╨╜╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╨╛╤А╨│╨░╨╜╨╕╨╖╨░╤Ж╨╕╨╕)</div>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td class="label">╨Э╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╤Б╤В╤А╨╛╨╣╨║╨╕</td>
+                     <td class="line">
+                        <div class="line-text">╨Ф╨╡╨╝╨╛ ╨╛╨▒╤К╨╡╨║╤В</div>
+                        <div class="hint">(╨╜╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╤Б╤В╤А╨╛╨╣╨║╨╕)</div>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td class="label">╨Ф╨░╤В╨░ ╤Б╨╛╤Б╤В╨░╨▓╨╗╨╡╨╜╨╕╤П:</td>
+                     <td class="line">
+                        <div class="line-text">01.03.2025</div>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+         </div>
+         <div class="card table-card">
+            <table xmlns="" class="data-table">
+               <colgroup>
+                  <col style="width:60px">
+                  <col style="width:140px">
+                  <col class="col-estimate-name">
+                  <col class="col-work">
+                  <col style="width:100px">
+               </colgroup>
+               <thead>
+                  <tr>
+                     <th rowspan="3" class="center">тДЦ ╨┐/╨┐</th>
+                     <th colspan="2" class="center">╨Ф╨░╨╜╨╜╤Л╨╡ ╤Б╨╝╨╡╤В╨╜╨╛╨│╨╛ ╤А╨░╤Б╤З╨╡╤В╨░ (╤Б╨╝╨╡╤В╤Л)</th>
+                     <th rowspan="3" class="center">╨Э╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╤А╨░╨▒╨╛╤В ╨╕ ╨╖╨░╤В╤А╨░╤В</th>
+                     <th rowspan="3" class="center">╨Х╨┤. ╨╕╨╖╨╝.</th>
+                     <th colspan="2" class="center">╨Ю╨▒╤К╨╡╨╝ ╤А╨░╨▒╨╛╤В ╨▓ ╤Б╨╝╨╡╤В╨╜╨╛╨╣ ╨┤╨╛╨║╤Г╨╝╨╡╨╜╤В╨░╤Ж╨╕╨╕</th>
+                     <th colspan="2" class="center">╨Ш╨╖╨╝╨╡╨╜╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╤А╨░╨▒╨╛╤В</th>
+                     <th colspan="1" class="center">╨Ю╨▒╨╛╤Б╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╨╕╨╖╨╝╨╡╨╜╨╡╨╜╨╕╨╣</th>
+                     <th colspan="2" class="center">╨б╤Б╤Л╨╗╨║╨╕ ╨╜╨░ ╨╕╤Б╤Е╨╛╨┤╨╜╤Л╨╡ ╨┤╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л</th>
+                  </tr>
+                  <tr>
+                     <th class="center" rowspan="2">╨Э╨╛╨╝╨╡╤А</th>
+                     <th class="center" rowspan="2">╨Э╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡</th>
+                     <th class="center" rowspan="2">╨Ф╨╛ ╨╕╨╖╨╝╨╡╨╜╨╡╨╜╨╕╨╣ (╨▒╨░╨╖╨░)</th>
+                     <th class="center" colspan="1">╨б ╤Г╤З╨╡╤В╨╛╨╝ ╨╕╨╖╨╝╨╡╨╜╨╡╨╜╨╕╨╣</th>
+                     <th class="center" colspan="2">
+                        ╨Ъ╨╛╤А╤А╨╡╨║╤В╨╕╤А╨╛╨▓╨║╨░ 2020 ╨│.</th>
+                     <th class="center" rowspan="2">2020 ╨│.</th>
+                     <th class="center" rowspan="2">╨Ф╨╛ ╨╕╨╖╨╝╨╡╨╜╨╡╨╜╨╕╨╣ (╨▒╨░╨╖╨░)</th>
+                     <th class="center" rowspan="2"><span class="th-label-muted">╨б ╤Г╤З╨╡╤В╨╛╨╝ ╨╕╨╖╨╝╨╡╨╜╨╡╨╜╨╕╨╣</span><span class="th-label-strong">2020 ╨│.</span></th>
+                  </tr>
+                  <tr>
+                     <th class="center">2020 ╨│.</th>
+                  </tr>
+                  <tr>
+                     <th class="center">╨г╨▓╨╡╨╗╨╕╤З╨╡╨╜╨╕╨╡ 2020 ╨│.</th>
+                     <th class="center">╨б╨╜╨╕╨╢╨╡╨╜╨╕╨╡ 2017 ╨│.</th>
+                  </tr>
+                  <tr>
+                     <th class="center numbering">1</th>
+                     <th class="center numbering">2</th>
+                     <th class="center numbering">3</th>
+                     <th class="center numbering">4</th>
+                     <th class="center numbering">5</th>
+                     <th class="center numbering">6</th>
+                     <th class="center numbering">7</th>
+                     <th class="center numbering">8</th>
+                     <th class="center numbering">9</th>
+                     <th class="center numbering">10</th>
+                     <th class="center numbering">11</th>
+                     <th class="center numbering">12</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr class="estimate-row">
+                     <td colspan="12" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber|estimateName&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ш╤Б╤Е╨╛╨┤╨╜╨░╤П ╤Б╨╝╨╡╤В╨░ (╨╜╨╛╨╝╨╡╤А, ╨╜╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡)">╨б╨╝╨╡╤В╨░ 02-01-01 - ╨Ъ╨░╨┐╨╕╤В╨░╨╗╤М╨╜╤Л╨╣ ╤А╨╡╨╝╨╛╨╜╤В ╨░╨▓╤В╨╛╨╝╨╛╨▒╨╕╨╗╤М╨╜╨╛╨╣ ╨┤╨╛╤А╨╛╨│╨╕ ╨Р-156 ╨┐╨╛╨┤╤К╨╡╨╖╨┤╨╜╨░╤П ╨┤╨╛╤А╨╛╨│╨░ ╨╛╤В ╨░╨▓╤В╨╛╨╝╨╛╨▒╨╕╨╗╤М╨╜╨╛╨╣ ╨┤╨╛╤А╨╛╨│╨╕
+                        ╨Р-155 ╨з╨╡╤А╨║╨╡╤Б╤Б╨║-╨Ф╨╛╨╝╨▒╨░╨╣-╨│╤А╨░╨╜╨╕╤Ж╨░ ╤Б ╨а╨╡╤Б╨┐╤Г╨▒╨╗╨╕╨║╨╛╨╣ ╨Р╨▒╤Е╨░╨╖╨╕╤П ╨║ ╨╝╨╡╨╢╨┤╤Г╨╜╨░╤А╨╛╨┤╨╜╨╛╨╝╤Г ╤Ж╨╡╨╜╤В╤А╤Г ╨╛╤В╨┤╤Л╤Е╨░
+                        "╨Р╤А╤Е╤Л╨╖" ╨╕ ╨║ ╤Б╨┐╨╡╤Ж╨╕╨░╨╗╨╕╨╖╨╕╤А╨╛╨▓╨░╨╜╨╜╨╛╨╣ ╨░╤Б╤В╤А╨╛╤Д╨╕╨╖╨╕╤З╨╡╤Б╨║╨╛╨╣ ╨╛╨▒╤Б╨╡╤А╨▓╨░╤В╨╛╤А╨╕╨╕ ╨а╨╛╤Б╤Б╨╕╨╣╤Б╨║╨╛╨╣ ╨░╨║╨░╨┤╨╡╨╝╨╕╨╕ ╨╜╨░╤Г╨║
+                        ╨╜╨░ ╤Г╤З╨░╤Б╤В╨║╨╡ ╨║╨╝ 7+000-╨║╨╝ 12+000, ╨Ъ╨░╤А╨░╤З╨░╨╡╨▓╨╛-╨з╨╡╤А╨║╨╡╤Б╤Б╨║╨░╤П ╨а╨╡╤Б╨┐╤Г╨▒╨╗╨╕╨║╨░</td>
+                  </tr>
+                  <tr class="section-row">
+                     <td colspan="12" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/(@sectionNumber|sectionName)&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨╕ ╨╜╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╤А╨░╨╖╨┤╨╡╨╗╨░ ╤Б╨╝╨╡╤В╤Л">1. ╨Ш╨╜╨╢╨╡╨╜╨╡╤А╨╜╨╛╨╡ ╨╛╨▒╨╡╤Б╨┐╨╡╤З╨╡╨╜╨╕╨╡</td>
+                  </tr>
+                  <tr class="free-string-row">
+                     <td colspan="12" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/freeStringItem/freeStringName&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨б╨▓╨╛╨▒╨╛╨┤╨╜╨░╤П ╤Б╤В╤А╨╛╨║╨░ ╤А╨░╨╖╨┤╨╡╨╗╨░">╨б╨▓╨╛╨▒╨╛╨┤╨╜╨░╤П ╤Б╤В╤А╨╛╨║╨░ ╨┐╨╡╤А╨╡╨┤ ╨┐╨╡╤А╨▓╨╛╨╣ ╨┐╨╛╨╖╨╕╤Ж╨╕╨╡╨╣</td>
+                  </tr>
+                  <tr title="">
+                     <td class="center nowrap" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨┐╨╛╨╖╨╕╤Ж╨╕╨╕ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В itemPositionId)">1</td>
+                     <td title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В estimateNumber)">02-01-01</td>
+                     <td class="col-estimate-name" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (estimateName)">╨Ъ╨░╨┐╨╕╤В╨░╨╗╤М╨╜╤Л╨╣ ╤А╨╡╨╝╨╛╨╜╤В ╨░╨▓╤В╨╛╨╝╨╛╨▒╨╕╨╗╤М╨╜╨╛╨╣ ╨┤╨╛╤А╨╛╨│╨╕ ╨Р-156 ╨┐╨╛╨┤╤К╨╡╨╖╨┤╨╜╨░╤П ╨┤╨╛╤А╨╛╨│╨░ ╨╛╤В ╨░╨▓╤В╨╛╨╝╨╛╨▒╨╕╨╗╤М╨╜╨╛╨╣ ╨┤╨╛╤А╨╛╨│╨╕
+                        ╨Р-155 ╨з╨╡╤А╨║╨╡╤Б╤Б╨║-╨Ф╨╛╨╝╨▒╨░╨╣-╨│╤А╨░╨╜╨╕╤Ж╨░ ╤Б ╨а╨╡╤Б╨┐╤Г╨▒╨╗╨╕╨║╨╛╨╣ ╨Р╨▒╤Е╨░╨╖╨╕╤П ╨║ ╨╝╨╡╨╢╨┤╤Г╨╜╨░╤А╨╛╨┤╨╜╨╛╨╝╤Г ╤Ж╨╡╨╜╤В╤А╤Г ╨╛╤В╨┤╤Л╤Е╨░
+                        "╨Р╤А╤Е╤Л╨╖" ╨╕ ╨║ ╤Б╨┐╨╡╤Ж╨╕╨░╨╗╨╕╨╖╨╕╤А╨╛╨▓╨░╨╜╨╜╨╛╨╣ ╨░╤Б╤В╤А╨╛╤Д╨╕╨╖╨╕╤З╨╡╤Б╨║╨╛╨╣ ╨╛╨▒╤Б╨╡╤А╨▓╨░╤В╨╛╤А╨╕╨╕ ╨а╨╛╤Б╤Б╨╕╨╣╤Б╨║╨╛╨╣ ╨░╨║╨░╨┤╨╡╨╝╨╕╨╕ ╨╜╨░╤Г╨║
+                        ╨╜╨░ ╤Г╤З╨░╤Б╤В╨║╨╡ ╨║╨╝ 7+000-╨║╨╝ 12+000, ╨Ъ╨░╤А╨░╤З╨░╨╡╨▓╨╛-╨з╨╡╤А╨║╨╡╤Б╤Б╨║╨░╤П ╨а╨╡╤Б╨┐╤Г╨▒╨╗╨╕╨║╨░</td>
+                     <td class="col-work" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨а╨░╨▒╨╛╤В╨░ (workName, normCodePrefix, normCode)">╨а╨░╨╖╤А╨░╨▒╨╛╤В╨║╨░ ╨│╤А╤Г╨╜╤В╨░ ╤Б ╨┐╨╡╤А╨╡╨╝╨╡╤Й╨╡╨╜╨╕╨╡╨╝ ╨┤╨╛ 10 ╨╝ ╨▒╤Г╨╗╤М╨┤╨╛╨╖╨╡╤А╨░╨╝╨╕ ╨╝╨╛╤Й╨╜╨╛╤Б╤В╤М╤О: 96 ╨║╨Т╤В (130 ╨╗.╤Б.),
+                        ╨│╤А╤Г╨┐╨┐╨░ ╨│╤А╤Г╨╜╤В╨╛╨▓ 1 (╨║╨╛╨┤: 01-01-023-01, ╨д╨Х╨а)</td>
+                     <td class="center" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Х╨┤╨╕╨╜╨╕╤Ж╨░ ╨╕╨╖╨╝╨╡╤А╨╡╨╜╨╕╤П (measurementUnit)">1000 ╨╝3</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨▒╨░╨╖╤Л (volumeList/volume, alterationRef=base)">2.6</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">2.6</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨г╨▓╨╡╨╗╨╕╤З╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╜╨░ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨б╨╜╨╕╨╢╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╛╤В ╨▒╨░╨╖╤Л ╨┤╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="notes-cell col-reason" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Я╤А╨╕╤З╨╕╨╜╤Л ╨╕╨╖╨╝╨╡╨╜╨╡╨╜╨╕╤П ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л, ╨┐╤А╨╕╨▓╤П╨╖╨░╨╜╨╜╤Л╨╡ ╨║ ╨▒╨░╨╖╨╡ (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)">1310.0.00-01-╨Ъ╨а1 ╤В╨╛╨╝ 5.1.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 7<br>╨Ъ╨а2 ╤В╨╛╨╝ 5.2.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 8<br>1310.0.00-01-╨б╨Ь2 ╨Т╨Ю╨а.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 12</td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│. (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)">1310.0.00-01-╨Ъ╨а1 ╤В╨╛╨╝ 5.1.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 7<br>╨Ъ╨а2 ╤В╨╛╨╝ 5.2.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 9<br>1310.0.00-01-╨б╨Ь2 ╨Т╨Ю╨а.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 13</td>
+                  </tr>
+                  <tr class="free-string-row">
+                     <td colspan="12" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/freeStringItem/freeStringName&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨б╨▓╨╛╨▒╨╛╨┤╨╜╨░╤П ╤Б╤В╤А╨╛╨║╨░ ╤А╨░╨╖╨┤╨╡╨╗╨░">╨б╨▓╨╛╨▒╨╛╨┤╨╜╨░╤П ╤Б╤В╤А╨╛╨║╨░ ╨┐╨╛╤Б╨╗╨╡ ╨┐╨╡╤А╨▓╨╛╨╣ ╨┐╨╛╨╖╨╕╤Ж╨╕╨╕</td>
+                  </tr>
+                  <tr title="">
+                     <td class="center nowrap" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨┐╨╛╨╖╨╕╤Ж╨╕╨╕ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В itemPositionId)">2</td>
+                     <td title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В estimateNumber)">02-01-01</td>
+                     <td class="col-estimate-name" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (estimateName)">╨Ъ╨░╨┐╨╕╤В╨░╨╗╤М╨╜╤Л╨╣ ╤А╨╡╨╝╨╛╨╜╤В ╨░╨▓╤В╨╛╨╝╨╛╨▒╨╕╨╗╤М╨╜╨╛╨╣ ╨┤╨╛╤А╨╛╨│╨╕ ╨Р-156 ╨┐╨╛╨┤╤К╨╡╨╖╨┤╨╜╨░╤П ╨┤╨╛╤А╨╛╨│╨░ ╨╛╤В ╨░╨▓╤В╨╛╨╝╨╛╨▒╨╕╨╗╤М╨╜╨╛╨╣ ╨┤╨╛╤А╨╛╨│╨╕
+                        ╨Р-155 ╨з╨╡╤А╨║╨╡╤Б╤Б╨║-╨Ф╨╛╨╝╨▒╨░╨╣-╨│╤А╨░╨╜╨╕╤Ж╨░ ╤Б ╨а╨╡╤Б╨┐╤Г╨▒╨╗╨╕╨║╨╛╨╣ ╨Р╨▒╤Е╨░╨╖╨╕╤П ╨║ ╨╝╨╡╨╢╨┤╤Г╨╜╨░╤А╨╛╨┤╨╜╨╛╨╝╤Г ╤Ж╨╡╨╜╤В╤А╤Г ╨╛╤В╨┤╤Л╤Е╨░
+                        "╨Р╤А╤Е╤Л╨╖" ╨╕ ╨║ ╤Б╨┐╨╡╤Ж╨╕╨░╨╗╨╕╨╖╨╕╤А╨╛╨▓╨░╨╜╨╜╨╛╨╣ ╨░╤Б╤В╤А╨╛╤Д╨╕╨╖╨╕╤З╨╡╤Б╨║╨╛╨╣ ╨╛╨▒╤Б╨╡╤А╨▓╨░╤В╨╛╤А╨╕╨╕ ╨а╨╛╤Б╤Б╨╕╨╣╤Б╨║╨╛╨╣ ╨░╨║╨░╨┤╨╡╨╝╨╕╨╕ ╨╜╨░╤Г╨║
+                        ╨╜╨░ ╤Г╤З╨░╤Б╤В╨║╨╡ ╨║╨╝ 7+000-╨║╨╝ 12+000, ╨Ъ╨░╤А╨░╤З╨░╨╡╨▓╨╛-╨з╨╡╤А╨║╨╡╤Б╤Б╨║╨░╤П ╨а╨╡╤Б╨┐╤Г╨▒╨╗╨╕╨║╨░</td>
+                     <td class="col-work" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨а╨░╨▒╨╛╤В╨░ (workName, normCodePrefix, normCode)">╨Я╨╗╨░╨╜╨╕╤А╨╛╨▓╨║╨░ ╨┐╨╗╨╛╤Й╨░╨┤╨╡╨╣: ╨╝╨╡╤Е╨░╨╜╨╕╨╖╨╕╤А╨╛╨▓╨░╨╜╨╜╤Л╨╝ ╤Б╨┐╨╛╤Б╨╛╨▒╨╛╨╝, ╨│╤А╤Г╨┐╨┐╨░ ╨│╤А╤Г╨╜╤В╨╛╨▓ 1 (╨║╨╛╨┤: 01-02-027-01, ╨д╨Х╨а)</td>
+                     <td class="center" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Х╨┤╨╕╨╜╨╕╤Ж╨░ ╨╕╨╖╨╝╨╡╤А╨╡╨╜╨╕╤П (measurementUnit)">10000 ╨╝2</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨▒╨░╨╖╤Л (volumeList/volume, alterationRef=base)">2.6</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">3.6</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨г╨▓╨╡╨╗╨╕╤З╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╜╨░ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">1</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨б╨╜╨╕╨╢╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╛╤В ╨▒╨░╨╖╤Л ╨┤╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="notes-cell col-reason" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Я╤А╨╕╤З╨╕╨╜╤Л ╨╕╨╖╨╝╨╡╨╜╨╡╨╜╨╕╤П ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">я┐╜я┐╜я┐╜рекя┐╜ровя┐╜я┐╜ я┐╜роея┐╜я┐╜я┐╜я┐╜ я┐╜шеня┐╜я┐╜ я┐╜ я┐╜язи я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜теля┐╜ыми я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜рно-я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ския┐╜я┐╜ я┐╜я┐╜я┐╜ская┐╜я┐╜ями я┐╜я┐╜я┐╜щадя┐╜я┐╜ я┐╜я┐╜роителя┐╜я┐╜тва</td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л, ╨┐╤А╨╕╨▓╤П╨╖╨░╨╜╨╜╤Л╨╡ ╨║ ╨▒╨░╨╖╨╡ (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)">1310.0.00-01-╨Ъ╨а1 ╤В╨╛╨╝ 5.1.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 7<br>╨Ъ╨а2 ╤В╨╛╨╝ 5.2.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 8<br>1310.0.00-01-╨б╨Ь2 ╨Т╨Ю╨а.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 12</td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│. (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)">1310.0.00-01-╨Ъ╨а1 ╤В╨╛╨╝ 5.1.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 7<br>╨Ъ╨а2 ╤В╨╛╨╝ 5.2.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 9<br>1310.0.00-01-╨б╨Ь2 ╨Т╨Ю╨а.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 13</td>
+                  </tr>
+                  <tr class="section-row">
+                     <td colspan="12" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/(@sectionNumber|sectionName)&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨╕ ╨╜╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╤А╨░╨╖╨┤╨╡╨╗╨░ ╤Б╨╝╨╡╤В╤Л">2. ╨г╤Б╤В╤А╨╛╨╣╤Б╤В╨▓╨╛ ╨┐╤А╨╛╤Б╨╗╨╛╨╣╨║╨╕ ╨╕╨╖ ╨╜╨╡╤В╨║╨░╨╜╨╛╨│╨╛ ╤Б╨╕╨╜╤В╨╡╤В╨╕╤З╨╡╤Б╨║╨╛╨│╨╛ ╨╝╨░╤В╨╡╤А╨╕╨░╨╗╨░ (╤А╨░╤Б╤Ж╨╡╨╜╨║╨░ ╤Б ╤А╨╡╤Б╤Г╤А╤Б╨╛╨╝╨Ч╨а
+                        ╨╕ ╨┤╨╛╨┐ ╨┐╨╡╤А╨╡╨▓╨╛╨╖╨║╨╛╨╣)</td>
+                  </tr>
+                  <tr title="">
+                     <td class="center nowrap" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨┐╨╛╨╖╨╕╤Ж╨╕╨╕ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В itemPositionId)">1</td>
+                     <td title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В estimateNumber)">02-01-01</td>
+                     <td class="col-estimate-name" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (estimateName)">╨Ъ╨░╨┐╨╕╤В╨░╨╗╤М╨╜╤Л╨╣ ╤А╨╡╨╝╨╛╨╜╤В ╨░╨▓╤В╨╛╨╝╨╛╨▒╨╕╨╗╤М╨╜╨╛╨╣ ╨┤╨╛╤А╨╛╨│╨╕ ╨Р-156 ╨┐╨╛╨┤╤К╨╡╨╖╨┤╨╜╨░╤П ╨┤╨╛╤А╨╛╨│╨░ ╨╛╤В ╨░╨▓╤В╨╛╨╝╨╛╨▒╨╕╨╗╤М╨╜╨╛╨╣ ╨┤╨╛╤А╨╛╨│╨╕
+                        ╨Р-155 ╨з╨╡╤А╨║╨╡╤Б╤Б╨║-╨Ф╨╛╨╝╨▒╨░╨╣-╨│╤А╨░╨╜╨╕╤Ж╨░ ╤Б ╨а╨╡╤Б╨┐╤Г╨▒╨╗╨╕╨║╨╛╨╣ ╨Р╨▒╤Е╨░╨╖╨╕╤П ╨║ ╨╝╨╡╨╢╨┤╤Г╨╜╨░╤А╨╛╨┤╨╜╨╛╨╝╤Г ╤Ж╨╡╨╜╤В╤А╤Г ╨╛╤В╨┤╤Л╤Е╨░
+                        "╨Р╤А╤Е╤Л╨╖" ╨╕ ╨║ ╤Б╨┐╨╡╤Ж╨╕╨░╨╗╨╕╨╖╨╕╤А╨╛╨▓╨░╨╜╨╜╨╛╨╣ ╨░╤Б╤В╤А╨╛╤Д╨╕╨╖╨╕╤З╨╡╤Б╨║╨╛╨╣ ╨╛╨▒╤Б╨╡╤А╨▓╨░╤В╨╛╤А╨╕╨╕ ╨а╨╛╤Б╤Б╨╕╨╣╤Б╨║╨╛╨╣ ╨░╨║╨░╨┤╨╡╨╝╨╕╨╕ ╨╜╨░╤Г╨║
+                        ╨╜╨░ ╤Г╤З╨░╤Б╤В╨║╨╡ ╨║╨╝ 7+000-╨║╨╝ 12+000, ╨Ъ╨░╤А╨░╤З╨░╨╡╨▓╨╛-╨з╨╡╤А╨║╨╡╤Б╤Б╨║╨░╤П ╨а╨╡╤Б╨┐╤Г╨▒╨╗╨╕╨║╨░</td>
+                     <td class="col-work" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨а╨░╨▒╨╛╤В╨░ (workName, normCodePrefix, normCode)">╨г╤Б╤В╤А╨╛╨╣╤Б╤В╨▓╨╛ ╨┐╤А╨╛╤Б╨╗╨╛╨╣╨║╨╕ ╨╕╨╖ ╨╜╨╡╤В╨║╨░╨╜╨╛╨│╨╛ ╤Б╨╕╨╜╤В╨╡╤В╨╕╤З╨╡╤Б╨║╨╛╨│╨╛ ╨╝╨░╤В╨╡╤А╨╕╨░╨╗╨░ (╨Э╨б╨Ь) ╨▓ ╨╖╨╡╨╝╨╗╤П╨╜╨╛╨╝ ╨┐╨╛╨╗╨╛╤В╨╜╨╡:
+                        ╤Б╨┐╨╗╨╛╤И╨╜╨╛╨╣ (╨║╨╛╨┤: 27-04-016-04, ╨д╨Х╨а)</td>
+                     <td class="center" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Х╨┤╨╕╨╜╨╕╤Ж╨░ ╨╕╨╖╨╝╨╡╤А╨╡╨╜╨╕╤П (measurementUnit)">1000 ╨╝2</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨▒╨░╨╖╤Л (volumeList/volume, alterationRef=base)">0.74</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">0.74</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨г╨▓╨╡╨╗╨╕╤З╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╜╨░ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨б╨╜╨╕╨╢╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╛╤В ╨▒╨░╨╖╤Л ╨┤╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="notes-cell col-reason" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Я╤А╨╕╤З╨╕╨╜╤Л ╨╕╨╖╨╝╨╡╨╜╨╡╨╜╨╕╤П ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л, ╨┐╤А╨╕╨▓╤П╨╖╨░╨╜╨╜╤Л╨╡ ╨║ ╨▒╨░╨╖╨╡ (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)">1310.0.00-01-╨Ъ╨а1 ╤В╨╛╨╝ 5.1.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 7<br>╨Ъ╨а2 ╤В╨╛╨╝ 5.2.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 8<br>1310.0.00-01-╨б╨Ь2 ╨Т╨Ю╨а.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 12</td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│. (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)">1310.0.00-01-╨Ъ╨а1 ╤В╨╛╨╝ 5.1.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 7<br>╨Ъ╨а2 ╤В╨╛╨╝ 5.2.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 9<br>1310.0.00-01-╨б╨Ь2 ╨Т╨Ю╨а.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 13</td>
+                  </tr>
+                  <tr title="">
+                     <td class="center nowrap" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨┐╨╛╨╖╨╕╤Ж╨╕╨╕ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В itemPositionId)">1.1</td>
+                     <td title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В estimateNumber)">02-01-01</td>
+                     <td class="col-estimate-name" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (estimateName)">╨Ъ╨░╨┐╨╕╤В╨░╨╗╤М╨╜╤Л╨╣ ╤А╨╡╨╝╨╛╨╜╤В ╨░╨▓╤В╨╛╨╝╨╛╨▒╨╕╨╗╤М╨╜╨╛╨╣ ╨┤╨╛╤А╨╛╨│╨╕ ╨Р-156 ╨┐╨╛╨┤╤К╨╡╨╖╨┤╨╜╨░╤П ╨┤╨╛╤А╨╛╨│╨░ ╨╛╤В ╨░╨▓╤В╨╛╨╝╨╛╨▒╨╕╨╗╤М╨╜╨╛╨╣ ╨┤╨╛╤А╨╛╨│╨╕
+                        ╨Р-155 ╨з╨╡╤А╨║╨╡╤Б╤Б╨║-╨Ф╨╛╨╝╨▒╨░╨╣-╨│╤А╨░╨╜╨╕╤Ж╨░ ╤Б ╨а╨╡╤Б╨┐╤Г╨▒╨╗╨╕╨║╨╛╨╣ ╨Р╨▒╤Е╨░╨╖╨╕╤П ╨║ ╨╝╨╡╨╢╨┤╤Г╨╜╨░╤А╨╛╨┤╨╜╨╛╨╝╤Г ╤Ж╨╡╨╜╤В╤А╤Г ╨╛╤В╨┤╤Л╤Е╨░
+                        "╨Р╤А╤Е╤Л╨╖" ╨╕ ╨║ ╤Б╨┐╨╡╤Ж╨╕╨░╨╗╨╕╨╖╨╕╤А╨╛╨▓╨░╨╜╨╜╨╛╨╣ ╨░╤Б╤В╤А╨╛╤Д╨╕╨╖╨╕╤З╨╡╤Б╨║╨╛╨╣ ╨╛╨▒╤Б╨╡╤А╨▓╨░╤В╨╛╤А╨╕╨╕ ╨а╨╛╤Б╤Б╨╕╨╣╤Б╨║╨╛╨╣ ╨░╨║╨░╨┤╨╡╨╝╨╕╨╕ ╨╜╨░╤Г╨║
+                        ╨╜╨░ ╤Г╤З╨░╤Б╤В╨║╨╡ ╨║╨╝ 7+000-╨║╨╝ 12+000, ╨Ъ╨░╤А╨░╤З╨░╨╡╨▓╨╛-╨з╨╡╤А╨║╨╡╤Б╤Б╨║╨░╤П ╨а╨╡╤Б╨┐╤Г╨▒╨╗╨╕╨║╨░</td>
+                     <td class="col-work" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨а╨░╨▒╨╛╤В╨░ (workName, normCodePrefix, normCode)">   ╨У╨╡╨╛╨┐╨╛╨╗╨╛╤В╨╜╨╛ ╨╜╨╡╤В╨║╨░╨╜╨╛╨╡ ╨┐╨╛╨╗╨╕╨┐╤А╨╛╨┐╨╕╨╗╨╡╨╜╨╛╨▓╨╛╨╡, ╨╕╨│╨╗╨╛╨┐╤А╨╛╨▒╨╕╨▓╨╜╨╛╨╡, ╤В╨╡╤А╨╝╨╛╤Б╨║╤А╨╡╨┐╨╗╨╡╨╜╨╜╨╛╨╡, ╨┐╨╛╨▓╨╡╤А╤Е╨╜╨╛╤Б╤В╨╜╨░╤П
+                        ╨┐╨╗╨╛╤В╨╜╨╛╤Б╤В╤М 400 ╨│/╨╝2 (╨║╨╛╨┤: 01.7.12.05-0162)</td>
+                     <td class="center" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Х╨┤╨╕╨╜╨╕╤Ж╨░ ╨╕╨╖╨╝╨╡╤А╨╡╨╜╨╕╤П (measurementUnit)">╨╝2</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨▒╨░╨╖╤Л (volumeList/volume, alterationRef=base)">888</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">888</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨г╨▓╨╡╨╗╨╕╤З╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╜╨░ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨б╨╜╨╕╨╢╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╛╤В ╨▒╨░╨╖╤Л ╨┤╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="notes-cell col-reason" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Я╤А╨╕╤З╨╕╨╜╤Л ╨╕╨╖╨╝╨╡╨╜╨╡╨╜╨╕╤П ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л, ╨┐╤А╨╕╨▓╤П╨╖╨░╨╜╨╜╤Л╨╡ ╨║ ╨▒╨░╨╖╨╡ (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)"></td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│. (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)"></td>
+                  </tr>
+                  <tr title="">
+                     <td class="center nowrap" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨┐╨╛╨╖╨╕╤Ж╨╕╨╕ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В itemPositionId)">1.1.1</td>
+                     <td title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В estimateNumber)">02-01-01</td>
+                     <td class="col-estimate-name" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (estimateName)">╨Ъ╨░╨┐╨╕╤В╨░╨╗╤М╨╜╤Л╨╣ ╤А╨╡╨╝╨╛╨╜╤В ╨░╨▓╤В╨╛╨╝╨╛╨▒╨╕╨╗╤М╨╜╨╛╨╣ ╨┤╨╛╤А╨╛╨│╨╕ ╨Р-156 ╨┐╨╛╨┤╤К╨╡╨╖╨┤╨╜╨░╤П ╨┤╨╛╤А╨╛╨│╨░ ╨╛╤В ╨░╨▓╤В╨╛╨╝╨╛╨▒╨╕╨╗╤М╨╜╨╛╨╣ ╨┤╨╛╤А╨╛╨│╨╕
+                        ╨Р-155 ╨з╨╡╤А╨║╨╡╤Б╤Б╨║-╨Ф╨╛╨╝╨▒╨░╨╣-╨│╤А╨░╨╜╨╕╤Ж╨░ ╤Б ╨а╨╡╤Б╨┐╤Г╨▒╨╗╨╕╨║╨╛╨╣ ╨Р╨▒╤Е╨░╨╖╨╕╤П ╨║ ╨╝╨╡╨╢╨┤╤Г╨╜╨░╤А╨╛╨┤╨╜╨╛╨╝╤Г ╤Ж╨╡╨╜╤В╤А╤Г ╨╛╤В╨┤╤Л╤Е╨░
+                        "╨Р╤А╤Е╤Л╨╖" ╨╕ ╨║ ╤Б╨┐╨╡╤Ж╨╕╨░╨╗╨╕╨╖╨╕╤А╨╛╨▓╨░╨╜╨╜╨╛╨╣ ╨░╤Б╤В╤А╨╛╤Д╨╕╨╖╨╕╤З╨╡╤Б╨║╨╛╨╣ ╨╛╨▒╤Б╨╡╤А╨▓╨░╤В╨╛╤А╨╕╨╕ ╨а╨╛╤Б╤Б╨╕╨╣╤Б╨║╨╛╨╣ ╨░╨║╨░╨┤╨╡╨╝╨╕╨╕ ╨╜╨░╤Г╨║
+                        ╨╜╨░ ╤Г╤З╨░╤Б╤В╨║╨╡ ╨║╨╝ 7+000-╨║╨╝ 12+000, ╨Ъ╨░╤А╨░╤З╨░╨╡╨▓╨╛-╨з╨╡╤А╨║╨╡╤Б╤Б╨║╨░╤П ╨а╨╡╤Б╨┐╤Г╨▒╨╗╨╕╨║╨░</td>
+                     <td class="col-work" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨а╨░╨▒╨╛╤В╨░ (workName, normCodePrefix, normCode)">      ╨Я╨╡╤А╨╡╨▓╨╛╨╖╨║╨░ ╨│╤А╤Г╨╖╨╛╨▓ I ╨║╨╗╨░╤Б╤Б╨░ ╨░╨▓╤В╨╛╨╝╨╛╨▒╨╕╨╗╤П╨╝╨╕ ╨▒╨╛╤А╤В╨╛╨▓╤Л╨╝╨╕ ╨│╤А╤Г╨╖╨╛╨┐╨╛╨┤╤К╨╡╨╝╨╜╨╛╤Б╤В╤М╤О ╨┤╨╛ 20 ╤В ╨┐╨╛ ╨┤╨╛╤А╨╛╨│╨░╨╝
+                        ╤Б ╤Г╤Б╨╛╨▓╨╡╤А╤И╨╡╨╜╤Б╤В╨▓╨╛╨▓╨░╨╜╨╜╤Л╨╝ (╨░╤Б╤Д╨░╨╗╤М╤В╨╛╨▒╨╡╤В╨╛╨╜╨╜╤Л╨╝, ╤Ж╨╡╨╝╨╡╨╜╤В╨╛╨▒╨╡╤В╨╛╨╜╨╜╤Л╨╝, ╨╢╨╡╨╗╨╡╨╖╨╛╨▒╨╡╤В╨╛╨╜╨╜╤Л╨╝, ╨╛╨▒╤А╨░╨▒╨╛╤В╨░╨╜╨╜╤Л╨╝
+                        ╨╛╤А╨│╨░╨╜╨╕╤З╨╡╤Б╨║╨╕╨╝ ╨▓╤П╨╢╤Г╤Й╨╕╨╝) ╨┤╨╛╤А╨╛╨╢╨╜╤Л╨╝ ╨┐╨╛╨║╤А╤Л╤В╨╕╨╡╨╝ ╨╜╨░ ╤А╨░╤Б╤Б╤В╨╛╤П╨╜╨╕╨╡ 30 ╨║╨╝ (╨║╨╛╨┤: 03-01-01-030, ╨д╨б╨б╨ж╨┐╨│)</td>
+                     <td class="center" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Х╨┤╨╕╨╜╨╕╤Ж╨░ ╨╕╨╖╨╝╨╡╤А╨╡╨╜╨╕╤П (measurementUnit)">╤В</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨▒╨░╨╖╤Л (volumeList/volume, alterationRef=base)">-0.355</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">-0.355</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨г╨▓╨╡╨╗╨╕╤З╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╜╨░ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨б╨╜╨╕╨╢╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╛╤В ╨▒╨░╨╖╤Л ╨┤╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="notes-cell col-reason" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Я╤А╨╕╤З╨╕╨╜╤Л ╨╕╨╖╨╝╨╡╨╜╨╡╨╜╨╕╤П ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л, ╨┐╤А╨╕╨▓╤П╨╖╨░╨╜╨╜╤Л╨╡ ╨║ ╨▒╨░╨╖╨╡ (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)"></td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│. (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)"></td>
+                  </tr>
+                  <tr title="">
+                     <td class="center nowrap" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨┐╨╛╨╖╨╕╤Ж╨╕╨╕ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В itemPositionId)">1.1.2</td>
+                     <td title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В estimateNumber)">02-01-01</td>
+                     <td class="col-estimate-name" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (estimateName)">╨Ъ╨░╨┐╨╕╤В╨░╨╗╤М╨╜╤Л╨╣ ╤А╨╡╨╝╨╛╨╜╤В ╨░╨▓╤В╨╛╨╝╨╛╨▒╨╕╨╗╤М╨╜╨╛╨╣ ╨┤╨╛╤А╨╛╨│╨╕ ╨Р-156 ╨┐╨╛╨┤╤К╨╡╨╖╨┤╨╜╨░╤П ╨┤╨╛╤А╨╛╨│╨░ ╨╛╤В ╨░╨▓╤В╨╛╨╝╨╛╨▒╨╕╨╗╤М╨╜╨╛╨╣ ╨┤╨╛╤А╨╛╨│╨╕
+                        ╨Р-155 ╨з╨╡╤А╨║╨╡╤Б╤Б╨║-╨Ф╨╛╨╝╨▒╨░╨╣-╨│╤А╨░╨╜╨╕╤Ж╨░ ╤Б ╨а╨╡╤Б╨┐╤Г╨▒╨╗╨╕╨║╨╛╨╣ ╨Р╨▒╤Е╨░╨╖╨╕╤П ╨║ ╨╝╨╡╨╢╨┤╤Г╨╜╨░╤А╨╛╨┤╨╜╨╛╨╝╤Г ╤Ж╨╡╨╜╤В╤А╤Г ╨╛╤В╨┤╤Л╤Е╨░
+                        "╨Р╤А╤Е╤Л╨╖" ╨╕ ╨║ ╤Б╨┐╨╡╤Ж╨╕╨░╨╗╨╕╨╖╨╕╤А╨╛╨▓╨░╨╜╨╜╨╛╨╣ ╨░╤Б╤В╤А╨╛╤Д╨╕╨╖╨╕╤З╨╡╤Б╨║╨╛╨╣ ╨╛╨▒╤Б╨╡╤А╨▓╨░╤В╨╛╤А╨╕╨╕ ╨а╨╛╤Б╤Б╨╕╨╣╤Б╨║╨╛╨╣ ╨░╨║╨░╨┤╨╡╨╝╨╕╨╕ ╨╜╨░╤Г╨║
+                        ╨╜╨░ ╤Г╤З╨░╤Б╤В╨║╨╡ ╨║╨╝ 7+000-╨║╨╝ 12+000, ╨Ъ╨░╤А╨░╤З╨░╨╡╨▓╨╛-╨з╨╡╤А╨║╨╡╤Б╤Б╨║╨░╤П ╨а╨╡╤Б╨┐╤Г╨▒╨╗╨╕╨║╨░</td>
+                     <td class="col-work" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨а╨░╨▒╨╛╤В╨░ (workName, normCodePrefix, normCode)">      ╨Я╨╡╤А╨╡╨▓╨╛╨╖╨║╨░ ╨│╤А╤Г╨╖╨╛╨▓ I ╨║╨╗╨░╤Б╤Б╨░ ╨░╨▓╤В╨╛╨╝╨╛╨▒╨╕╨╗╤П╨╝╨╕ ╨▒╨╛╤А╤В╨╛╨▓╤Л╨╝╨╕ ╨│╤А╤Г╨╖╨╛╨┐╨╛╨┤╤К╨╡╨╝╨╜╨╛╤Б╤В╤М╤О ╨┤╨╛ 20 ╤В ╨┐╨╛ ╨┤╨╛╤А╨╛╨│╨░╨╝
+                        ╤Б ╤Г╤Б╨╛╨▓╨╡╤А╤И╨╡╨╜╤Б╤В╨▓╨╛╨▓╨░╨╜╨╜╤Л╨╝ (╨░╤Б╤Д╨░╨╗╤М╤В╨╛╨▒╨╡╤В╨╛╨╜╨╜╤Л╨╝, ╤Ж╨╡╨╝╨╡╨╜╤В╨╛╨▒╨╡╤В╨╛╨╜╨╜╤Л╨╝, ╨╢╨╡╨╗╨╡╨╖╨╛╨▒╨╡╤В╨╛╨╜╨╜╤Л╨╝, ╨╛╨▒╤А╨░╨▒╨╛╤В╨░╨╜╨╜╤Л╨╝
+                        ╨╛╤А╨│╨░╨╜╨╕╤З╨╡╤Б╨║╨╕╨╝ ╨▓╤П╨╢╤Г╤Й╨╕╨╝) ╨┤╨╛╤А╨╛╨╢╨╜╤Л╨╝ ╨┐╨╛╨║╤А╤Л╤В╨╕╨╡╨╝ ╨╜╨░ ╤А╨░╤Б╤Б╤В╨╛╤П╨╜╨╕╨╡ 130 ╨║╨╝ (╨║╨╛╨┤: 03-01-01-130, ╨д╨б╨б╨ж╨┐╨│)</td>
+                     <td class="center" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Х╨┤╨╕╨╜╨╕╤Ж╨░ ╨╕╨╖╨╝╨╡╤А╨╡╨╜╨╕╤П (measurementUnit)">╤В</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨▒╨░╨╖╤Л (volumeList/volume, alterationRef=base)">0.355</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">0.355</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨г╨▓╨╡╨╗╨╕╤З╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╜╨░ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨б╨╜╨╕╨╢╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╛╤В ╨▒╨░╨╖╤Л ╨┤╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="notes-cell col-reason" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Я╤А╨╕╤З╨╕╨╜╤Л ╨╕╨╖╨╝╨╡╨╜╨╡╨╜╨╕╤П ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л, ╨┐╤А╨╕╨▓╤П╨╖╨░╨╜╨╜╤Л╨╡ ╨║ ╨▒╨░╨╖╨╡ (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)"></td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│. (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)"></td>
+                  </tr>
+                  <tr class="estimate-row">
+                     <td colspan="12" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber|estimateName&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ш╤Б╤Е╨╛╨┤╨╜╨░╤П ╤Б╨╝╨╡╤В╨░ (╨╜╨╛╨╝╨╡╤А, ╨╜╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡)">╨б╨╝╨╡╤В╨░ 02-01-02 - ╨Ъ╨╛╨╜╤Б╤В╤А╤Г╨║╤В╨╕╨▓╨╜╤Л╨╡ ╤А╨╡╤И╨╡╨╜╨╕╤П. ╨д╤Г╨╜╨┤╨░╨╝╨╡╨╜╤В╤Л</td>
+                  </tr>
+                  <tr class="section-row">
+                     <td colspan="12" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/(@sectionNumber|sectionName)&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨╕ ╨╜╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╤А╨░╨╖╨┤╨╡╨╗╨░ ╤Б╨╝╨╡╤В╤Л">1. ╨а╨░╨╖╨┤╨╡╨╗ 1 ╤Б╨╝╨╡╤В╤Л 02-01-02</td>
+                  </tr>
+                  <tr title="">
+                     <td class="center nowrap" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨┐╨╛╨╖╨╕╤Ж╨╕╨╕ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В itemPositionId)">1</td>
+                     <td title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В estimateNumber)">02-01-02</td>
+                     <td class="col-estimate-name" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (estimateName)">╨Ъ╨╛╨╜╤Б╤В╤А╤Г╨║╤В╨╕╨▓╨╜╤Л╨╡ ╤А╨╡╤И╨╡╨╜╨╕╤П. ╨д╤Г╨╜╨┤╨░╨╝╨╡╨╜╤В╤Л</td>
+                     <td class="col-work" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨а╨░╨▒╨╛╤В╨░ (workName, normCodePrefix, normCode)">╨г╨┐╨╗╨╛╤В╨╜╨╡╨╜╨╕╨╡ ╨│╤А╤Г╨╜╤В╨░ ╨┐╨╜╨╡╨▓╨╝╨░╤В╨╕╤З╨╡╤Б╨║╨╕╨╝╨╕ ╤В╤А╨░╨╝╨▒╨╛╨▓╨║╨░╨╝╨╕, ╨│╤А╤Г╨┐╨┐╨░ ╨│╤А╤Г╨╜╤В╨╛╨▓: 1-2 (╨║╨╛╨┤: 01-02-005-01, ╨д╨Х╨а)</td>
+                     <td class="center" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Х╨┤╨╕╨╜╨╕╤Ж╨░ ╨╕╨╖╨╝╨╡╤А╨╡╨╜╨╕╤П (measurementUnit)">100 ╨╝3</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨▒╨░╨╖╤Л (volumeList/volume, alterationRef=base)">10</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">8</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨г╨▓╨╡╨╗╨╕╤З╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╜╨░ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨б╨╜╨╕╨╢╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╛╤В ╨▒╨░╨╖╤Л ╨┤╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">-2</td>
+                     <td class="notes-cell col-reason" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Я╤А╨╕╤З╨╕╨╜╤Л ╨╕╨╖╨╝╨╡╨╜╨╡╨╜╨╕╤П ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">╨Ъ╨╛╤А╤А╨╡╨║╤В╨╕╤А╨╛╨▓╨║╨░ ╨┐╤А╨╛╨╡╨║╤В╨╜╤Л╤Е ╤А╨╡╤И╨╡╨╜╨╕╨╣ ╨▓ ╤Б╨▓╤П╨╖╨╕ ╤Б ╨┤╨╛╨┐╨╛╨╗╨╜╨╕╤В╨╡╨╗╤М╨╜╤Л╨╝╨╕ ╨╕╨╜╨╢╨╡╨╜╨╡╤А╨╜╨╛-╨│╨╡╨╛╨╗╨╛╨│╨╕╤З╨╡╤Б╨║╨╕╨╝╨╕
+                        ╨╕╨╖╤Л╤Б╨║╨░╨╜╨╕╤П╨╝╨╕ ╨┐╨╗╨╛╤Й╨░╨┤╨║╨╕ ╤Б╤В╤А╨╛╨╕╤В╨╡╨╗╤М╤Б╤В╨▓╨░</td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л, ╨┐╤А╨╕╨▓╤П╨╖╨░╨╜╨╜╤Л╨╡ ╨║ ╨▒╨░╨╖╨╡ (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)">1310.0.00-01-╨Ъ╨а1 ╤В╨╛╨╝ 5.1.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 7<br>╨Ъ╨а2 ╤В╨╛╨╝ 5.2.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 8<br>1310.0.00-01-╨б╨Ь2 ╨Т╨Ю╨а.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 12</td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│. (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)">1310.0.00-01-╨Ъ╨а1 ╤В╨╛╨╝ 5.1.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 7<br>╨Ъ╨а2 ╤В╨╛╨╝ 5.2.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 9<br>1310.0.00-01-╨б╨Ь2 ╨Т╨Ю╨а.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 13</td>
+                  </tr>
+                  <tr title="">
+                     <td class="center nowrap" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨┐╨╛╨╖╨╕╤Ж╨╕╨╕ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В itemPositionId)">2</td>
+                     <td title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В estimateNumber)">02-01-02</td>
+                     <td class="col-estimate-name" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (estimateName)">╨Ъ╨╛╨╜╤Б╤В╤А╤Г╨║╤В╨╕╨▓╨╜╤Л╨╡ ╤А╨╡╤И╨╡╨╜╨╕╤П. ╨д╤Г╨╜╨┤╨░╨╝╨╡╨╜╤В╤Л</td>
+                     <td class="col-work" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨а╨░╨▒╨╛╤В╨░ (workName, normCodePrefix, normCode)">╨г╤Б╤В╤А╨╛╨╣╤Б╤В╨▓╨╛ ╨▒╨╡╤В╨╛╨╜╨╜╨╛╨╣ ╨┐╨╛╨┤╨│╨╛╤В╨╛╨▓╨║╨╕ (╨║╨╛╨┤: 06-01-001-01, ╨д╨Х╨а)</td>
+                     <td class="center" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Х╨┤╨╕╨╜╨╕╤Ж╨░ ╨╕╨╖╨╝╨╡╤А╨╡╨╜╨╕╤П (measurementUnit)">100 ╨╝3</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨▒╨░╨╖╤Л (volumeList/volume, alterationRef=base)">7</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">8</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨г╨▓╨╡╨╗╨╕╤З╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╜╨░ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">1</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨б╨╜╨╕╨╢╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╛╤В ╨▒╨░╨╖╤Л ╨┤╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="notes-cell col-reason" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Я╤А╨╕╤З╨╕╨╜╤Л ╨╕╨╖╨╝╨╡╨╜╨╡╨╜╨╕╤П ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">╨Ш╨╖╨╝╨╡╨╜╨╡╨╜╨╕╨╡ ╤В╨╛╨╗╤Й╨╕╨╜╤Л</td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л, ╨┐╤А╨╕╨▓╤П╨╖╨░╨╜╨╜╤Л╨╡ ╨║ ╨▒╨░╨╖╨╡ (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)">1310.0.00-01-╨Ъ╨а1 ╤В╨╛╨╝ 5.1.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 7<br>╨Ъ╨а2 ╤В╨╛╨╝ 5.2.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 8<br>1310.0.00-01-╨б╨Ь2 ╨Т╨Ю╨а.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 12</td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│. (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)">1310.0.00-01-╨Ъ╨а1 ╤В╨╛╨╝ 5.1.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 7<br>╨Ъ╨а2 ╤В╨╛╨╝ 5.2.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 9<br>1310.0.00-01-╨б╨Ь2 ╨Т╨Ю╨а.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 13</td>
+                  </tr>
+                  <tr title="">
+                     <td class="center nowrap" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨┐╨╛╨╖╨╕╤Ж╨╕╨╕ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В itemPositionId)">2.1</td>
+                     <td title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨╛╨╝╨╡╤А ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (╨░╤В╤А╨╕╨▒╤Г╤В estimateNumber)">02-01-02</td>
+                     <td class="col-estimate-name" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Э╨░╨╕╨╝╨╡╨╜╨╛╨▓╨░╨╜╨╕╨╡ ╨╕╤Б╤Е╨╛╨┤╨╜╨╛╨╣ ╤Б╨╝╨╡╤В╤Л (estimateName)">╨Ъ╨╛╨╜╤Б╤В╤А╤Г╨║╤В╨╕╨▓╨╜╤Л╨╡ ╤А╨╡╤И╨╡╨╜╨╕╤П. ╨д╤Г╨╜╨┤╨░╨╝╨╡╨╜╤В╤Л</td>
+                     <td class="col-work" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨а╨░╨▒╨╛╤В╨░ (workName, normCodePrefix, normCode)">   ╨б╨╝╨╡╤Б╨╕ ╨▒╨╡╤В╨╛╨╜╨╜╤Л╨╡ ╤В╤П╨╢╨╡╨╗╨╛╨│╨╛ ╨▒╨╡╤В╨╛╨╜╨░ (╨С╨б╨в), ╨║╨╗╨░╤Б╤Б ╨Т7,5 (╨Ь100) (╨║╨╛╨┤: 04.1.02.05-0074)</td>
+                     <td class="center" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Х╨┤╨╕╨╜╨╕╤Ж╨░ ╨╕╨╖╨╝╨╡╤А╨╡╨╜╨╕╤П (measurementUnit)">╨╝3</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨▒╨░╨╖╤Л (volumeList/volume, alterationRef=base)">800</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ю╨▒╤К╨╡╨╝ ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">950</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨г╨▓╨╡╨╗╨╕╤З╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╜╨░ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">150</td>
+                     <td class="right" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨б╨╜╨╕╨╢╨╡╨╜╨╕╨╡ ╨╛╨▒╤К╨╡╨╝╨░ ╨╛╤В ╨▒╨░╨╖╤Л ╨┤╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│."></td>
+                     <td class="notes-cell col-reason" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Я╤А╨╕╤З╨╕╨╜╤Л ╨╕╨╖╨╝╨╡╨╜╨╡╨╜╨╕╤П ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│.">╨Ш╨╖╨╝╨╡╨╜╨╡╨╜╨╕╨╡ ╤В╨╛╨╗╤Й╨╕╨╜╤Л</td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л, ╨┐╤А╨╕╨▓╤П╨╖╨░╨╜╨╜╤Л╨╡ ╨║ ╨▒╨░╨╖╨╡ (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)">1310.0.00-01-╨Ъ╨а1 ╤В╨╛╨╝ 5.1.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 7<br>╨Ъ╨а2 ╤В╨╛╨╝ 5.2.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 8<br>1310.0.00-01-╨б╨Ь2 ╨Т╨Ю╨а.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 12</td>
+                     <td class="notes-cell col-docs" title="╨Я╤Г╤В╤М: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;╨Э╨░╨╖╨╜╨░╤З╨╡╨╜╨╕╨╡: ╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В╤Л ╨┐╨╛ ╤Б╤В╨░╨┤╨╕╨╕ 2020 ╨│. (╨┐╨╛╨┤╨┐╨╕╤Б╤М ╤Б╤Б╤Л╨╗╨║╨╕)">1310.0.00-01-╨Ъ╨а1 ╤В╨╛╨╝ 5.1.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 7<br>╨Ъ╨а2 ╤В╨╛╨╝ 5.2.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 9<br>1310.0.00-01-╨б╨Ь2 ╨Т╨Ю╨а.pdf (╤Б╤В╤А. ) - ╨Ы╨╕╤Б╤В 13</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </body>
+</html>

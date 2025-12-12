@@ -53,7 +53,7 @@
 
   <xsl:function name="f:full-date" as="xs:string?">
     <xsl:param name="date" as="xs:date?"/>
-    <xsl:sequence select="if ($date) then format-date($date, '[D01].[M01].[Y0001]') else ()"/>
+    <xsl:sequence select="if (exists($date)) then format-date($date, '[D01].[M01].[Y0001]') else ()"/>
   </xsl:function>
 
 
@@ -159,7 +159,7 @@
       <head>
         <meta charset="UTF-8"/>
         <title>Сводная ведомость объемов работ</title>
-        <style type="text/css">
+      <style type="text/css">
           :root {
             --bg: #f5f7fb;
             --card: #ffffff;
@@ -264,14 +264,26 @@
           .col-reason { max-width: 400px; white-space: normal; word-break: break-word; }
           .col-docs { max-width: 480px; white-space: normal; word-break: break-word; }
           .th-label-muted { display: block; font-size: 8pt; color: var(--muted); line-height: 1.2; margin-bottom: 2px; }
-          .th-label-strong { display: block; font-weight: 700; line-height: 1.3; }
-        </style>
+        .th-label-strong { display: block; font-weight: 700; line-height: 1.3; }
+        .footer-card { padding: 4px 0 0 0; margin-top: 8px; border: none; }
+        .footer-table { width: 100%; border-collapse: collapse; }
+        .footer-table .label { width: 14%; min-width: 80px; color: var(--muted); font-weight: 600; text-align: left; vertical-align: top; padding: 2px 6px 2px 0; }
+        .footer-table .line { display: none; }
+        .footer-table .hint { display: block; font-size: 10pt; color: var(--muted); padding: 0 0 6px 0; }
+        .footer-table .decode { display: block; font-size: 10pt; color: #000; padding: 0 0 12px 0; }
+      </style>
       </head>
       <body>
         <xsl:variable name="doc-date" select="if ($doc/bd:documentDate) then xs:date($doc/bd:documentDate) else ()"/>
         <xsl:variable name="customer" select="normalize-space($doc/bd:customerName)"/>
         <xsl:variable name="construction-name" select="normalize-space($doc/bd:constructionName)"/>
         <xsl:variable name="full-date" select="f:full-date($doc-date)"/>
+        <xsl:variable name="composer-name" select="concat($doc/bd:signatures/bd:composer/ct:surname, ' ', $doc/bd:signatures/bd:composer/ct:name, if ($doc/bd:signatures/bd:composer/ct:patronymic) then concat(' ', $doc/bd:signatures/bd:composer/ct:patronymic) else '')"/>
+        <xsl:variable name="composer-position" select="$doc/bd:signatures/bd:composer/ct:position"/>
+        <xsl:variable name="verifier-name" select="concat($doc/bd:signatures/bd:verifier/ct:surname, ' ', $doc/bd:signatures/bd:verifier/ct:name, if ($doc/bd:signatures/bd:verifier/ct:patronymic) then concat(' ', $doc/bd:signatures/bd:verifier/ct:patronymic) else '')"/>
+        <xsl:variable name="verifier-position" select="$doc/bd:signatures/bd:verifier/ct:position"/>
+        <xsl:variable name="composer-label" select="normalize-space(string-join(($composer-position, $composer-name), ', '))"/>
+        <xsl:variable name="verifier-label" select="normalize-space(string-join(($verifier-position, $verifier-name), ', '))"/>
 
           <div class="page">
       <div class="card">
@@ -280,7 +292,7 @@
             <xsl:text>Документ экспортирован </xsl:text>
             <xsl:variable name="export-dt" select="$doc/bd:exportDateTime"/>
             <xsl:choose>
-              <xsl:when test="$export-dt">
+              <xsl:when test="exists($export-dt)">
                 <xsl:variable name="dt" select="xs:dateTime($export-dt)"/>
                 <xsl:value-of select="format-dateTime($dt, '[D01].[M01].[Y0001]')"/>
                 <xsl:text> </xsl:text>
@@ -314,7 +326,7 @@
                   <td class="line">
                     <div class="line-text">
                       <xsl:choose>
-                        <xsl:when test="$full-date">
+                        <xsl:when test="exists($full-date)">
                           <xsl:value-of select="$full-date"/>
                         </xsl:when>
                         <xsl:otherwise>&#160;</xsl:otherwise>
@@ -336,6 +348,39 @@
               <xsl:with-param name="base-stage" select="$base-stage"/>
             </xsl:call-template>
           </div>
+
+          <div class="card footer-card">
+            <table class="footer-table">
+              <tr>
+                <td class="label">Составил</td>
+                <td>
+                  <div class="hint">
+                    <xsl:choose>
+                      <xsl:when test="$composer-label">
+                        <xsl:value-of select="$composer-label"/>
+                      </xsl:when>
+                      <xsl:otherwise>&#160;</xsl:otherwise>
+                    </xsl:choose>
+                  </div>
+                  <div class="decode">[должность, подпись (инициалы, фамилия)]</div>
+                </td>
+              </tr>
+              <tr>
+                <td class="label">Проверил</td>
+                <td>
+                  <div class="hint">
+                    <xsl:choose>
+                      <xsl:when test="$verifier-label">
+                        <xsl:value-of select="$verifier-label"/>
+                      </xsl:when>
+                      <xsl:otherwise>&#160;</xsl:otherwise>
+                    </xsl:choose>
+                  </div>
+                  <div class="decode">[должность, подпись (инициалы, фамилия)]</div>
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
         <!-- Schematron JS removed -->
       </body>
@@ -349,39 +394,42 @@
     <xsl:param name="column-count" as="xs:integer"/>
     <xsl:param name="base-label" as="xs:string"/>
     <xsl:param name="base-stage" as="element()?"/>
+    <xsl:variable name="total-columns" select="1 + $stage-count"/>
+    <xsl:variable name="reasons-columns" select="$stage-count"/>
+    <xsl:variable name="docs-columns" select="1 + $stage-count"/>
     <xsl:variable name="decrease-columns" select="xs:integer(sum(for $i in 1 to $stage-count return $i))"/>
     <xsl:variable name="change-columns" select="xs:integer($stage-count + $decrease-columns)"/>
-    <xsl:variable name="numbering" as="xs:string*">
-      <xsl:sequence select="('1','2','3','4','5')"/>
-      <xsl:sequence select="'6'"/>
-      <xsl:for-each select="1 to $stage-count">
-        <xsl:sequence select="if (position() = 1) then '7' else concat('7.', position() - 1)"/>
-      </xsl:for-each>
-      <xsl:for-each select="1 to $stage-count">
-        <xsl:variable name="idx" select="position() - 1"/>
-        <xsl:sequence select="if ($idx = 0) then '8' else concat('8.', $idx)"/>
-        <xsl:choose>
-          <xsl:when test="$idx = 0">
-            <xsl:sequence select="'9'"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:for-each select="1 to ($idx + 1)">
-              <xsl:sequence select="concat('9.', $idx, '.', position())"/>
-            </xsl:for-each>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:for-each>
-      <xsl:variable name="reason-start" select="10"/>
-      <xsl:for-each select="1 to $stage-count">
-        <xsl:sequence select="if (position() = 1) then string($reason-start) else concat($reason-start, '.', position() - 1)"/>
-      </xsl:for-each>
-      <xsl:sequence select="'11'"/>
-      <xsl:for-each select="$stages-order">
-        <xsl:sequence select="if (position() = 1)
-                              then '12'
-                              else concat('12.', position() - 1)"/>
-      </xsl:for-each>
-    </xsl:variable>
+      <xsl:variable name="numbering" as="xs:string*">
+        <xsl:sequence select="('1','2','3','4','5')"/>
+        <xsl:sequence select="'6'"/>
+        <xsl:for-each select="1 to $stage-count">
+          <xsl:sequence select="if (position() = 1) then '7' else concat('7.', position() - 1)"/>
+        </xsl:for-each>
+        <xsl:for-each select="1 to $stage-count">
+          <xsl:variable name="idx" select="position() - 1"/>
+          <xsl:sequence select="if ($idx = 0) then '8' else concat('8.', $idx)"/>
+          <xsl:choose>
+            <xsl:when test="$idx = 0">
+              <xsl:sequence select="'9'"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:for-each select="1 to ($idx + 1)">
+                <xsl:sequence select="concat('9.', $idx, '.', position())"/>
+              </xsl:for-each>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:for-each>
+        <xsl:variable name="reason-start" select="10"/>
+        <xsl:for-each select="1 to $stage-count">
+          <xsl:sequence select="if (position() = 1) then string($reason-start) else concat($reason-start, '.', position() - 1)"/>
+        </xsl:for-each>
+        <xsl:sequence select="'11'"/>
+        <xsl:for-each select="$stages-order">
+          <xsl:sequence select="if (position() = 1)
+                                then '12'
+                                else concat('12.', position() - 1)"/>
+        </xsl:for-each>
+      </xsl:variable>
 
     <table class="data-table">
       <colgroup>
@@ -391,76 +439,68 @@
         <col class="col-work"/>
         <col style="width:100px"/>
       </colgroup>
-      <thead>
-        <tr>
-          <th rowspan="3" class="center">№ п/п</th>
-          <th colspan="2" class="center">Данные сметного расчета (сметы)</th>
-          <th rowspan="3" class="center">Наименование работ и затрат</th>
-          <th rowspan="3" class="center">Ед. изм.</th>
-          <th colspan="{1 + $stage-count}" class="center">Объем работ в сметной документации</th>
-          <th colspan="{$change-columns}" class="center">Изменение объема работ</th>
-          <th colspan="{$stage-count}" class="center">Обоснование изменений</th>
-          <th colspan="{$stage-count + 1}" class="center">Ссылки на исходные документы</th>
-        </tr>
-        <tr>
-          <th class="center" rowspan="2">Номер</th>
-          <th class="center" rowspan="2">Наименование</th>
-          <th class="center" rowspan="2">
-            <xsl:value-of select="$base-label"/>
-          </th>
-          <xsl:if test="$stage-count &gt; 0">
-            <th class="center" colspan="{$stage-count}">С учетом изменений</th>
-          </xsl:if>
-          <xsl:for-each select="$stages-order">
-            <xsl:variable name="stage-index" select="position()"/>
-            <th class="center" colspan="{1 + $stage-index}">
-              Корректировка <xsl:value-of select="f:stage-label(.)"/>
-            </th>
-          </xsl:for-each>
-          <xsl:for-each select="$stages-order">
+        <thead>
+          <tr>
+            <th rowspan="3" class="center">№ п/п</th>
+            <th colspan="2" class="center">Данные сметного расчета (сметы)</th>
+            <th rowspan="3" class="center">Наименование работ и затрат</th>
+            <th rowspan="3" class="center">Ед. изм.</th>
+            <th colspan="{1 + $stage-count}" class="center">Объем работ в сметной документации</th>
+            <th colspan="{$change-columns}" class="center">Изменение объема работ</th>
+            <th colspan="{$stage-count}" class="center">Обоснование изменений</th>
+            <th colspan="{$stage-count + 1}" class="center">Ссылки на исходные документы</th>
+          </tr>
+          <tr>
+            <th class="center" rowspan="2">Номер</th>
+            <th class="center" rowspan="2">Наименование</th>
             <th class="center" rowspan="2">
-              <xsl:value-of select="f:stage-label(.)"/>
+              <xsl:value-of select="$base-label"/>
             </th>
-          </xsl:for-each>
-          <th class="center" rowspan="2">
-            <xsl:value-of select="$base-label"/>
-          </th>
-          <xsl:for-each select="$stages-order">
-            <th class="center" rowspan="2">
-              <span class="th-label-muted">С учетом изменений</span>
-              <span class="th-label-strong">
+            <xsl:for-each select="$stages-order">
+              <th class="center" rowspan="2">
                 <xsl:value-of select="f:stage-label(.)"/>
-              </span>
-            </th>
-          </xsl:for-each>
-        </tr>
-        <tr>
-          <xsl:for-each select="$stages-order">
-            <th class="center">
-              <xsl:value-of select="f:stage-label(.)"/>
-            </th>
-          </xsl:for-each>
-        </tr>
-        <tr>
-          <xsl:for-each select="$stages-order">
-            <xsl:variable name="stage-index" select="position()"/>
-            <xsl:variable name="stage-label" select="f:stage-label(.)"/>
-            <th class="center">Увеличение <xsl:value-of select="$stage-label"/></th>
-            <xsl:variable name="prior-stages" select="reverse(($base-stage, $stages-order[position() lt $stage-index]))"/>
-            <xsl:for-each select="$prior-stages">
-              <xsl:variable name="target-label" select="if (@id = 'base') then f:stage-label($base-stage) else f:stage-label(.)"/>
-              <th class="center">Снижение <xsl:value-of select="$target-label"/></th>
+              </th>
             </xsl:for-each>
-          </xsl:for-each>
-        </tr>
-        <tr>
-          <xsl:for-each select="$numbering">
-            <th class="center numbering">
-              <xsl:value-of select="."/>
+            <xsl:for-each select="$stages-order">
+              <xsl:variable name="stage-index" select="position()"/>
+              <th class="center" colspan="{1 + $stage-index}">
+                Корректировка <xsl:value-of select="f:stage-label(.)"/>
+              </th>
+            </xsl:for-each>
+            <xsl:for-each select="$stages-order">
+              <th class="center" rowspan="2">
+                <xsl:value-of select="f:stage-label(.)"/>
+              </th>
+            </xsl:for-each>
+            <th class="center" rowspan="2">
+              <xsl:value-of select="$base-label"/>
             </th>
-          </xsl:for-each>
-        </tr>
-      </thead>
+            <xsl:for-each select="$stages-order">
+              <th class="center" rowspan="2">
+                <xsl:value-of select="f:stage-label(.)"/>
+              </th>
+            </xsl:for-each>
+          </tr>
+          <tr>
+            <xsl:for-each select="$stages-order">
+              <xsl:variable name="stage-index" select="position()"/>
+              <xsl:variable name="stage-label" select="f:stage-label(.)"/>
+              <th class="center">Увеличение <xsl:value-of select="$stage-label"/></th>
+              <xsl:variable name="prior-stages" select="reverse(($base-stage, $stages-order[position() lt $stage-index]))"/>
+              <xsl:for-each select="$prior-stages">
+                <xsl:variable name="target-label" select="if (@id = 'base') then f:stage-label($base-stage) else f:stage-label(.)"/>
+                <th class="center">Снижение <xsl:value-of select="$target-label"/></th>
+              </xsl:for-each>
+            </xsl:for-each>
+          </tr>
+          <tr>
+            <xsl:for-each select="$numbering">
+              <th class="center numbering">
+                <xsl:value-of select="."/>
+              </th>
+            </xsl:for-each>
+          </tr>
+        </thead>
       <tbody>
         <xsl:call-template name="render-estimates">
           <xsl:with-param name="estimates" select="$doc/*:estimateList/*:estimate"/>
@@ -740,4 +780,3 @@
   </xsl:template>
 
 </xsl:stylesheet>
-

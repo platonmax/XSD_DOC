@@ -5,7 +5,7 @@
   xmlns:ct="http://types/CommonTypes.xsd"
   xmlns:bd="http://types/BaseDocument.xsd"
   targetNamespace="http://types/BaseDocument.xsd" attributeFormDefault="unqualified"
-  elementFormDefault="qualified" version="1.16">
+  elementFormDefault="qualified" version="1.18">
 
   <xs:import namespace="http://types/CommonTypes.xsd" schemaLocation="CommonTypes.xsd"/>
   <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
@@ -54,7 +54,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="customerName" type="xs:string" minOccurs="0">
+      <xs:element name="customerName" type="xs:string">
         <xs:annotation>
           <xs:documentation>Заказчик (наименование организации)
           </xs:documentation>
@@ -66,13 +66,13 @@
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="composer" type="ct:signaturesType">
+            <xs:element name="composer" type="ct:representativeType">
               <xs:annotation>
                 <xs:appinfo>Выводится после таблицы ВОР в строку Составил. Сначала Должность, потом ФИО</xs:appinfo>
                 <xs:documentation>Подпись составляющего (ФИО).</xs:documentation>
               </xs:annotation>
             </xs:element>
-            <xs:element name="verifier" type="ct:signaturesType">
+            <xs:element name="verifier" type="ct:representativeType">
               <xs:annotation>
                 <xs:appinfo>Выводится после таблицы ВОР в строку Проверил. Сначала Должность, затем ФИО</xs:appinfo>
                 <xs:documentation>Подпись проверяющего (ФИО).</xs:documentation>

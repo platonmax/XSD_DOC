@@ -31,12 +31,16 @@
 
   <bd:signatures>
     <bd:composer>
-      <personName>И. О. Составитель</personName>
-      <positionName>Инженер</positionName>
+      <surname>Иванов</surname>
+      <name>Иван</name>
+      <patronymic>Отчество</patronymic>
+      <position>Инженер</position>
     </bd:composer>
     <bd:verifier>
-      <personName>П. П. Проверяющий</personName>
-      <positionName>Главный инженер</positionName>
+      <surname>Петров</surname>
+      <name>Пётр</name>
+      <patronymic>Петрович</patronymic>
+      <position>Главный инженер</position>
     </bd:verifier>
   </bd:signatures>
 
