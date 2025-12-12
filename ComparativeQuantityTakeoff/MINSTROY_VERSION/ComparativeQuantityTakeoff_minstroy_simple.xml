@@ -49,16 +49,19 @@
       <fileInternalId>1</fileInternalId>
       <fileName>spec-sheet.pdf</fileName>
       <fileId>11111111-1111-4111-8111-111111111111</fileId>
+      <fileCheckSum>A1B2C3D4</fileCheckSum>
     </bd:file>
     <bd:file>
       <fileInternalId>2</fileInternalId>
       <fileName>structural-plan.dwg</fileName>
       <fileId>22222222-2222-4222-8222-222222222222</fileId>
+      <fileCheckSum>B2C3D4E5</fileCheckSum>
     </bd:file>
     <bd:file>
       <fileInternalId>3</fileInternalId>
       <fileName>ifc-model.ifc</fileName>
       <fileId>33333333-3333-4333-8333-333333333333</fileId>
+      <fileCheckSum>C3D4E5F6</fileCheckSum>
     </bd:file>
   </bd:fileList>
 

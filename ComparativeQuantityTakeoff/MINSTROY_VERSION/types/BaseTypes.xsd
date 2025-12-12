@@ -3,7 +3,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:bt="http://types/BaseTypes.xsd"
   targetNamespace="http://types/BaseTypes.xsd" attributeFormDefault="unqualified"
-  elementFormDefault="qualified" version="1.13">
+  elementFormDefault="qualified" version="1.14">
 
   <xs:simpleType name="accessLevelCodeType">
     <xs:annotation>
@@ -47,6 +47,12 @@
   <xs:simpleType name="ifcGuidIdType">
     <xs:restriction base="xs:string">
       <xs:pattern value="[0-9A-Fa-f-]{4,64}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="crc32Type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9A-Fa-f]{8}"/>
     </xs:restriction>
   </xs:simpleType>
 
