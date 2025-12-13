@@ -6,78 +6,138 @@
 	<xsl:template match="/">
 		<html xmlns="http://www.w3.org/1999/xhtml">
 			<head>
-				<style type="text/css" id="styles"> 
-                    h1 { font-family: Times New Roman; font-size: 14pt; font-weight:bold; text-align:center; width:100%; margin-top: 2em; }
-                    body,p,td { font-family: Times New Roman; font-size: 10pt; margin:0;}
-                    
-                    div.heading-left2 { margin-left:1.7em; display:flex; width:30%; margin-top: 0.5em; min-height: 1em;}
-                    div.heading-left2 .headingvalue { border-bottom: 1px solid black; flex: 1; }
+				                <style type="text/css" id="styles">
+          :root {
+            --bg: #f5f7fb;
+            --card: #ffffff;
+            --border: #dfe3ec;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --primary: #1d4ed8;
+            --accent: #0ea5e9;
+            --danger: #cc0000;
+            --danger-bg: #ffe6e6;
+          }
+          body {
+            font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+            font-size: 10pt;
+            margin: 0;
+            padding: 24px;
+            background: linear-gradient(135deg, #f7f9fc 0%, #eef2f7 100%);
+            color: var(--text);
+          }
 
-					div.heading-left3 { margin-left:1.7em; display:flex; width:50%; margin-top: 0.5em; min-height: 1em;}
-                    div.heading-left3 .headingvalue { border-bottom: 1px solid black; flex: 1; }
-                    
-                    div.helptext { text-align:center; width:100%; margin-top:0;}
-                    div.helptext-left{ text-align:left; width:100%; margin-top:0;}
-                    
-                    
-                    div.headingname { white-space: nowrap; margin-right:0.3em; margin-left:0.3em; flex-grow: *; min-height: 1em;}
-                    div.headingnametop { width:50%; margin-right:0.3em; margin-left:0.3em; flex-grow: *; min-height: 1em;}
-                    
-                    div.heading-left { display:flex; width:50%; margin-bottom: 0.5em; min-height: 1em;}
-                    div.heading-left .headingvalue { border-bottom: 1px solid black; flex-grow: 2;}
-                    
-                    div.spacer {flex: 1; }
+          .main {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            background: transparent;
+          }
 
-                    div.report { margin-bottom: 2em; margin-bottom: 2em; border-bottom:2px solid black; padding:0.5em 2em;}
-                    div.report h3 {font-size: 120%; font-weight; bold}
+          .header-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+          }
 
-                    div.heading {margin-right:2em; margin-left:2em; display:flex; margin-top: 1em; }
-                    div.heading .headingvalue { border-bottom: 1px solid black; width:100%; min-height: 1em;}
-                     
-                    div.headingblock { display:flex; flex-direction: column; flex:3; margin-top:2em}
-                    
-                    .fieldError { color: red; }
-                    td.fieldError { border: 1px solid red; }
-                    div.fieldError .headingvalue { border-bottom: 1px solid black; flex-grow: 2;}                     
+          .header-card.small td {
+            font-size: 9pt;
+          }
+          .header-card.small .line-text {
+            font-size: 9pt;
+          }
 
-					.main { margin: 2em; }
-                    .center {text-align:center;}
-                    .right {text-align:right;}
-                    .left {text-align:left;}
-                    .leftmargin { padding-left:3em;}
-                    .nowrap {white-space: nowrap;}
-                    .top {vertical-align: top; }
-					.italic {font-style: italic; }
-					.bold {
-					font-weight: bold;
-					}
-					.inline {display: inline; }
-					.breakword {word-wrap: break-word; }
-					.indent {padding-left: 2em;}
-					.indent2 {padding-left: 4em;}
-					.indent3 {padding-left: 6em;}
-					
-                    .err { color:red; text-decoration: underline }
-                    .err A { color:red; text-decoration: underline }
-                    
-                    table {border-collapse: collapse; width:100%; margin:2em 0; }
-                    th {border: 1px solid black; padding: 0.5em; vertical-align: top;}
-					td {border: 0px; padding: 0.2em 0.5em; vertical-align: top; text-align:right}
-					td.tborder {border: 1px solid black}
-					td.btop {border-top: 1px solid black}
-					
-					
-					td.btop, td.bbottom {
-					border-top: 1px solid black;
-					border-bottom: 1px solid black;
-					}
-					
-					.nowrap {
-					white-space: nowrap;
-					}
-					
+          table.header-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            margin: 0;
+          }
+          table.header-table td {
+            border: none;
+            padding: 6px 4px;
+            font-size: 11pt;
+            vertical-align: bottom;
+          }
+          table.header-table .label {
+            width: 30%;
+            min-width: 140px;
+            white-space: normal;
+            text-align: left;
+            padding-right: 8px;
+            color: var(--muted);
+            font-weight: 600;
+          }
+          table.header-table .line {
+            width: 70%;
+            padding-left: 0;
+          }
+          table.header-table .line-text {
+            border-bottom: 1px solid var(--border);
+            min-height: 20px;
+            padding: 2px 6px 4px 6px;
+            text-align: left;
+            font-style: italic;
+          }
 
-                </style>
+          table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            margin: 8px 0;
+          }
+          thead th {
+            border: 1px solid var(--border);
+            padding: 6px 6px;
+            font-size: 9pt;
+            background: #f0f4ff;
+            vertical-align: middle;
+            text-align: center;
+            white-space: normal;
+            word-break: break-word;
+          }
+          thead th.numbering {
+            background: #eef1f6;
+            font-size: 8pt;
+            font-weight: 600;
+          }
+          tbody td {
+            border: 1px solid var(--border);
+            padding: 6px 6px;
+            vertical-align: top;
+            white-space: normal;
+            word-break: break-word;
+            line-height: 1.25;
+          }
+          tbody tr:nth-child(even) { background: #fafbfe; }
+
+          .center { text-align: center; }
+          .right { text-align: right; white-space: nowrap; }
+          .left { text-align: left; }
+          .nowrap { white-space: nowrap; word-break: normal; }
+
+          .section-row td { font-weight: 700; background: #f3f4f6; }
+          .free-string-row td { font-style: italic; background: #fff9e6; }
+          .notes-cell { white-space: pre-wrap; }
+
+          .alert { border: 1px solid var(--danger); background: #ffecec; padding: 10px 12px; margin: 0 0 4px; border-radius: 10px; }
+          .alert ul { margin: 6px 0 0 18px; padding: 0; }
+          .alert li { margin: 4px 0; }
+
+          .header-table .doc-row td {
+            font-size: 12.5pt;
+            font-weight: 700;
+            color: var(--text);
+          }
+          .header-table .doc-row .line-text {
+            font-style: normal;
+            font-size: 12.5pt;
+            font-weight: 700;
+          }
+        </style>
 			</head>
 			<body>
 				<xsl:apply-templates select="Construction" mode="render"/>
@@ -121,50 +181,47 @@
 	<!-- Стройка -->
 	<xsl:template match="Construction" mode="render">
 		<div class="main">
+      <div class="header-card small">
+        <table class="header-table">
+          <tr>
+            <td class="label">Дата и время выгрузки файла из сметного программного комплекса</td>
+            <td class="line"><div class="line-text"><xsl:value-of select="concat(substring(ExportDateTime, 9, 2), '.', substring(ExportDateTime, 6, 2), '.', substring(ExportDateTime, 1, 4), ' ', substring(ExportDateTime, 12, 5))"/></div></td>
+          </tr>
+          <tr>
+            <td class="label">Наименование программного продукта</td>
+            <td class="line"><div class="line-text"><xsl:value-of select="concat(Meta/Soft/Name, ' ', Meta/Soft/Version)"/></div></td>
+          </tr>
+        </table>
+      </div>
 
-			<div class="heading-left2 nowrap">
-				<xsl:text>Дата и время выгрузки файла из сметного программного комплекса: </xsl:text>
-				<xsl:value-of
-					select="concat(substring(ExportDateTime, 9, 2), '.', substring(ExportDateTime, 6, 2), '.', substring(ExportDateTime, 1, 4), ' ', substring(ExportDateTime, 12, 5))"
-				/>
-			</div>
-
-			<div class="heading" id="SoftName">
-				<div class="headingnametop">Наименование программного продукта</div>
-				<div class="headingvalue">
-					<xsl:value-of select="concat(Meta/Soft/Name, ' ', Meta/Soft/Version)"/>
-				</div>
-			</div>
-			
-
-
-			<div class="heading">
-				<div class="headingvalue center">
-					<xsl:value-of select="ConstructionSite"/>
-				</div>
-			</div>
-			<div class="helptext">(наименование стройки)</div>
-
-			<div class="heading">
-				<div class="headingvalue center">
-					<xsl:value-of select="ObjectName"/>
-				</div>
-			</div>
-			<div class="helptext">(наименование объекта капитального строительства)</div>
-
-			<h1 id="EstimateNum">Ведомость объемов работ № <xsl:value-of
-					select="Num"/></h1>
-
-			<div class="heading">
-				<div class="headingvalue left" >Основание:  <xsl:value-of select="Reason"/></div>
-			</div>
-			
-				<div class="helptext">(наименование раздела (подраздела) проектной документации)</div>
-			
-			
-			<div class="heading">
-				<div class="headingname">Дата составления: <xsl:value-of select="Date/Day"/>.<xsl:value-of select="Date/Month"/>.<xsl:value-of select="Date/Year"/></div>
-			</div>
+      <div class="header-card">
+        <table class="header-table">
+          <tr class="doc-row">
+            <td class="label">Документ</td>
+            <td class="line"><div class="line-text"><xsl:value-of select="Meta/File/Type"/></div></td>
+          </tr>
+          <tr>
+            <td class="label">Наименование стройки</td>
+            <td class="line"><div class="line-text"><xsl:value-of select="ConstructionSite"/></div></td>
+          </tr>
+          <tr>
+            <td class="label">Наименование объекта капитального строительства</td>
+            <td class="line"><div class="line-text"><xsl:value-of select="ObjectName"/></div></td>
+          </tr>
+          <tr>
+            <td class="label">Ведомость объемов работ №</td>
+            <td class="line"><div class="line-text"><xsl:value-of select="Num"/></div></td>
+          </tr>
+          <tr>
+            <td class="label">Основание (наименование раздела (подраздела) ПД, акта, содержащего перечень дефектов (при капитальном ремонте))</td>
+            <td class="line"><div class="line-text"><xsl:value-of select="Reason"/></div></td>
+          </tr>
+          <tr>
+            <td class="label">Дата составления</td>
+            <td class="line"><div class="line-text"><xsl:value-of select="Date/Day"/>.<xsl:value-of select="Date/Month"/>.<xsl:value-of select="Date/Year"/></div></td>
+          </tr>
+        </table>
+      </div>
 
 			<xsl:apply-templates select="./Sections"/>
 		</div>
@@ -178,12 +235,14 @@
 			<thead>
 				<tr>
 					<th >№ п.п.</th>
-					<th >Наименование работ, ресурсов, затрат по проекту</th>
+					<th >Наименование и описание работ, наименование ресурсов, затрат по проекту</th>
 					<th >Ед. изм.</th>
 					<th >Объем работ / Количество</th>
 					<th >Формула расчета объемов работ и расхода материалов, потребности ресурсов</th>
 					<th >Ссылка на чертежи, спецификации в проектной документации</th>
-					<th >Дополнительная информация (комментарий).</th>
+					<th >Наименование файла</th>
+					<th >Номер страниц (через пробел)</th>
+					<th >Дополнительная информация (комментарий)</th>
 				</tr>
 				
 				<tr>
@@ -193,6 +252,8 @@
 					<td class="tborder center">4</td>
 					<td class="tborder center">5</td>
 					<td class="tborder center">6</td>
+					<td class="tborder center">6.1</td>
+					<td class="tborder center">6.2</td>
 					<td class="tborder center">7</td>
 					
 				</tr>
@@ -203,22 +264,25 @@
 			</xsl:apply-templates>	
 			
 			<tr>
-				<td  colspan="7">&#160;</td>
+				<td  colspan="9">&#160;</td>
 			</tr>
-			<tr> <td  colspan="7">&#160;</td></tr>
+			<tr> <td  colspan="9">&#160;</td></tr>
 			<tr>
-				<td class= " left " colspan="7">Составил: <xsl:value-of select="/Construction/Signatures/Composer/Position"/>.  <xsl:value-of select="/Construction/Signatures/Composer//Name"/>_________________________</td>
-			</tr>	
-			<tr>
-				<td class = "left italic" colspan="7">[должность, подпись (инициалы, фамилия)]</td>
+				<td class= "left" colspan="2">Составил, ФИО</td>
+				<td class= "left" colspan="7"><xsl:value-of select="/Construction/Signatures/Composer/Name"/></td>
 			</tr>
 			<tr>
-				<td class= " left " colspan="7">Проверил: <xsl:value-of select="/Construction/Signatures/Verifier/Position"/>.  <xsl:value-of select="/Construction/Signatures/Verifier//Name"/>_________________________</td>
+				<td class= "left" colspan="2">Составил, должность (проектировщик)</td>
+				<td class= "left" colspan="7"><xsl:value-of select="/Construction/Signatures/Composer/Position"/></td>
 			</tr>
 			<tr>
-				<td class = "left italic" colspan="7">[должность, подпись (инициалы, фамилия)]</td>
+				<td class= "left" colspan="2">Проверил, ФИО</td>
+				<td class= "left" colspan="7"><xsl:value-of select="/Construction/Signatures/Verifier/Name"/></td>
 			</tr>
-			
+			<tr>
+				<td class= "left" colspan="2">Проверил, должность (заказчик)</td>
+				<td class= "left" colspan="7"><xsl:value-of select="/Construction/Signatures/Verifier/Position"/></td>
+			</tr>
 			
 			
 		</table>
@@ -244,22 +308,19 @@
 				<xsl:when test="$num_prefix != ''">
 					<xsl:value-of select="concat($num_prefix, '.', Num)"/>
 				</xsl:when>
-				<xsl:otherwise>
-					<xsl:value-of select="Num"/>
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-		
-		<tr>
-			<td class="bbottom left bold" colspan="7">
-				<xsl:if test="ancestor::Section">
-					<span class="indent"/>
-				</xsl:if>
-				Раздел: <xsl:value-of select="$current_num"/>. <xsl:value-of select="./Name"/>
-			</td>
-		</tr>
-		
-		<xsl:apply-templates select="FreeString"/>
+			<xsl:otherwise>
+				<xsl:value-of select="Num"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+	
+	<tr class="section-row">
+		<td class="bbottom left bold" colspan="9">
+			<xsl:value-of select="concat('Раздел ', $current_num, '. ', ./Name)"/>
+		</td>
+	</tr>
+	
+	<xsl:apply-templates select="FreeString"/>
 		<!-- Сохраняем порядок элементов Work/Resource/FreeString -->
 		<xsl:apply-templates select="Works/*"/>
 		
@@ -271,32 +332,41 @@
 	<xsl:template match="Work">
 		<xsl:apply-templates select="FreeString"/>
 		<tr>
-			<td class= "center"><xsl:value-of select="Num"/></td>
-			<td class= "left"><xsl:value-of select="Name"/></td>
-			<td class= "center"><xsl:value-of select="Unit"/></td>
-			<td><xsl:value-of select="Quantity"/></td>
-			<td class= "left"><xsl:value-of select="QuantityFormula"/></td>
-			<td class= "left">
+			<td class="center"><xsl:value-of select="Num"/></td>
+			<td class="left"><xsl:value-of select="Name"/></td>
+			<td class="center"><xsl:value-of select="Unit"/></td>
+			<td class="right"><xsl:value-of select="Quantity"/></td>
+			<td class="left"><xsl:value-of select="QuantityFormula"/></td>
+			<td class="left">
+				<xsl:for-each select="Links/Link">
+					<xsl:value-of select="PageDescription"/>
+					<xsl:if test="position() != last()">
+						<br/>
+					</xsl:if>
+				</xsl:for-each>
+			</td>
+			<td class="left">
 				<xsl:for-each select="Links/Link">
 					<xsl:variable name="fileName">
 						<xsl:for-each select="/Construction/Files/File[ID = current()/FileID]">
 							<xsl:value-of select="FileName"/>
 						</xsl:for-each>
 					</xsl:variable>
-					Файл: <xsl:value-of select="$fileName"/> <br/>
-					<xsl:if test="PageNumber">
-						Страница: <xsl:value-of select="translate(PageNumber, ' ', ', ')"/> <br/>
-					</xsl:if>	
-					<xsl:value-of select="PageDescription"/>
+					<xsl:value-of select="$fileName"/>
 					<xsl:if test="position() != last()">
 						<br/>
 					</xsl:if>
 				</xsl:for-each>
-				<xsl:if test="not(Links/Link)">
-					Нет данных
-				</xsl:if>
 			</td>
-			<td class= "left"><xsl:value-of select="Comment"/></td>
+			<td class="left">
+				<xsl:for-each select="Links/Link">
+					<xsl:value-of select="normalize-space(PageNumber)"/>
+					<xsl:if test="position() != last()">
+						<br/>
+					</xsl:if>
+				</xsl:for-each>
+			</td>
+			<td class="left"><xsl:value-of select="Comment"/></td>
 		</tr>
 		<xsl:apply-templates select="Resources/Resource"/>
 	</xsl:template>
@@ -304,77 +374,91 @@
 	<!-- Ресурс внутри работы -->
 	<xsl:template match="Work/Resources/Resource">
 		<tr>
-			<td class= "center"><xsl:value-of select="../../Num"/>.<xsl:value-of select="Num"/></td>
-			<td class= "left"><xsl:value-of select="Name"/></td>
-			<td class= "center"><xsl:value-of select="Unit"/></td>
-			<td><xsl:value-of select="Quantity"/></td>
-			<td class= "left"><xsl:value-of select="QuantityFormula"/></td>
-			<td class= "left">
+			<td class="center"><xsl:value-of select="../../Num"/>.<xsl:value-of select="Num"/></td>
+			<td class="left"><xsl:value-of select="Name"/></td>
+			<td class="center"><xsl:value-of select="Unit"/></td>
+			<td class="right"><xsl:value-of select="Quantity"/></td>
+			<td class="left"><xsl:value-of select="QuantityFormula"/></td>
+			<td class="left">
+				<xsl:for-each select="Links/Link">
+					<xsl:value-of select="PageDescription"/>
+					<xsl:if test="position() != last()">
+						<br/>
+					</xsl:if>
+				</xsl:for-each>
+			</td>
+			<td class="left">
 				<xsl:for-each select="Links/Link">
 					<xsl:variable name="fileName">
 						<xsl:for-each select="/Construction/Files/File[ID = current()/FileID]">
 							<xsl:value-of select="FileName"/>
 						</xsl:for-each>
 					</xsl:variable>
-					<xsl:if test="$fileName">
-						Файл: <xsl:value-of select="$fileName"/> <br/>
-					</xsl:if>
-					<xsl:if test="PageNumber">
-						Страница: <xsl:value-of select="translate(PageNumber, ' ', ', ')"/> <br/>
-					</xsl:if>
-					<xsl:value-of select="PageDescription"/>
+					<xsl:value-of select="$fileName"/>
 					<xsl:if test="position() != last()">
 						<br/>
 					</xsl:if>
 				</xsl:for-each>
-				<xsl:if test="not(Links/Link)">
-					Нет данных
-				</xsl:if>
 			</td>
-			<td class= "left"><xsl:value-of select="Comment"/></td>
+			<td class="left">
+				<xsl:for-each select="Links/Link">
+					<xsl:value-of select="normalize-space(PageNumber)"/>
+					<xsl:if test="position() != last()">
+						<br/>
+					</xsl:if>
+				</xsl:for-each>
+			</td>
+			<td class="left"><xsl:value-of select="Comment"/></td>
 		</tr>
 	</xsl:template>
 	
 	<!-- Свободный ресурс на уровне Works (без родительского Work) -->
 	<xsl:template match="Works/Resource">
 		<tr>
-			<td class= "center"><xsl:value-of select="Num"/></td>
-			<td class= "left"><xsl:value-of select="Name"/></td>
-			<td class= "center"><xsl:value-of select="Unit"/></td>
-			<td><xsl:value-of select="Quantity"/></td>
-			<td class= "left"><xsl:value-of select="QuantityFormula"/></td>
-			<td class= "left">
+			<td class="center"><xsl:value-of select="Num"/></td>
+			<td class="left"><xsl:value-of select="Name"/></td>
+			<td class="center"><xsl:value-of select="Unit"/></td>
+			<td class="right"><xsl:value-of select="Quantity"/></td>
+			<td class="left"><xsl:value-of select="QuantityFormula"/></td>
+			<td class="left">
+				<xsl:for-each select="Links/Link">
+					<xsl:value-of select="PageDescription"/>
+					<xsl:if test="position() != last()">
+						<br/>
+					</xsl:if>
+				</xsl:for-each>
+			</td>
+			<td class="left">
 				<xsl:for-each select="Links/Link">
 					<xsl:variable name="fileName">
 						<xsl:for-each select="/Construction/Files/File[ID = current()/FileID]">
 							<xsl:value-of select="FileName"/>
 						</xsl:for-each>
 					</xsl:variable>
-					<xsl:if test="$fileName">
-						Файл: <xsl:value-of select="$fileName"/> <br/>
-					</xsl:if>
-					<xsl:if test="PageNumber">
-						Страница: <xsl:value-of select="translate(PageNumber, ' ', ', ')"/> <br/>
-					</xsl:if>
-					<xsl:value-of select="PageDescription"/>
+					<xsl:value-of select="$fileName"/>
 					<xsl:if test="position() != last()">
 						<br/>
 					</xsl:if>
 				</xsl:for-each>
-				<xsl:if test="not(Links/Link)">
-					Нет данных
-				</xsl:if>
 			</td>
-			<td class= "left"><xsl:value-of select="Comment"/></td>
+			<td class="left">
+				<xsl:for-each select="Links/Link">
+					<xsl:value-of select="normalize-space(PageNumber)"/>
+					<xsl:if test="position() != last()">
+						<br/>
+					</xsl:if>
+				</xsl:for-each>
+			</td>
+			<td class="left"><xsl:value-of select="Comment"/></td>
 		</tr>
 	</xsl:template>
 	
 	<!-- Раздел (по каждому разделу / свободная строка -->
 	<xsl:template match="Works/FreeString">
 		<xsl:param name="IndexType" select="0"/>
-		<tr>
+		<tr class="free-string-row">
 			
-			<td colspan="7" class="bbottom left">
+			<td colspan="9" class="bbottom left">
 				<xsl:value-of select="."/>
 			</td>
 		</tr>
@@ -385,5 +469,3 @@
 
 
 </xsl:stylesheet>
-
-
