@@ -126,6 +126,25 @@
           .free-string-row td { font-style: italic; background: #fff9e6; }
           .notes-cell { white-space: pre-wrap; }
 
+          .comment-wrapper { display: flex; flex-direction: column; gap: 4px; }
+          .comment-toggle { display: none; }
+          .comment-body { white-space: pre-wrap; word-break: break-word; }
+          .comment-toggle:not(:checked) + .comment-body {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+          .comment-toggle:not(:checked) ~ .comment-more,
+          .comment-toggle:checked ~ .comment-more {
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-block;
+          }
+          .comment-toggle:not(:checked) ~ .comment-more .less-text { display: none; }
+          .comment-toggle:checked ~ .comment-more .more-text { display: none; }
+
           table.main-table col.col-1 { width: 4%; }
           table.main-table col.col-2 { width: 22%; }
           table.main-table col.col-3 { width: 6%; }
@@ -393,7 +412,25 @@
 					</xsl:if>
 				</xsl:for-each>
 			</td>
-			<td class="left"><xsl:value-of select="Comment"/></td>
+			<td class="left">
+        <xsl:variable name="comment" select="Comment"/>
+        <xsl:choose>
+          <xsl:when test="string-length(normalize-space($comment)) &gt; 120 or contains($comment, '&#10;')">
+            <xsl:variable name="commentId" select="concat('comment-', generate-id())"/>
+            <div class="comment-wrapper">
+              <input type="checkbox" id="{$commentId}" class="comment-toggle"/>
+              <div class="comment-body"><xsl:value-of select="$comment"/></div>
+              <label class="comment-more" for="{$commentId}">
+                <span class="more-text">Показать полностью</span>
+                <span class="less-text">Скрыть</span>
+              </label>
+            </div>
+          </xsl:when>
+          <xsl:otherwise>
+            <div class="comment-body"><xsl:value-of select="$comment"/></div>
+          </xsl:otherwise>
+        </xsl:choose>
+      </td>
 		</tr>
 		<xsl:apply-templates select="Resources/Resource"/>
 	</xsl:template>
@@ -435,7 +472,25 @@
 					</xsl:if>
 				</xsl:for-each>
 			</td>
-			<td class="left"><xsl:value-of select="Comment"/></td>
+			<td class="left">
+        <xsl:variable name="comment" select="Comment"/>
+        <xsl:choose>
+          <xsl:when test="string-length(normalize-space($comment)) &gt; 120 or contains($comment, '&#10;')">
+            <xsl:variable name="commentId" select="concat('comment-', generate-id())"/>
+            <div class="comment-wrapper">
+              <input type="checkbox" id="{$commentId}" class="comment-toggle"/>
+              <div class="comment-body"><xsl:value-of select="$comment"/></div>
+              <label class="comment-more" for="{$commentId}">
+                <span class="more-text">Показать полностью</span>
+                <span class="less-text">Скрыть</span>
+              </label>
+            </div>
+          </xsl:when>
+          <xsl:otherwise>
+            <div class="comment-body"><xsl:value-of select="$comment"/></div>
+          </xsl:otherwise>
+        </xsl:choose>
+      </td>
 		</tr>
 	</xsl:template>
 	
@@ -476,7 +531,25 @@
 					</xsl:if>
 				</xsl:for-each>
 			</td>
-			<td class="left"><xsl:value-of select="Comment"/></td>
+			<td class="left">
+        <xsl:variable name="comment" select="Comment"/>
+        <xsl:choose>
+          <xsl:when test="string-length(normalize-space($comment)) &gt; 120 or contains($comment, '&#10;')">
+            <xsl:variable name="commentId" select="concat('comment-', generate-id())"/>
+            <div class="comment-wrapper">
+              <input type="checkbox" id="{$commentId}" class="comment-toggle"/>
+              <div class="comment-body"><xsl:value-of select="$comment"/></div>
+              <label class="comment-more" for="{$commentId}">
+                <span class="more-text">Показать полностью</span>
+                <span class="less-text">Скрыть</span>
+              </label>
+            </div>
+          </xsl:when>
+          <xsl:otherwise>
+            <div class="comment-body"><xsl:value-of select="$comment"/></div>
+          </xsl:otherwise>
+        </xsl:choose>
+      </td>
 		</tr>
 	</xsl:template>
 	
