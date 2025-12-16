@@ -415,7 +415,7 @@
 			<td class="left">
         <xsl:variable name="comment" select="Comment"/>
         <xsl:choose>
-          <xsl:when test="string-length(normalize-space($comment)) &gt; 120 or contains($comment, '&#10;')">
+          <xsl:when test="string-length(normalize-space($comment)) &gt; 80 or contains($comment, '&#10;')">
             <xsl:variable name="commentId" select="concat('comment-', generate-id())"/>
             <div class="comment-wrapper">
               <input type="checkbox" id="{$commentId}" class="comment-toggle"/>
@@ -475,7 +475,7 @@
 			<td class="left">
         <xsl:variable name="comment" select="Comment"/>
         <xsl:choose>
-          <xsl:when test="string-length(normalize-space($comment)) &gt; 120 or contains($comment, '&#10;')">
+          <xsl:when test="string-length(normalize-space($comment)) &gt; 80 or contains($comment, '&#10;')">
             <xsl:variable name="commentId" select="concat('comment-', generate-id())"/>
             <div class="comment-wrapper">
               <input type="checkbox" id="{$commentId}" class="comment-toggle"/>
@@ -534,7 +534,7 @@
 			<td class="left">
         <xsl:variable name="comment" select="Comment"/>
         <xsl:choose>
-          <xsl:when test="string-length(normalize-space($comment)) &gt; 120 or contains($comment, '&#10;')">
+          <xsl:when test="string-length(normalize-space($comment)) &gt; 80 or contains($comment, '&#10;')">
             <xsl:variable name="commentId" select="concat('comment-', generate-id())"/>
             <div class="comment-wrapper">
               <input type="checkbox" id="{$commentId}" class="comment-toggle"/>
