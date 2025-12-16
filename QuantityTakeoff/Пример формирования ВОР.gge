@@ -1,0 +1,356 @@
+﻿<?xml version="1.0"?>
+<Construction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="QuantityTakeoff-3_01.xsd">
+  <Meta>
+    <Soft>
+      <Name>Сметная программа</Name>
+      <Version>1.1</Version>
+    </Soft>
+    <File>
+      <Type>Ведомость объемов работ</Type>
+      <Version>3.01</Version>
+    </File>
+  </Meta>
+  <AccessLevel>общедоступная информация</AccessLevel>
+  <ConstructionSite>Строительство объекта капитального строительства</ConstructionSite>
+  <ObjectName>Строительство сооружения</ObjectName>
+  <Num>ВОР-38.2023/002-КР-0001</Num>
+  <Reason>Раздел ПД №4 том №4</Reason>
+  <Date>
+    <Year>2025</Year>
+    <Month>01</Month>
+    <Day>01</Day>
+  </Date>
+  <ExportDateTime>2025-12-15T14:14:47</ExportDateTime>
+  <Signatures>
+    <Composer>
+      <Name>Иванов И.И.</Name>
+      <Position>Инженер</Position>
+    </Composer>
+    <Verifier>
+      <Name>Петров А.А.</Name>
+      <Position>Главный инженер проекта</Position>
+    </Verifier>
+  </Signatures>
+  <Files>
+    <File>
+      <ID>10</ID>
+      <FileName>Раздел ПД №4 том №4-38.2023_002-КР.pdf</FileName>
+    </File>
+    <File>
+      <ID>15</ID>
+      <FileName>Раздел ПД №4 том №4 - 38.2023_002-ПОС.pdf</FileName>
+    </File>
+  </Files>
+  <Sections>
+    <Section>
+      <Num>1</Num>
+      <Name>Подготовка котлована</Name>
+      <Works>
+        <Work>
+          <Num>1</Num>
+          <Type>работа</Type>
+          <Name>Устройство основания под фундаменты: песчаного</Name>
+          <Unit>м3</Unit>
+          <Quantity>39.176</Quantity>
+          <QuantityFormula>11.8*8.3*0.4</QuantityFormula>
+          <Links>
+            <Link>
+              <FileID>10</FileID>
+              <PageNumber>114 115</PageNumber>
+              <PageDescription>38.2023/002-КР-ГЧ</PageDescription>
+            </Link>
+          </Links>
+          <Resources>
+            <Resource>
+              <Num>1</Num>
+              <Type>материал</Type>
+              <Name>Песок природный для строительных работ I класс, средний</Name>
+              <Unit>м3</Unit>
+              <Quantity>43.094</Quantity>
+              <QuantityFormula>11.8*8.3*0.4*1.1</QuantityFormula>
+              <Links>
+                <Link>
+                  <FileID>10</FileID>
+                  <PageNumber>114</PageNumber>
+                  <PageDescription>38.2023/002-КР-ГЧ</PageDescription>
+                </Link>
+              </Links>
+              <Comment>количество в графе 4 указано с учётом нормы расхода 10%</Comment>
+            </Resource>
+            <Resource>
+              <Num>2</Num>
+              <Type>перевозка</Type>
+              <Name>Перевозка песка на 60 км от карьера до строительной площадки</Name>
+              <Unit>т</Unit>
+              <Quantity>64.64</Quantity>
+              <QuantityFormula>11.8*8.3*0.4*1.1*1.5</QuantityFormula>
+              <Links>
+                <Link>
+                  <FileID>15</FileID>
+                  <PageNumber>65 80</PageNumber>
+                  <PageDescription>38.2023/002-ПОС</PageDescription>
+                </Link>
+              </Links>
+              <Comment>количество в графе 4 указано с учётом насыпной плотности согласно данным паспорта - 1,5 т/м3</Comment>
+            </Resource>
+          </Resources>
+        </Work>
+        <Work>
+          <Num>2</Num>
+          <Type>работа</Type>
+          <Name>Уплотнение грунта пневматическими трамбовками, группа грунтов: 1-2 (уплотнение подушки)</Name>
+          <Unit>м3</Unit>
+          <Quantity>39.176</Quantity>
+          <QuantityFormula>11.8*8.3*0.4</QuantityFormula>
+          <Links>
+            <Link>
+              <FileID>10</FileID>
+              <PageNumber>114 115</PageNumber>
+              <PageDescription>38.2023/002-КР-ГЧ</PageDescription>
+            </Link>
+          </Links>
+        </Work>
+      </Works>
+    </Section>
+    <Section>
+      <Num>2</Num>
+      <Name>Фундамент</Name>
+      <Works>
+        <Work>
+          <Num>3</Num>
+          <Type>работа</Type>
+          <Name>Устройство подбетонки: t=100 мм, плоской</Name>
+          <Unit>м3</Unit>
+          <Quantity>8.25</Quantity>
+          <QuantityFormula>11*7.5*0.1</QuantityFormula>
+          <Links>
+            <Link>
+              <FileID>10</FileID>
+              <PageNumber>115 116</PageNumber>
+              <PageDescription>38.2023/002-КР-ГЧ</PageDescription>
+            </Link>
+          </Links>
+          <Comment>выполнение работ в стесненных условиях, обусловленных следующими факторами (здесь и далее): сети подземных коммуникаций, подлежащие перекладке или подвеске; стесненные условия складирования материалов; ограничение поворота стрелы грузоподъемного крана в соответствии с данными проекта организации строительства</Comment>
+          <Resources>
+            <Resource>
+              <Num>1</Num>
+              <Type>материал</Type>
+              <Name>Смеси бетонные тяжелого бетона (БСТ), класс В7,5 (М100)</Name>
+              <Unit>м3</Unit>
+              <Quantity>8.42</Quantity>
+              <QuantityFormula>11*7.5*0.1*1.02</QuantityFormula>
+              <Links>
+                <Link>
+                  <FileID>10</FileID>
+                  <PageNumber>115</PageNumber>
+                  <PageDescription>38.2023/002-КР-ГЧ</PageDescription>
+                </Link>
+              </Links>
+              <Comment>количество в графе 4 указано с учетом нормы расхода 2%</Comment>
+            </Resource>
+          </Resources>
+        </Work>
+        <Work>
+          <Num>4</Num>
+          <Type>работа</Type>
+          <Name>Устройство монолитных железобетонных конструкций фундаментных плит с бетонированием автобетононасосом и применением инвентарной опалубки</Name>
+          <Unit>м3</Unit>
+          <Quantity>19.71</Quantity>
+          <QuantityFormula>10.8*7.3*0.25</QuantityFormula>
+          <Links>
+            <Link>
+              <FileID>10</FileID>
+              <PageNumber>114</PageNumber>
+              <PageDescription>38.2023/002-КР-ГЧ </PageDescription>
+            </Link>
+          </Links>
+          <Comment>выполнение работ в стесненных условиях</Comment>
+          <Resources>
+            <Resource>
+              <Num>1</Num>
+              <Type>материал</Type>
+              <Name>Смеси бетонные тяжелого бетона (БСТ), класс В25 (М350)</Name>
+              <Unit>м3</Unit>
+              <Quantity>20.01</Quantity>
+              <QuantityFormula>10.8*7.3*0.25*1.015</QuantityFormula>
+              <Links>
+                <Link>
+                  <FileID>10</FileID>
+                  <PageNumber>114</PageNumber>
+                  <PageDescription>38.2023/002-КР-ГЧ </PageDescription>
+                </Link>
+              </Links>
+              <Comment>количество в графе 4 указано с  учетом нормы расхода 1,5 %</Comment>
+            </Resource>
+            <Resource>
+              <Num>2</Num>
+              <Type>материал</Type>
+              <Name>Опалубка инвентарная (амортизация)</Name>
+              <Unit>м2</Unit>
+              <Quantity>9.05</Quantity>
+              <QuantityFormula>(7.3+10.8)*2*0.25</QuantityFormula>
+              <Links>
+                <Link>
+                  <FileID>15</FileID>
+                  <PageNumber>27</PageNumber>
+                  <PageDescription>38.2023/002-ПОС</PageDescription>
+                </Link>
+              </Links>
+              <Comment>(указывается нормативная оборачиваемость палубы и опорных, поддерживающих, крепежных элементов опалубки, которые принимаются по данным общих положений ГЭСН 81-02-06-… или техническим данным)</Comment>
+            </Resource>
+            <Resource>
+              <Num>3</Num>
+              <Type>материал</Type>
+              <Name>Сталь арматурная рифленая свариваемая, класс А240, диаметр 10 мм</Name>
+              <Unit>т</Unit>
+              <Quantity>0.0866</Quantity>
+              <QuantityFormula>86.6*0.001</QuantityFormula>
+              <Links>
+                <Link>
+                  <FileID>10</FileID>
+                  <PageNumber>114</PageNumber>
+                  <PageDescription>38.2023/002-КР-ГЧ </PageDescription>
+                </Link>
+              </Links>
+              <Comment>аримрование предусмотрено пространственными каркасами, изготовленными в построечных условиях</Comment>
+            </Resource>
+            <Resource>
+              <Num>4</Num>
+              <Type>материал</Type>
+              <Name>Сталь арматурная рифленая свариваемая,  класс А500С, диаметр 12 мм</Name>
+              <Unit>т</Unit>
+              <Quantity>1.0273</Quantity>
+              <QuantityFormula>1027.3*0.001</QuantityFormula>
+              <Links>
+                <Link>
+                  <FileID>10</FileID>
+                  <PageNumber>114</PageNumber>
+                  <PageDescription>38.2023/002-КР-ГЧ</PageDescription>
+                </Link>
+              </Links>
+              <Comment>аримрование предусмотрено пространственными каркасами, изготовленными в построечных условиях</Comment>
+            </Resource>
+          </Resources>
+        </Work>
+        <Work>
+          <Num>5</Num>
+          <Type>работа</Type>
+          <Name>Покрытие поверхностей фундамента, соприкасающихся с грунтом битумной мастикой за 2 раза по грунтовке</Name>
+          <Unit>м2</Unit>
+          <Quantity>9.05</Quantity>
+          <QuantityFormula>(10.8*2+7.3*2)*0.25</QuantityFormula>
+          <Links>
+            <Link>
+              <FileID>10</FileID>
+              <PageNumber>114</PageNumber>
+              <PageDescription>38.2023/002-КР-ГЧ </PageDescription>
+            </Link>
+          </Links>
+          <Comment>выполнение работ в стесненных условиях</Comment>
+          <Resources>
+            <Resource>
+              <Num>1</Num>
+              <Type>материал</Type>
+              <Name>Битумная мастика (ТехноНиколь №21 или аналог)</Name>
+              <Unit>т</Unit>
+              <Quantity>0.0637</Quantity>
+              <QuantityFormula>(9.1*3.5*0.001)*2</QuantityFormula>
+              <Links>
+                <Link>
+                  <FileID>10</FileID>
+                  <PageNumber>114</PageNumber>
+                  <PageDescription>38.2023/002-КР-ГЧ </PageDescription>
+                </Link>
+              </Links>
+              <Comment>количество в графе 4 указано на 2 слоя</Comment>
+            </Resource>
+            <Resource>
+              <Num>2</Num>
+              <Type>материал</Type>
+              <Name>Грунтовка битумная  (ТехноНиколь №01 или аналог)</Name>
+              <Unit>т</Unit>
+              <Quantity>0.0027</Quantity>
+              <QuantityFormula>9.1*0.3*0.001</QuantityFormula>
+              <Links>
+                <Link>
+                  <FileID>10</FileID>
+                  <PageNumber>114</PageNumber>
+                  <PageDescription>38.2023/002-КР-ГЧ</PageDescription>
+                </Link>
+              </Links>
+            </Resource>
+          </Resources>
+        </Work>
+      </Works>
+    </Section>
+    <Section>
+      <Num>3</Num>
+      <Name>Устройство СВСиУ</Name>
+      <Works>
+        <Work>
+          <Num>6</Num>
+          <Type>работа</Type>
+          <Name>Сборка стальных подмостей из инвентарных конструкций</Name>
+          <Unit>т</Unit>
+          <Quantity>31.1</Quantity>
+          <QuantityFormula>31.1</QuantityFormula>
+          <Links>
+            <Link>
+              <FileID>15</FileID>
+              <PageNumber>56</PageNumber>
+              <PageDescription>38.2023/002-ПОС</PageDescription>
+            </Link>
+          </Links>
+          <Resources>
+            <Resource>
+              <Num>1</Num>
+              <Type>материал</Type>
+              <Name>Конструкция стальная мостовая инвентарная стоечная и пакетная</Name>
+              <Unit>т</Unit>
+              <Quantity>3.11</Quantity>
+              <QuantityFormula>31.1/10</QuantityFormula>
+              <Links>
+                <Link>
+                  <FileID>15</FileID>
+                  <PageNumber>56</PageNumber>
+                  <PageDescription>38.2023/002-ПОС</PageDescription>
+                </Link>
+              </Links>
+              <Comment>количество в графе 4 указано в соответствии с решениями ПОС - с учетом 10-ти кратной оборачиваемости</Comment>
+            </Resource>
+            <Resource>
+              <Num>2</Num>
+              <Type>материал</Type>
+              <Name>Перевозка стальных подмостей до строительной площадки на расстояние 70 км</Name>
+              <Unit>т</Unit>
+              <Quantity>31.1</Quantity>
+              <QuantityFormula>31.1</QuantityFormula>
+              <Links>
+                <Link>
+                  <FileID>15</FileID>
+                  <PageNumber>56</PageNumber>
+                  <PageDescription>38.2023/002-ПОС</PageDescription>
+                </Link>
+              </Links>
+            </Resource>
+          </Resources>
+        </Work>
+        <Work>
+          <Num>7</Num>
+          <Type>работа</Type>
+          <Name>Разборка стальных подмостей</Name>
+          <Unit>т</Unit>
+          <Quantity>31.1</Quantity>
+          <QuantityFormula>31.1</QuantityFormula>
+          <Links>
+            <Link>
+              <FileID>15</FileID>
+              <PageNumber>56</PageNumber>
+              <PageDescription>38.2023/002-ПОС</PageDescription>
+            </Link>
+          </Links>
+        </Work>
+      </Works>
+    </Section>
+  </Sections>
+</Construction>
