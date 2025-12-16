@@ -1,0 +1,547 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <style type="text/css" id="styles">
+          :root {
+            --bg: #f5f7fb;
+            --card: #ffffff;
+            --border: #dfe3ec;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --primary: #1d4ed8;
+            --accent: #0ea5e9;
+            --danger: #cc0000;
+            --danger-bg: #ffe6e6;
+          }
+          body {
+            font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+            font-size: 10pt;
+            margin: 0;
+            padding: 24px;
+            background: linear-gradient(135deg, #f7f9fc 0%, #eef2f7 100%);
+            color: var(--text);
+          }
+
+          .main {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            background: transparent;
+          }
+
+          .header-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+          }
+
+          .header-card.small td {
+            font-size: 9pt;
+          }
+          .header-card.small .line-text {
+            font-size: 9pt;
+          }
+
+          table.header-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            margin: 0;
+          }
+          table.header-table td {
+            border: none;
+            padding: 6px 4px;
+            font-size: 11pt;
+            vertical-align: bottom;
+          }
+          table.header-table .label {
+            width: 30%;
+            min-width: 140px;
+            white-space: normal;
+            text-align: left;
+            padding-right: 8px;
+            color: var(--muted);
+            font-weight: 600;
+          }
+          table.header-table .line {
+            width: 70%;
+            padding-left: 0;
+          }
+          table.header-table .line-text {
+            border-bottom: 1px solid var(--border);
+            min-height: 20px;
+            padding: 2px 6px 4px 6px;
+            text-align: left;
+            font-style: italic;
+          }
+
+          table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            margin: 8px 0;
+          }
+          table.main-table {
+            table-layout: fixed;
+          }
+          thead th {
+            border: 1px solid var(--border);
+            padding: 6px 6px;
+            font-size: 9pt;
+            background: #f0f4ff;
+            vertical-align: middle;
+            text-align: center;
+            white-space: normal;
+            word-break: break-word;
+          }
+          thead th.numbering {
+            background: #eef1f6;
+            font-size: 8pt;
+            font-weight: 600;
+          }
+          tbody td {
+            border: 1px solid var(--border);
+            padding: 6px 6px;
+            vertical-align: top;
+            white-space: normal;
+            word-break: break-word;
+            line-height: 1.25;
+          }
+          tbody tr:nth-child(even) { background: #fafbfe; }
+
+          .center { text-align: center; }
+          .right { text-align: right; white-space: nowrap; }
+          .left { text-align: left; }
+          .nowrap { white-space: nowrap; word-break: normal; }
+
+          .section-row td { font-weight: 700; background: #f3f4f6; }
+          .free-string-row td { font-style: italic; background: #fff9e6; }
+          .notes-cell { white-space: pre-wrap; }
+
+          .comment-wrapper { display: flex; flex-direction: column; gap: 4px; }
+          .comment-toggle { display: none; }
+          .comment-body { white-space: pre-wrap; word-break: break-word; }
+          .comment-toggle:not(:checked) + .comment-body {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+          .comment-toggle:not(:checked) ~ .comment-more,
+          .comment-toggle:checked ~ .comment-more {
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-block;
+          }
+          .comment-toggle:not(:checked) ~ .comment-more .less-text { display: none; }
+          .comment-toggle:checked ~ .comment-more .more-text { display: none; }
+
+          table.main-table col.col-1 { width: 3.2%; }
+          table.main-table col.col-2 { width: 22%; }
+          table.main-table col.col-3 { width: 4.8%; }
+          table.main-table col.col-4 { width: 7.2%; }
+          table.main-table col.col-5 { width: 12%; }
+          table.main-table col.col-6 { width: 19.8%; }
+          table.main-table col.col-6-1 { width: 14%; }
+          table.main-table col.col-6-2 { width: 8%; }
+          table.main-table col.col-7 { width: 9%; }
+
+          table.main-table tbody td:nth-child(3) { white-space: nowrap; }
+          table.main-table tbody td:nth-child(6) { white-space: nowrap; }
+
+          .alert { border: 1px solid var(--danger); background: #ffecec; padding: 10px 12px; margin: 0 0 4px; border-radius: 10px; }
+          .alert ul { margin: 6px 0 0 18px; padding: 0; }
+          .alert li { margin: 4px 0; }
+
+          .header-table .doc-row td {
+            font-size: 12.5pt;
+            font-weight: 700;
+            color: var(--text);
+          }
+          .header-table .doc-row .line-text {
+            font-style: normal;
+            font-size: 12.5pt;
+            font-weight: 700;
+          }
+        </style>
+   </head>
+   <body>
+      <div xmlns="" class="main">
+         <div class="header-card small">
+            <table class="header-table">
+               <tr>
+                  <td class="label">Дата и время выгрузки файла из сметного программного комплекса</td>
+                  <td class="line">
+                     <div class="line-text">15.12.2025 14:14</div>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="label">Наименование программного продукта</td>
+                  <td class="line">
+                     <div class="line-text">Сметная программа 1.1</div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+         <div class="header-card">
+            <table class="header-table">
+               <tr class="doc-row">
+                  <td class="label">Документ</td>
+                  <td class="line">
+                     <div class="line-text">Ведомость объемов работ</div>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="label">Наименование стройки</td>
+                  <td class="line">
+                     <div class="line-text">Строительство объекта капитального строительства</div>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="label">Наименование объекта капитального строительства</td>
+                  <td class="line">
+                     <div class="line-text">Строительство сооружения</div>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="label">Ведомость объемов работ №</td>
+                  <td class="line">
+                     <div class="line-text">ВОР-38.2023/002-КР-0001</div>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="label">Основание (наименование раздела (подраздела) ПД, акта, содержащего перечень дефектов
+                     (при капитальном ремонте))</td>
+                  <td class="line">
+                     <div class="line-text">Раздел ПД №4 том №4</div>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="label">Дата составления</td>
+                  <td class="line">
+                     <div class="line-text">01.01.2025</div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+         <table class="main-table">
+            <colgroup>
+               <col class="col-1">
+               <col class="col-2">
+               <col class="col-3">
+               <col class="col-4">
+               <col class="col-5">
+               <col class="col-6">
+               <col class="col-6-1">
+               <col class="col-6-2">
+               <col class="col-7">
+            </colgroup>
+            <thead>
+               <tr>
+                  <th>№ п.п.</th>
+                  <th>Наименование и описание работ, наименование ресурсов, затрат по проекту</th>
+                  <th>Ед. изм.</th>
+                  <th>Объем работ / Количество</th>
+                  <th>Формула расчета объемов работ и расхода материалов, потребности ресурсов</th>
+                  <th>Ссылка на чертежи, спецификации в проектной документации</th>
+                  <th>Наименование файла</th>
+                  <th>Номер страниц (через пробел)</th>
+                  <th>Дополнительная информация (комментарий)</th>
+               </tr>
+               <tr>
+                  <td class="tborder center">1</td>
+                  <td class="tborder center">2</td>
+                  <td class="tborder center">3</td>
+                  <td class="tborder center">4</td>
+                  <td class="tborder center">5</td>
+                  <td class="tborder center">6</td>
+                  <td class="tborder center">6.1</td>
+                  <td class="tborder center">6.2</td>
+                  <td class="tborder center">7</td>
+               </tr>
+            </thead>
+            <tr class="section-row">
+               <td class="bbottom left bold" colspan="9">Раздел 1. Подготовка котлована</td>
+            </tr>
+            <tr>
+               <td class="center">1</td>
+               <td class="left">Устройство основания под фундаменты: песчаного</td>
+               <td class="center">м3</td>
+               <td class="right">39.176</td>
+               <td class="left">11.8*8.3*0.4</td>
+               <td class="left">38.2023/002-КР-ГЧ</td>
+               <td class="left">Раздел ПД №4 том №4-38.2023_002-КР.pdf</td>
+               <td class="left">114 115</td>
+               <td class="left">
+                  <div class="comment-body"></div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center">1.1</td>
+               <td class="left">Песок природный для строительных работ I класс, средний</td>
+               <td class="center">м3</td>
+               <td class="right">43.094</td>
+               <td class="left">11.8*8.3*0.4*1.1</td>
+               <td class="left">38.2023/002-КР-ГЧ</td>
+               <td class="left">Раздел ПД №4 том №4-38.2023_002-КР.pdf</td>
+               <td class="left">114</td>
+               <td class="left">
+                  <div class="comment-body">количество в графе 4 указано с учётом нормы расхода 10%</div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center">1.2</td>
+               <td class="left">Перевозка песка на 60 км от карьера до строительной площадки</td>
+               <td class="center">т</td>
+               <td class="right">64.64</td>
+               <td class="left">11.8*8.3*0.4*1.1*1.5</td>
+               <td class="left">38.2023/002-ПОС</td>
+               <td class="left">Раздел ПД №4 том №4 - 38.2023_002-ПОС.pdf</td>
+               <td class="left">65 80</td>
+               <td class="left">
+                  <div class="comment-wrapper"><input type="checkbox" id="comment-d1e145" class="comment-toggle"><div class="comment-body">количество в графе 4 указано с учётом насыпной плотности согласно данным паспорта
+                        - 1,5 т/м3</div><label class="comment-more" for="comment-d1e145"><span class="more-text">Показать полностью</span><span class="less-text">Скрыть</span></label></div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center">2</td>
+               <td class="left">Уплотнение грунта пневматическими трамбовками, группа грунтов: 1-2 (уплотнение подушки)</td>
+               <td class="center">м3</td>
+               <td class="right">39.176</td>
+               <td class="left">11.8*8.3*0.4</td>
+               <td class="left">38.2023/002-КР-ГЧ</td>
+               <td class="left">Раздел ПД №4 том №4-38.2023_002-КР.pdf</td>
+               <td class="left">114 115</td>
+               <td class="left">
+                  <div class="comment-body"></div>
+               </td>
+            </tr>
+            <tr class="section-row">
+               <td class="bbottom left bold" colspan="9">Раздел 2. Фундамент</td>
+            </tr>
+            <tr>
+               <td class="center">3</td>
+               <td class="left">Устройство подбетонки: t=100 мм, плоской</td>
+               <td class="center">м3</td>
+               <td class="right">8.25</td>
+               <td class="left">11*7.5*0.1</td>
+               <td class="left">38.2023/002-КР-ГЧ</td>
+               <td class="left">Раздел ПД №4 том №4-38.2023_002-КР.pdf</td>
+               <td class="left">115 116</td>
+               <td class="left">
+                  <div class="comment-wrapper"><input type="checkbox" id="comment-d1e215" class="comment-toggle"><div class="comment-body">выполнение работ в стесненных условиях, обусловленных следующими факторами (здесь
+                        и далее): сети подземных коммуникаций, подлежащие перекладке или подвеске; стесненные
+                        условия складирования материалов; ограничение поворота стрелы грузоподъемного крана
+                        в соответствии с данными проекта организации строительства</div><label class="comment-more" for="comment-d1e215"><span class="more-text">Показать полностью</span><span class="less-text">Скрыть</span></label></div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center">3.1</td>
+               <td class="left">Смеси бетонные тяжелого бетона (БСТ), класс В7,5 (М100)</td>
+               <td class="center">м3</td>
+               <td class="right">8.42</td>
+               <td class="left">11*7.5*0.1*1.02</td>
+               <td class="left">38.2023/002-КР-ГЧ</td>
+               <td class="left">Раздел ПД №4 том №4-38.2023_002-КР.pdf</td>
+               <td class="left">115</td>
+               <td class="left">
+                  <div class="comment-body">количество в графе 4 указано с учетом нормы расхода 2%</div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center">4</td>
+               <td class="left">Устройство монолитных железобетонных конструкций фундаментных плит с бетонированием
+                  автобетононасосом и применением инвентарной опалубки</td>
+               <td class="center">м3</td>
+               <td class="right">19.71</td>
+               <td class="left">10.8*7.3*0.25</td>
+               <td class="left">38.2023/002-КР-ГЧ </td>
+               <td class="left">Раздел ПД №4 том №4-38.2023_002-КР.pdf</td>
+               <td class="left">114</td>
+               <td class="left">
+                  <div class="comment-body">выполнение работ в стесненных условиях</div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center">4.1</td>
+               <td class="left">Смеси бетонные тяжелого бетона (БСТ), класс В25 (М350)</td>
+               <td class="center">м3</td>
+               <td class="right">20.01</td>
+               <td class="left">10.8*7.3*0.25*1.015</td>
+               <td class="left">38.2023/002-КР-ГЧ </td>
+               <td class="left">Раздел ПД №4 том №4-38.2023_002-КР.pdf</td>
+               <td class="left">114</td>
+               <td class="left">
+                  <div class="comment-body">количество в графе 4 указано с  учетом нормы расхода 1,5 %</div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center">4.2</td>
+               <td class="left">Опалубка инвентарная (амортизация)</td>
+               <td class="center">м2</td>
+               <td class="right">9.05</td>
+               <td class="left">(7.3+10.8)*2*0.25</td>
+               <td class="left">38.2023/002-ПОС</td>
+               <td class="left">Раздел ПД №4 том №4 - 38.2023_002-ПОС.pdf</td>
+               <td class="left">27</td>
+               <td class="left">
+                  <div class="comment-wrapper"><input type="checkbox" id="comment-d1e339" class="comment-toggle"><div class="comment-body">(указывается нормативная оборачиваемость палубы и опорных, поддерживающих, крепежных
+                        элементов опалубки, которые принимаются по данным общих положений ГЭСН 81-02-06-…
+                        или техническим данным)</div><label class="comment-more" for="comment-d1e339"><span class="more-text">Показать полностью</span><span class="less-text">Скрыть</span></label></div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center">4.3</td>
+               <td class="left">Сталь арматурная рифленая свариваемая, класс А240, диаметр 10 мм</td>
+               <td class="center">т</td>
+               <td class="right">0.0866</td>
+               <td class="left">86.6*0.001</td>
+               <td class="left">38.2023/002-КР-ГЧ </td>
+               <td class="left">Раздел ПД №4 том №4-38.2023_002-КР.pdf</td>
+               <td class="left">114</td>
+               <td class="left">
+                  <div class="comment-wrapper"><input type="checkbox" id="comment-d1e369" class="comment-toggle"><div class="comment-body">аримрование предусмотрено пространственными каркасами, изготовленными в построечных
+                        условиях</div><label class="comment-more" for="comment-d1e369"><span class="more-text">Показать полностью</span><span class="less-text">Скрыть</span></label></div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center">4.4</td>
+               <td class="left">Сталь арматурная рифленая свариваемая,  класс А500С, диаметр 12 мм</td>
+               <td class="center">т</td>
+               <td class="right">1.0273</td>
+               <td class="left">1027.3*0.001</td>
+               <td class="left">38.2023/002-КР-ГЧ</td>
+               <td class="left">Раздел ПД №4 том №4-38.2023_002-КР.pdf</td>
+               <td class="left">114</td>
+               <td class="left">
+                  <div class="comment-wrapper"><input type="checkbox" id="comment-d1e399" class="comment-toggle"><div class="comment-body">аримрование предусмотрено пространственными каркасами, изготовленными в построечных
+                        условиях</div><label class="comment-more" for="comment-d1e399"><span class="more-text">Показать полностью</span><span class="less-text">Скрыть</span></label></div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center">5</td>
+               <td class="left">Покрытие поверхностей фундамента, соприкасающихся с грунтом битумной мастикой за 2
+                  раза по грунтовке</td>
+               <td class="center">м2</td>
+               <td class="right">9.05</td>
+               <td class="left">(10.8*2+7.3*2)*0.25</td>
+               <td class="left">38.2023/002-КР-ГЧ </td>
+               <td class="left">Раздел ПД №4 том №4-38.2023_002-КР.pdf</td>
+               <td class="left">114</td>
+               <td class="left">
+                  <div class="comment-body">выполнение работ в стесненных условиях</div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center">5.1</td>
+               <td class="left">Битумная мастика (ТехноНиколь №21 или аналог)</td>
+               <td class="center">т</td>
+               <td class="right">0.0637</td>
+               <td class="left">(9.1*3.5*0.001)*2</td>
+               <td class="left">38.2023/002-КР-ГЧ </td>
+               <td class="left">Раздел ПД №4 том №4-38.2023_002-КР.pdf</td>
+               <td class="left">114</td>
+               <td class="left">
+                  <div class="comment-body">количество в графе 4 указано на 2 слоя</div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center">5.2</td>
+               <td class="left">Грунтовка битумная  (ТехноНиколь №01 или аналог)</td>
+               <td class="center">т</td>
+               <td class="right">0.0027</td>
+               <td class="left">9.1*0.3*0.001</td>
+               <td class="left">38.2023/002-КР-ГЧ</td>
+               <td class="left">Раздел ПД №4 том №4-38.2023_002-КР.pdf</td>
+               <td class="left">114</td>
+               <td class="left">
+                  <div class="comment-body"></div>
+               </td>
+            </tr>
+            <tr class="section-row">
+               <td class="bbottom left bold" colspan="9">Раздел 3. Устройство СВСиУ</td>
+            </tr>
+            <tr>
+               <td class="center">6</td>
+               <td class="left">Сборка стальных подмостей из инвентарных конструкций</td>
+               <td class="center">т</td>
+               <td class="right">31.1</td>
+               <td class="left">31.1</td>
+               <td class="left">38.2023/002-ПОС</td>
+               <td class="left">Раздел ПД №4 том №4 - 38.2023_002-ПОС.pdf</td>
+               <td class="left">56</td>
+               <td class="left">
+                  <div class="comment-body"></div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center">6.1</td>
+               <td class="left">Конструкция стальная мостовая инвентарная стоечная и пакетная</td>
+               <td class="center">т</td>
+               <td class="right">3.11</td>
+               <td class="left">31.1/10</td>
+               <td class="left">38.2023/002-ПОС</td>
+               <td class="left">Раздел ПД №4 том №4 - 38.2023_002-ПОС.pdf</td>
+               <td class="left">56</td>
+               <td class="left">
+                  <div class="comment-wrapper"><input type="checkbox" id="comment-d1e561" class="comment-toggle"><div class="comment-body">количество в графе 4 указано в соответствии с решениями ПОС - с учетом 10-ти кратной
+                        оборачиваемости</div><label class="comment-more" for="comment-d1e561"><span class="more-text">Показать полностью</span><span class="less-text">Скрыть</span></label></div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center">6.2</td>
+               <td class="left">Перевозка стальных подмостей до строительной площадки на расстояние 70 км</td>
+               <td class="center">т</td>
+               <td class="right">31.1</td>
+               <td class="left">31.1</td>
+               <td class="left">38.2023/002-ПОС</td>
+               <td class="left">Раздел ПД №4 том №4 - 38.2023_002-ПОС.pdf</td>
+               <td class="left">56</td>
+               <td class="left">
+                  <div class="comment-body"></div>
+               </td>
+            </tr>
+            <tr>
+               <td class="center">7</td>
+               <td class="left">Разборка стальных подмостей</td>
+               <td class="center">т</td>
+               <td class="right">31.1</td>
+               <td class="left">31.1</td>
+               <td class="left">38.2023/002-ПОС</td>
+               <td class="left">Раздел ПД №4 том №4 - 38.2023_002-ПОС.pdf</td>
+               <td class="left">56</td>
+               <td class="left">
+                  <div class="comment-body"></div>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="9">&nbsp;</td>
+            </tr>
+            <tr>
+               <td colspan="9">&nbsp;</td>
+            </tr>
+            <tr>
+               <td class="left" colspan="2">Составил, ФИО</td>
+               <td class="left" colspan="7">Иванов И.И.</td>
+            </tr>
+            <tr>
+               <td class="left" colspan="2">Составил, должность (проектировщик)</td>
+               <td class="left" colspan="7">Инженер</td>
+            </tr>
+            <tr>
+               <td class="left" colspan="2">Проверил, ФИО</td>
+               <td class="left" colspan="7">Петров А.А.</td>
+            </tr>
+            <tr>
+               <td class="left" colspan="2">Проверил, должность (заказчик)</td>
+               <td class="left" colspan="7">Главный инженер проекта</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

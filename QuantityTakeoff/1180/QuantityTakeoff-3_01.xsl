@@ -145,13 +145,13 @@
           .comment-toggle:not(:checked) ~ .comment-more .less-text { display: none; }
           .comment-toggle:checked ~ .comment-more .more-text { display: none; }
 
-          table.main-table col.col-1 { width: 4%; }
+          table.main-table col.col-1 { width: 3.2%; }
           table.main-table col.col-2 { width: 22%; }
-          table.main-table col.col-3 { width: 6%; }
-          table.main-table col.col-4 { width: 9%; }
+          table.main-table col.col-3 { width: 4.8%; }
+          table.main-table col.col-4 { width: 7.2%; }
           table.main-table col.col-5 { width: 12%; }
-          table.main-table col.col-6 { width: 17%; }
-          table.main-table col.col-6-1 { width: 13%; }
+          table.main-table col.col-6 { width: 19.8%; }
+          table.main-table col.col-6-1 { width: 14%; }
           table.main-table col.col-6-2 { width: 8%; }
           table.main-table col.col-7 { width: 9%; }
 
