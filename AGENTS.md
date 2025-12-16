@@ -86,3 +86,8 @@
     -o:ComparativeQuantityTakeoff\MINSTROY_VERSION\ComparativeQuantityTakeoff_minstroy_simple.html
   ```
   Если java лежит в другом месте, замените первую строку на доступный `java.exe`.
+
+## SSH (вайндэй дев)
+- Сервер: `maximus@5.35.88.47`. Если просят "подключись к серверу вайндэй дев" — используем этот хост.
+- При работающем ssh-agent достаточно: `ssh maximus@5.35.88.47` (host key принимаем `accept-new` по умолчанию).
+- Если ssh-agent не запущен: в PowerShell от имени администратора `Set-Service -Name ssh-agent -StartupType Automatic; Start-Service ssh-agent; ssh-agent -s | Invoke-Expression; ssh-add $env:USERPROFILE\.ssh\id_ed25519` (ввести passphrase вручную); затем `ssh maximus@5.35.88.47`.
