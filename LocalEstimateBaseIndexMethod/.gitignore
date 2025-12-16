@@ -1,2 +1,7 @@
 /temp
 /build
+/node_modules
+/package-lock.json
+/package.json
+/*.html
+/1053/*.png

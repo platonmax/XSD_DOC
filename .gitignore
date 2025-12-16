@@ -3,3 +3,6 @@ LocalEstimateBaseIndexMethod/*.dita
 *.dita
 ComparativeQuantityTakeoff/MINSTROY_VERSION/history_snapshots/
 QuantityTakeoff/example/
+/node_modules/
+/package-lock.json
+/package.json
