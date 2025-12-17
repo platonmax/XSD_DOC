@@ -604,7 +604,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
             <xs:documentation>Подпись в пояснительной записке</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="Name" type="non-empty-string">
+            <xs:element name="Name">
                 <xs:annotation>
                     <xs:documentation>Значение подписи</xs:documentation>
                 </xs:annotation>
