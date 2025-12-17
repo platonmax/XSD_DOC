@@ -15,27 +15,27 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
             <xs:documentation xml:lang="ru">Иностранное юридическое лицо (филиал, представительство)</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="OrgFullName" type="non-empty-string">
+            <xs:element name="OrgFullName" type="non-empty-string" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Полное наименование иностранного юридического лица (филиала, представительства)</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="OrgINN" type="tOrgINN">
+            <xs:element name="OrgINN" type="tOrgINN" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Индивидуальный номер налогоплательщика – иностранного юридического лица (филиала, представительства)</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="OrgKPP" type="tOrgKPP">
+            <xs:element name="OrgKPP" type="tOrgKPP" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Код причины постановки на учет иностранного юридического лица (филиала, представительства)</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="Address" type="tAddress">
+            <xs:element name="Address" type="tAddress" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Адрес (местонахождение) филиала или представительства иностранного юридического лица в Российской Федерации</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="Email" type="tEmail" minOccurs="0">
+            <xs:element name="Email" type="tEmail" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Адрес электронной почты иностранного юридического лица (филиала, представительства)</xs:documentation>
                 </xs:annotation>
@@ -295,7 +295,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
                     <xs:documentation>Значение показателя</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="OldValue" type="non-empty-string" minOccurs="0">
+            <xs:element name="OldValue" type="non-empty-string" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Предыдущее значение показателя (при реконструкции)</xs:documentation>
                 </xs:annotation>
@@ -309,7 +309,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
         <xs:complexContent>
             <xs:extension base="tTEIBase">
                 <xs:sequence>
-                    <xs:element name="UnitCost" type="xs:decimal">
+                    <xs:element name="UnitCost" type="xs:decimal" minOccurs="1" maxOccurs="1">
                         <xs:annotation>
                             <xs:documentation xml:lang="ru">Стоимость за единицу показателя (обязательное поле)</xs:documentation>
                         </xs:annotation>
@@ -325,7 +325,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
         <xs:complexContent>
             <xs:extension base="tTEIBase">
                 <xs:sequence>
-                    <xs:element name="UnitCost" type="xs:decimal" minOccurs="0">
+                    <xs:element name="UnitCost" type="xs:decimal" minOccurs="0" maxOccurs="1">
                         <xs:annotation>
                             <xs:documentation xml:lang="ru">Стоимость за единицу показателя</xs:documentation>
                         </xs:annotation>
@@ -339,12 +339,12 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
             <xs:documentation xml:lang="ru">Тип для координат стройки в WGS 84 ((World Geodetic System 1984) — глобальная геодезическая система координат)</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="Latitude" type="xs:decimal">
+            <xs:element name="Latitude" type="xs:decimal" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Широта (latitude) в десятичных градусах (диапазон: -90 до 90). Обязательное поле внутри координат</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="Longitude" type="xs:decimal">
+            <xs:element name="Longitude" type="xs:decimal" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Долгота (longitude) в десятичных градусах (диапазон: -180 до 180). Обязательное поле внутри координат</xs:documentation>
                 </xs:annotation>
@@ -459,7 +459,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
                     <xs:documentation>Адрес (местонахождение) юридического лица</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="Email" type="tEmail" minOccurs="0">
+            <xs:element name="Email" type="tEmail" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Адрес электронной почты иностранного юридического лица (филиала, представительства)</xs:documentation>
                 </xs:annotation>
@@ -566,12 +566,12 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
             <xs:documentation>Подписи пояснительной записки</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="ComposeFIO" type="TExtSignature">
+            <xs:element name="ComposeFIO" type="TExtSignature" minOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Cоставил (ФИО) (Подпись исполнителя)</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="VerifyFIO" type="TExtSignature">
+            <xs:element name="VerifyFIO" type="TExtSignature" minOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Проверил (ФИО) (Подпись представителя заказчика)</xs:documentation>
                 </xs:annotation>
@@ -657,7 +657,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
             <xs:documentation>Комбинированный тип, описывающий составную часть объекта (здание, сооружение) и содержащий список его технико-экономических показателей</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="ObjectPart" type="tBuildingDataTEI"
+            <xs:element name="ObjectPart" type="tBuildingDataTEI" minOccurs="1"
                 maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>Комбинированный тип, описывающий составную часть объекта (здание, сооружение) и содержащий список его технико-экономических показателей</xs:documentation>
@@ -675,57 +675,57 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
             <xs:documentation xml:lang="ru">Базовый тип адреса, содержащий общие поля</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="Country" type="string500" minOccurs="0">
+            <xs:element name="Country" type="string500" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Страна</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="Region" type="tRegionsRF">
+            <xs:element name="Region" type="tRegionsRF" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Территориальное расположение объекта строительства. Код региона (при отсутствии кода субъекта заполняется "00")</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="District" type="string200" minOccurs="0">
+            <xs:element name="District" type="string200" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Область</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="City" type="string200" minOccurs="0">
+            <xs:element name="City" type="string200" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Город</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="Settlement" type="string200" minOccurs="0">
+            <xs:element name="Settlement" type="string200" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Поселок</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="Street" type="string200" minOccurs="0">
+            <xs:element name="Street" type="string200" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Улица</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="Building" type="string200" minOccurs="0">
+            <xs:element name="Building" type="string200" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Номер здания (номер дома)</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="Room" type="string200" minOccurs="0">
+            <xs:element name="Room" type="string200" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Номер помещения</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="Coordinates" type="tCoordinates" minOccurs="0">
+            <xs:element name="Coordinates" type="tCoordinates" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Тип для координат стройки в WGS 84 ((World Geodetic System 1984) — глобальная геодезическая система координат)</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="Note" type="non-empty-string" minOccurs="0">
+            <xs:element name="Note" type="non-empty-string" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Неформализованное описание адреса</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="PriceZone" minOccurs="0">
+            <xs:element name="PriceZone" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Подрайон, ценовая зона в составе основного региона (субъект Российской Федерации), в котором расположен объект строительства</xs:documentation>
                 </xs:annotation>
@@ -753,7 +753,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
         <xs:complexContent>
             <xs:extension base="tAddressBase">
                 <xs:sequence>
-                    <xs:element name="TerritorySign">
+                    <xs:element name="TerritorySign" minOccurs="1" maxOccurs="1">
                         <xs:annotation>
                             <xs:documentation xml:lang="ru">Обозначение территории расположения объекта строительства:
 - не относящейся к районам Крайнего Севера и местностям, приравненным к ним (Территория);
@@ -813,12 +813,12 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
             <xs:documentation xml:lang="ru">Сведения об источнике финансирования (Бюджетные средства)</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="BudgetLevel" type="tBudgetLevel">
+            <xs:element name="BudgetLevel" type="tBudgetLevel" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Уровень бюджета</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="SourceRatio" type="xs:double" minOccurs="0">
+            <xs:element name="SourceRatio" type="xs:double" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Размер финансирования (доля в процентах)</xs:documentation>
                 </xs:annotation>
@@ -852,7 +852,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
             <xs:documentation>Базовый тип для описания сметных нормативов, содержащий общие элементы, такие как наименование</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="Name" type="xs:string">
+            <xs:element name="Name" type="xs:string" minOccurs="1">
                 <xs:annotation>
                     <xs:documentation>Наименование редакции (приказ, дата, номер) исходных нормативов</xs:documentation>
                 </xs:annotation>
@@ -866,7 +866,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
         <xs:complexContent>
             <xs:extension base="TLegalBase">
                 <xs:sequence>
-                    <xs:element name="Type">
+                    <xs:element name="Type" minOccurs="1">
                         <xs:annotation>
                             <xs:documentation>Тип нормативов из федерального реестра сметных нормативов</xs:documentation>
                         </xs:annotation>
@@ -886,7 +886,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
                             <xs:documentation>Дата включения в федеральный реестр сметных нормативов</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="Num" type="xs:positiveInteger">
+                    <xs:element name="Num" type="xs:positiveInteger" minOccurs="1">
                         <xs:annotation>
                             <xs:documentation>Регистрационный номер в федеральном реестре сметных нормативов</xs:documentation>
                         </xs:annotation>
@@ -1040,7 +1040,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
                     <xs:documentation>Сведения о принадлежности к объектам транспортной инфраструктуры и к другим объектам, функционально-технологические особенности которых влияют на их безопасность</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="MainTEI" type="tMainTEI" maxOccurs="unbounded">
+            <xs:element name="MainTEI" type="tMainTEI" minOccurs="1" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Обязательный главный технико-экономический показатель</xs:documentation>
                 </xs:annotation>
@@ -1124,7 +1124,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
                     <xs:documentation>Сведения о принадлежности к объектам транспортной инфраструктуры и к другим объектам, функционально-технологические особенности которых влияют на их безопасность</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="MainTEI" type="tMainTEI">
+            <xs:element name="MainTEI" type="tMainTEI" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Обязательный главный технико-экономический показатель</xs:documentation>
                 </xs:annotation>
@@ -1212,7 +1212,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
                     <xs:documentation>Сведения о принадлежности к объектам транспортной инфраструктуры и к другим объектам, функционально-технологические особенности которых влияют на их безопасность</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="MainTEI" type="tMainTEI">
+            <xs:element name="MainTEI" type="tMainTEI" minOccurs="1" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Обязательный главный технико-экономический показатель</xs:documentation>
                 </xs:annotation>
@@ -1590,12 +1590,12 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
                                 <xs:complexContent>
                                     <xs:extension base="TCostCoefficients">
                                         <xs:sequence>
-                                            <xs:element name="Name" type="xs:string">
+                                            <xs:element name="Name" type="xs:string" minOccurs="1">
                                                 <xs:annotation>
                                                   <xs:documentation>Наименование коэффициента. Указывается наименование, величина, а также составляющие единичных расценок, к которым коэффициент применяется</xs:documentation>
                                                 </xs:annotation>
                                             </xs:element>
-                                            <xs:element name="Reason" type="xs:string">
+                                            <xs:element name="Reason" type="xs:string" minOccurs="1">
                                                 <xs:annotation>
                                                   <xs:documentation>Обоснование коэффициента (шифр коэффициента (при наличии) или ссылка на положения сметных нормативов и (или) пункты разделов сборников единичных расценок)</xs:documentation>
                                                 </xs:annotation>
@@ -1623,7 +1623,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
                     <xs:documentation>Сводка сметной стоимости по основным категориям затрат (Всего, СМР, оборудование, прочие (в т.ч. проектно-изыскательские работы)).</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="IsCorrection" type="xs:boolean">
+            <xs:element name="IsCorrection" type="xs:boolean" minOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Индикатор статуса пояснительной записки:
 Значение true (1) - корректировка;
@@ -1638,7 +1638,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
             <xs:documentation xml:lang="ru">Сведения об источниках финансирования</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:choice maxOccurs="unbounded">
+            <xs:choice minOccurs="1" maxOccurs="unbounded">
                 <xs:element name="BudgetSource" type="tBudgetSource">
                     <xs:annotation>
                         <xs:documentation xml:lang="ru">Сведения об источнике финансирования (Бюджетные средства)</xs:documentation>
@@ -1655,7 +1655,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
                     </xs:annotation>
                 </xs:element>
             </xs:choice>
-            <xs:element name="FinanceComment" type="non-empty-string" minOccurs="0">
+            <xs:element name="FinanceComment" type="non-empty-string" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Комментарий к сведениям об источниках финансирования</xs:documentation>
                 </xs:annotation>
@@ -1668,7 +1668,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
             <xs:documentation xml:lang="ru">Средства, не входящие в перечень, указанный в части 2 статьи 8.3 Градостроительного кодекса Российской Федерации</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="SourceRatio" type="xs:double" minOccurs="0">
+            <xs:element name="SourceRatio" type="xs:double" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Размер финансирования (доля в процентах)</xs:documentation>
                 </xs:annotation>
@@ -1680,12 +1680,12 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
             <xs:documentation xml:lang="ru">Сведения об источнике финансирования (Средства юридических лиц, перечисленных в части 2 статьи 8.3 Градостроительного кодекса Российской Федерации)</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="Owner" type="tTechnicalCustomer" minOccurs="0">
+            <xs:element name="Owner" type="tTechnicalCustomer" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Юридическое лицо, владелец средств.</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="SourceRatio" type="xs:double" minOccurs="0">
+            <xs:element name="SourceRatio" type="xs:double" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">Размер финансирования (доля в процентах)</xs:documentation>
                 </xs:annotation>
@@ -1701,7 +1701,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
             </xs:documentation>
         </xs:annotation>
 
-        <xs:choice>
+        <xs:choice minOccurs="1" maxOccurs="1">
             <xs:element name="Organization" type="tOrganization">
                 <xs:annotation>
                     <xs:documentation xml:lang="ru">
@@ -1725,7 +1725,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
             <xs:documentation>Дополнительное произвольное текстовое описание, подготовленное разработчиком сметной документации. Содержит произвольный текст и таблицы</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:choice maxOccurs="unbounded">
+            <xs:choice minOccurs="1" maxOccurs="unbounded">
                 <xs:element name="SubTitle" type="non-empty-string" maxOccurs="unbounded">
                     <xs:annotation>
                         <xs:documentation>Подзаголовок</xs:documentation>
@@ -1759,7 +1759,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
                     <xs:documentation>Столбцы таблицы</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="Row" type="tRow" maxOccurs="unbounded">
+            <xs:element name="Row" type="tRow" minOccurs="1" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>Строки таблицы</xs:documentation>
                 </xs:annotation>
@@ -1771,7 +1771,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
             <xs:documentation>Наименование столбца или строки таблицы</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="Cell" type="tCell" maxOccurs="unbounded">
+            <xs:element name="Cell" type="tCell" minOccurs="1" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>Наименование столбца или строки таблицы</xs:documentation>
                 </xs:annotation>
@@ -1914,7 +1914,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
                         <xs:documentation>Содержание Пояснительной записки к сметной документации. Содержит сведения об источниках финансирования, примененных нормативах и итоговых стоимостных показателях</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="Signatures" type="TSignatures">
+                <xs:element minOccurs="1" name="Signatures" type="TSignatures">
                     <xs:annotation>
                         <xs:documentation>Подписи исполнителя, представителей заказчика и подрядчика</xs:documentation>
                     </xs:annotation>
@@ -1925,7 +1925,7 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
                         <xs:documentation xml:lang="ru">Дополнительное произвольное текстовое описание, подготовленное разработчиком сметной документации</xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="ExportDateTime" type="xs:dateTime">
+                <xs:element minOccurs="1" name="ExportDateTime" type="xs:dateTime">
                     <xs:annotation>
                         <xs:documentation>Дата и время выгрузки документа из программного продукта (сметной программы) с учетом часового пояса в формате ISO 8601 (ГГГГ-ММ-ДД ЧЧ:ММ:СС+03:00)</xs:documentation>
                     </xs:annotation>
