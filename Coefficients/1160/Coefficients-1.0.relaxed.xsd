@@ -2,12 +2,18 @@
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0"
   xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+  <xs:simpleType name="TLocalizedDecimal">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[+-]?[0-9]+([.,][0-9]+)?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
   <xs:complexType name="TCoefficientsItemValue">
     <xs:annotation>
       <xs:documentation>Значение поправочного коэффициента на определенный вид затрат</xs:documentation>
     </xs:annotation>
     <xs:simpleContent>
-      <xs:extension base="xs:decimal"/>
+      <xs:extension base="TLocalizedDecimal"/>
     </xs:simpleContent>
   </xs:complexType>
 
@@ -196,7 +202,7 @@
                         </xs:element>
                       </xs:sequence>
                       
-                      <xs:attribute name="Worker" use="optional" type="xs:decimal">
+                      <xs:attribute name="Worker" use="optional" type="TLocalizedDecimal">
                         <xs:annotation>
                           <xs:documentation>
                             Затраты труда рабочих непосредственно занятых в процессе создания материальных ценностей
@@ -204,7 +210,7 @@
                         </xs:annotation>
                       </xs:attribute>
                       
-                      <xs:attribute name="Machine" use="optional" type="xs:decimal">
+                      <xs:attribute name="Machine" use="optional" type="TLocalizedDecimal">
                         <xs:annotation>
                           <xs:documentation>
                             Затраты на эксплуатацию строительных машин
@@ -212,7 +218,7 @@
                         </xs:annotation>
                       </xs:attribute>
                       
-                      <xs:attribute name="Machinist" use="optional" type="xs:decimal">
+                      <xs:attribute name="Machinist" use="optional" type="TLocalizedDecimal">
                         <xs:annotation>
                           <xs:documentation>
                             Оплата труда машинистов
@@ -220,7 +226,7 @@
                         </xs:annotation>
                       </xs:attribute>
                       
-                      <xs:attribute name="Material" use="optional" type="xs:decimal">
+                      <xs:attribute name="Material" use="optional" type="TLocalizedDecimal">
                         <xs:annotation>
                           <xs:documentation>
                             Затраты на материальные ресурсы, изделия и конструкции
@@ -228,7 +234,7 @@
                         </xs:annotation>
                       </xs:attribute>
                       
-                      <xs:attribute name="LaborCosts" use="optional" type="xs:decimal">
+                      <xs:attribute name="LaborCosts" use="optional" type="TLocalizedDecimal">
                         <xs:annotation>
                           <xs:documentation>
                             Затраты труда рабочих (чел.-ч)
@@ -236,7 +242,7 @@
                         </xs:annotation>
                       </xs:attribute>
                       
-                      <xs:attribute name="MachinistLaborCosts" use="optional" type="xs:decimal">
+                      <xs:attribute name="MachinistLaborCosts" use="optional" type="TLocalizedDecimal">
                         <xs:annotation>
                           <xs:documentation>
                             Затраты труда машинистов (чел.-ч)
@@ -244,7 +250,7 @@
                         </xs:annotation>
                       </xs:attribute>
                       
-                      <xs:attribute name="Equipment" use="optional" type="xs:decimal">
+                      <xs:attribute name="Equipment" use="optional" type="TLocalizedDecimal">
                         <xs:annotation>
                           <xs:documentation>
                             Затраты на оборудование, мебель, инвентарь
