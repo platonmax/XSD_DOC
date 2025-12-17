@@ -1,0 +1,353 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Пояснительная записка к сметной документации</title>
+      <style>
+            /* Общие стили документа */
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                margin: 2em;
+                padding: 0;
+                color: #333;
+                font-size: 11pt;
+                line-height: 1.6;
+                background-color: #fcfcfc;
+            }
+            h1, h2, h3 {
+                color: #111;
+                text-align: left;
+            }
+            h1 {
+                font-size: 24px;
+                text-align: center;
+                margin-bottom: 1.5em;
+                line-height: 1.4;
+            }
+            h2 {
+                font-size: 18px;
+                margin-top: 2.5em;
+                margin-bottom: 1em;
+                border-bottom: 2px solid #eaeaea;
+                padding-bottom: 0.5em;
+            }
+            h3 {
+                font-size: 15px;
+                border-bottom: 1px dashed #ccc;
+                margin-bottom: 1em;
+                font-style: normal;
+                font-weight: 600;
+                color: #444;
+            }
+            p {
+                text-indent: 1.25cm;
+                text-align: justify;
+                margin: 0.5em 0;
+            }
+
+            /* --- СОВРЕМЕННЫЕ СТИЛИ ТАБЛИЦ --- */
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                margin: 25px 0;
+                font-size: 10pt;
+            }
+            th, td {
+                padding: 12px 15px;
+                text-align: left;
+                vertical-align: top;
+                border: 1px solid #e0e0e0;
+            }
+            th {
+                background-color: #f9f9f9;
+                font-weight: 600;
+                color: #333;
+                text-align: center;
+                font-size: 10.5pt;
+                white-space: nowrap;
+            }
+            tbody tr:hover {
+                background-color: #f5f5f5;
+            }
+
+            /* --- Логичная ширина столбцов --- */
+            .financing-table th:nth-child(1) { width: 25%; }
+            .financing-table th:nth-child(2) { width: 55%; }
+            .financing-table th:nth-child(3) { width: 20%; }
+            
+            .tei-table th:nth-child(1) { width: 50%; text-align: left; }
+            .tei-table th:nth-child(2) { width: 15%; }
+            .tei-table th:nth-child(3) { width: 17.5%; }
+            .tei-table th:nth-child(4) { width: 17.5%; }
+            .tei-table td:not(:first-child) { text-align: center; }
+
+            .tei-table .main-tei {
+                font-weight: 600;
+                background-color: #fef8e7; 
+            }
+            
+            /* ============================================= */
+            /* Таблица коэффициентов (ИСПРАВЛЕННАЯ ВЕРСИЯ) */
+            /* ============================================= */
+            .coefficients-table-v3 {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 25px 0;
+                font-size: 10pt;
+               
+            }
+             
+            .coefficients-table-v3 td {
+                border: 1px solid #e0e0e0;
+                padding: 10px 12px;
+                vertical-align: middle;
+            }
+            
+            .coefficients-table-v3 th {
+                border: 1px solid #e0e0e0;
+                padding: 10px 12px;
+                vertical-align: middle;
+                text-align: center;
+                background-color: #f9f9f9;
+                font-weight: 600;
+                white-space: nowrap; /* Важно: предотвращает перенос текста */
+            }
+            .coefficients-table-v3 td:nth-child(1),
+            .coefficients-table-v3 td:nth-child(2) {
+                text-align: left;
+                word-wrap: break-word; 
+            }
+            .coefficients-table-v3 td:nth-child(n+3) {
+                text-align: center;
+            }
+            
+            /* Таблица 7: Список документов */
+            .documents-table th:nth-child(1) { width: 20%; }
+            .documents-table th:nth-child(2) { width: 50%; }
+            .documents-table th:nth-child(3) { width: 30%; }
+
+            /* Специальные таблицы */
+            .cost-table { font-family: "Menlo", "Consolas", monospace; }
+            .cost-table td:nth-child(2) { text-align: right; }
+            .cost-table .cost-table-header { font-weight: 600; text-align: center !important; background-color: #f0f0f0; }
+            .summary-table td:first-child { font-weight: 600; width: 30%; color: #555; }
+            
+            /* Прочие улучшения */
+            .number { font-weight: 600; color: #000; }
+            .footnote { font-size: smaller; text-indent: 0; color: #666; margin-top: 1em; }
+            u { text-decoration: none; border-bottom: 2px solid #007bff; padding-bottom: 2px;}
+            .designer-note { margin-top: 2em; border-top: 2px solid #eee; padding-top: 1.5em; }
+        </style>
+   </head>
+   <body>
+      &nbsp; &nbsp; &nbsp; &nbsp; 
+      &nbsp; &nbsp; &nbsp; &nbsp; 
+      &nbsp; &nbsp; &nbsp; &nbsp; 
+      &nbsp; &nbsp; &nbsp; &nbsp; 
+      <p style="text-indent: 0;">
+         Дата и время выгрузки файла из сметного программного комплекса:  <i>17.12.2025 12:30</i></p>
+      <p style="text-indent: 0;">
+         Наименование программного комплекса:  <i>Тестовый ПК</i> 
+         Версия:  <i>1.0</i></p>
+      <h1>Пояснительная записка к сметной документации<br>объекта капитального строительства</h1>
+      <h2><span class="number">1.</span> Сведения об объекте капитального строительства</h2>
+      <p><span class="number">1.1.</span> Метод определения сметной стоимости: <i>Ресурсно-индексный</i></p>
+      <p><span class="number">1.2.</span> Наименование объекта капитального строительства: «<i>Жилой дом с подземным паркингом</i>»
+         </p>
+      <p><span class="number">1.3.</span> Вид строительства: <i>Строительство</i></p>
+      <p><span class="number">1.4.</span> Сведения об источнике (источниках) и размере финансирования строительства, реконструкции,
+         капитального ремонта, сноса объекта капитального строительства</p>
+      <table class="financing-table">
+         <thead>
+            <tr>
+               <th>Источник финансирования</th>
+               <th>Наименование уровня бюджета/ Сведения о юридическом лице</th>
+               <th>Доля финансирования, %</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>Бюджетные средства</td>
+               <td><i>Федеральный бюджет</i></td>
+               <td style="text-align:center;"><i>100</i></td>
+            </tr>
+         </tbody>
+      </table>
+      <p><span class="number">1.5.</span> Почтовый (строительный) адрес (местоположение) объекта капитального строительства:
+         <i><i>Россия</i>, Регион <i>77</i>, г. <i>Москва</i>, ул. <i>Арбат</i>, д. <i>10</i> (<i>Центральный административный округ</i>)</i></p>
+      <p><span class="number">1.6.</span>    Сведения о функциональном назначении объекта капитального строительства: функциональное
+         назначение по классификатору объектов капитального строительства по их назначению
+         и функционально-технологическим особенностям: <i>Многоквартирный жилой дом (6 - 10 этажей), 01.02.001.004.</i></p>
+      <p><span class="number">1.7.</span> Сведения о технико-экономических показателях объекта:</p>
+      <table class="tei-table">
+         <thead>
+            <tr>
+               <th>Наименование показателя</th>
+               <th>Ед. изм.</th>
+               <th>Значение</th>
+               <th>Стоимость за единицу, тыс. руб. с учетом НДС</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr class="main-tei">
+               <td><i>Общая площадь здания</i></td>
+               <td><i>м2</i></td>
+               <td><i>9500</i></td>
+               <td><i>1,00</i></td>
+            </tr>
+         </tbody>
+      </table>
+      <h2><span class="number">2.</span> Сведения о примененных сметных нормативах</h2>
+      <ul class="norm-list">
+         <li>- <i>ФСНБ-2022 (пример)</i>(с учетом приказов: <i>Дополнение №1 (пример))</i>.
+            </li>
+         <li>- <i>Методика 421/пр (пример)</i>.
+            </li>
+         <li>- <i>НР (пример)</i>.
+            </li>
+         <li>- <i>СП (пример)</i>.
+            </li>
+      </ul>
+      <h2><span class="number">3.</span> Обоснование особенностей определения сметной стоимости</h2>
+      <table class="coefficients-table-v3">
+         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+         <thead>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            <tr>
+               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+               <th rowspan="2" style="width: 15%;">Обоснование</th>
+               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+               <th rowspan="2" style="width: 55%;">Наименование коэффициента</th>
+               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+               <th colspan="2">Значение</th>
+               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </tr>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            <tr>
+               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+               <th>ОТ</th>
+               <th>ЭМ</th>
+               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </tr>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </thead>
+         <tbody>
+            <tr>
+               <td><i>54 Таблица 3 Приложение №10 к Методике 421/пр</i></td>
+               <td><i>Коэффициент на усложняющие условия производства работ</i></td>
+               <td><i>1.15</i></td>
+               <td><i>1.25</i></td>
+            </tr>
+         </tbody>
+      </table>
+      <h2><span class="number">4.</span> Сведения о сметной стоимости</h2>
+      <table class="cost-table">
+         <thead>
+            <tr>
+               <th>Структура затрат</th>
+               <th>Сметная стоимость, тыс. рублей</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td colspan="2" class="cost-table-header">В базисном уровне цен (1 квартала 2022 года
+                  )</td>
+            </tr>
+            <tr>
+               <td><b><i>Всего,</i></b></td>
+               <td><i>10 000,00</i></td>
+            </tr>
+            <tr>
+               <td colspan="2" style="padding-left:15px;">в том числе:</td>
+            </tr>
+            <tr>
+               <td><span style="padding-left: 2em;"><i>Строительно-монтажные работы</i></span></td>
+               <td><i>7 000,00</i></td>
+            </tr>
+            <tr>
+               <td><span style="padding-left: 2em;"><i>Оборудование</i></span></td>
+               <td><i>2 000,00</i></td>
+            </tr>
+            <tr>
+               <td><span style="padding-left: 2em;"><i>Прочие затраты</i></span></td>
+               <td><i>1 000,00</i></td>
+            </tr>
+            <tr>
+               <td colspan="2" style="padding-left:5em;">в том числе:</td>
+            </tr>
+            <tr>
+               <td><span style="padding-left: 4em;"><i>Проектно-изыскательские работы</i></span></td>
+               <td>—</td>
+            </tr>
+            <tr>
+               <td colspan="2" class="cost-table-header">В текущем уровне цен (2 квартала 2024 года
+                  )</td>
+            </tr>
+            <tr>
+               <td><b><i>Всего,</i></b></td>
+               <td><i>15 000,00*</i></td>
+            </tr>
+            <tr>
+               <td colspan="2" style="padding-left:15px;">в том числе:</td>
+            </tr>
+            <tr>
+               <td><span style="padding-left: 2em;"><i>Строительно-монтажные работы</i></span></td>
+               <td><i>10 500,00</i></td>
+            </tr>
+            <tr>
+               <td><span style="padding-left: 2em;"><i>Оборудование</i></span></td>
+               <td><i>3 000,00</i></td>
+            </tr>
+            <tr>
+               <td><span style="padding-left: 2em;"><i>Прочие затраты</i></span></td>
+               <td><i>1 500,00</i></td>
+            </tr>
+            <tr>
+               <td colspan="2" style="padding-left:5em;">в том числе:</td>
+            </tr>
+            <tr>
+               <td><span style="padding-left: 4em;"><i>Проектно-изыскательские работы</i></span></td>
+               <td>—</td>
+            </tr>
+            <tr>
+               <td><span style="padding-left: 2em;"><i>Налог на добавленную стоимость</i></span></td>
+               <td><i>0,00</i></td>
+            </tr>
+         </tbody>
+      </table>
+      <p class="footnote">
+         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+         
+         *Сметная стоимость с учетом НДС
+         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+         &nbsp; &nbsp; &nbsp; &nbsp; </p>
+      <h2><span class="number">5.</span> Дополнительные сведения о проектных решениях</h2>
+      <h2><span class="number">6.</span> Список приложенных документов</h2>
+      <table class="documents-table">
+         <thead>
+            <tr>
+               <th>Тип документа</th>
+               <th>Наименование</th>
+               <th>Файл</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td><i>ПЗ</i></td>
+               <td><i>Пояснительная записка к сметной документации</i></td>
+               <td><i>Пример_ПЗ_наш.gge</i></td>
+            </tr>
+         </tbody>
+      </table>
+      <div style="margin-top: 4em;">
+         <table style="width: 100%; font-size: 11pt;">
+            <tr>
+               <td style="width: 15%;">Составил</td>
+               <td style="width: 45%; text-align: left;"><i>Инженер-сметчик&nbsp;Иванов И.И.</i></td>
+            </tr>
+            <tr>
+               <td style="width: 15%;">Проверил</td>
+               <td style="width: 45%; text-align: left;"><i>Заказчик&nbsp;Петров П.П.</i></td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

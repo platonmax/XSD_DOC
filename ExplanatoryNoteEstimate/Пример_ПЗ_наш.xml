@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="ExplanatoryNoteEstimate.xsl"?>
+<Construction xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="ExplanatoryNoteEstimate.xsd">
+  <Meta>
+    <Soft>
+      <Name>Тестовый ПК</Name>
+      <Version>1.0</Version>
+    </Soft>
+    <File>
+      <Type>ПЗ</Type>
+      <Version>4.01</Version>
+    </File>
+  </Meta>
+
+  <ObjectDescription>
+    <NonIndustrialObject>
+      <Name>Жилой дом с подземным паркингом</Name>
+      <ConstructionType>1</ConstructionType>
+      <ConstructionDuration>24</ConstructionDuration>
+      <Address>
+        <Country>Россия</Country>
+        <Region>77</Region>
+        <City>Москва</City>
+        <Street>Арбат</Street>
+        <Building>10</Building>
+        <Note>Центральный административный округ</Note>
+        <TerritorySign>территория</TerritorySign>
+      </Address>
+      <Functions>
+        <FunctionsNote>Многоквартирный жилой дом (6 - 10 этажей)</FunctionsNote>
+        <FunctionsClass>01.02.001.004</FunctionsClass>
+      </Functions>
+      <MainTEI>
+        <Name>Общая площадь здания</Name>
+        <Measure>м2</Measure>
+        <Value>9500</Value>
+        <UnitCost>1</UnitCost>
+      </MainTEI>
+    </NonIndustrialObject>
+  </ObjectDescription>
+
+  <ProjectDocumentationContent>
+    <ProjectDocument>
+      <GUID>aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa</GUID>
+      <DocumentType>ПЗ</DocumentType>
+      <DocumentName>Пояснительная записка к сметной документации</DocumentName>
+      <File>
+        <FileName>Пример_ПЗ_наш.gge</FileName>
+        <FileFormat>gge</FileFormat>
+        <FileChecksum>00000000000000000000000000000000</FileChecksum>
+      </File>
+    </ProjectDocument>
+  </ProjectDocumentationContent>
+
+  <ExplanatoryNoteEstimate>
+    <FinanceSource>
+      <BudgetSource>
+        <BudgetLevel>Федеральный бюджет</BudgetLevel>
+        <SourceRatio>100</SourceRatio>
+      </BudgetSource>
+    </FinanceSource>
+
+    <Legal>
+      <Main>
+        <Name>ФСНБ-2022 (пример)</Name>
+        <Type>ГСН</Type>
+        <Num>1</Num>
+        <Orders>Дополнение №1 (пример)</Orders>
+      </Main>
+      <Metodology>
+        <Name>Методика 421/пр (пример)</Name>
+        <Type>Справочная информация</Type>
+        <Num>2</Num>
+      </Metodology>
+      <Overheads>
+        <Name>НР (пример)</Name>
+        <Type>Справочная информация</Type>
+        <Num>3</Num>
+      </Overheads>
+      <Profits>
+        <Name>СП (пример)</Name>
+        <Type>Справочная информация</Type>
+        <Num>4</Num>
+      </Profits>
+    </Legal>
+
+    <Coefficients>
+      <Coefficient>
+        <Values>
+          <Value>
+            <Target>ОТ</Target>
+            <CoefValue>1.15</CoefValue>
+          </Value>
+          <Value>
+            <Target>ЭМ</Target>
+            <CoefValue>1.25</CoefValue>
+          </Value>
+        </Values>
+        <Name>Коэффициент на усложняющие условия производства работ</Name>
+        <Reason>54 Таблица 3 Приложение №10 к Методике 421/пр</Reason>
+      </Coefficient>
+      <Coefficient>
+        <Values>
+          <Value>
+            <Target>ОТ</Target>
+            <CoefValue>1.10</CoefValue>
+          </Value>
+          <Value>
+            <Target>ЭМ</Target>
+            <CoefValue>1.20</CoefValue>
+          </Value>
+        </Values>
+        <Name>Коэффициент (не должен попасть в таблицу по фильтру)</Name>
+        <Reason>п. 54 Таблица 3 Приложение №10 к Методике 421/пр</Reason>
+      </Coefficient>
+    </Coefficients>
+
+    <BasicPriceLevel>
+      <Year>2022</Year>
+      <Quarter>1</Quarter>
+      <Note>Базисный уровень цен</Note>
+    </BasicPriceLevel>
+    <CurrentPriceLevel>
+      <Year>2024</Year>
+      <Quarter>2</Quarter>
+      <CalculationMethod>Ресурсно-индексный</CalculationMethod>
+      <Note>Текущий уровень цен</Note>
+    </CurrentPriceLevel>
+
+    <CostSummary>
+      <Total>
+        <BasicLevelPrice>10000.00</BasicLevelPrice>
+        <CurrentLevelPrice>15000.00</CurrentLevelPrice>
+      </Total>
+      <ConstructionWorks>
+        <BasicLevelPrice>7000.00</BasicLevelPrice>
+        <CurrentLevelPrice>10500.00</CurrentLevelPrice>
+      </ConstructionWorks>
+      <Equipment>
+        <BasicLevelPrice>2000.00</BasicLevelPrice>
+        <CurrentLevelPrice>3000.00</CurrentLevelPrice>
+      </Equipment>
+      <OtherCosts>
+        <BasicLevelPrice>1000.00</BasicLevelPrice>
+        <CurrentLevelPrice>1500.00</CurrentLevelPrice>
+      </OtherCosts>
+      <Vat>
+        <BasicLevelPrice>0.00</BasicLevelPrice>
+        <CurrentLevelPrice>0.00</CurrentLevelPrice>
+      </Vat>
+    </CostSummary>
+
+    <IsCorrection>false</IsCorrection>
+  </ExplanatoryNoteEstimate>
+
+  <Signatures>
+    <ComposeFIO>
+      <Name>Иванов И.И.</Name>
+      <Position>Инженер-сметчик</Position>
+    </ComposeFIO>
+    <VerifyFIO>
+      <Name>Петров П.П.</Name>
+      <Position>Заказчик</Position>
+    </VerifyFIO>
+  </Signatures>
+
+  <ExportDateTime>2025-12-17T12:30:00+03:00</ExportDateTime>
+</Construction>

@@ -1,0 +1,1938 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.01"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" vc:minVersion="1.1"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+    <xs:annotation>
+        <xs:documentation xml:lang="ru">Корневой элемент Пояснительной записки.
+Элемент обязан содержать атрибуты, указывающие на применяемый xsd-шаблон описания пояснительной записки:
+xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance";
+xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
+Электронные документы, представляемые для проведения государственной экспертизы проектной документации и (или) результатов инженерных изысканий и проверки достоверности определения сметной стоимости строительства, реконструкции, капитального ремонта, должны иметь расширение файла .gge</xs:documentation>
+    </xs:annotation>
+    <xs:complexType name="tForeignOrganization">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Иностранное юридическое лицо (филиал, представительство)</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="OrgFullName" type="non-empty-string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Полное наименование иностранного юридического лица (филиала, представительства)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OrgINN" type="tOrgINN" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Индивидуальный номер налогоплательщика – иностранного юридического лица (филиала, представительства)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OrgKPP" type="tOrgKPP" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Код причины постановки на учет иностранного юридического лица (филиала, представительства)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Address" type="tAddress" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Адрес (местонахождение) филиала или представительства иностранного юридического лица в Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Email" type="tEmail" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Адрес электронной почты иностранного юридического лица (филиала, представительства)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Person" type="tPerson">
+                <xs:annotation>
+                    <xs:documentation>Сведения о физическом лице</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tSRO">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Сведения о саморегулируемой организации</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="non-empty-string">
+                <xs:attribute name="SROType" type="tSROType" use="required">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="ru">Тип саморегулируемой организации</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="tOrgINN">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">ИНН организации</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:length value="10"/>
+            <xs:pattern value="\d{10}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tOrgKPP">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">КПП организации</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:length value="9"/>
+            <xs:pattern value="\d{9}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tEmail">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Текстовая строка - адрес электронной почты</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:whiteSpace value="replace"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tSROType">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Виды саморегулируемых организаций в строительной области</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Саморегулируемая организация в области инженерных изысканий"/>
+            <xs:enumeration
+                value="Саморегулируемая организация в области архитектурно-строительного проектирования"/>
+            <xs:enumeration value="Саморегулируемая организация в области строительства"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="string200">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Текстовая строка длиной до 200 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:maxLength value="200"/>
+            <xs:pattern value="(\s*[^\s]\s*)+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="string500">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Текстовая строка длиной до 500 символов</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:normalizedString">
+            <xs:maxLength value="500"/>
+            <xs:pattern value="(\s*[^\s]\s*)+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tRegionsRF">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Коды субъектов Российской Федерации (от 00 до 99)</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="non-empty-string">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Непустая текстовая строка</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(\s*[^\s]\s*)+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tGUID">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Уникальный идентификатор GUID</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern
+                value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"
+            />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tCalculationMethod">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Метод определения сметной стоимости</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Ресурсно-индексный"/>
+            <xs:enumeration value="Базисно-индексный"/>
+            <xs:enumeration value="Ресурсный"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tBudgetLevel">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Уровень бюджета</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Федеральный бюджет"/>
+            <xs:enumeration value="Бюджет субъекта Российской Федерации"/>
+            <xs:enumeration value="Местный бюджет"/>
+            <xs:enumeration value="Бюджет государственного внебюджетного фонда Российской Федерации"/>
+            <xs:enumeration value="Бюджет территориального государственного внебюджетного фонда"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tConstructionType">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Вид работ, на который разрабатывается проектная документация:
+1 - Строительство;
+2 - Реконструкция;
+3 - Капитальный ремонт;
+4 - Снос;
+5 - Сохранение объектов культурного наследия.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Строительство</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="2">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Реконструкция</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="3">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Капитальный ремонт</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="4">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Снос</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="5">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Сохранение объекта культурного наследия</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tPositiveDecimal">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Положительное десятичное число</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tFireDangerCategory">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Категория помещений, зданий и наружных установок по взрывопожарной и пожарной опасности</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="А"/>
+            <xs:enumeration value="Б"/>
+            <xs:enumeration value="В"/>
+            <xs:enumeration value="Г"/>
+            <xs:enumeration value="Д"/>
+            <xs:enumeration value="Категория не устанавливается"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tResponsibilityLevel">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Уровень ответственности здания или сооружения</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="повышенный"/>
+            <xs:enumeration value="нормальный"/>
+            <xs:enumeration value="пониженный"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tFunctionsClass">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Код классификатора по функциональному назначению</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern
+                value="([0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,3}\.[0-9]{1,3})|([0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,3})"
+            />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="TMeta">
+        <xs:annotation>
+            <xs:documentation>Информация о программном комплексе и версии формата</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Soft">
+                <xs:annotation>
+                    <xs:documentation>Программный комплекс</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Name" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>Наименование программного комплекса</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="Version" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>Версия программного комплекса</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="File" type="TFileFormat">
+                <xs:annotation>
+                    <xs:documentation>Тип и версия передаваемого файла</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tTEIBase">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Базовый тип для технико-экономических показателей, содержащий общие поля</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="non-empty-string">
+                <xs:annotation>
+                    <xs:documentation>Наименование показателя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Measure" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Единица измерения показателя (кодовое буквенное национальное обозначение по ОКЕИ), либо «-» в случае невозможности указать единицу измерения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" type="non-empty-string">
+                <xs:annotation>
+                    <xs:documentation>Значение показателя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OldValue" type="non-empty-string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Предыдущее значение показателя (при реконструкции)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tMainTEI">
+        <xs:annotation>
+            <xs:documentation>Главный технико-экономический показатель (все поля комплексного типа обязательны для заполнения)</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="tTEIBase">
+                <xs:sequence>
+                    <xs:element name="UnitCost" type="xs:decimal" minOccurs="1" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Стоимость за единицу показателя (обязательное поле)</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="tAdditionalTEI">
+        <xs:annotation>
+            <xs:documentation>Технико-экономический показатель</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="tTEIBase">
+                <xs:sequence>
+                    <xs:element name="UnitCost" type="xs:decimal" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Стоимость за единицу показателя</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="tCoordinates">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Тип для координат стройки в WGS 84 ((World Geodetic System 1984) — глобальная геодезическая система координат)</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Latitude" type="xs:decimal" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Широта (latitude) в десятичных градусах (диапазон: -90 до 90). Обязательное поле внутри координат</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Longitude" type="xs:decimal" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Долгота (longitude) в десятичных градусах (диапазон: -180 до 180). Обязательное поле внутри координат</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tAddress">
+        <xs:annotation>
+            <xs:documentation>Адрес</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="tAddressBase"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="tTextBlock">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Дополнительное произвольное текстовое описание
+</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Text" type="non-empty-string" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Дополнительное произвольное текстовое описание
+</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TPriceLevel">
+        <xs:annotation>
+            <xs:documentation>Описывает уровень цен, в котором составлен документ</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Year">
+                <xs:annotation>
+                    <xs:documentation>Год</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedShort">
+                        <xs:minInclusive value="1964"/>
+                        <xs:maxInclusive value="2100"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Month" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Месяц</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="12"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Quarter">
+                <xs:annotation>
+                    <xs:documentation>Квартал</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="4"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Day" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>День</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:unsignedByte">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="31"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="CalculationMethod" type="tCalculationMethod" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Метод определения сметной стоимости</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tOrganization">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Описание организации - юридического лица</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FullName" type="non-empty-string">
+                <xs:annotation>
+                    <xs:documentation>Полное наименование юридического лица</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="INN" type="non-empty-string">
+                <xs:annotation>
+                    <xs:documentation>Индивидуальный номер налогоплательщика - юридического лица</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OGRN" type="non-empty-string">
+                <xs:annotation>
+                    <xs:documentation>Основной государственный регистрационный номер юридического лица</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Address" type="tAddress">
+                <xs:annotation>
+                    <xs:documentation>Адрес (местонахождение) юридического лица</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Email" type="tEmail" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Адрес электронной почты иностранного юридического лица (филиала, представительства)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="Person" type="tPerson">
+                <xs:annotation>
+                    <xs:documentation>Сведения о физическом лице</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TFileFormat">
+        <xs:annotation>
+            <xs:documentation>Комплексный тип для описания типа и версии передаваемого файла</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Type">
+                <xs:annotation>
+                    <xs:documentation>Тип передаваемого файла: ПЗ - Пояснительная записка</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="ПЗ"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="Version" default="4.01">
+                <xs:annotation>
+                    <xs:documentation>Номер версии схемы</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:fractionDigits value="2"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tPerson">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Описание физического лица</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FamilyName" type="non-empty-string">
+                <xs:annotation>
+                    <xs:documentation>Фамилия</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FirstName" type="non-empty-string">
+                <xs:annotation>
+                    <xs:documentation>Имя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SecondName" type="non-empty-string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Отчество</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tFile">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Описание файла, включая его имя, формат и контрольную сумму для проверки целостности</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FileName" type="non-empty-string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Имя файла с расширением. Имя файла должно быть уникальным в рамках одного документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FileFormat" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Формат файла (например: gge, pdf, xlsx, docx и т.д.)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FileChecksum">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Контрольная сумма файла по алгоритму CRC32-IEEE для проверки целостности при передаче. Расчет контрольной суммы файла должен быть выполнен без элемента ExportDateTime</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="[0-9a-fA-F]{32}"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tTextBlockWithLinks" mixed="true">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Произвольное текстовое описание (поддерживается вставка ссылки на документ, который был добавлен в ПЗ (элемент ProjectDocumentationContent), через его GUID)</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="GUID" type="tGUID" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">
+                        Уникальный идентификатор документа, на который делается ссылка
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TSignatures">
+        <xs:annotation>
+            <xs:documentation>Подписи пояснительной записки</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ComposeFIO" type="TExtSignature" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Cоставил (ФИО) (Подпись исполнителя)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="VerifyFIO" type="TExtSignature" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Проверил (ФИО) (Подпись представителя заказчика)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TExtSignature">
+        <xs:annotation>
+            <xs:documentation>Подпись (Заказчик)</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="TSignature">
+                <xs:sequence>
+                    <xs:element name="Position" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Должность</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="RegistryNumber" type="xs:string" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Номер в реестре</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="TSignature">
+        <xs:annotation>
+            <xs:documentation>Подпись в пояснительной записке</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name">
+                <xs:annotation>
+                    <xs:documentation>Значение подписи</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tConstructionDates">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Даты, связанные со строительством</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="BeginDate" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Дата начала работ</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="EndDate" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Дата окончания работ</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OperationDate" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Дата ввода в эксплуатацию</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tFunctions">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Функциональное назначение объекта
+</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FunctionsNote" type="non-empty-string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Функциональное назначение объекта капитального строительства
+</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FunctionsClass" type="tFunctionsClass">
+                <xs:annotation>
+                    <xs:documentation>Функциональное назначение объекта капитального строительства (код по классификатору объектов капитального строительства по их назначению и функционально-технологическим особенностям)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tObjectParts">
+        <xs:annotation>
+            <xs:documentation>Комбинированный тип, описывающий составную часть объекта (здание, сооружение) и содержащий список его технико-экономических показателей</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ObjectPart" type="tBuildingDataTEI" minOccurs="1"
+                maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Комбинированный тип, описывающий составную часть объекта (здание, сооружение) и содержащий список его технико-экономических показателей</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:attribute name="ElectronicBudgetObjectCode" type="tElectronicBudgetObjectCode">
+        <xs:annotation>
+            <xs:documentation>Уникальный код объекта капитального строительства, присвоенный государственной интегрированной информационной системой управления общественными финансами "Электронный бюджет"</xs:documentation>
+        </xs:annotation>
+    </xs:attribute>
+    <xs:complexType name="tAddressBase">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Базовый тип адреса, содержащий общие поля</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Country" type="string500" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Страна</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Region" type="tRegionsRF" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Территориальное расположение объекта строительства. Код региона (при отсутствии кода субъекта заполняется "00")</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="District" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Область</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="City" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Город</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Settlement" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Поселок</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Street" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Улица</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Building" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Номер здания (номер дома)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Room" type="string200" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Номер помещения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Coordinates" type="tCoordinates" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Тип для координат стройки в WGS 84 ((World Geodetic System 1984) — глобальная геодезическая система координат)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="non-empty-string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Неформализованное описание адреса</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PriceZone" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Подрайон, ценовая зона в составе основного региона (субъект Российской Федерации), в котором расположен объект строительства</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="SubRegionCode" type="string200">
+                            <xs:annotation>
+                                <xs:documentation>Код подрайона, ценовой зоны (при отсутствии кода заполняется "00")</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="SubRegionName" type="string200">
+                            <xs:annotation>
+                                <xs:documentation>Наименование подрайона, ценовой зоны (Зона)</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tObjectAddress">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Тип адреса для объекта строительства. Включает обязательный признак территории</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="tAddressBase">
+                <xs:sequence>
+                    <xs:element name="TerritorySign" minOccurs="1" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Обозначение территории расположения объекта строительства:
+- не относящейся к районам Крайнего Севера и местностям, приравненным к ним (Территория);
+- относящейся к местностям, приравненным к районам Крайнего Севера (МПРКС);
+- относящейся к районам Крайнего Севера (РКС);
+- другое.</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="string200">
+                                <xs:enumeration value="территория"/>
+                                <xs:enumeration value="РКС"/>
+                                <xs:enumeration value="МПРКС"/>
+                                <xs:enumeration value="Другое"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="tResource">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Описание одного ресурса (энергетического, материального и т.д.)</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="non-empty-string">
+                <xs:annotation>
+                    <xs:documentation>Наименование необходимого ресурса</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Measure" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Единица измерения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Value" type="non-empty-string">
+                <xs:annotation>
+                    <xs:documentation>Необходимый объем ресурса</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tResources">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Перечень ресурсов</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Resource" type="tResource" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Сведения о необходимом ресурсе (сырье)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tBudgetSource">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Сведения об источнике финансирования (Бюджетные средства)</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="BudgetLevel" type="tBudgetLevel" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Уровень бюджета</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SourceRatio" type="xs:double" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Размер финансирования (доля в процентах)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TDate">
+        <xs:annotation>
+            <xs:documentation>Дата составления локального сметного расчета</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Year" type="xs:unsignedShort">
+                <xs:annotation>
+                    <xs:documentation>Год</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Month" type="xs:unsignedShort">
+                <xs:annotation>
+                    <xs:documentation>Месяц</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Day" type="xs:unsignedShort">
+                <xs:annotation>
+                    <xs:documentation>День</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TLegalBase">
+        <xs:annotation>
+            <xs:documentation>Базовый тип для описания сметных нормативов, содержащий общие элементы, такие как наименование</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>Наименование редакции (приказ, дата, номер) исходных нормативов</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TLegal">
+        <xs:annotation>
+            <xs:documentation>Описание данных, используемых для определения стоимости работ и затрат в локальном сметном расчете (сметные нормативы, индексы, и др.)</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="TLegalBase">
+                <xs:sequence>
+                    <xs:element name="Type" minOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>Тип нормативов из федерального реестра сметных нормативов</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="ГСН"/>
+                                <xs:enumeration value="ОСН"/>
+                                <xs:enumeration value="ТЕР"/>
+                                <xs:enumeration value="ИСН"/>
+                                <xs:enumeration value="НЗ"/>
+                                <xs:enumeration value="Справочная информация"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="Date" type="TDate" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Дата включения в федеральный реестр сметных нормативов</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Num" type="xs:positiveInteger" minOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>Регистрационный номер в федеральном реестре сметных нормативов</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="Orders" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Наименование редакции (приказ, дата, номер) дополнений к нормативам</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="TLegalOther">
+        <xs:annotation>
+            <xs:documentation>Расширенный тип для описания прочих нормативов, включая лимитированные затраты со ставкой и обоснованием. Включает необязательные поля из основного типа TLegal</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="TLegalBase">
+                <xs:sequence>
+                    <xs:element name="Type" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Тип нормативов из федерального реестра сметных нормативов</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="ГСН"/>
+                                <xs:enumeration value="ОСН"/>
+                                <xs:enumeration value="ТЕР"/>
+                                <xs:enumeration value="ИСН"/>
+                                <xs:enumeration value="НЗ"/>
+                                <xs:enumeration value="Справочная информация"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="Date" type="TDate" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Дата включения в федеральный реестр сметных нормативов</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Num" type="xs:positiveInteger" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Регистрационный номер в федеральном реестре сметных нормативов</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="Orders" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Наименование редакции (приказ, дата, номер) дополнений к нормативам</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Rate" type="xs:decimal" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Ставка лимитированной затраты</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="ItemNumber" type="xs:string" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Номер пункта (обоснование)</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="tBuildingDataTEI">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Комбинированный тип, описывающий составную часть объекта (здание, сооружение) и содержащий список его технико-экономических показателей
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ObjectName" type="non-empty-string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Наименование составной части объекта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ObjectAddress" type="tObjectAddress">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Адрес составной части объекта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ObjectFunctions" type="tFunctions">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Функциональное назначение составной части объекта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TechnicalEconomicIndicators" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Контейнер для списка ТЭП</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="MainTEI" type="tMainTEI">
+                            <xs:annotation>
+                                <xs:documentation>Главный технико-экономический показатель</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="AdditionalTEI"
+                            type="tAdditionalTEI">
+                            <xs:annotation>
+                                <xs:documentation>Технико-экономически показатель</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tNonIndustrialObject">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Описание объекта непроизводственного назначения</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="non-empty-string">
+                <xs:annotation>
+                    <xs:documentation>Наименование объекта капитального строительства</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ConstructionType" type="tConstructionType">
+                <xs:annotation>
+                    <xs:documentation>Вид работ, на который разрабатывается проектная документация:
+1 - Строительство;
+2 - Реконструкция;
+3 - Капитальный ремонт;
+4 - Снос;
+5 - Сохранение объектов культурного наследия.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ConstructionDuration" type="tPositiveDecimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Продолжительность работ. Указывается в месяцах</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ConstructionDates" type="tConstructionDates" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Сведения о сроках строительства, вводе в эксплуатацию</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Address" type="tObjectAddress">
+                <xs:annotation>
+                    <xs:documentation>Почтовый (строительный) адрес объекта капитального строительства или местоположение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Functions" type="tFunctions">
+                <xs:annotation>
+                    <xs:documentation>Сведения о функциональном назначении объекта капитального строительства
+</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FunctionsFeatures" type="tTextBlock" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Сведения о принадлежности к объектам транспортной инфраструктуры и к другим объектам, функционально-технологические особенности которых влияют на их безопасность</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MainTEI" type="tMainTEI" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Обязательный главный технико-экономический показатель</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="AdditionalTEI" type="tAdditionalTEI" minOccurs="0"
+                maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Технико-экономический показатель</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:choice>
+                <xs:sequence minOccurs="0">
+                    <xs:element name="FireDangerCategory" type="tFireDangerCategory" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Категория пожарной и взрывопожарной опасности</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="PeoplePermanentStay" type="tTextBlock" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Сведения о наличии помещений с постоянным пребыванием людей</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="ResponsibilityLevel" type="tResponsibilityLevel" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Уровень ответственности</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+                <xs:element name="ObjectParts" minOccurs="0" type="tObjectParts">
+                    <xs:annotation>
+                        <xs:documentation>Сведения о составных частях объекта, в случае если объект сложный</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+            <xs:element name="Resources" type="tResources" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Сведения о потребности объекта капитального строительства в топливе, газе, воде и электрической энергии</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute ref="ElectronicBudgetObjectCode" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="tIndustrialObject">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Описание объекта производственного назначения</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="non-empty-string">
+                <xs:annotation>
+                    <xs:documentation>Наименование объекта капитального строительства</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ConstructionType" type="tConstructionType">
+                <xs:annotation>
+                    <xs:documentation>Вид работ, на который разрабатывается проектная документация:
+1 - Строительство;
+2 - Реконструкция;
+3 - Капитальный ремонт;
+4 - Снос;
+5 - Сохранение объектов культурного наследия.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ConstructionDuration" type="tPositiveDecimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Продолжительность работ. Указывается в месяцах</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Address" type="tObjectAddress">
+                <xs:annotation>
+                    <xs:documentation>Почтовый (строительный) адрес объекта капитального строительства или местоположение</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Functions" type="tFunctions">
+                <xs:annotation>
+                    <xs:documentation>Сведения о функциональном назначении объекта капитального строительства
+</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FunctionsFeatures" type="tTextBlock" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Сведения о принадлежности к объектам транспортной инфраструктуры и к другим объектам, функционально-технологические особенности которых влияют на их безопасность</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MainTEI" type="tMainTEI" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Обязательный главный технико-экономический показатель</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="AdditionalTEI" type="tAdditionalTEI" minOccurs="0"
+                maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Технико-экономический показатель</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:choice>
+                <xs:sequence minOccurs="0">
+                    <xs:element name="FireDangerCategory" type="tFireDangerCategory" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Категория пожарной и взрывопожарной опасности</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="PeoplePermanentStay" type="tTextBlock" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Сведения о наличии помещений с постоянным пребыванием людей</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="ResponsibilityLevel" type="tResponsibilityLevel" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Уровень ответственности</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+                <xs:element name="ObjectParts" minOccurs="0" type="tObjectParts">
+                    <xs:annotation>
+                        <xs:documentation>Сведения о составных частях объекта, в случае если объект сложный</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+            <xs:element name="Resources" type="tResources" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Сведения о потребности объекта капитального строительства в топливе, газе, воде и электрической энергии</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute ref="ElectronicBudgetObjectCode" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="tLinearObject">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Описание линейного объекта</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="non-empty-string">
+                <xs:annotation>
+                    <xs:documentation>Наименование объекта капитального строительства</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ConstructionType" type="tConstructionType">
+                <xs:annotation>
+                    <xs:documentation>Вид работ, на который разрабатывается проектная документация:
+1 - Строительство;
+2 - Реконструкция;
+3 - Капитальный ремонт;
+4 - Снос;
+5 - Сохранение объектов культурного наследия.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ConstructionDuration" type="tPositiveDecimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Продолжительность работ. Указывается в месяцах</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ConstructionDates" type="tConstructionDates" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Сведения о сроках строительства, вводе в эксплуатацию</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Address" type="tObjectAddress">
+                <xs:annotation>
+                    <xs:documentation>Адрес начального пункта линейного объекта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Functions" type="tFunctions">
+                <xs:annotation>
+                    <xs:documentation>Сведения о функциональном назначении объекта капитального строительства, состав и характеристику производства, номенклатуру выпускаемой продукции (работ, услуг)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FunctionsFeatures" type="tTextBlock" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Сведения о принадлежности к объектам транспортной инфраструктуры и к другим объектам, функционально-технологические особенности которых влияют на их безопасность</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MainTEI" type="tMainTEI" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Обязательный главный технико-экономический показатель</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="AdditionalTEI" type="tAdditionalTEI" minOccurs="0"
+                maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Технико-экономический показатель</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:choice>
+                <xs:sequence minOccurs="0">
+                    <xs:element name="FireDangerCategory" type="tFireDangerCategory" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Категория пожарной и взрывопожарной опасности</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="PeoplePermanentStay" type="tTextBlock" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Сведения о наличии помещений с постоянным пребыванием людей</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="ResponsibilityLevel" type="tResponsibilityLevel" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation>Уровень ответственности</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+                <xs:element name="ObjectParts" minOccurs="0" type="tObjectParts">
+                    <xs:annotation>
+                        <xs:documentation>Сведения о составных частях объекта, в случае если объект сложный</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+            <xs:element name="Resources" type="tResources" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Сведения о потребности объекта капитального строительства в топливе, газе, воде и электрической энергии</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute ref="ElectronicBudgetObjectCode" use="optional"/>
+    </xs:complexType>
+    <xs:simpleType name="tDocumentType">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Классификатор типов документов в составе проектной и сметной документации. Позволяет автоматически применять разные правила валидации к разным типам документов
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ПЗ">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Пояснительная записка</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ССРСС">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Сводный сметный расчет стоимости строительства</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ОСР">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Объектный сметный расчет</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ЛСР">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Локальный сметный расчет</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="КАЦ">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Конъюнктурный анализ / Мониторинг цен</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="СВОР">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Сопоставительная ведомость объёма работ</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="СВИС">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Сопоставительная ведомость изменения стоимости</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="СЗ">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Сводка затрат (п.25 Методики 421/пр)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ВОР">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Ведомость объемов работ (п.27 Методики 421/пр)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="КАД">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Обосновывающие документы к КАЦ (п.27 Методики 421/пр)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="СР">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Калькуляция сметных расчётов на отдельные виды затрат</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="СР1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Калькуляция расценок (ФСНБ-2022, БИМ)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="СР2">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Калькуляция сметных расчетов на отдельные виды затрат (Калькуляция 1, новый карьер)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="СР3">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Калькуляция сметных расчетов на отдельные виды затрат (Калькуляция 3, другой регион)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="СР4">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Калькуляция сметных расчетов на отдельные виды затрат (для ССРСС)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="ТС">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Транспортная схема</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="ДР">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Другие документы</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:complexType name="tDocumentSummaryData">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Структура для хранения ключевых сводных показателей, извлеченных из документа. Предназначена для быстрых перекрестных проверок без необходимости парсинга исходного файла
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="TotalCost" type="xs:decimal">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Итоговая сметная стоимость по документу (для сводного сметного расчета стоимости строительства итоговая стоимость будет с НДС, для локального сметного расчета и объектного сметного расчета - без НДС)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="BasicPriceLevel" type="TPriceLevel">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Базисный уровень цен, в котором определена стоимость в данном документе (уровень цен нормативной базы. Для ФСНБ-2001 это 01.01.2000, для ФСНБ-2022 - это 01.01.2022)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CurentPriceLevel" type="TPriceLevel">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Текущий уровень цен, в котором определена стоимость в данном документе</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tProjectDocument">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Комплексное описание одного документа в составе проектной документации. Представляет собой "карточку документа" со всеми необходимыми метаданными</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="GUID" type="tGUID">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Уникальный идентификатор документа в формате GUID. Используется как "первичный ключ" для установки связей между документами</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocumentType" type="tDocumentType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Тип документа согласно классификатору `tDocumentType`. Обязателен для заполнения.
+ЛСР - локальный сметный расчет;
+ОСР - объектный сметный расчет;
+ССРСС - сводный сметный расчет стоимости строительства;
+КАЦ - конъюнктурный анализ;
+КАД - обосновывающие документы к КАЦ;
+ВОР - ведомость объемов работ;
+СЗ - сводка затрат;
+СВОР - сопоставительная ведомость объекмов работ;
+СВИС - сопоставительная ведомость изменения стоимости;
+СР - Калькуляция сметных расчётов на отдельные виды затрат;
+СР1 - калькуляция расценок (ФСНБ-2022 → БИМ);
+СР2 - калькуляция сметных расчетов на отдельные виды затрат (калькуляции 1, новый карьер);
+СР3 - калькуляция сметных расчетов на отдельные виды затрат (калькуляции 3, др. регион);
+СР4 - калькуляция сметных расчетов на отдельные виды затрат (для ССР);
+ТС - транспортная схема;
+ДР - другие документы.
+</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocumentCode" type="string200" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Официальный шифр или обозначение документа, принятое в проекте (например, из основной надписи на чертежах)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocumentName" type="string500">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Полное официальное наименование документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="File" type="tFile">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Информация о связанном физическом файле документа (имя и формат). Имя файла должно быть уникальным в рамках одного документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SummaryData" type="tDocumentSummaryData" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Структурированный блок с ключевыми сводными показателями из документа. Заполняется для документов, содержащих расчетные данные (сметы).
+Для объектного сметного расчета и сводного сметного расчета стоимости строительства - заполняется в тысячах рублей. Для локального сметного расчета - в рублях</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Dependencies" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Блок для описания зависимостей от других документов в составе проекта</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="DependsOnGUID" type="tGUID" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="ru">Уникальный идентификатор (GUID) документа, от которого зависит текущий документ (например, ЛСР зависит от КАЦ, а ССРСС зависит от ОСР, ЛСР и т.д.)</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ProjectDocumentationContentType">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Корневой элемент для хранения полного перечня структурированной проектной документации. Содержит массив "карточек документов"
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="ProjectDocument" type="tProjectDocument" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Элемент, описывающий один документ проекта. Может повторяться для каждого документа в составе проектной документации</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="CostRow">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Строка в таблице стоимостей, содержащая стоимость в базисном и текущем уровне цен</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="BasicLevelPrice" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Базисный уровень цен</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CurrentLevelPrice" type="xs:decimal" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Текущий уровень цен</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CostSummary">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Сводка сметной стоимости по основным категориям затрат (Всего, СМР, оборудование, прочие (в т.ч. проектно-изыскательские работы))</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Total" type="CostRow">
+                <xs:annotation>
+                    <xs:documentation>Сметная стоимость всего</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ConstructionWorks" type="CostRow">
+                <xs:annotation>
+                    <xs:documentation>Сметная стоимость строительно-монтажных работ</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Equipment" type="CostRow">
+                <xs:annotation>
+                    <xs:documentation>Сметная стоимость оборудования</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OtherCosts" type="CostRow">
+                <xs:annotation>
+                    <xs:documentation>Сметная стоимость прочих работ и затрат</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DesignAndSurveyWorks" type="CostRow" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Сметная стоимость проектно-изыскательских работ</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Vat" type="CostRow">
+                <xs:annotation>
+                    <xs:documentation>В том числе НДС в составе всего сметной стоимости</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="EstimateExplanatoryNoteType">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Основной тип, описывающий содержание Пояснительной записки к сметной документации. Содержит сведения об источниках финансирования, примененных нормативах и итоговых стоимостных показателях</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="FinanceSource" type="tFinanceSources">
+                <xs:annotation>
+                    <xs:documentation>Структурированные сведения об источниках финансирования</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Legal">
+                <xs:annotation>
+                    <xs:documentation>Структурированное описание данных, используемых для определения стоимости (сметные нормативы, индексы, методики и т.д.)</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Main" type="TLegal" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Информация об используемой сметно-нормативной базе</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="Metodology" type="TLegal">
+                            <xs:annotation>
+                                <xs:documentation>Информация о Методике определения сметной стоимости строительства, реконструкции, капитального ремонта, сноса объектов капитального строительства, работ по сохранению объектов культурного наследия (памятников истории и культуры) народов Российской Федерации на территории Российской Федерации</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="Overheads" type="TLegal">
+                            <xs:annotation>
+                                <xs:documentation>Информация о Методике по разработке и применению нормативов накладных расходов при определении сметной стоимости строительства, реконструкции, капитального ремонта, сноса объектов капитального строительства</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="Profits" type="TLegal">
+                            <xs:annotation>
+                                <xs:documentation>Информация о Методике по разработке и применению нормативов сметной прибыли при определении сметной стоимости строительства, реконструкции, капитального ремонта, сноса объектов капитального строительства</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="Indexes" type="TLegal" minOccurs="0" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Реквизиты письма Минстроя России об индексах изменения сметной стоимости строительства, включаемые в федеральный реестр сметных нормативов и размещаемые в федеральной государственной информационной системе ценообразования в строительстве, подготовленного в соответствии пунктом 85 Методики расчета индексов изменения сметной стоимости строительства, утвержденной приказом Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 5 июня 2019 г. № 326/пр (с изменениями от 20 февраля 2021 г. № 79/пр, от 13 января 2023 г. № 17/пр, от 6 октября 2023 г. № 727/пр)</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="Industry" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation><text>Наименование корпорации или принадлежности к отрасли. Например:
+АКЦИОНЕРНАЯ КОМПАНИЯ "АЛРОСА" (ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО) – АЛР;
+ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО "РОССИЙСКИЕ ЖЕЛЕЗНЫЕ ДОРОГИ" - РЖД;
+ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО "ФЕДЕРАЛЬНАЯ СЕТЕВАЯ КОМПАНИЯ - РОССЕТИ" - РСС;
+ГОСУДАРСТВЕННАЯ КОРПОРАЦИЯ ПО АТОМНОЙ ЭНЕРГИИ "РОСАТОМ" – РСТ;
+ПУБЛИЧНОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО "ТРАНСНЕФТЬ" – ТРН.
+Обозначение присваивается в соответствии с информацией, размещенной в ФГИС ЦС (примечания в формах цен строительных ресурсов)</text></xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="Other" type="TLegalOther" minOccurs="0"
+                            maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Информация о прочих используемых нормативах, включая лимитированные затраты</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="Coefficients">
+                <xs:annotation>
+                    <xs:documentation>Поправочные коэффициенты (учитывающие усложняющие факторы и (или) условия производства работ), применяемые к показателям позиции в локальном сметном расчете к количеству или к стоимости.Округление до 7-ми знаков. Округление производится один раз после всех математических операций
+</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="Coefficient">
+                            <xs:annotation>
+                                <xs:documentation>Поправочный коэффициент, применяемый к показателю позиции в локальном сметном расчете</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:complexContent>
+                                    <xs:extension base="TCostCoefficients">
+                                        <xs:sequence>
+                                            <xs:element name="Name" type="xs:string" minOccurs="1">
+                                                <xs:annotation>
+                                                  <xs:documentation>Наименование коэффициента. Указывается наименование, величина, а также составляющие единичных расценок, к которым коэффициент применяется</xs:documentation>
+                                                </xs:annotation>
+                                            </xs:element>
+                                            <xs:element name="Reason" type="xs:string" minOccurs="1">
+                                                <xs:annotation>
+                                                  <xs:documentation>Обоснование коэффициента (шифр коэффициента (при наличии) или ссылка на положения сметных нормативов и (или) пункты разделов сборников единичных расценок)</xs:documentation>
+                                                </xs:annotation>
+                                            </xs:element>
+                                        </xs:sequence>
+                                    </xs:extension>
+                                </xs:complexContent>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="BasicPriceLevel" type="TPriceLevel">
+                <xs:annotation>
+                    <xs:documentation>Базисный уровень цен, в котором определена стоимость в данном документе (уровень цен нормативной базы. Для ФСНБ-2001 это 01.01.2000, для ФСНБ-2022 - это 01.01.2022)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CurrentPriceLevel" type="TPriceLevel">
+                <xs:annotation>
+                    <xs:documentation>Текущий уровень цен, в котором определена стоимость в данном документе</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CostSummary" type="CostSummary">
+                <xs:annotation>
+                    <xs:documentation>Сводка сметной стоимости по основным категориям затрат (Всего, СМР, оборудование, прочие (в т.ч. проектно-изыскательские работы)).</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="IsCorrection" type="xs:boolean" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Индикатор статуса пояснительной записки:
+Значение true (1) - корректировка;
+Значение false (0) - новая.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tFinanceSources">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Сведения об источниках финансирования</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:choice minOccurs="1" maxOccurs="unbounded">
+                <xs:element name="BudgetSource" type="tBudgetSource">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="ru">Сведения об источнике финансирования (Бюджетные средства)</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="StateCustomerSource" type="tStateCustomerSource" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="ru">Сведения об источнике финансирования (Средства юридических лиц, перечисленных в части 2 статьи 8.3 Градостроительного кодекса Российской Федерации)</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="PrivateSource" type="tPrivateSource">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="ru">Сведения об источнике финансирования (Средства, не входящие в перечень, указанный в части 2 статьи 8.3 Градостроительного кодекса Российской Федерации)</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+            <xs:element name="FinanceComment" type="non-empty-string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Комментарий к сведениям об источниках финансирования</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tPrivateSource">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Средства, не входящие в перечень, указанный в части 2 статьи 8.3 Градостроительного кодекса Российской Федерации</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="SourceRatio" type="xs:double" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Размер финансирования (доля в процентах)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tStateCustomerSource">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Сведения об источнике финансирования (Средства юридических лиц, перечисленных в части 2 статьи 8.3 Градостроительного кодекса Российской Федерации)</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Owner" type="tTechnicalCustomer" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Юридическое лицо, владелец средств.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SourceRatio" type="xs:double" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Размер финансирования (доля в процентах)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tTechnicalCustomer">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">
+                Тип, определяющий технического заказчика (юридическое лицо).
+                Может быть либо российской организацией, либо иностранным юридическим лицом
+                (представительством или филиалом).
+            </xs:documentation>
+        </xs:annotation>
+
+        <xs:choice minOccurs="1" maxOccurs="1">
+            <xs:element name="Organization" type="tOrganization">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">
+                        Юридическое лицо, зарегистрированное на территории Российской Федерации.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="ForeignOrganization" type="tForeignOrganization">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">
+                        Иностранное юридическое лицо, филиал или представительство.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="tTextBlockTable">
+        <xs:annotation>
+            <xs:documentation>Дополнительное произвольное текстовое описание, подготовленное разработчиком сметной документации. Содержит произвольный текст и таблицы</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:choice minOccurs="1" maxOccurs="unbounded">
+                <xs:element name="SubTitle" type="non-empty-string" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Подзаголовок</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Text" type="tTextBlockWithLinks" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Произвольное текстовое описание (поддерживается вставка ссылки на документ, который был добавлен в ПЗ (элемент ProjectDocumentationContent), через его GUID)</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Table" type="tTable" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Произвольная таблица. Может содержать любое количество столбцов и строк (поддерживается вставка ссылки на документ, который был добавлен в ПЗ (элемент ProjectDocumentationContent), через его GUID)</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="Title" type="non-empty-string" use="optional">
+            <xs:annotation>
+                <xs:documentation>Наименование блока с произвольным описанием</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="tTable">
+        <xs:annotation>
+            <xs:documentation>Произвольная таблица. Может содержать любое количество столбцов и строк (поддерживается вставка ссылки на документ, который был добавлен в ПЗ (элемент ProjectDocumentationContent), через его GUID)</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="TitleRow" type="tRow" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Столбцы таблицы</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Row" type="tRow" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Строки таблицы</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tRow">
+        <xs:annotation>
+            <xs:documentation>Наименование столбца или строки таблицы</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Cell" type="tCell" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Наименование столбца или строки таблицы</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tCell" mixed="true">
+        <xs:annotation>
+            <xs:documentation>Комплексный тип, поддерживающий вставку ссылки на документ, который был добавлен в ПЗ (элемент ProjectDocumentationContent), через его GUID</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="GUID" type="tGUID" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Уникальный идентификатор документа, на который делается ссылка</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="align" type="tAlignTypes" use="optional">
+            <xs:annotation>
+                <xs:documentation>Выравнивание текста</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:simpleType name="tElectronicBudgetObjectCode">
+        <xs:annotation>
+            <xs:documentation>Уникальный код объекта капитального строительства, присвоенный государственной интегрированной информационной системой управления общественными финансами "Электронный бюджет" </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{18}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tAlignTypes">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru">Варианты выравнивания текста</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="left"/>
+            <xs:enumeration value="right"/>
+            <xs:enumeration value="center"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="TCostCoefficients">
+        <xs:annotation>
+            <xs:documentation>Поправочный коэффициент, учитывающий усложняющие факторы и (или) условия производства работ, применяется к элементам затрат или объему работ</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Values">
+                <xs:annotation>
+                    <xs:documentation>Значения коэффициента</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Value" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Значение коэффициента</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:choice>
+                                        <xs:element name="Target">
+                                            <xs:annotation>
+                                                <xs:documentation>Элемент, к которому применяется поправочный коэффициент</xs:documentation>
+                                            </xs:annotation>
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:enumeration value="Объем"/>
+                                                  <xs:enumeration value="ОТ"/>
+                                                  <xs:enumeration value="ЭМ"/>
+                                                  <xs:enumeration value="ОТМ"/>
+                                                  <xs:enumeration value="МАТ"/>
+                                                  <xs:enumeration value="ОБ"/>
+                                                  <xs:enumeration value="ЗТ"/>
+                                                  <xs:enumeration value="ЗТМ"/>
+                                                  <xs:enumeration value="НР"/>
+                                                  <xs:enumeration value="СП"/>
+                                                  <xs:enumeration value="Ресурс"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                    </xs:choice>
+                                    <xs:element name="CoefValue" type="xs:decimal" minOccurs="0">
+                                        <xs:annotation>
+                                            <xs:documentation>Значение коэффициента</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Construction">
+        <xs:annotation>
+            <xs:documentation>Корневой элемент Пояснительной записки.
+Элемент обязан содержать атрибуты, указывающие на применяемый xsd-шаблон описания пояснительной записки:
+xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance";
+xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
+Электронные документы, представляемые для проведения государственной экспертизы проектной документации и (или) результатов инженерных изысканий и проверки достоверности определения сметной стоимости строительства, реконструкции, капитального ремонта, должны иметь расширение файла .gge</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Meta" type="TMeta">
+                    <xs:annotation>
+                        <xs:documentation>Информация о программном комплексе, использующемся для составления локального сметного расчета</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ObjectDescription">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="ru">Элемент предназначен для комплексного описания идентификационных и технических характеристик объекта капитального строительства </xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="NonIndustrialObject" type="tNonIndustrialObject">
+                                <xs:annotation>
+                                    <xs:documentation>Описание объекта непроизводственного назначения</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="IndustrialObject" type="tIndustrialObject">
+                                <xs:annotation>
+                                    <xs:documentation>Описание объекта производственного назначения</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="LinearObject" type="tLinearObject">
+                                <xs:annotation>
+                                    <xs:documentation>Описание линейного объекта</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="ProjectDocumentationContent"
+                    type="ProjectDocumentationContentType">
+                    <xs:annotation>
+                        <xs:documentation> Элемент для хранения полного перечня структурированной проектной документации. Содержит массив "карточек документов"</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="ExplanatoryNoteEstimate" type="EstimateExplanatoryNoteType"
+                    minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Содержание Пояснительной записки к сметной документации. Содержит сведения об источниках финансирования, примененных нормативах и итоговых стоимостных показателях</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element minOccurs="1" name="Signatures" type="TSignatures">
+                    <xs:annotation>
+                        <xs:documentation>Подписи исполнителя, представителей заказчика и подрядчика</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="DesignerNote"
+                    type="tTextBlockTable">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="ru">Дополнительное произвольное текстовое описание, подготовленное разработчиком сметной документации</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element minOccurs="1" name="ExportDateTime" type="xs:dateTime">
+                    <xs:annotation>
+                        <xs:documentation>Дата и время выгрузки документа из программного продукта (сметной программы) с учетом часового пояса в формате ISO 8601 (ГГГГ-ММ-ДД ЧЧ:ММ:СС+03:00)</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

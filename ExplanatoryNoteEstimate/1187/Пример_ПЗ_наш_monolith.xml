@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../GIT/xsd/ExplanatoryNoteEstimate/ExplanatoryNoteEstimate.xsl"?>
+<GgeExplanatoryNote
+    xmlns="http://gge.ru/schema/PZ/Monolith-Absolute-Final"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://gge.ru/schema/PZ/Monolith-Absolute-Final ExplanatoryNoteEstimate.xsd"
+    SchemaVersion="Final-Monolith-Complete-1.0">
+    
+    <ObjectDescription>
+        <NonIndustrialObject ObjectID="77-2024-001" Placement="городская территория">
+            <Name>Жилой дом с подземным паркингом</Name>
+            <ConstructionType>1</ConstructionType>
+            <ConstructionDuration>24</ConstructionDuration>
+            <Address>
+                <Country>Россия</Country>
+                <Region>77</Region>
+                <City>Москва</City>
+                <Street>Арбат</Street>
+                <Building>10</Building>
+                <Note>Центральный административный округ</Note>
+            </Address>
+            <Functions>
+                <FunctionsNote>Многоквартирный жилой дом (6 - 10 этажей)</FunctionsNote>
+                <FunctionsClass>01.02.001.004</FunctionsClass>
+            </Functions>
+            <PowerIndicator>
+                <Name>Общая площадь здания</Name>
+                <Measure>м2</Measure>
+                <Value>9500</Value>
+            </PowerIndicator>
+            <TEI>
+                <Name>Строительный объем здания</Name>
+                <Measure>м3</Measure>
+                <Value>38500</Value>
+            </TEI>
+            <TEI>
+                <Name>Количество этажей</Name>
+                <Measure>шт</Measure>
+                <Value>10</Value>
+            </TEI>
+            
+            <TEI>
+                <Name>Общая площадь квартир</Name>
+                <Measure>м2</Measure>
+                <Value>7300</Value>
+            </TEI>
+            <TEI>
+                <Name>Площадь подземного паркинга</Name>
+                <Measure>м2</Measure>
+                <Value>1800</Value>
+            </TEI>
+            <TEI>
+                <Name>Число машиномест</Name>
+                <Measure>шт</Measure>
+                <Value>65</Value>
+            </TEI>
+            <Resources/>
+        </NonIndustrialObject>
+    </ObjectDescription>
+    <ProjectParticipants>
+        <Developer>
+            <Organization>
+                <FullName>ООО "ИнвестСтрой"</FullName>
+                <INN>7701234567</INN>
+                <OGRN>1107701234567</OGRN>
+                <Address>
+                    <Country>Россия</Country>
+                    <Region>77</Region>
+                    <City>Москва</City>
+                    <Street>Строителей</Street>
+                    <Building>15</Building>
+                    <Note>Офис компании</Note>
+                </Address>
+            </Organization>
+        </Developer>
+        <Designer>
+            <Organization>
+                <FullName>ООО "Архитектура и Проект"</FullName>
+                <INN>7712345678</INN>
+                <OGRN>1107712345678</OGRN>
+                <Address>
+                    <Country>Россия</Country>
+                    <Region>77</Region>
+                    <City>Москва</City>
+                    <Street>Проектная</Street>
+                    <Building>7</Building>
+                    <Note>Головной офис</Note>
+                </Address>
+            </Organization>
+        </Designer>
+    </ProjectParticipants>
+    <UsedAbbreviations>
+        <Text>ПЗ — пояснительная записка, ТЭП — технико-экономические показатели.</Text>
+    </UsedAbbreviations>
+    <ProjectDocumentationContent>
+        <ProjectDocument>
+            <DocumentID>11111111-2222-3333-4444-555555555555</DocumentID>
+            <DocumentType>ПЗ</DocumentType>
+            <DocumentName>Пояснительная записка</DocumentName>
+            <File>
+                <FileName>ПЗ на строительство многоэтажного дома.gge</FileName>
+                <FileFormat>xml</FileFormat>
+                <FileChecksum>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</FileChecksum>
+            </File>
+        </ProjectDocument>
+        <ProjectDocument>
+            <DocumentID>22222222-3333-4444-5555-666666666666</DocumentID>
+            <DocumentType>ЛС</DocumentType>
+            <DocumentName>ЛС-02-01-09. Электроснабжение. Электроосвещение</DocumentName>
+            <File>
+                <FileName>02-01-09 Электроснабжение.gge</FileName>
+                <FileFormat>xml</FileFormat>
+                <FileChecksum>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</FileChecksum>
+            </File>
+        </ProjectDocument>
+        <ProjectDocument>
+            <DocumentID>33333333-4444-5555-6666-777777777777</DocumentID>
+            <DocumentType>ЛС</DocumentType>
+            <DocumentName>ЛСР. Монтаж металлического ограждения</DocumentName>
+            <File>
+                <FileName>Раздел ПД№12ЛСР металлическое ограждение.gge</FileName>
+                <FileFormat>xml</FileFormat>
+                <FileChecksum>cccccccccccccccccccccccccccccccc</FileChecksum>
+            </File>
+        </ProjectDocument>
+        <ProjectDocument>
+            <DocumentID>44444444-5555-6666-7777-888888888888</DocumentID>
+            <DocumentType>ОС</DocumentType>
+            <DocumentName>Раздел ПД №9_01-01-001_СМ ОС ТЦ</DocumentName>
+            <File>
+                <FileName>ОСР-09-02 ПС 220 кВ Минусинская-Опорная.gge</FileName>
+                <FileFormat>xml</FileFormat>
+                <FileChecksum>dddddddddddddddddddddddddddddddd</FileChecksum>
+            </File>
+        </ProjectDocument>
+        <ProjectDocument>
+            <DocumentID>55555555-6666-7777-8888-999999999999</DocumentID>
+            <DocumentType>ССР</DocumentType>
+            <DocumentName>CСРСС. Реконструкция ВЛ 330 кВ (переустройство подтапливаемых участков)</DocumentName>
+            <File>
+                <FileName>Раздел ПД №9_07-3-126-СМ1_ ССРСС (ТЦ) Изм.3 (1).gge</FileName>
+                <FileFormat>xml</FileFormat>
+                <FileChecksum>eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</FileChecksum>
+            </File>
+        </ProjectDocument>
+        <ProjectDocument>
+            <DocumentID>15555555-2666-3777-4888-599999999999</DocumentID>
+            <DocumentType>КА</DocumentType>
+            <DocumentName>Конъюнктурный анализ №1</DocumentName>
+            <File>
+                <FileName>Раздел ПД №12. Подраздел 5_43.П005-СМ5.1.gge</FileName>
+                <FileFormat>xml</FileFormat>
+                <FileChecksum>ffffffffffffffffffffffffffffffff</FileChecksum>
+            </File>
+        </ProjectDocument>
+        <ProjectDocument>
+            <DocumentID>18795555-2666-3777-4888-599333999999</DocumentID>
+            <DocumentType>ВОР</DocumentType>
+            <DocumentName>Ведомость объемов работ</DocumentName>
+            <File>
+                <FileName>Раздел ПД №12 ВОР.gge</FileName>
+                <FileFormat>xml</FileFormat>
+                <FileChecksum>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</FileChecksum>
+            </File>
+        </ProjectDocument>
+        <ProjectDocument>
+            <DocumentID>12555555-2366-3477-4588-569999999999</DocumentID>
+            <DocumentType>СЗ</DocumentType>
+            <DocumentName>Сводка затрат</DocumentName>
+            <File>
+                <FileName>Раздел ПД №9_07-3-126-СМ1_СЗ (1).gge</FileName>
+                <FileFormat>xml</FileFormat>
+                <FileChecksum>gggggggggggggggggggggggggggggggg</FileChecksum>
+            </File>
+        </ProjectDocument>
+        <ProjectDocument>
+            <DocumentID>12355555-2346-3457-4568-567999999999</DocumentID>
+            <DocumentType>КАД</DocumentType>
+            <DocumentName>Обосновывающие документы к КАЦ (п.27 Методики 421/пр)</DocumentName>
+            <File>
+                <FileName>Обосновывающие документы к КАЦ (п.27 Методики 421/пр).pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</FileChecksum>
+            </File>
+        </ProjectDocument>
+        <ProjectDocument>
+            <DocumentID>12345555-2345-3456-4567-567899999999</DocumentID>
+            <DocumentType>КРФ</DocumentType>
+            <DocumentName>Калькуляция расценок (ФСНБ-2022, BIM)</DocumentName>
+            <File>
+                <FileName>Калькуляция расценок (ФСНБ-2022, BIM).pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</FileChecksum>
+            </File>
+        </ProjectDocument>
+        <ProjectDocument>
+            <DocumentID>12346555-2346-3457-4568-567819999999</DocumentID>
+            <DocumentType>КВЗ1</DocumentType>
+            <DocumentName>Калькуляция сметных расчетов на отдельные виды затрат (Калькуляция 1, новый карьер)</DocumentName>
+            <File>
+                <FileName>Калькуляция сметных расчетов на отдельные виды затрат (Калькуляция 1, новый карьер).pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>lllllllllllllllllllllllllllllll</FileChecksum>
+            </File>
+        </ProjectDocument>
+        <ProjectDocument>
+            <DocumentID>12385555-2346-3457-4568-567129999999</DocumentID>
+            <DocumentType>КВЗ1</DocumentType>
+            <DocumentName>Калькуляция сметных расчетов на отдельные виды затрат (Калькуляция 1, новый карьер)</DocumentName>
+            <File>
+                <FileName>Калькуляция сметных расчетов на отдельные виды затрат (Калькуляция 1, новый карьер).pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>lllllllllllllllllllllllllllllll</FileChecksum>
+            </File>
+        </ProjectDocument>
+        <ProjectDocument>
+            <DocumentID>12395555-2346-3457-4568-567123999999</DocumentID>
+            <DocumentType>КВЗ3</DocumentType>
+            <DocumentName>Калькуляция сметных расчетов на отдельные виды затрат (Калькуляция 3, другой регион)</DocumentName>
+            <File>
+                <FileName>Калькуляция сметных расчетов на отдельные виды затрат (Калькуляция 3, другой регион).pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj</FileChecksum>
+            </File>
+        </ProjectDocument>
+        <ProjectDocument>
+            <DocumentID>12387555-2346-3457-4568-567123499999</DocumentID>
+            <DocumentType>КВЗ3</DocumentType>
+            <DocumentName>Калькуляция сметных расчетов на отдельные виды затрат (Калькуляция 3, другой регион)</DocumentName>
+            <File>
+                <FileName>Калькуляция сметных расчетов на отдельные виды затрат (Калькуляция 3, другой регион).pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj</FileChecksum>
+            </File>
+        </ProjectDocument>
+        <ProjectDocument>
+            <DocumentID>12369855-2346-3457-4568-567123459999</DocumentID>
+            <DocumentType>ДР</DocumentType>
+            <DocumentName>Иные документы</DocumentName>
+            <File>
+                <FileName>Иные (другие) документы.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr</FileChecksum>
+            </File>
+        </ProjectDocument>
+    </ProjectDocumentationContent>
+    
+    <DesignerAssurance>
+        <Text>Проектная документация соответствует требованиям законодательства и действующих нормативов.</Text>
+    </DesignerAssurance>
+    
+    <ExplanatoryNoteEstimate>
+        <FinanceSource>
+            <BudgetSource>
+                <BudgetLevel>Федеральный бюджет</BudgetLevel>
+                <SourceRatio>60</SourceRatio>
+            </BudgetSource>
+            <BudgetSource>
+                <BudgetLevel>Бюджет субъекта Российской Федерации</BudgetLevel>
+                <SourceRatio>40</SourceRatio>
+            </BudgetSource>
+        </FinanceSource>
+        <UsedNorms>
+            <Text>Сметные нормы на строительные работы (ГЭСН 81-02-01..47-2022), сметные нормы на ремонтно-строительные работы (ГЭСНр 81-02..51..69-2022), сметные нормы на монтаж оборудования (ГЭСНм 81-03-01..40-2022), сметные нормы на пусконаладочные работы (ГЭСНп 81-05-01..09-2022), утвержденные приказом Минстроя России от 30.12.2021 № 1046/пр.</Text>
+            <LimitedCost>
+                <CostName>Норматив затрат на строительство титульных временных зданий и сооружений</CostName>
+                <Value>1.9</Value>
+                <Justification>согласно пункту 1 таблицы Приложения № 1 к Методике определения затрат на строительство временных зданий и сооружений, включаемых в сводный сметный расчет стоимости строительства объектов капитального строительства, утвержденной приказом Минстроя России от 19.06.2020 № 332/пр</Justification>
+            </LimitedCost>
+            <LimitedCost>
+                <CostName>Норматив дополнительных затрат при производстве работ в зимнее время по объекту капитального строительства</CostName>
+                <Value>2.5</Value>
+                <Justification>согласно пункту 3 таблицы Приложения № 2 Методики определения дополнительных затрат при производстве работ в зимнее время, утвержденной приказом Минстроя России от 25.05.2021 № 325/пр.</Justification>
+            </LimitedCost>
+            <LimitedCost>
+                <CostName>Резерв средств на непредвиденные работы и затраты</CostName>
+                <Value>2</Value>
+                <Justification>согласно пункту 179 Методики № 421/пр.</Justification>
+            </LimitedCost>
+            <Text>Сметная стоимость определена в уровне цен 2 квартала 2024 года с применением сметных цен строительных ресурсов, сметных цен услуг на перевозку и погрузочно-разгрузочные работы, а также сметных цен на затраты труда работников в строительстве для Московской области, размещенных в Федеральной государственной информационной системе ценообразования в строительстве (далее – ФГИС ЦС) и предназначенных для определения сметной стоимости ресурсно-индексным методом.</Text>
+            <NormativeBase>
+                <BaseName>ФСБЦ 81-01-2022 и ФСЭМ 81-01-2022</BaseName>
+                <LetterDate>2024-04-25</LetterDate>
+                <LetterNumber>17118-ИФ/09</LetterNumber>
+            </NormativeBase>
+            <PirCostRecalculation>
+                <Description>Стоимость работ по подготовке проектной документации и по выполнению инженерных изысканий</Description>
+                <TargetQuarter>2</TargetQuarter>
+                <TargetYear>2024</TargetYear>
+                <LetterDate>2024-04-25</LetterDate>
+                <LetterNumber>17118-ИФ/09</LetterNumber>
+            </PirCostRecalculation>
+            <Text>Сумма налога на добавленную стоимость (НДС) включена в сметную стоимость объекта в текущем уровне цен согласно пп. 180, 181 Методики № 421/пр.</Text>
+        </UsedNorms>
+        <CostingJustification>
+            <Coefficients>
+                <Coefficient>
+                    <CodeCoef>п. 54 Таблицы 3 Приложения № 10 к Методике 421/пр</CodeCoef>
+                    <Name>Коэффициент на усложняющие условия производства работ</Name>
+                    <Justification>Применяется к элементам прямых затрат: оплата труда рабочих (ОЗП) и трудозатраты рабочих (ТЗ).</Justification>
+                    <Value>1.15</Value>
+                </Coefficient>
+                <Coefficient>
+                    <CodeCoef>п. 54 Таблицы 3 Приложения № 10 к Методике 421/пр</CodeCoef>
+                    <Name>Коэффициент на усложняющие условия производства работ</Name>
+                    <Justification>Применяется к элементам прямых затрат: эксплуатация машин (ЭМ), оплата труда машинистов (ЗПМ) и трудозатраты машинистов (ТЗМ).</Justification>
+                    <Value>1.25</Value>
+                </Coefficient>
+            </Coefficients>
+            <Description>
+                <Text>В сметной документации учтено применение коэффициентов, учитывающих влияние условий производства работ, предусмотренных проектной и (или) иной технической документацией.</Text>
+            </Description>
+            <Reference>
+                <Text>(пункт 54 Таблицы 3 приложения 10 Методики 421/пр)</Text>
+            </Reference>
+        </CostingJustification>
+        <PriceLevel>
+            <Year>2024</Year>
+            <Quarter>2</Quarter>
+            
+            <CalculationMethod>Ресурсно-индексный</CalculationMethod>
+            <Note>Расчет сметной стоимости выполнен во II квартале 2024 года.</Note>
+        </PriceLevel>
+        
+        <CostSummary>
+            <Total>
+                <BasicLevelPrice>10000.00</BasicLevelPrice>
+                <CurrentLevelPrice>15000.00</CurrentLevelPrice>
+            </Total>
+            <ConstructionWorks>
+                <BasicLevelPrice>7000.00</BasicLevelPrice>
+                <CurrentLevelPrice>10000.00</CurrentLevelPrice>
+            </ConstructionWorks>
+            <Equipment>
+                <BasicLevelPrice>2000.00</BasicLevelPrice>
+                <CurrentLevelPrice>3000.00</CurrentLevelPrice>
+            </Equipment>
+            <OtherCosts>
+                <BasicLevelPrice>1000.00</BasicLevelPrice>
+                <CurrentLevelPrice>2000.00</CurrentLevelPrice>
+            </OtherCosts>
+            <Vat>
+                <CurrentLevelPrice>2500.00</CurrentLevelPrice>
+            </Vat>
+        </CostSummary>
+        
+        <UnitCostIndicator>
+            <Name>Общая площадь здания</Name> <Measure>м2</Measure>
+            <Value>9500</Value>
+        </UnitCostIndicator>
+    </ExplanatoryNoteEstimate>
+    
+    <DesignerNote Title="Дополнительные сведения о проектных решениях">
+        <Text>Проектные решения по жилому дому с подземным паркингом были разработаны с учетом современных требований к энергоэффективности и экологичности зданий. Применены инновационные материалы и технологии, обеспечивающие снижение эксплуатационных расходов и повышение комфорта проживания. Особое внимание уделено интеграции объекта в существующую городскую застройку и созданию благоприятной среды для жителей.</Text>
+        <Text>Для обеспечения безопасности объекта предусмотрены современные системы пожаротушения, видеонаблюдения и контроля доступа. Конструктивные решения выполнены с учетом сейсмической активности района, что гарантирует устойчивость здания к внешним воздействиям. Подземный паркинг оснащен системами вентиляции и пожарной сигнализации, соответствующими всем нормативным требованиям.</Text>
+        <SubTitle>Применяемые технологии</SubTitle>
+        <Text>В проекте используются следующие передовые технологии:</Text>
+        <Text>- Система "умный дом" для управления освещением, отоплением и безопасностью.</Text>
+        <Text>- Использование солнечных панелей для частичного обеспечения электроэнергией общих зон.</Text>
+        <Text>- Система сбора и очистки дождевой воды для технических нужд.</Text>
+        <Text>- Применение BIM-моделирования на всех этапах проектирования для повышения точности и сокращения сроков.</Text>
+        <SubTitle>Основные решения по благоустройству территории</SubTitle>
+        <Table>
+            <TitleRow>
+                <Cell>Элемент благоустройства</Cell>
+                <Cell>Описание</Cell>
+                <Cell>Площадь/Количество</Cell>
+            </TitleRow>
+            <Row>
+                <Cell>Детская площадка</Cell>
+                <Cell>Современное игровое оборудование, безопасное покрытие</Cell>
+                <Cell>200 м2</Cell>
+            </Row>
+            <Row>
+                <Cell>Спортивная зона</Cell>
+                <Cell>Тренажеры на открытом воздухе, покрытие из резиновой крошки</Cell>
+                <Cell>150 м2</Cell>
+            </Row>
+            <Row>
+                <Cell>Озеленение</Cell>
+                <Cell>Высадка деревьев, кустарников и создание газонов</Cell>
+                <Cell>1000 м2</Cell>
+            </Row>
+            <Row>
+                <Cell>Пешеходные дорожки</Cell>
+                <Cell>Асфальтобетонное покрытие с тактильными элементами</Cell>
+                <Cell>500 м. пог.</Cell>
+            </Row>
+        </Table>
+        <Text>Предполагается установка малых архитектурных форм и организация зон отдыха для жителей. Прилегающая территория будет оборудована системой наружного освещения и видеонаблюдения для повышения уровня безопасности.</Text>
+        <Image Type="png">
+            <ImageData>iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=</ImageData>
+            <Comment>Примерная схема благоустройства территории</Comment>
+        </Image>
+    </DesignerNote>
+</GgeExplanatoryNote>
