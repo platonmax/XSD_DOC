@@ -1830,26 +1830,28 @@ xsi:noNamespaceSchemaLocation = "ExplanatoryNoteEstimate-4_01.xsd".
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:sequence>
-                                    <xs:element name="Target">
-                                        <xs:annotation>
-                                            <xs:documentation>Элемент, к которому применяется поправочный коэффициент</xs:documentation>
-                                        </xs:annotation>
-                                        <xs:simpleType>
-                                            <xs:restriction base="xs:string">
-                                              <xs:enumeration value="Объем"/>
-                                              <xs:enumeration value="ОТ"/>
-                                              <xs:enumeration value="ЭМ"/>
-                                              <xs:enumeration value="ОТМ"/>
-                                              <xs:enumeration value="МАТ"/>
-                                              <xs:enumeration value="ОБ"/>
-                                              <xs:enumeration value="ЗТ"/>
-                                              <xs:enumeration value="ЗТМ"/>
-                                              <xs:enumeration value="НР"/>
-                                              <xs:enumeration value="СП"/>
-                                              <xs:enumeration value="Ресурс"/>
-                                            </xs:restriction>
-                                        </xs:simpleType>
-                                    </xs:element>
+                                    <xs:choice>
+                                        <xs:element name="Target">
+                                            <xs:annotation>
+                                                <xs:documentation>Элемент, к которому применяется поправочный коэффициент</xs:documentation>
+                                            </xs:annotation>
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:enumeration value="Объем"/>
+                                                  <xs:enumeration value="ОТ"/>
+                                                  <xs:enumeration value="ЭМ"/>
+                                                  <xs:enumeration value="ОТМ"/>
+                                                  <xs:enumeration value="МАТ"/>
+                                                  <xs:enumeration value="ОБ"/>
+                                                  <xs:enumeration value="ЗТ"/>
+                                                  <xs:enumeration value="ЗТМ"/>
+                                                  <xs:enumeration value="НР"/>
+                                                  <xs:enumeration value="СП"/>
+                                                  <xs:enumeration value="Ресурс"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                    </xs:choice>
                                     <xs:element name="CoefValue" type="xs:decimal" minOccurs="0">
                                         <xs:annotation>
                                             <xs:documentation>Значение коэффициента</xs:documentation>
