@@ -341,6 +341,14 @@
 					line-height: 1.25;
 					}
 
+					.main-table td.left {
+					text-align: left;
+					}
+
+					.main-table td.center {
+					text-align: center;
+					}
+
 					.main-table tbody tr:nth-child(even) {
 					background: #fafbfe;
 					}
@@ -352,7 +360,6 @@
 			</head>
 			<body>
 				<xsl:apply-templates select="Construction" mode="render"/>
-				<xsl:apply-templates select="Construction" mode="validate"/>
 			</body>
 		</html>
 	</xsl:template>
@@ -696,20 +703,20 @@
 
 	<!-- Локальная смета -->
 	<xsl:template match="Estimate">
-		<table class="main-table">
+			<table class="main-table">
 			<colgroup>
-				<col style="min-width:56px"/>
-				<col style="min-width:110px"/>
-				<col style="min-width:450px"/>
-				<col style="min-width:80px"/>
-				<col style="min-width:92px"/>
-				<col style="min-width:92px"/>
-				<col style="min-width:92px"/>
-				<col style="min-width:120px"/>
-				<col style="min-width:120px"/>
-				<col style="min-width:120px"/>
-				<col style="min-width:100px"/>
-				<col style="min-width:100px"/>
+				<col style="width:3.7%; min-width:56px"/>
+				<col style="width:7.2%; min-width:110px"/>
+				<col style="width:29.4%; min-width:450px"/>
+				<col style="width:5.2%; min-width:80px"/>
+				<col style="width:6%; min-width:92px"/>
+				<col style="width:6%; min-width:92px"/>
+				<col style="width:6%; min-width:92px"/>
+				<col style="width:7.8%; min-width:120px"/>
+				<col style="width:7.8%; min-width:120px"/>
+				<col style="width:7.8%; min-width:120px"/>
+				<col style="width:6.5%; min-width:100px"/>
+				<col style="width:6.6%; min-width:100px"/>
 			</colgroup>
 			<thead>
 				<tr>
@@ -1627,8 +1634,7 @@
 	<xsl:template match="Sections/FreeString">
 		<xsl:param name="IndexType" select="0"/>
 		<tr>
-			<td colspan="2"/>
-			<td colspan="10" class="btop left">
+			<td colspan="12" class="btop left">
 				<xsl:value-of select="."/>
 			</td>
 		</tr>
@@ -1639,8 +1645,7 @@
 	<xsl:template match="Section/FreeString">
 		<xsl:param name="IndexType" select="0"/>
 		<tr>
-			<td colspan="2"/>
-			<td colspan="10" class="bbottom left">
+			<td colspan="12" class="bbottom left">
 				<xsl:value-of select="."/>
 			</td>
 		</tr>
@@ -1652,7 +1657,7 @@
 		<xsl:param name="IndexType" select="0"/>
 		<tbody>
 			<tr>
-				<td class="tborder center" colspan="12" id="{concat('Section',Code)}">
+				<td class="tborder left" colspan="12" id="{concat('Section',Code)}">
 					<xsl:if test="Name = ''">
 						<xsl:attribute name="class">center fieldError</xsl:attribute>
 						<xsl:attribute name="title">Не заполнено название раздела</xsl:attribute>
@@ -2083,15 +2088,13 @@
 		</tr>
 		
 		<xsl:if test="../QTF">
-			<tr>
-				<td/>
-				
-				<td class="left" colspan="12">
-					<xsl:value-of select="../QTF/FileNameQTF"/>
-					<xsl:text>. Пункт - </xsl:text>
-					<xsl:for-each select="../QTF">
-						<xsl:for-each select="NumQTF">
-							<xsl:value-of select="."/>
+		<tr>
+			<td class="left" colspan="12">
+				<xsl:value-of select="../QTF/FileNameQTF"/>
+				<xsl:text>. Пункт - </xsl:text>
+				<xsl:for-each select="../QTF">
+					<xsl:for-each select="NumQTF">
+						<xsl:value-of select="."/>
 							<xsl:if test="position() != last()">, </xsl:if>
 						</xsl:for-each>
 						<xsl:if test="position() != last()">
@@ -2852,15 +2855,13 @@
 		</tr>
 		
 		<xsl:if test="../QTF">
-			<tr>
-				<td/>
-				
-				<td class="left" colspan="12">
-					<xsl:value-of select="../QTF/FileNameQTF"/>
-					<xsl:text>. Пункт - </xsl:text>
-					<xsl:for-each select="../QTF">
-						<xsl:for-each select="NumQTF">
-							<xsl:value-of select="."/>
+		<tr>
+			<td class="left" colspan="12">
+				<xsl:value-of select="../QTF/FileNameQTF"/>
+				<xsl:text>. Пункт - </xsl:text>
+				<xsl:for-each select="../QTF">
+					<xsl:for-each select="NumQTF">
+						<xsl:value-of select="."/>
 							<xsl:if test="position() != last()">, </xsl:if>
 						</xsl:for-each>
 						<xsl:if test="position() != last()">
@@ -2925,162 +2926,4 @@
 		<xsl:value-of select="concat(Target, '=', CoefValue, '; ')"/>
 	</xsl:template>
 
-	<!-- Шаблон форматно-логического контроля документа -->
-	<xsl:template match="Construction" mode="validate">
-		<div id="reportDiv" style="display:none">
-			<div class="report">
-				<h3>Результаты проверки файла:</h3>
-				<ul>
-					<xsl:if test="not(Object/Estimate/Num) or (Object/Estimate/Num = '')">
-						<li class="err">
-							<a id="erEstimateNum" href="EstimateNum"
-								onclick="window.opener.document.getElementById(this.href).scrollIntoView(true); window.opener.focus(); return false;"
-								>blank</a>
-						</li>
-						<script>
-	            			s='Не указан номер локального сметного расчета'; 
-	            			EstimateNum.title=s; 
-	            			EstimateNum.classList.add("fieldError"); 
-	            			erEstimateNum.innerHTML=s;
-            		</script>
-					</xsl:if>
-					<xsl:if test="not(Meta/Soft/Name) or (Meta/Soft/Name = '')">
-						<li class="err">
-							<a id="erSoftName" href="SoftName"
-								onclick="window.opener.document.getElementById(this.href).scrollIntoView(true); window.opener.focus(); return false;"
-								>blank</a>
-						</li>
-						<script>
-
-	            			s='Не указано название програмного продукта'; 
-	            			SoftName.title=s; 
-	            			SoftName.classList.add("fieldError"); 
-	            			erSoftName.innerHTML=s; 
-
-            		</script>
-					</xsl:if>
-					<xsl:if
-						test="not(Object/Estimate/Legal/Main/Name) or (Object/Estimate/Legal/Main/Name = '')">
-						<li class="err">
-							<a id="erNormativeName" href="#"
-								onclick="window.opener.document.getElementById(this.id.substr(2)).scrollIntoView(true); window.opener.focus(); return false;"
-								>blank</a>
-						</li>
-						<script>
-
-	            			s='Не указано наименование редакции сметных нормативов'; 
-	            			LegalMainName.title=s; 
-	            			LegalMainName.classList.add("fieldError"); 
-	            			erNormativeName.innerHTML=s;
-
-            		</script>
-					</xsl:if>
-					<xsl:if
-						test="not(Object/Estimate/Legal/Main/Num) or (Object/Estimate/Legal/Main/Num = '')">
-						<li class="err">
-							<a id="erNormativeName" href="#"
-								onclick="window.opener.document.getElementById(this.id.substr(2).scrollIntoView(true); window.opener.focus(); return false;"
-								>blank</a>
-						</li>
-						<script> 
-	            			s='Не указан регистрационный номер сметного норматива и дата его включения в Федеральный реестр сметных нормативов'; 
-	            			LegalMainName.title=s; 
-	            			LegalMainName.classList.add("fieldError"); 
-	            			erNormativeLegal.innerHTML=s;
-
-            		</script>
-					</xsl:if>
-
-					<xsl:for-each select="Object/Estimate/Sections/Section">
-						<xsl:for-each select="Items/Item">
-							<xsl:if test="Cost">
-								<xsl:if test="not(Cost/Code) or (Cost/Code = '')">
-									<li class="err">
-										<!-- a href="#" id="l{concat('Сost',Cost/Num)}" onclick="window.parent.document.getElementById(this.id.substr(1)).scrollIntoView(true); window.opener.focus(); return false;"-->
-										<xsl:value-of
-											select="concat('Не указан шифр позиции ', Cost/Num)"/>
-									</li>
-								</xsl:if>
-								<xsl:if test="not(Cost/Name) or (Cost/Name = '')">
-									<li class="err">
-										<!-- a href="#" id="l{concat('Сost',Cost/Num)}" onclick="window.opener.document.getElementById(this.id.substr(1)).scrollIntoView(true); window.opener.focus(); return false;"-->
-										<xsl:value-of
-											select="concat('Не указано наименование позиции ', Cost/Num)"
-										/>
-									</li>
-								</xsl:if>
-								<xsl:if test="not(Cost/Unit) or (Cost/Unit = '')">
-									<li class="err">
-										<!-- a href="#" id="l{concat('Сost',Cost/Num)}" onclick="window.opener.document.getElementById(this.id.substr(1)).scrollIntoView(true); window.opener.focus(); return false;"-->
-										<xsl:value-of
-											select="concat('Не указана единица измерения расценки ', Cost/Num)"
-										/>
-									</li>
-								</xsl:if>
-								<xsl:if test="not(Cost/Quantity) or (Cost/Quantity = 0)">
-									<li class="err">
-										<!-- a href="#" id="l{concat('Сost',Cost/Num)}" onclick="window.opener.document.getElementById(this.id.substr(1)).scrollIntoView(true); window.opener.focus(); return false;"-->
-										<xsl:value-of
-											select="concat('Не указано количество в расценке ', Cost/Num)"
-										/>
-									</li>
-								</xsl:if>
-								<xsl:if test="not(Cost/QuantityTotal) or (Cost/QuantityTotal = 0)">
-									<li class="err">
-										<!-- a href="#" id="l{concat('Сost',Cost/Num)}" onclick="window.opener.document.getElementById(this.id.substr(1)).scrollIntoView(true); window.opener.focus(); return false;"-->
-										<xsl:value-of
-											select="concat('Не указано количество всего в расценке ', Cost/Num)"
-										/>
-									</li>
-								</xsl:if>
-								<xsl:if test="not(Cost/PerUnit/*)">
-									<li class="err">
-										<!-- a href="#" id="l{concat('Сost',Cost/Num)}" onclick="window.opener.document.getElementById(this.id.substr(1)).scrollIntoView(true); window.opener.focus(); return false;"-->
-										<xsl:value-of
-											select="concat('Не заполнены показатели на единицу измерения в расценке ', Cost/Num)"
-										/>
-									</li>
-								</xsl:if>
-								<xsl:for-each select="Cost/Resources/*">
-									<xsl:if test="not(Code) or (Code = '')">
-										<li class="err">
-											<!-- a href="#" id="l{concat('Сost',Cost/Num)}" onclick="window.parent.document.getElementById(this.id.substr(1)).scrollIntoView(true); window.opener.focus(); return false;"-->
-											<xsl:value-of
-												select="concat('Не указан код ресурса', ../../Cost/Num)"
-											/>
-										</li>
-									</xsl:if>
-									<xsl:if test="not(Name) or (Name = '')">
-										<li class="err">
-											<!-- a href="#" id="l{concat('Сost',Cost/Num)}" onclick="window.opener.document.getElementById(this.id.substr(1)).scrollIntoView(true); window.opener.focus(); return false;"-->
-											<xsl:value-of
-												select="concat('Не указано наименование ресурса ', ../../Num)"
-											/>
-										</li>
-									</xsl:if>
-									<xsl:if test="not(Unit) or (Unit = '')">
-										<li class="err">
-											<!-- a href="#" id="l{concat('Сost',Cost/Num)}" onclick="window.opener.document.getElementById(this.id.substr(1)).scrollIntoView(true); window.opener.focus(); return false;"-->
-											<xsl:value-of
-												select="concat('Не указана единица измерения ресурса ', ../../Num)"
-											/>
-										</li>
-									</xsl:if>
-								</xsl:for-each>
-							</xsl:if>
-						</xsl:for-each>
-					</xsl:for-each>
-				</ul>
-			</div>
-		</div>
-		<script>
-			report = window.open(
-				"",
-				"report",
-				"left=0, top=0, width=500, scrollbars, resizable" //resizable,
-			  );
-			  report.document.title = 'Результаты проверки файла локального сметного расчета';
-			  report.document.body.innerHTML = styles.outerHTML + reportDiv.innerHTML; 
-		</script>
-	</xsl:template>
-</xsl:stylesheet>
+	</xsl:stylesheet>
