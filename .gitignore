@@ -19,4 +19,4 @@ Thumbs.db
 .vscode/
 
 # Generated schema docs (oXygen Schema Documentation)
-oxygen_schema_doc_*/
+oxygen_schema_doc*/
