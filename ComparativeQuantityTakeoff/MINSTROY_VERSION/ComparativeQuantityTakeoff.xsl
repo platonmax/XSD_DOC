@@ -258,7 +258,8 @@
           table.header-table .line-text { border-bottom: 1px solid #000; min-height: 22px; padding: 10px 4px 4px 4px; text-align: center; display: block; margin-left: 60px; margin-right: 12px; }
           table.header-table .hint { font-size: 10pt; color: #666; text-align: center; font-style: italic; white-space: nowrap; padding-top: 2px; }
           table.header-table .date-alt { color: #c00; font-style: italic; }
-          table.data-table { table-layout: auto; }
+          table.data-table { table-layout: fixed; width: 100%; }
+          table.data-table th { min-width: 90px; }
           .col-number { min-width: 180px; max-width: 240px; width: 200px; white-space: normal; word-break: break-word; }
           .col-estimate-name { min-width: 620px; max-width: 760px; width: 620px; white-space: normal; word-break: break-word; }
           .col-work { min-width: 880px; max-width: 1100px; width: 880px; white-space: normal; word-break: break-word; }
