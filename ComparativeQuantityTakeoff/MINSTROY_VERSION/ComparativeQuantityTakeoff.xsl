@@ -869,7 +869,24 @@
                         concat('Обоснования изменений по стадии ', $stageLabel)
                      )"/>
           </xsl:attribute>
-          <xsl:value-of select="$reason"/>
+          <xsl:choose>
+            <xsl:when test="string-length($reason) gt 120">
+              <xsl:variable name="rid" select="concat('reason-', generate-id($item), '-', $stageId)"/>
+              <div class="comment-wrapper">
+                <input type="checkbox" id="{$rid}" class="comment-toggle"/>
+                <div class="comment-body">
+                  <xsl:value-of select="$reason"/>
+                </div>
+                <label class="comment-more" for="{$rid}">
+                  <span class="more-text">Показать полностью</span>
+                  <span class="less-text">Скрыть</span>
+                </label>
+              </div>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="$reason"/>
+            </xsl:otherwise>
+          </xsl:choose>
         </td>
       </xsl:for-each>
       <xsl:variable name="baseDocs" select="$item/*:documentationList/*:documentReference[not(@alterationRef) or @alterationRef='base']"/>
