@@ -145,6 +145,7 @@
           }
           .section-toggle:hover { background: #e0e7ff; }
           .section-toggle:focus { outline: 2px solid #8ea0ff; outline-offset: 2px; }
+          .collapsed-placeholder { background: #f7f7f7; color: #666; font-style: italic; }
           table.data-table td.right { min-width: 80px; }
           .th-label-muted { display: block; font-size: 10pt; color: var(--muted); line-height: 1.2; margin-bottom: 2px; }
         .th-label-strong { display: block; font-weight: 700; line-height: 1.3; }
@@ -273,6 +274,9 @@
                   </tr>
                   <tr class="section-row" data-row-type="section" data-section-id="sec-d1e59" data-level="0">
                      <td colspan="25" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/(@sectionNumber|sectionName)&#xA;Назначение: Номер и наименование раздела сметы" style="padding-left: 0px;"><button type="button" class="section-toggle" data-target="sec-d1e59" aria-label="Свернуть/развернуть раздел">▾</button>1. Основные работы</td>
+                  </tr>
+                  <tr class="collapsed-placeholder" data-row-type="section-placeholder" data-parent-section="sec-d1e59" style="display:none;">
+                     <td colspan="25">Раздел скрыт. Нажмите ▸, чтобы раскрыть.</td>
                   </tr>
                   <tr data-row-type="item" title="" data-parent-section="sec-d1e59" data-parent-level="0">
                      <td class="center nowrap col-position" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">1</td>
@@ -515,8 +519,10 @@
       </div><script type="text/javascript">
           
           (function() {
-            function collapseFromRow(sectionRow) {
-              const rows = Array.from(document.querySelectorAll('table.data-table tr'));
+            const toggles = Array.from(document.querySelectorAll('.section-toggle'));
+            const rows = Array.from(document.querySelectorAll('table.data-table tr'));
+
+            function collapseRange(sectionRow) {
               const idx = rows.indexOf(sectionRow);
               if (idx === -1) return [];
               const level = parseInt(sectionRow.getAttribute('data-level') || '0', 10);
@@ -532,23 +538,31 @@
               return affected;
             }
 
-            const toggles = Array.from(document.querySelectorAll('.section-toggle'));
+            function setCollapsed(sectionRow, collapsed) {
+              const secId = sectionRow.getAttribute('data-section-id');
+              const btn = sectionRow.querySelector('.section-toggle');
+              const placeholder = document.querySelector(`tr[data-row-type=\"section-placeholder\"][data-parent-section=\"${secId}\"]`);
+              const targets = collapseRange(sectionRow);
+              targets.forEach(r => { r.style.display = collapsed ? 'none' : ''; });
+              if (placeholder) placeholder.style.display = collapsed ? '' : 'none';
+              if (btn) {
+                btn.setAttribute('data-collapsed', collapsed ? 'true' : 'false');
+                btn.textContent = collapsed ? '▸' : '▾';
+              }
+            }
+
             toggles.forEach(btn => {
               btn.addEventListener('click', () => {
-                const secId = btn.getAttribute('data-target');
                 const row = btn.closest('tr.section-row');
                 const isCollapsed = btn.getAttribute('data-collapsed') === 'true';
-                const targets = collapseFromRow(row);
-                targets.forEach(r => { r.style.display = isCollapsed ? '' : 'none'; });
-                btn.setAttribute('data-collapsed', isCollapsed ? 'false' : 'true');
-                btn.textContent = isCollapsed ? '▾' : '▸';
+                setCollapsed(row, !isCollapsed);
               });
             });
 
-            // ensure default state expanded
+            // default expanded
             toggles.forEach(btn => {
-              btn.setAttribute('data-collapsed', 'false');
-              btn.textContent = '▾';
+              const row = btn.closest('tr.section-row');
+              setCollapsed(row, false);
             });
           })();
           

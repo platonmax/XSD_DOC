@@ -301,6 +301,7 @@
           }
           .section-toggle:hover { background: #e0e7ff; }
           .section-toggle:focus { outline: 2px solid #8ea0ff; outline-offset: 2px; }
+          .collapsed-placeholder { background: #f7f7f7; color: #666; font-style: italic; }
           table.data-table td.right { min-width: 80px; }
           .th-label-muted { display: block; font-size: 10pt; color: var(--muted); line-height: 1.2; margin-bottom: 2px; }
         .th-label-strong { display: block; font-weight: 700; line-height: 1.3; }
@@ -425,8 +426,10 @@
         <script type="text/javascript">
           <![CDATA[
           (function() {
-            function collapseFromRow(sectionRow) {
-              const rows = Array.from(document.querySelectorAll('table.data-table tr'));
+            const toggles = Array.from(document.querySelectorAll('.section-toggle'));
+            const rows = Array.from(document.querySelectorAll('table.data-table tr'));
+
+            function collapseRange(sectionRow) {
               const idx = rows.indexOf(sectionRow);
               if (idx === -1) return [];
               const level = parseInt(sectionRow.getAttribute('data-level') || '0', 10);
@@ -442,23 +445,31 @@
               return affected;
             }
 
-            const toggles = Array.from(document.querySelectorAll('.section-toggle'));
+            function setCollapsed(sectionRow, collapsed) {
+              const secId = sectionRow.getAttribute('data-section-id');
+              const btn = sectionRow.querySelector('.section-toggle');
+              const placeholder = document.querySelector(`tr[data-row-type=\"section-placeholder\"][data-parent-section=\"${secId}\"]`);
+              const targets = collapseRange(sectionRow);
+              targets.forEach(r => { r.style.display = collapsed ? 'none' : ''; });
+              if (placeholder) placeholder.style.display = collapsed ? '' : 'none';
+              if (btn) {
+                btn.setAttribute('data-collapsed', collapsed ? 'true' : 'false');
+                btn.textContent = collapsed ? '▸' : '▾';
+              }
+            }
+
             toggles.forEach(btn => {
               btn.addEventListener('click', () => {
-                const secId = btn.getAttribute('data-target');
                 const row = btn.closest('tr.section-row');
                 const isCollapsed = btn.getAttribute('data-collapsed') === 'true';
-                const targets = collapseFromRow(row);
-                targets.forEach(r => { r.style.display = isCollapsed ? '' : 'none'; });
-                btn.setAttribute('data-collapsed', isCollapsed ? 'false' : 'true');
-                btn.textContent = isCollapsed ? '▾' : '▸';
+                setCollapsed(row, !isCollapsed);
               });
             });
 
-            // ensure default state expanded
+            // default expanded
             toggles.forEach(btn => {
-              btn.setAttribute('data-collapsed', 'false');
-              btn.textContent = '▾';
+              const row = btn.closest('tr.section-row');
+              setCollapsed(row, false);
             });
           })();
           ]]>
@@ -677,6 +688,11 @@
           <xsl:variable name="sectionNumber" select="normalize-space(@sectionNumber)"/>
           <xsl:variable name="sectionName" select="normalize-space(*:sectionName)"/>
           <xsl:value-of select="concat(if ($sectionNumber) then concat($sectionNumber, '. ') else '', $sectionName)"/>
+        </td>
+      </tr>
+      <tr class="collapsed-placeholder" data-row-type="section-placeholder" data-parent-section="{$section-id}" style="display:none;">
+        <td colspan="{$column-count}">
+          <xsl:text>Раздел скрыт. Нажмите ▸, чтобы раскрыть.</xsl:text>
         </td>
       </tr>
       <xsl:for-each select="*:itemList/*">
