@@ -58,8 +58,8 @@
 
 
   <xsl:function name="f:format" as="xs:string">
-    <xsl:param name="value" as="xs:decimal?"/>
-    <xsl:sequence select="if (exists($value)) then format-number($value, '0.###') else ''"/>
+    <xsl:param name="value" as="xs:double?"/>
+    <xsl:sequence select="if (exists($value)) then format-number(xs:decimal($value), '0.###') else ''"/>
   </xsl:function>
 
   <xsl:function name="f:tooltip" as="xs:string">
@@ -173,13 +173,13 @@
           }
           body {
             font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-            font-size: 10pt;
+            font-size: 11pt;
             margin: 0;
             padding: 24px;
             background: linear-gradient(135deg, #f7f9fc 0%, #eef2f7 100%);
             color: var(--text);
           }
-          h1 { font-size: 18pt; text-align: center; margin: 20px 0; letter-spacing: 0.4px; }
+          h1 { font-size: 20pt; text-align: center; margin: 20px 0; letter-spacing: 0.4px; }
           .page { width: 100%; max-width: 100%; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
           .card { background: transparent; border: none; border-radius: 0; box-shadow: none; padding: 0; width: 100%; overflow: visible; }
           .table-card { padding: 0; overflow: visible; }
@@ -189,14 +189,14 @@
           thead th {
             border: 1px solid var(--border);
             padding: 6px 6px;
-            font-size: 9pt;
+            font-size: 11pt;
             background: #f0f4ff;
             vertical-align: middle;
             text-align: center;
             white-space: normal;
             word-break: break-word;
           }
-          thead th.numbering { background: #eef1f6; font-size: 8pt; font-weight: 600; }
+          thead th.numbering { background: #eef1f6; font-size: 10pt; font-weight: 600; }
           tbody td {
             border: 1px solid var(--border);
             padding: 6px 6px;
@@ -219,13 +219,13 @@
           .header-block { margin: 4px 0 12px 0; }
           .header-title { font-size: 16pt; font-weight: 800; text-align: center; text-transform: uppercase; margin: 0 0 12px; letter-spacing: 0.6px; }
           table.header-table { width: 100%; min-width: 0; margin: 0; border-collapse: collapse; table-layout: fixed; }
-          table.header-table td { border: none; padding: 6px 4px; font-size: 11pt; vertical-align: bottom; }
+          table.header-table td { border: none; padding: 6px 4px; font-size: 12pt; vertical-align: bottom; }
           table.header-table .label { width: 14%; min-width: 80px; white-space: nowrap; text-align: left; padding-right: 6px; color: var(--muted); font-weight: 600; }
           table.header-table .line { width: auto; padding-left: 0; }
-          table.header-table .line-text { border-bottom: 1px solid var(--border); min-height: 20px; padding: 2px 6px 4px 6px; text-align: center; }
-          table.header-table .hint { font-size: 9pt; color: var(--muted); text-align: center; font-style: italic; white-space: nowrap; padding-top: 2px; }
+          table.header-table .line-text { border-bottom: 1px solid var(--border); min-height: 20px; padding: 10px 6px 6px 6px; text-align: center; display: block; margin-left: 60px; margin-right: 12px; }
+          table.header-table .hint { font-size: 10pt; color: var(--muted); text-align: center; font-style: italic; white-space: nowrap; padding-top: 2px; }
           table.header-table .date-alt { color: #c00; font-style: italic; }
-          .export-info { font-size: 9pt; color: var(--muted); margin-bottom: 6px; text-align: left; }
+          .export-info { font-size: 10pt; color: var(--muted); margin-bottom: 6px; text-align: left; }
           .row-issue { position: relative; }
           .row-issue:hover::after {
             content: attr(data-error);
@@ -250,20 +250,42 @@
           .free-string-row td { font-style: italic; background: #fff9e6; }
           .notes-cell { white-space: pre-wrap; }
           .header-block { margin: 8px 0 24px 0; width: 1100px; max-width: 1100px; }
-          .header-title { font-size: 14pt; font-weight: bold; text-align: center; text-transform: uppercase; margin: 0 0 18px; }
+          .header-title { font-size: 18pt; font-weight: bold; text-align: center; text-transform: uppercase; margin: 0 0 18px; }
           table.header-table { width: 1100px; max-width: 1100px; min-width: 0; margin: 0; border-collapse: collapse; table-layout: fixed; }
-          table.header-table td { border: none; padding: 4px 4px; font-size: 11pt; vertical-align: bottom; }
+          table.header-table td { border: none; padding: 4px 4px; font-size: 12pt; vertical-align: bottom; }
           table.header-table .label { width: 12%; min-width: 80px; white-space: nowrap; text-align: left; padding-right: 4px; }
           table.header-table .line { width: auto; padding-left: 0; }
-          table.header-table .line-text { border-bottom: 1px solid #000; min-height: 18px; padding: 0 4px 2px 4px; text-align: center; }
-          table.header-table .hint { font-size: 9pt; color: #666; text-align: center; font-style: italic; white-space: nowrap; padding-top: 2px; }
+          table.header-table .line-text { border-bottom: 1px solid #000; min-height: 22px; padding: 10px 4px 4px 4px; text-align: center; display: block; margin-left: 60px; margin-right: 12px; }
+          table.header-table .hint { font-size: 10pt; color: #666; text-align: center; font-style: italic; white-space: nowrap; padding-top: 2px; }
           table.header-table .date-alt { color: #c00; font-style: italic; }
-          table.data-table { table-layout: fixed; }
-          .col-estimate-name { min-width: 520px; max-width: 640px; width: 520px; white-space: normal; word-break: break-word; }
-          .col-work { min-width: 780px; max-width: 920px; width: 780px; white-space: normal; word-break: break-word; }
-          .col-reason { max-width: 400px; white-space: normal; word-break: break-word; }
-          .col-docs { max-width: 480px; white-space: normal; word-break: break-word; }
-          .th-label-muted { display: block; font-size: 8pt; color: var(--muted); line-height: 1.2; margin-bottom: 2px; }
+          table.data-table { table-layout: auto; }
+          .col-number { min-width: 180px; max-width: 240px; width: 200px; white-space: normal; word-break: break-word; }
+          .col-estimate-name { min-width: 620px; max-width: 760px; width: 620px; white-space: normal; word-break: break-word; }
+          .col-work { min-width: 880px; max-width: 1100px; width: 880px; white-space: normal; word-break: break-word; }
+          .col-unit { min-width: 120px; max-width: 160px; width: 140px; }
+          .col-position { min-width: 90px; max-width: 120px; width: 100px; }
+          .col-reason { min-width: 260px; max-width: 520px; width: 320px; white-space: normal; word-break: break-word; }
+          .col-docs { min-width: 220px; max-width: 520px; width: 280px; white-space: normal; word-break: break-word; }
+          .comment-wrapper { display: flex; flex-direction: column; gap: 4px; }
+          .comment-toggle { display: none; }
+          .comment-body { white-space: pre-wrap; word-break: break-word; }
+          .comment-toggle:not(:checked) + .comment-body {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+          .comment-toggle:not(:checked) ~ .comment-more,
+          .comment-toggle:checked ~ .comment-more {
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-block;
+          }
+          .comment-toggle:not(:checked) ~ .comment-more .less-text { display: none; }
+          .comment-toggle:checked ~ .comment-more .more-text { display: none; }
+          table.data-table td.right { min-width: 80px; }
+          .th-label-muted { display: block; font-size: 10pt; color: var(--muted); line-height: 1.2; margin-bottom: 2px; }
         .th-label-strong { display: block; font-weight: 700; line-height: 1.3; }
         .footer-card { padding: 4px 0 0 0; margin-top: 8px; border: none; }
         .footer-table { width: 100%; border-collapse: collapse; }
@@ -433,8 +455,8 @@
 
     <table class="data-table">
       <colgroup>
-        <col style="width:60px"/>
-        <col style="width:140px"/>
+        <col class="col-position"/>
+        <col class="col-number"/>
         <col class="col-estimate-name"/>
         <col class="col-work"/>
         <col style="width:100px"/>
@@ -655,10 +677,10 @@
                 then concat($pos-title-base, '&#10;', '')
                 else $pos-title-base"/>
 
-      <td class="center nowrap" title="{$pos-title}">
+      <td class="center nowrap col-position" title="{$pos-title}">
         <xsl:value-of select="$display-position"/>
       </td>
-      <td title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber','Номер исходной сметы (атрибут estimateNumber)')}">
+      <td class="col-number" title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber','Номер исходной сметы (атрибут estimateNumber)')}">
         <xsl:value-of select="$estimate-number"/>
       </td>
       <td class="col-estimate-name" title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/estimateName','Наименование исходной сметы (estimateName)')}">
@@ -684,7 +706,7 @@
           <xsl:text>)</xsl:text>
         </xsl:if>
       </td>
-      <td class="center"
+      <td class="center col-unit"
           title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit','Единица измерения (measurementUnit)')}">
         <xsl:value-of select="$item/*:work/*:measurementUnit"/>
       </td>
@@ -708,8 +730,9 @@
         <xsl:variable name="has-schematron-issue" select="false()"/>
         <xsl:variable name="stage-issue-msgs" select="()"/>
         <xsl:variable name="stage-pos" select="position()"/>
-        <xsl:variable name="inc" select="$item/*:volumeList/*:volume[@alterationRef=$stageId]/*:volumeIncrease[1]"/>
-        <xsl:variable name="dec" select="$item/*:volumeList/*:volume[@alterationRef=$stageId]/*:volumeDecrease[1]"/>
+        <xsl:variable name="volume" select="$item/*:volumeList/*:volume[@alterationRef=$stageId]"/>
+        <xsl:variable name="inc" select="$volume/*:volumeIncrease/*:amount"/>
+        <xsl:variable name="inc-reason" select="$volume/*:volumeIncrease/*:reason"/>
         <xsl:variable name="prior-stages" select="reverse(($base-stage, $stages-order[position() lt $stage-pos]))"/>
         <xsl:variable name="prev-stage-id" select="( ($stages-order[position() lt $stage-pos])[last()]/@id, 'base')[1]"/>
 
@@ -718,7 +741,7 @@
             <xsl:attribute name="style">background:#ffe6e6;border:2px solid #cc0000;</xsl:attribute>
           </xsl:if>
           <xsl:attribute name="title">
-            <xsl:value-of select="f:tooltip(concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&quot;',$stageId,'&quot;]/volumeIncrease'), concat('Увеличение объема на стадии ', $stageLabel))"/>
+            <xsl:value-of select="f:tooltip(concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&quot;',$stageId,'&quot;]/volumeIncrease/amount'), concat('Увеличения объема на стадии ', $stageLabel))"/>
           </xsl:attribute>
           <xsl:value-of select="f:format($inc)"/>
         </td>
@@ -726,40 +749,105 @@
           <xsl:variable name="target-stage" select="."/>
           <xsl:variable name="target-id" select="@id"/>
           <xsl:variable name="target-label" select="if ($target-id = 'base') then f:stage-label($base-stage) else f:stage-label($target-stage)"/>
-        <xsl:variable name="difference" select="$item/*:volumeList/*:volume[@alterationRef=$stageId]/*:Delta/*:Difference[@fromRef=$target-id]"/>
-          <xsl:variable name="raw-dec" select="if ($difference) then xs:decimal($difference) else if ($target-id = $prev-stage-id and $dec) then xs:decimal($dec) else ()"/>
-          <xsl:variable name="dec-value" select="if (exists($raw-dec) and $raw-dec lt 0) then $raw-dec else ()"/>
+          <xsl:variable name="dec-value"
+                        select="$item/*:volumeList/*:volume[@alterationRef=$stageId]/*:decreaseList/*:decrease[@fromRef=$target-id]/*:amount"/>
           <td class="right"
-              title="{f:tooltip(concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&quot;',$stageId,'&quot;]/Delta/Difference[@fromRef=&quot;',$target-id,'&quot;]'), concat('Снижение объема от ', if ($target-id = 'base') then 'базы' else concat('стадии ', $target-label), ' до стадии ', $stageLabel))}">
-            <xsl:value-of select="f:format($dec-value)"/>
+              title="{f:tooltip(concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&quot;',$stageId,'&quot;]/decreaseList/decrease[@fromRef=&quot;',$target-id,'&quot;]/amount'), concat('Снижение объема от ', if ($target-id = 'base') then 'базы' else concat('стадии ', $target-label), ' до стадии ', $stageLabel))}">
+            <xsl:value-of select="f:format($dec-value[1])"/>
           </td>
         </xsl:for-each>
       </xsl:for-each>
       <xsl:for-each select="$stages-order">
         <xsl:variable name="stageId" select="@id"/>
         <xsl:variable name="stageLabel" select="f:stage-label(.)"/>
-        <xsl:variable name="reasons" select="$item/*:volumeList/*:volume[@alterationRef=$stageId]/*:reason"/>
+        <xsl:variable name="volume" select="$item/*:volumeList/*:volume[@alterationRef=$stageId]"/>
+        <xsl:variable name="inc-amount" select="$volume/*:volumeIncrease/*:amount"/>
+        <xsl:variable name="inc-reason" select="$volume/*:volumeIncrease/*:reason"/>
+        <xsl:variable name="decreases" select="$volume/*:decreaseList/*:decrease"/>
         <xsl:variable name="has-schematron-issue" select="false()"/>
+        <xsl:variable name="reason-id" select="concat('reason-', generate-id($item), '-', $stageId)"/>
+        <xsl:variable name="reason-lines"
+                      select="(
+                                if (normalize-space($inc-reason[1])) then normalize-space($inc-reason[1]) else (),
+                                for $d in $decreases
+                                  return (if (normalize-space($d/*:reason)) then normalize-space($d/*:reason) else ())
+                              )"/>
         <td class="notes-cell col-reason">
           <xsl:if test="$has-schematron-issue">
             <xsl:attribute name="style">background:#ffe6e6;border:2px solid #cc0000;</xsl:attribute>
           </xsl:if>
           <xsl:attribute name="title">
-            <xsl:value-of select="f:tooltip(concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&quot;',$stageId,'&quot;]/reason'), concat('Причины изменения по стадии ', $stageLabel))"/>
+            <xsl:value-of
+              select="f:tooltip(
+                        concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&quot;',$stageId,'&quot;]/(volumeIncrease/reason|decreaseList/decrease/reason)'),
+                        concat('Обоснования изменений по стадии ', $stageLabel)
+                     )"/>
           </xsl:attribute>
-          <xsl:for-each select="$reasons">
-            <xsl:if test="position() gt 1"><br/></xsl:if>
-            <xsl:value-of select="."/>
-          </xsl:for-each>
+          <xsl:choose>
+            <xsl:when test="exists($reason-lines)">
+              <xsl:variable name="reason-count" select="count($reason-lines)"/>
+              <xsl:choose>
+                <xsl:when test="$reason-count gt 3">
+                  <div class="comment-wrapper">
+                    <input type="checkbox" id="{$reason-id}" class="comment-toggle"/>
+                    <div class="comment-body">
+                      <xsl:for-each select="$reason-lines">
+                        <xsl:if test="position() gt 1"><br/></xsl:if>
+                        <xsl:value-of select="."/>
+                      </xsl:for-each>
+                    </div>
+                    <label class="comment-more" for="{$reason-id}">
+                      <span class="more-text">Показать полностью</span>
+                      <span class="less-text">Скрыть</span>
+                    </label>
+                  </div>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:for-each select="$reason-lines">
+                    <xsl:if test="position() gt 1"><br/></xsl:if>
+                    <xsl:value-of select="."/>
+                  </xsl:for-each>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise/>
+          </xsl:choose>
         </td>
       </xsl:for-each>
       <xsl:variable name="baseDocs" select="$item/*:documentationList/*:documentReference[not(@alterationRef) or @alterationRef='base']"/>
       <td class="notes-cell col-docs"
           title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&quot;base&quot;]', 'Документы, привязанные к базе (подпись ссылки)')}">
-        <xsl:for-each select="$baseDocs">
-          <xsl:if test="position() gt 1"><br/></xsl:if>
-          <xsl:value-of select="f:link-label(.)"/>
-        </xsl:for-each>
+        <xsl:variable name="doc-labels" select="$baseDocs/f:link-label(.)"/>
+        <xsl:choose>
+          <xsl:when test="exists($doc-labels)">
+            <xsl:variable name="docs-id" select="concat('docs-', generate-id($item), '-base')"/>
+            <xsl:variable name="doc-count" select="count($doc-labels)"/>
+            <xsl:choose>
+              <xsl:when test="$doc-count gt 3">
+                <div class="comment-wrapper">
+                  <input type="checkbox" id="{$docs-id}" class="comment-toggle"/>
+                  <div class="comment-body">
+                    <xsl:for-each select="$doc-labels">
+                      <xsl:if test="position() gt 1"><br/></xsl:if>
+                      <xsl:value-of select="."/>
+                    </xsl:for-each>
+                  </div>
+                  <label class="comment-more" for="{$docs-id}">
+                    <span class="more-text">Показать полностью</span>
+                    <span class="less-text">Скрыть</span>
+                  </label>
+                </div>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:for-each select="$doc-labels">
+                  <xsl:if test="position() gt 1"><br/></xsl:if>
+                  <xsl:value-of select="."/>
+                </xsl:for-each>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:when>
+          <xsl:otherwise/>
+        </xsl:choose>
       </td>
       <xsl:for-each select="$stages-order">
         <xsl:variable name="stageId" select="@id"/>
@@ -767,10 +855,37 @@
         <xsl:variable name="docs" select="$item/*:documentationList/*:documentReference[@alterationRef=$stageId]"/>
         <td class="notes-cell col-docs"
             title="{f:tooltip(concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&quot;',$stageId,'&quot;]'), concat('Документы по стадии ', $stageLabel, ' (подпись ссылки)'))}">
-          <xsl:for-each select="$docs">
-            <xsl:if test="position() gt 1"><br/></xsl:if>
-            <xsl:value-of select="f:link-label(.)"/>
-          </xsl:for-each>
+          <xsl:variable name="doc-labels" select="$docs/f:link-label(.)"/>
+          <xsl:choose>
+            <xsl:when test="exists($doc-labels)">
+              <xsl:variable name="docs-id-stage" select="concat('docs-', generate-id($item), '-', translate($stageId,' ','_'))"/>
+              <xsl:variable name="doc-count" select="count($doc-labels)"/>
+              <xsl:choose>
+                <xsl:when test="$doc-count gt 3">
+                  <div class="comment-wrapper">
+                    <input type="checkbox" id="{$docs-id-stage}" class="comment-toggle"/>
+                    <div class="comment-body">
+                      <xsl:for-each select="$doc-labels">
+                        <xsl:if test="position() gt 1"><br/></xsl:if>
+                        <xsl:value-of select="."/>
+                      </xsl:for-each>
+                    </div>
+                    <label class="comment-more" for="{$docs-id-stage}">
+                      <span class="more-text">Показать полностью</span>
+                      <span class="less-text">Скрыть</span>
+                    </label>
+                  </div>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:for-each select="$doc-labels">
+                    <xsl:if test="position() gt 1"><br/></xsl:if>
+                    <xsl:value-of select="."/>
+                  </xsl:for-each>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise/>
+          </xsl:choose>
         </td>
       </xsl:for-each>
     </tr>

@@ -421,51 +421,48 @@ id строятся по следующему принципу: "alt-ГГГГ-М
                 <xs:documentation>Объем работ по позиции</xs:documentation>
               </xs:annotation>
             </xs:element>
-            <xs:element name="volumeIncrease" minOccurs="0">
+            <xs:element name="changeList" minOccurs="0">
               <xs:annotation>
-                <xs:documentation>Одно увеличение объема в рамках корректировки относительно предыдущей стадии или базы.</xs:documentation>
+                <xs:documentation>Список изменений объема в рамках корректировки. Позволяет фиксировать несколько увеличений/снижений за один заход.</xs:documentation>
               </xs:annotation>
               <xs:complexType>
                 <xs:sequence>
-                  <xs:element name="amount" type="xs:decimal">
+                  <xs:element name="change" maxOccurs="unbounded">
                     <xs:annotation>
-                      <xs:documentation>Величина увеличения.</xs:documentation>
-                    </xs:annotation>
-                  </xs:element>
-                  <xs:element name="reason" type="xs:string" minOccurs="0">
-                    <xs:annotation>
-                      <xs:documentation>Обоснование увеличения.</xs:documentation>
-                    </xs:annotation>
-                  </xs:element>
-                </xs:sequence>
-              </xs:complexType>
-            </xs:element>
-            <xs:element name="decreaseList" minOccurs="0">
-              <xs:annotation>
-                <xs:documentation>Снижения объема в рамках корректировки. По одному снижению на каждую предыдущую стадию, относительно которой задана дельта.</xs:documentation>
-              </xs:annotation>
-              <xs:complexType>
-                <xs:sequence>
-                  <xs:element name="decrease" maxOccurs="unbounded">
-                    <xs:annotation>
-                      <xs:documentation>Одно снижение объема относительно конкретной корректировки (fromRef).</xs:documentation>
+                      <xs:documentation>Одно изменение объема (увеличение/снижение) в данной корректировке.</xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
                       <xs:sequence>
+                        <xs:element name="changeType">
+                          <xs:annotation>
+                            <xs:documentation>Тип изменения: увеличение или снижение относительно указанной стадии.</xs:documentation>
+                          </xs:annotation>
+                          <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                              <xs:enumeration value="increase"/>
+                              <xs:enumeration value="decrease"/>
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:element>
                         <xs:element name="amount" type="xs:decimal">
                           <xs:annotation>
-                            <xs:documentation>Величина снижения.</xs:documentation>
+                            <xs:documentation>Величина изменения.</xs:documentation>
                           </xs:annotation>
                         </xs:element>
                         <xs:element name="reason" type="xs:string" minOccurs="0">
                           <xs:annotation>
-                            <xs:documentation>Обоснование снижения.</xs:documentation>
+                            <xs:documentation>Обоснование конкретного изменения объема.</xs:documentation>
                           </xs:annotation>
                         </xs:element>
                       </xs:sequence>
-                      <xs:attribute name="fromRef" type="ct:alterationIdRefType" use="required">
+                      <xs:attribute name="fromRef" type="ct:alterationIdRefType" use="optional">
                         <xs:annotation>
-                          <xs:documentation>Ссылка на стадию, относительно которой задано снижение (например, base или id предыдущей корректировки).</xs:documentation>
+                          <xs:documentation>Ссылка на стадию, относительно которой указано изменение (для трассировки снижений/увеличений).</xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+                      <xs:attribute name="order" type="xs:positiveInteger" use="optional">
+                        <xs:annotation>
+                          <xs:documentation>Порядковый номер изменения в корректировке.</xs:documentation>
                         </xs:annotation>
                       </xs:attribute>
                     </xs:complexType>

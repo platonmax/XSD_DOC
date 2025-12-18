@@ -17,13 +17,13 @@
           }
           body {
             font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-            font-size: 10pt;
+            font-size: 11pt;
             margin: 0;
             padding: 24px;
             background: linear-gradient(135deg, #f7f9fc 0%, #eef2f7 100%);
             color: var(--text);
           }
-          h1 { font-size: 18pt; text-align: center; margin: 20px 0; letter-spacing: 0.4px; }
+          h1 { font-size: 20pt; text-align: center; margin: 20px 0; letter-spacing: 0.4px; }
           .page { width: 100%; max-width: 100%; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
           .card { background: transparent; border: none; border-radius: 0; box-shadow: none; padding: 0; width: 100%; overflow: visible; }
           .table-card { padding: 0; overflow: visible; }
@@ -33,14 +33,14 @@
           thead th {
             border: 1px solid var(--border);
             padding: 6px 6px;
-            font-size: 9pt;
+            font-size: 11pt;
             background: #f0f4ff;
             vertical-align: middle;
             text-align: center;
             white-space: normal;
             word-break: break-word;
           }
-          thead th.numbering { background: #eef1f6; font-size: 8pt; font-weight: 600; }
+          thead th.numbering { background: #eef1f6; font-size: 10pt; font-weight: 600; }
           tbody td {
             border: 1px solid var(--border);
             padding: 6px 6px;
@@ -63,13 +63,13 @@
           .header-block { margin: 4px 0 12px 0; }
           .header-title { font-size: 16pt; font-weight: 800; text-align: center; text-transform: uppercase; margin: 0 0 12px; letter-spacing: 0.6px; }
           table.header-table { width: 100%; min-width: 0; margin: 0; border-collapse: collapse; table-layout: fixed; }
-          table.header-table td { border: none; padding: 6px 4px; font-size: 11pt; vertical-align: bottom; }
+          table.header-table td { border: none; padding: 6px 4px; font-size: 12pt; vertical-align: bottom; }
           table.header-table .label { width: 14%; min-width: 80px; white-space: nowrap; text-align: left; padding-right: 6px; color: var(--muted); font-weight: 600; }
           table.header-table .line { width: auto; padding-left: 0; }
-          table.header-table .line-text { border-bottom: 1px solid var(--border); min-height: 20px; padding: 2px 6px 4px 6px; text-align: center; }
-          table.header-table .hint { font-size: 9pt; color: var(--muted); text-align: center; font-style: italic; white-space: nowrap; padding-top: 2px; }
+          table.header-table .line-text { border-bottom: 1px solid var(--border); min-height: 20px; padding: 10px 6px 6px 6px; text-align: center; display: block; margin-left: 60px; margin-right: 12px; }
+          table.header-table .hint { font-size: 10pt; color: var(--muted); text-align: center; font-style: italic; white-space: nowrap; padding-top: 2px; }
           table.header-table .date-alt { color: #c00; font-style: italic; }
-          .export-info { font-size: 9pt; color: var(--muted); margin-bottom: 6px; text-align: left; }
+          .export-info { font-size: 10pt; color: var(--muted); margin-bottom: 6px; text-align: left; }
           .row-issue { position: relative; }
           .row-issue:hover::after {
             content: attr(data-error);
@@ -94,20 +94,42 @@
           .free-string-row td { font-style: italic; background: #fff9e6; }
           .notes-cell { white-space: pre-wrap; }
           .header-block { margin: 8px 0 24px 0; width: 1100px; max-width: 1100px; }
-          .header-title { font-size: 14pt; font-weight: bold; text-align: center; text-transform: uppercase; margin: 0 0 18px; }
+          .header-title { font-size: 18pt; font-weight: bold; text-align: center; text-transform: uppercase; margin: 0 0 18px; }
           table.header-table { width: 1100px; max-width: 1100px; min-width: 0; margin: 0; border-collapse: collapse; table-layout: fixed; }
-          table.header-table td { border: none; padding: 4px 4px; font-size: 11pt; vertical-align: bottom; }
+          table.header-table td { border: none; padding: 4px 4px; font-size: 12pt; vertical-align: bottom; }
           table.header-table .label { width: 12%; min-width: 80px; white-space: nowrap; text-align: left; padding-right: 4px; }
           table.header-table .line { width: auto; padding-left: 0; }
-          table.header-table .line-text { border-bottom: 1px solid #000; min-height: 18px; padding: 0 4px 2px 4px; text-align: center; }
-          table.header-table .hint { font-size: 9pt; color: #666; text-align: center; font-style: italic; white-space: nowrap; padding-top: 2px; }
+          table.header-table .line-text { border-bottom: 1px solid #000; min-height: 22px; padding: 10px 4px 4px 4px; text-align: center; display: block; margin-left: 60px; margin-right: 12px; }
+          table.header-table .hint { font-size: 10pt; color: #666; text-align: center; font-style: italic; white-space: nowrap; padding-top: 2px; }
           table.header-table .date-alt { color: #c00; font-style: italic; }
-          table.data-table { table-layout: fixed; }
-          .col-estimate-name { min-width: 520px; max-width: 640px; width: 520px; white-space: normal; word-break: break-word; }
-          .col-work { min-width: 780px; max-width: 920px; width: 780px; white-space: normal; word-break: break-word; }
-          .col-reason { max-width: 400px; white-space: normal; word-break: break-word; }
-          .col-docs { max-width: 480px; white-space: normal; word-break: break-word; }
-          .th-label-muted { display: block; font-size: 8pt; color: var(--muted); line-height: 1.2; margin-bottom: 2px; }
+          table.data-table { table-layout: auto; }
+          .col-number { min-width: 180px; max-width: 240px; width: 200px; white-space: normal; word-break: break-word; }
+          .col-estimate-name { min-width: 620px; max-width: 760px; width: 620px; white-space: normal; word-break: break-word; }
+          .col-work { min-width: 880px; max-width: 1100px; width: 880px; white-space: normal; word-break: break-word; }
+          .col-unit { min-width: 120px; max-width: 160px; width: 140px; }
+          .col-position { min-width: 90px; max-width: 120px; width: 100px; }
+          .col-reason { min-width: 260px; max-width: 520px; width: 320px; white-space: normal; word-break: break-word; }
+          .col-docs { min-width: 220px; max-width: 520px; width: 280px; white-space: normal; word-break: break-word; }
+          .comment-wrapper { display: flex; flex-direction: column; gap: 4px; }
+          .comment-toggle { display: none; }
+          .comment-body { white-space: pre-wrap; word-break: break-word; }
+          .comment-toggle:not(:checked) + .comment-body {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+          .comment-toggle:not(:checked) ~ .comment-more,
+          .comment-toggle:checked ~ .comment-more {
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-block;
+          }
+          .comment-toggle:not(:checked) ~ .comment-more .less-text { display: none; }
+          .comment-toggle:checked ~ .comment-more .more-text { display: none; }
+          table.data-table td.right { min-width: 80px; }
+          .th-label-muted { display: block; font-size: 10pt; color: var(--muted); line-height: 1.2; margin-bottom: 2px; }
         .th-label-strong { display: block; font-weight: 700; line-height: 1.3; }
         .footer-card { padding: 4px 0 0 0; margin-top: 8px; border: none; }
         .footer-table { width: 100%; border-collapse: collapse; }
@@ -127,14 +149,14 @@
                   <tr>
                      <td class="label">Заказчик</td>
                      <td class="line">
-                        <div class="line-text">ООО "Демо Заказчик"</div>
+                        <div class="line-text">" "</div>
                         <div class="hint">(наименование организации)</div>
                      </td>
                   </tr>
                   <tr>
                      <td class="label">Наименование стройки</td>
                      <td class="line">
-                        <div class="line-text">Демо объект</div>
+                        <div class="line-text"></div>
                         <div class="hint">(наименование стройки)</div>
                      </td>
                   </tr>
@@ -150,8 +172,8 @@
          <div class="card table-card">
             <table xmlns="" class="data-table">
                <colgroup>
-                  <col style="width:60px">
-                  <col style="width:140px">
+                  <col class="col-position">
+                  <col class="col-number">
                   <col class="col-estimate-name">
                   <col class="col-work">
                   <col style="width:100px">
@@ -162,25 +184,42 @@
                      <th colspan="2" class="center">Данные сметного расчета (сметы)</th>
                      <th rowspan="3" class="center">Наименование работ и затрат</th>
                      <th rowspan="3" class="center">Ед. изм.</th>
-                     <th colspan="2" class="center">Объем работ в сметной документации</th>
-                     <th colspan="2" class="center">Изменение объема работ</th>
-                     <th colspan="1" class="center">Обоснование изменений</th>
-                     <th colspan="2" class="center">Ссылки на исходные документы</th>
+                     <th colspan="4" class="center">Объем работ в сметной документации</th>
+                     <th colspan="9" class="center">Изменение объема работ</th>
+                     <th colspan="3" class="center">Обоснование изменений</th>
+                     <th colspan="4" class="center">Ссылки на исходные документы</th>
                   </tr>
                   <tr>
                      <th class="center" rowspan="2">Номер</th>
                      <th class="center" rowspan="2">Наименование</th>
                      <th class="center" rowspan="2">До изменений (база)</th>
-                     <th class="center" colspan="1">С учетом изменений</th>
+                     <th class="center" colspan="3">С учетом изменений</th>
                      <th class="center" colspan="2">
                         Корректировка 2020 г.</th>
+                     <th class="center" colspan="3">
+                        Корректировка 2021 г.</th>
+                     <th class="center" colspan="4">
+                        Корректировка 2021 г.</th>
                      <th class="center" rowspan="2">2020 г.</th>
+                     <th class="center" rowspan="2">2021 г.</th>
+                     <th class="center" rowspan="2">2021 г.</th>
                      <th class="center" rowspan="2">До изменений (база)</th>
                      <th class="center" rowspan="2">2020 г.</th>
+                     <th class="center" rowspan="2">2021 г.</th>
+                     <th class="center" rowspan="2">2021 г.</th>
                   </tr>
                   <tr>
                      <th class="center">11 2020</th>
+                     <th class="center">04 2021</th>
+                     <th class="center">10 2021</th>
                      <th class="center">Увеличение 2020 г.</th>
+                     <th class="center">Снижение 2017 г.</th>
+                     <th class="center">Увеличение 2021 г.</th>
+                     <th class="center">Снижение 2020 г.</th>
+                     <th class="center">Снижение 2017 г.</th>
+                     <th class="center">Увеличение 2021 г.</th>
+                     <th class="center">Снижение 2021 г.</th>
+                     <th class="center">Снижение 2020 г.</th>
                      <th class="center">Снижение 2017 г.</th>
                   </tr>
                   <tr>
@@ -191,190 +230,290 @@
                      <th class="center numbering">5</th>
                      <th class="center numbering">6</th>
                      <th class="center numbering">7</th>
+                     <th class="center numbering">7.1</th>
+                     <th class="center numbering">7.2</th>
                      <th class="center numbering">8</th>
                      <th class="center numbering">9</th>
+                     <th class="center numbering">8.1</th>
+                     <th class="center numbering">9.1.1</th>
+                     <th class="center numbering">9.1.2</th>
+                     <th class="center numbering">8.2</th>
+                     <th class="center numbering">9.2.1</th>
+                     <th class="center numbering">9.2.2</th>
+                     <th class="center numbering">9.2.3</th>
                      <th class="center numbering">10</th>
+                     <th class="center numbering">10.1</th>
+                     <th class="center numbering">10.2</th>
                      <th class="center numbering">11</th>
                      <th class="center numbering">12</th>
+                     <th class="center numbering">12.1</th>
+                     <th class="center numbering">12.2</th>
                   </tr>
                </thead>
                <tbody>
                   <tr class="estimate-row">
-                     <td colspan="12" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber|estimateName&#xA;Назначение: Исходная смета (номер, наименование)">Смета 02-01-01 - Капитальный ремонт автомобильной дороги А-156 подъездная дорога от автомобильной дороги
-                        А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха
-                        "Архыз" и к специализированной астрофизической обсерватории Российской академии наук
-                        на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</td>
+                     <td colspan="25" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber|estimateName&#xA;Назначение: Исходная смета (номер, наименование)">Смета 02-01-01 - -156 -155 -- "" 7+000- 12+000, -</td>
                   </tr>
                   <tr class="section-row">
-                     <td colspan="12" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/(@sectionNumber|sectionName)&#xA;Назначение: Номер и наименование раздела сметы">1. Инженерное обеспечение</td>
+                     <td colspan="25" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/(@sectionNumber|sectionName)&#xA;Назначение: Номер и наименование раздела сметы">1. </td>
                   </tr>
                   <tr class="free-string-row">
-                     <td colspan="12" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/freeStringItem/freeStringName&#xA;Назначение: Свободная строка раздела">Свободная строка перед первой позицией</td>
+                     <td colspan="25" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/freeStringItem/freeStringName&#xA;Назначение: Свободная строка раздела"></td>
                   </tr>
                   <tr title="">
-                     <td class="center nowrap" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">1</td>
-                     <td title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-01</td>
-                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">Капитальный ремонт автомобильной дороги А-156 подъездная дорога от автомобильной дороги
-                        А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха
-                        "Архыз" и к специализированной астрофизической обсерватории Российской академии наук
-                        на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">Разработка грунта с перемещением до 10 м бульдозерами мощностью: 96 кВт (130 л.с.),
-                        группа грунтов 1 (код: 01-01-023-01, ФЕР)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">1000 м3</td>
+                     <td class="center nowrap col-position" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">1</td>
+                     <td class="col-number" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-01</td>
+                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">-156 -155 -- "" 7+000- 12+000, -</td>
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">10 : 96 (130 ..), 1 (код: 01-01-023-01)</td>
+                     <td class="center col-unit" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">1000 3</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/volume, alterationRef=base)">2.6</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">2.6</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020 г."></td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;Назначение: Снижение объема от базы до стадии 2020 г."></td>
-                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;Назначение: Причины изменения по стадии 2020 г."></td>
-                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;Назначение: Документы, привязанные к базе (подпись ссылки)">1310.0.00-01-КР1 том 5.1.pdf (стр. ) - Лист 7<br>КР2 том 5.2.pdf (стр. ) - Лист 8<br>1310.0.00-01-СМ2 ВОР.pdf (стр. ) - Лист 12</td>
-                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020 г. (подпись ссылки)">1310.0.00-01-КР1 том 5.1.pdf (стр. ) - Лист 7<br>КР2 том 5.2.pdf (стр. ) - Лист 9<br>1310.0.00-01-СМ2 ВОР.pdf (стр. ) - Лист 13</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">2.5</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">2.35</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">2.05</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2020 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2020 г.">0.1</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г.">0.15</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г.">0.25</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2021-04&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2021 г. до стадии 2021 г.">0.3</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г.">0.55</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2020 г.">Снижение относительно базы<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г.">Снижение относительно корректировки 11.2020<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г.">Снижение относительно корректировки 04.2021<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;Назначение: Документы, привязанные к базе (подпись ссылки)">1310.0.00-01-1  5.1.pdf (стр. ) -  7<br>2  5.2.pdf (стр. ) -  8<br>1310.0.00-01-2 .pdf (стр. ) -  12</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020 г. (подпись ссылки)">1310.0.00-01-1  5.1.pdf (стр. ) -  7<br>2  5.2.pdf (стр. ) -  9<br>1310.0.00-01-2 .pdf (стр. ) -  13</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-04&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-10&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
                   </tr>
                   <tr class="free-string-row">
-                     <td colspan="12" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/freeStringItem/freeStringName&#xA;Назначение: Свободная строка раздела">Свободная строка после первой позиции</td>
+                     <td colspan="25" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/freeStringItem/freeStringName&#xA;Назначение: Свободная строка раздела"></td>
                   </tr>
                   <tr title="">
-                     <td class="center nowrap" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">2</td>
-                     <td title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-01</td>
-                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">Капитальный ремонт автомобильной дороги А-156 подъездная дорога от автомобильной дороги
-                        А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха
-                        "Архыз" и к специализированной астрофизической обсерватории Российской академии наук
-                        на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">Планировка площадей: механизированным способом, группа грунтов 1 (код: 01-02-027-01, ФЕР)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">10000 м2</td>
+                     <td class="center nowrap col-position" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">2</td>
+                     <td class="col-number" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-01</td>
+                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">-156 -155 -- "" 7+000- 12+000, -</td>
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">: , 1 (код: 01-02-027-01)</td>
+                     <td class="center col-unit" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">10000 2</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/volume, alterationRef=base)">2.6</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">3.6</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020 г.">1</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;Назначение: Снижение объема от базы до стадии 2020 г."></td>
-                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;Назначение: Причины изменения по стадии 2020 г.">���४�஢�� �஥���� �襭�� � �裡 � �������⥫�묨 ������୮-��������᪨�� ���᪠��ﬨ ���頤�� ��ந⥫��⢠</td>
-                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;Назначение: Документы, привязанные к базе (подпись ссылки)">1310.0.00-01-КР1 том 5.1.pdf (стр. ) - Лист 7<br>КР2 том 5.2.pdf (стр. ) - Лист 8<br>1310.0.00-01-СМ2 ВОР.pdf (стр. ) - Лист 12</td>
-                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020 г. (подпись ссылки)">1310.0.00-01-КР1 том 5.1.pdf (стр. ) - Лист 7<br>КР2 том 5.2.pdf (стр. ) - Лист 9<br>1310.0.00-01-СМ2 ВОР.pdf (стр. ) - Лист 13</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">2.5</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">2.35</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">2.05</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2020 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2020 г.">0.1</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г.">0.15</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г.">0.25</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2021-04&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2021 г. до стадии 2021 г.">0.3</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г.">0.55</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2020 г.">Снижение относительно базы<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г.">Снижение относительно корректировки 11.2020<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г.">Снижение относительно корректировки 04.2021<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;Назначение: Документы, привязанные к базе (подпись ссылки)">1310.0.00-01-1  5.1.pdf (стр. ) -  7<br>2  5.2.pdf (стр. ) -  8<br>1310.0.00-01-2 .pdf (стр. ) -  12</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020 г. (подпись ссылки)">1310.0.00-01-1  5.1.pdf (стр. ) -  7<br>2  5.2.pdf (стр. ) -  9<br>1310.0.00-01-2 .pdf (стр. ) -  13</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-04&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-10&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
                   </tr>
                   <tr class="section-row">
-                     <td colspan="12" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/(@sectionNumber|sectionName)&#xA;Назначение: Номер и наименование раздела сметы">2. Устройство прослойки из нетканого синтетического материала (расценка с ресурсомЗР
-                        и доп перевозкой)</td>
+                     <td colspan="25" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/(@sectionNumber|sectionName)&#xA;Назначение: Номер и наименование раздела сметы">2. ( )</td>
                   </tr>
                   <tr title="">
-                     <td class="center nowrap" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">1</td>
-                     <td title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-01</td>
-                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">Капитальный ремонт автомобильной дороги А-156 подъездная дорога от автомобильной дороги
-                        А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха
-                        "Архыз" и к специализированной астрофизической обсерватории Российской академии наук
-                        на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">Устройство прослойки из нетканого синтетического материала (НСМ) в земляном полотне:
-                        сплошной (код: 27-04-016-04, ФЕР)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">1000 м2</td>
+                     <td class="center nowrap col-position" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">1</td>
+                     <td class="col-number" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-01</td>
+                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">-156 -155 -- "" 7+000- 12+000, -</td>
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">() : (код: 27-04-016-04)</td>
+                     <td class="center col-unit" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">1000 2</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/volume, alterationRef=base)">0.74</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">0.74</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020 г."></td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;Назначение: Снижение объема от базы до стадии 2020 г."></td>
-                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;Назначение: Причины изменения по стадии 2020 г."></td>
-                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;Назначение: Документы, привязанные к базе (подпись ссылки)">1310.0.00-01-КР1 том 5.1.pdf (стр. ) - Лист 7<br>КР2 том 5.2.pdf (стр. ) - Лист 8<br>1310.0.00-01-СМ2 ВОР.pdf (стр. ) - Лист 12</td>
-                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020 г. (подпись ссылки)">1310.0.00-01-КР1 том 5.1.pdf (стр. ) - Лист 7<br>КР2 том 5.2.pdf (стр. ) - Лист 9<br>1310.0.00-01-СМ2 ВОР.pdf (стр. ) - Лист 13</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">0.64</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">0.49</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">0.19</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2020 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2020 г.">0.1</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г.">0.15</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г.">0.25</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2021-04&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2021 г. до стадии 2021 г.">0.3</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г.">0.55</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2020 г.">Снижение относительно базы<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г.">Снижение относительно корректировки 11.2020<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г.">Снижение относительно корректировки 04.2021<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;Назначение: Документы, привязанные к базе (подпись ссылки)">1310.0.00-01-1  5.1.pdf (стр. ) -  7<br>2  5.2.pdf (стр. ) -  8<br>1310.0.00-01-2 .pdf (стр. ) -  12</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020 г. (подпись ссылки)">1310.0.00-01-1  5.1.pdf (стр. ) -  7<br>2  5.2.pdf (стр. ) -  9<br>1310.0.00-01-2 .pdf (стр. ) -  13</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-04&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-10&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
                   </tr>
                   <tr title="">
-                     <td class="center nowrap" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">1.1</td>
-                     <td title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-01</td>
-                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">Капитальный ремонт автомобильной дороги А-156 подъездная дорога от автомобильной дороги
-                        А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха
-                        "Архыз" и к специализированной астрофизической обсерватории Российской академии наук
-                        на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">   Геополотно нетканое полипропиленовое, иглопробивное, термоскрепленное, поверхностная
-                        плотность 400 г/м2 (код: 01.7.12.05-0162)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">м2</td>
+                     <td class="center nowrap col-position" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">1.1</td>
+                     <td class="col-number" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-01</td>
+                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">-156 -155 -- "" 7+000- 12+000, -</td>
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">   , , , 400 /2 (код: 01.7.12.05-0162)</td>
+                     <td class="center col-unit" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">2</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/volume, alterationRef=base)">888</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">888</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020 г."></td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;Назначение: Снижение объема от базы до стадии 2020 г."></td>
-                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;Назначение: Причины изменения по стадии 2020 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">887.9</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">887.75</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">887.45</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2020 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2020 г.">0.1</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г.">0.15</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г.">0.25</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2021-04&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2021 г. до стадии 2021 г.">0.3</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г.">0.55</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2020 г.">Снижение относительно базы<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г.">Снижение относительно корректировки 11.2020<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г.">Снижение относительно корректировки 04.2021<br>Снижение относительно базы</td>
                      <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;Назначение: Документы, привязанные к базе (подпись ссылки)"></td>
                      <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020 г. (подпись ссылки)"></td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-04&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-10&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
                   </tr>
                   <tr title="">
-                     <td class="center nowrap" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">1.1.1</td>
-                     <td title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-01</td>
-                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">Капитальный ремонт автомобильной дороги А-156 подъездная дорога от автомобильной дороги
-                        А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха
-                        "Архыз" и к специализированной астрофизической обсерватории Российской академии наук
-                        на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">      Перевозка грузов I класса автомобилями бортовыми грузоподъемностью до 20 т по дорогам
-                        с усовершенствованным (асфальтобетонным, цементобетонным, железобетонным, обработанным
-                        органическим вяжущим) дорожным покрытием на расстояние 30 км (код: 03-01-01-030, ФССЦпг)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">т</td>
+                     <td class="center nowrap col-position" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">1.1.1</td>
+                     <td class="col-number" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-01</td>
+                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">-156 -155 -- "" 7+000- 12+000, -</td>
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">      I 20 (, , , ) 30 (код: 03-01-01-030)</td>
+                     <td class="center col-unit" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)"></td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/volume, alterationRef=base)">-0.355</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">-0.355</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020 г."></td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;Назначение: Снижение объема от базы до стадии 2020 г."></td>
-                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;Назначение: Причины изменения по стадии 2020 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">0</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">0</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">0</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2020 г.">0.355</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2020 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2021-04&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2021 г. до стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г."></td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2020 г.">Уточнение объема по корректировки 11.2020</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г."></td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г."></td>
                      <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;Назначение: Документы, привязанные к базе (подпись ссылки)"></td>
                      <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020 г. (подпись ссылки)"></td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-04&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-10&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
                   </tr>
                   <tr title="">
-                     <td class="center nowrap" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">1.1.2</td>
-                     <td title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-01</td>
-                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">Капитальный ремонт автомобильной дороги А-156 подъездная дорога от автомобильной дороги
-                        А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха
-                        "Архыз" и к специализированной астрофизической обсерватории Российской академии наук
-                        на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">      Перевозка грузов I класса автомобилями бортовыми грузоподъемностью до 20 т по дорогам
-                        с усовершенствованным (асфальтобетонным, цементобетонным, железобетонным, обработанным
-                        органическим вяжущим) дорожным покрытием на расстояние 130 км (код: 03-01-01-130, ФССЦпг)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">т</td>
+                     <td class="center nowrap col-position" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">1.1.2</td>
+                     <td class="col-number" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-01</td>
+                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">-156 -155 -- "" 7+000- 12+000, -</td>
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">      I 20 (, , , ) 130 (код: 03-01-01-130)</td>
+                     <td class="center col-unit" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)"></td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/volume, alterationRef=base)">0.355</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">0.355</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020 г."></td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;Назначение: Снижение объема от базы до стадии 2020 г."></td>
-                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;Назначение: Причины изменения по стадии 2020 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">0.255</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">0.105</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">0</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2020 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2020 г.">0.1</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г.">0.15</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г.">0.25</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2021-04&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2021 г. до стадии 2021 г.">0.105</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г.">0.355</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2020 г.">Снижение относительно базы<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г.">Снижение относительно корректировки 11.2020<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г.">Снижение относительно корректировки 04.2021<br>Снижение относительно базы</td>
                      <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;Назначение: Документы, привязанные к базе (подпись ссылки)"></td>
                      <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020 г. (подпись ссылки)"></td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-04&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-10&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
                   </tr>
                   <tr class="estimate-row">
-                     <td colspan="12" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber|estimateName&#xA;Назначение: Исходная смета (номер, наименование)">Смета 02-01-02 - Конструктивные решения. Фундаменты</td>
+                     <td colspan="25" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber|estimateName&#xA;Назначение: Исходная смета (номер, наименование)">Смета 02-01-02 - .</td>
                   </tr>
                   <tr class="section-row">
-                     <td colspan="12" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/(@sectionNumber|sectionName)&#xA;Назначение: Номер и наименование раздела сметы">1. Раздел 1 сметы 02-01-02</td>
+                     <td colspan="25" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/(@sectionNumber|sectionName)&#xA;Назначение: Номер и наименование раздела сметы">1. 1 02-01-02</td>
                   </tr>
                   <tr title="">
-                     <td class="center nowrap" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">1</td>
-                     <td title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-02</td>
-                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">Конструктивные решения. Фундаменты</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">Уплотнение грунта пневматическими трамбовками, группа грунтов: 1-2 (код: 01-02-005-01, ФЕР)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">100 м3</td>
+                     <td class="center nowrap col-position" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">1</td>
+                     <td class="col-number" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-02</td>
+                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">.</td>
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">, : 1-2 (код: 01-02-005-01)</td>
+                     <td class="center col-unit" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">100 3</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/volume, alterationRef=base)">10</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">8</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020 г."></td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;Назначение: Снижение объема от базы до стадии 2020 г.">-2</td>
-                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;Назначение: Причины изменения по стадии 2020 г.">Корректировка проектных решений в связи с дополнительными инженерно-геологическими
-                        изысканиями площадки строительства</td>
-                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;Назначение: Документы, привязанные к базе (подпись ссылки)">1310.0.00-01-КР1 том 5.1.pdf (стр. ) - Лист 7<br>КР2 том 5.2.pdf (стр. ) - Лист 8<br>1310.0.00-01-СМ2 ВОР.pdf (стр. ) - Лист 12</td>
-                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020 г. (подпись ссылки)">1310.0.00-01-КР1 том 5.1.pdf (стр. ) - Лист 7<br>КР2 том 5.2.pdf (стр. ) - Лист 9<br>1310.0.00-01-СМ2 ВОР.pdf (стр. ) - Лист 13</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">9.9</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">9.75</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">9.45</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2020 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2020 г.">0.1</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г.">0.15</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г.">0.25</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2021-04&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2021 г. до стадии 2021 г.">0.3</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г.">0.55</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2020 г.">Снижение относительно базы<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г.">Снижение относительно корректировки 11.2020<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г.">Снижение относительно корректировки 04.2021<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;Назначение: Документы, привязанные к базе (подпись ссылки)">1310.0.00-01-1  5.1.pdf (стр. ) -  7<br>2  5.2.pdf (стр. ) -  8<br>1310.0.00-01-2 .pdf (стр. ) -  12</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020 г. (подпись ссылки)">1310.0.00-01-1  5.1.pdf (стр. ) -  7<br>2  5.2.pdf (стр. ) -  9<br>1310.0.00-01-2 .pdf (стр. ) -  13</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-04&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-10&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
                   </tr>
                   <tr title="">
-                     <td class="center nowrap" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">2</td>
-                     <td title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-02</td>
-                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">Конструктивные решения. Фундаменты</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">Устройство бетонной подготовки (код: 06-01-001-01, ФЕР)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">100 м3</td>
+                     <td class="center nowrap col-position" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">2</td>
+                     <td class="col-number" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-02</td>
+                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">.</td>
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)"> (код: 06-01-001-01)</td>
+                     <td class="center col-unit" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">100 3</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/volume, alterationRef=base)">7</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">8</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020 г.">1</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;Назначение: Снижение объема от базы до стадии 2020 г."></td>
-                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;Назначение: Причины изменения по стадии 2020 г.">Изменение толщины</td>
-                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;Назначение: Документы, привязанные к базе (подпись ссылки)">1310.0.00-01-КР1 том 5.1.pdf (стр. ) - Лист 7<br>КР2 том 5.2.pdf (стр. ) - Лист 8<br>1310.0.00-01-СМ2 ВОР.pdf (стр. ) - Лист 12</td>
-                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020 г. (подпись ссылки)">1310.0.00-01-КР1 том 5.1.pdf (стр. ) - Лист 7<br>КР2 том 5.2.pdf (стр. ) - Лист 9<br>1310.0.00-01-СМ2 ВОР.pdf (стр. ) - Лист 13</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">6.9</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">6.75</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">6.45</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2020 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2020 г.">0.1</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г.">0.15</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г.">0.25</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2021-04&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2021 г. до стадии 2021 г.">0.3</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г.">0.55</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2020 г.">Снижение относительно базы<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г.">Снижение относительно корректировки 11.2020<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г.">Снижение относительно корректировки 04.2021<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;Назначение: Документы, привязанные к базе (подпись ссылки)">1310.0.00-01-1  5.1.pdf (стр. ) -  7<br>2  5.2.pdf (стр. ) -  8<br>1310.0.00-01-2 .pdf (стр. ) -  12</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020 г. (подпись ссылки)">1310.0.00-01-1  5.1.pdf (стр. ) -  7<br>2  5.2.pdf (стр. ) -  9<br>1310.0.00-01-2 .pdf (стр. ) -  13</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-04&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-10&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
                   </tr>
                   <tr title="">
-                     <td class="center nowrap" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">2.1</td>
-                     <td title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-02</td>
-                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">Конструктивные решения. Фундаменты</td>
-                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">   Смеси бетонные тяжелого бетона (БСТ), класс В7,5 (М100) (код: 04.1.02.05-0074)</td>
-                     <td class="center" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">м3</td>
+                     <td class="center nowrap col-position" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId&#xA;Назначение: Номер позиции сметы (атрибут itemPositionId)">2.1</td>
+                     <td class="col-number" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/@estimateNumber&#xA;Назначение: Номер исходной сметы (атрибут estimateNumber)">02-01-02</td>
+                     <td class="col-estimate-name" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/estimateName&#xA;Назначение: Наименование исходной сметы (estimateName)">.</td>
+                     <td class="col-work" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work&#xA;Назначение: Работа (workName, normCodePrefix, normCode)">   (), 7,5 (100) (код: 04.1.02.05-0074)</td>
+                     <td class="center col-unit" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/work/measurementUnit&#xA;Назначение: Единица измерения (measurementUnit)">3</td>
                      <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;base&#34;]/volumeQuantity&#xA;Назначение: Объем базы (volumeList/volume, alterationRef=base)">800</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">950</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease&#xA;Назначение: Увеличение объема на стадии 2020 г.">150</td>
-                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/Delta/Difference[@fromRef=&#34;base&#34;]&#xA;Назначение: Снижение объема от базы до стадии 2020 г."></td>
-                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/reason&#xA;Назначение: Причины изменения по стадии 2020 г.">Изменение толщины</td>
-                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;Назначение: Документы, привязанные к базе (подпись ссылки)">1310.0.00-01-КР1 том 5.1.pdf (стр. ) - Лист 7<br>КР2 том 5.2.pdf (стр. ) - Лист 8<br>1310.0.00-01-СМ2 ВОР.pdf (стр. ) - Лист 12</td>
-                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020 г. (подпись ссылки)">1310.0.00-01-КР1 том 5.1.pdf (стр. ) - Лист 7<br>КР2 том 5.2.pdf (стр. ) - Лист 9<br>1310.0.00-01-СМ2 ВОР.pdf (стр. ) - Лист 13</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2020 г.">799.9</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">799.75</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeQuantity&#xA;Назначение: Объем по стадии 2021 г.">799.45</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2020 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2020 г.">0.1</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г.">0.15</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г.">0.25</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/volumeIncrease/amount&#xA;Назначение: Увеличения объема на стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2021-04&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2021 г. до стадии 2021 г.">0.3</td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;alt-2020-11&#34;]/amount&#xA;Назначение: Снижение объема от стадии 2020 г. до стадии 2021 г."></td>
+                     <td class="right" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/decreaseList/decrease[@fromRef=&#34;base&#34;]/amount&#xA;Назначение: Снижение объема от базы до стадии 2021 г.">0.55</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2020-11&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2020 г.">Снижение относительно базы<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-04&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г.">Снижение относительно корректировки 11.2020<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-reason" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&#34;alt-2021-10&#34;]/(volumeIncrease/reason|decreaseList/decrease/reason)&#xA;Назначение: Обоснования изменений по стадии 2021 г.">Снижение относительно корректировки 04.2021<br>Снижение относительно базы</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;base&#34;]&#xA;Назначение: Документы, привязанные к базе (подпись ссылки)">1310.0.00-01-1  5.1.pdf (стр. ) -  7<br>2  5.2.pdf (стр. ) -  8<br>1310.0.00-01-2 .pdf (стр. ) -  12</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2020-11&#34;]&#xA;Назначение: Документы по стадии 2020 г. (подпись ссылки)">1310.0.00-01-1  5.1.pdf (стр. ) -  7<br>2  5.2.pdf (стр. ) -  9<br>1310.0.00-01-2 .pdf (стр. ) -  13</td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-04&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
+                     <td class="notes-cell col-docs" title="Путь: /comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/documentationList/documentReference[@alterationRef=&#34;alt-2021-10&#34;]&#xA;Назначение: Документы по стадии 2021 г. (подпись ссылки)"></td>
                   </tr>
                </tbody>
             </table>
@@ -384,14 +523,14 @@
                <tr>
                   <td class="label">Составил</td>
                   <td>
-                     <div class="hint">Инженер, Иванов Иван Отчество</div>
+                     <div class="hint">,</div>
                      <div class="decode">[должность, подпись (инициалы, фамилия)]</div>
                   </td>
                </tr>
                <tr>
                   <td class="label">Проверил</td>
                   <td>
-                     <div class="hint">Главный инженер, Петров Пётр Петрович</div>
+                     <div class="hint">, ϸ</div>
                      <div class="decode">[должность, подпись (инициалы, фамилия)]</div>
                   </td>
                </tr>

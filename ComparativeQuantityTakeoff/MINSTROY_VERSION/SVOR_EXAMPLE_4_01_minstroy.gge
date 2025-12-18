@@ -1,435 +1,1339 @@
-<?xml version='1.0' encoding='utf-8'?>
-<cqt:comparativeQuantityTakeoff xmlns="http://types/CommonTypes.xsd"
-  xmlns:cqt="http://cqt/ComparativeQuantityTakeoff.xsd"
-  xmlns:bd="http://types/BaseDocument.xsd" xmlns:bt="http://types/BaseTypes.xsd"
-  xmlns:ct="http://types/CommonTypes.xsd"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://cqt/ComparativeQuantityTakeoff.xsd ComparativeQuantityTakeoff.xsd http://types/BaseDocument.xsd types/BaseDocument.xsd http://types/CommonTypes.xsd types/CommonTypes.xsd http://types/BaseTypes.xsd types/BaseTypes.xsd">
-  <bd:documentMeta>
-    <software>
-      <softwareName>Сметная программа</softwareName>
-      <softwareVersion>1.0</softwareVersion>
-    </software>
-    <file>
-      <fileType>Сводная ведомость объемов работ</fileType>
-      <schemaVersion>1.0</schemaVersion>
-    </file>
-  </bd:documentMeta>
-  <bd:accessLevelCode>общедоступная информация</bd:accessLevelCode>
-  <bd:objectName>Демо объект</bd:objectName>
-  <bd:constructionName>Демо объект</bd:constructionName>
-  <bd:objectNumber>СВОР 01-01</bd:objectNumber>
-  <bd:documentDate>2025-03-01</bd:documentDate>
-  <bd:customerName>ООО "Демо Заказчик"</bd:customerName>
-  <bd:signatures>
-    <bd:composer>
-      <surname>Иванов</surname>
-      <name>Иван</name>
-      <patronymic>Отчество</patronymic>
-      <position>Инженер</position>
-    </bd:composer>
-    <bd:verifier>
-      <surname>Петров</surname>
-      <name>Пётр</name>
-      <patronymic>Петрович</patronymic>
-      <position>Главный инженер</position>
-    </bd:verifier>
-  </bd:signatures>
-  <bd:fileList>
-    <bd:file>
-      <fileInternalId>1</fileInternalId>
-      <fileName>1310.0.00-01-КР1 том 5.1.pdf</fileName>
-      <fileId>44444444-4444-4444-8444-444444444444</fileId>
-      <fileCheckSum>D4E5F6A7</fileCheckSum>
-    </bd:file>
-    <bd:file>
-      <fileInternalId>2</fileInternalId>
-      <fileName>КР2 том 5.2.pdf</fileName>
-      <fileId>55555555-5555-4555-8555-555555555555</fileId>
-      <fileCheckSum>E5F6A7B8</fileCheckSum>
-    </bd:file>
-    <bd:file>
-      <fileInternalId>3</fileInternalId>
-      <fileName>1310.0.00-01-СМ2 ВОР.pdf</fileName>
-      <fileId>66666666-6666-4666-8666-666666666666</fileId>
-      <fileCheckSum>F6A7B8C9</fileCheckSum>
-    </bd:file>
-  </bd:fileList>
-  <bd:alterationList>
-    <bd:alteration id="base">
-      <year>2017</year>
-      <month>--05</month>
-    </bd:alteration>
-    <bd:alteration id="alt-2020-11">
-      <year>2020</year>
-      <month>--11</month>
-    </bd:alteration>
-  </bd:alterationList>
-  <bd:estimateList>
-    <bd:estimate estimateNumber="02-01-01">
-      <estimateName>Капитальный ремонт автомобильной дороги А-156 подъездная дорога от автомобильной дороги А-155 Черкесск-Домбай-граница с Республикой Абхазия к международному центру отдыха "Архыз" и к специализированной астрофизической обсерватории Российской академии наук на участке км 7+000-км 12+000, Карачаево-Черкесская Республика</estimateName>
-      <sectionList><section sectionNumber="1">
-        <sectionName>Инженерное обеспечение</sectionName>
-        <itemList>
-          <freeStringItem>
-            <freeStringName>Свободная строка перед первой позицией</freeStringName>
-          </freeStringItem>
-          <item itemPositionId="1">
-          <work>
-            <workName>Разработка грунта с перемещением до 10 м бульдозерами мощностью: 96 кВт (130 л.с.), группа грунтов 1</workName>
-            <measurementUnit>1000 м3</measurementUnit>
-            <normCodePrefix>ФЕР</normCodePrefix>
-            <normCode>01-01-023-01</normCode>
-          </work>
-          <volumeList>
-            <volume alterationRef="base">
-              <volumeQuantity>2.6</volumeQuantity>
-            </volume>
-            <volume alterationRef="alt-2020-11">
-              <volumeQuantity>2.6</volumeQuantity>
-            </volume>
-          </volumeList>
-          <documentationList>
-            <documentReference alterationRef="base">
-              <fileInternalId>1</fileInternalId>
-              <pageNumbers>8</pageNumbers>
-              <pageDescription>Лист 7</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="base">
-              <fileInternalId>2</fileInternalId>
-              <pageNumbers>8</pageNumbers>
-              <pageDescription>Лист 8</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="base">
-              <fileInternalId>3</fileInternalId>
-              <pageNumbers>12</pageNumbers>
-              <pageDescription>Лист 12</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="alt-2020-11">
-              <fileInternalId>1</fileInternalId>
-              <pageNumbers>8</pageNumbers>
-              <pageDescription>Лист 7</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="alt-2020-11">
-              <fileInternalId>2</fileInternalId>
-              <pageNumbers>9</pageNumbers>
-              <pageDescription>Лист 9</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="alt-2020-11">
-              <fileInternalId>3</fileInternalId>
-              <pageNumbers>13</pageNumbers>
-              <pageDescription>Лист 13</pageDescription>
-            </documentReference>
-          </documentationList>
-        </item>
-        <freeStringItem>
-          <freeStringName>Свободная строка после первой позиции</freeStringName>
-        </freeStringItem>
-        <item itemPositionId="2">
-          <work>
-            <workName>Планировка площадей: механизированным способом, группа грунтов 1</workName>
-            <measurementUnit>10000 м2</measurementUnit>
-            <normCodePrefix>ФЕР</normCodePrefix>
-            <normCode>01-02-027-01</normCode>
-          </work>
-          <volumeList>
-            <volume alterationRef="base">
-              <volumeQuantity>2.6</volumeQuantity>
-            </volume>
-            <volume alterationRef="alt-2020-11">
-              <volumeQuantity>3.6</volumeQuantity>
-              <volumeIncrease>1</volumeIncrease>
-              <reason>���४�஢�� �஥���� �襭�� � �裡 � �������⥫�묨 ������୮-��������᪨�� ���᪠��ﬨ ���頤�� ��ந⥫��⢠</reason>
-            </volume>
-          </volumeList>
-          <documentationList>
-            <documentReference alterationRef="base">
-              <fileInternalId>1</fileInternalId>
-              <pageNumbers>8</pageNumbers>
-              <pageDescription>Лист 7</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="base">
-              <fileInternalId>2</fileInternalId>
-              <pageNumbers>8</pageNumbers>
-              <pageDescription>Лист 8</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="base">
-              <fileInternalId>3</fileInternalId>
-              <pageNumbers>12</pageNumbers>
-              <pageDescription>Лист 12</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="alt-2020-11">
-              <fileInternalId>1</fileInternalId>
-              <pageNumbers>8</pageNumbers>
-              <pageDescription>Лист 7</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="alt-2020-11">
-              <fileInternalId>2</fileInternalId>
-              <pageNumbers>9</pageNumbers>
-              <pageDescription>Лист 9</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="alt-2020-11">
-              <fileInternalId>3</fileInternalId>
-              <pageNumbers>13</pageNumbers>
-              <pageDescription>Лист 13</pageDescription>
-            </documentReference>
-          </documentationList>
-        </item>
-      </itemList></section>
-      <section sectionNumber="2">
-        <sectionName>Устройство прослойки из нетканого синтетического материала (расценка с ресурсомЗР и доп перевозкой)</sectionName>
-        <itemList><item itemPositionId="1">
-          <work>
-            <workName>Устройство прослойки из нетканого синтетического материала (НСМ) в земляном полотне: сплошной</workName>
-            <measurementUnit>1000 м2</measurementUnit>
-            <normCodePrefix>ФЕР</normCodePrefix>
-            <normCode>27-04-016-04</normCode>
-          </work>
-          <volumeList>
-            <volume alterationRef="base">
-              <volumeQuantity>0.74</volumeQuantity>
-            </volume>
-            <volume alterationRef="alt-2020-11">
-              <volumeQuantity>0.74</volumeQuantity>
-            </volume>
-          </volumeList>
-          <documentationList>
-            <documentReference alterationRef="base">
-              <fileInternalId>1</fileInternalId>
-              <pageNumbers>8</pageNumbers>
-              <pageDescription>Лист 7</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="base">
-              <fileInternalId>2</fileInternalId>
-              <pageNumbers>8</pageNumbers>
-              <pageDescription>Лист 8</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="base">
-              <fileInternalId>3</fileInternalId>
-              <pageNumbers>12</pageNumbers>
-              <pageDescription>Лист 12</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="alt-2020-11">
-              <fileInternalId>1</fileInternalId>
-              <pageNumbers>8</pageNumbers>
-              <pageDescription>Лист 7</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="alt-2020-11">
-              <fileInternalId>2</fileInternalId>
-              <pageNumbers>9</pageNumbers>
-              <pageDescription>Лист 9</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="alt-2020-11">
-              <fileInternalId>3</fileInternalId>
-              <pageNumbers>13</pageNumbers>
-              <pageDescription>Лист 13</pageDescription>
-            </documentReference>
-          </documentationList>
-          <itemList><item itemPositionId="1">
-            <work>
-              <workName>Геополотно нетканое полипропиленовое, иглопробивное, термоскрепленное, поверхностная плотность 400 г/м2</workName>
-              <measurementUnit>м2</measurementUnit>
-              <normCode>01.7.12.05-0162</normCode>
-            </work>
-            <volumeList>
-              <volume alterationRef="base">
-                <volumeQuantity>888</volumeQuantity>
-              </volume>
-              <volume alterationRef="alt-2020-11">
-                <volumeQuantity>888</volumeQuantity>
-              </volume>
-            </volumeList>
-            <itemList><item itemPositionId="1">
-              <work>
-                <workName>Перевозка грузов I класса автомобилями бортовыми грузоподъемностью до 20 т по дорогам с усовершенствованным (асфальтобетонным, цементобетонным, железобетонным, обработанным органическим вяжущим) дорожным покрытием на расстояние 30 км</workName>
-                <measurementUnit>т</measurementUnit>
-                <normCodePrefix>ФССЦпг</normCodePrefix>
-                <normCode>03-01-01-030</normCode>
-              </work>
-              <volumeList>
-                <volume alterationRef="base">
-                  <volumeQuantity>-0.3552</volumeQuantity>
-                </volume>
-                <volume alterationRef="alt-2020-11">
-                  <volumeQuantity>-0.3552</volumeQuantity>
-                </volume>
-              </volumeList>
-            </item>
-            <item itemPositionId="2">
-              <work>
-                <workName>Перевозка грузов I класса автомобилями бортовыми грузоподъемностью до 20 т по дорогам с усовершенствованным (асфальтобетонным, цементобетонным, железобетонным, обработанным органическим вяжущим) дорожным покрытием на расстояние 130 км</workName>
-                <measurementUnit>т</measurementUnit>
-                <normCodePrefix>ФССЦпг</normCodePrefix>
-                <normCode>03-01-01-130</normCode>
-              </work>
-              <volumeList>
-                <volume alterationRef="base">
-                  <volumeQuantity>0.3552</volumeQuantity>
-                </volume>
-                <volume alterationRef="alt-2020-11">
-                  <volumeQuantity>0.3552</volumeQuantity>
-                </volume>
-              </volumeList>
-            </item>
-          </itemList></item>
-        </itemList></item>
-      </itemList></section>
-    </sectionList></bd:estimate>
-    <bd:estimate estimateNumber="02-01-02">
-      <estimateName>Конструктивные решения. Фундаменты</estimateName>
-      <sectionList><section sectionNumber="1">
-        <sectionName>Раздел 1 сметы 02-01-02</sectionName>
-        <itemList><item itemPositionId="1">
-          <work>
-            <workName>Уплотнение грунта пневматическими трамбовками, группа грунтов: 1-2</workName>
-            <measurementUnit>100 м3</measurementUnit>
-            <normCodePrefix>ФЕР</normCodePrefix>
-            <normCode>01-02-005-01</normCode>
-          </work>
-          <volumeList>
-            <volume alterationRef="base">
-              <volumeQuantity>10</volumeQuantity>
-            </volume>
-            <volume alterationRef="alt-2020-11">
-              <volumeQuantity>8</volumeQuantity>
-              <volumeDecrease>-2</volumeDecrease>
-              <reason>Корректировка проектных решений в связи с дополнительными инженерно-геологическими изысканиями площадки строительства</reason>
-            </volume>
-          </volumeList>
-          <documentationList>
-            <documentReference alterationRef="base">
-              <fileInternalId>1</fileInternalId>
-              <pageNumbers>8</pageNumbers>
-              <pageDescription>Лист 7</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="base">
-              <fileInternalId>2</fileInternalId>
-              <pageNumbers>8</pageNumbers>
-              <pageDescription>Лист 8</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="base">
-              <fileInternalId>3</fileInternalId>
-              <pageNumbers>12</pageNumbers>
-              <pageDescription>Лист 12</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="alt-2020-11">
-              <fileInternalId>1</fileInternalId>
-              <pageNumbers>8</pageNumbers>
-              <pageDescription>Лист 7</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="alt-2020-11">
-              <fileInternalId>2</fileInternalId>
-              <pageNumbers>9</pageNumbers>
-              <pageDescription>Лист 9</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="alt-2020-11">
-              <fileInternalId>3</fileInternalId>
-              <pageNumbers>13</pageNumbers>
-              <pageDescription>Лист 13</pageDescription>
-            </documentReference>
-          </documentationList>
-        </item>
-        <item itemPositionId="2">
-          <work>
-            <workName>Устройство бетонной подготовки</workName>
-            <measurementUnit>100 м3</measurementUnit>
-            <normCodePrefix>ФЕР</normCodePrefix>
-            <normCode>06-01-001-01</normCode>
-          </work>
-          <volumeList>
-            <volume alterationRef="base">
-              <volumeQuantity>7</volumeQuantity>
-            </volume>
-            <volume alterationRef="alt-2020-11">
-              <volumeQuantity>8</volumeQuantity>
-              <volumeIncrease>1</volumeIncrease>
-              <reason>Изменение толщины</reason>
-            </volume>
-          </volumeList>
-          <documentationList>
-            <documentReference alterationRef="base">
-              <fileInternalId>1</fileInternalId>
-              <pageNumbers>8</pageNumbers>
-              <pageDescription>Лист 7</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="base">
-              <fileInternalId>2</fileInternalId>
-              <pageNumbers>8</pageNumbers>
-              <pageDescription>Лист 8</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="base">
-              <fileInternalId>3</fileInternalId>
-              <pageNumbers>12</pageNumbers>
-              <pageDescription>Лист 12</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="alt-2020-11">
-              <fileInternalId>1</fileInternalId>
-              <pageNumbers>8</pageNumbers>
-              <pageDescription>Лист 7</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="alt-2020-11">
-              <fileInternalId>2</fileInternalId>
-              <pageNumbers>9</pageNumbers>
-              <pageDescription>Лист 9</pageDescription>
-            </documentReference>
-            <documentReference alterationRef="alt-2020-11">
-              <fileInternalId>3</fileInternalId>
-              <pageNumbers>13</pageNumbers>
-              <pageDescription>Лист 13</pageDescription>
-            </documentReference>
-          </documentationList>
-          <itemList><item itemPositionId="1">
-            <work>
-              <workName>Смеси бетонные тяжелого бетона (БСТ), класс В7,5 (М100)</workName>
-              <measurementUnit>м3</measurementUnit>
-              <normCode>04.1.02.05-0074</normCode>
-            </work>
-            <volumeList>
-              <volume alterationRef="base">
-                <volumeQuantity>800</volumeQuantity>
-              </volume>
-              <volume alterationRef="alt-2020-11">
-                <volumeQuantity>950</volumeQuantity>
-                <volumeIncrease>150</volumeIncrease>
-                <reason>Изменение толщины</reason>
-              </volume>
-            </volumeList>
-            <documentationList>
-              <documentReference alterationRef="base">
-                <fileInternalId>1</fileInternalId>
-                <pageNumbers>8</pageNumbers>
-                <pageDescription>Лист 7</pageDescription>
-              </documentReference>
-              <documentReference alterationRef="base">
-                <fileInternalId>2</fileInternalId>
-                <pageNumbers>8</pageNumbers>
-                <pageDescription>Лист 8</pageDescription>
-              </documentReference>
-              <documentReference alterationRef="base">
-                <fileInternalId>3</fileInternalId>
-                <pageNumbers>12</pageNumbers>
-                <pageDescription>Лист 12</pageDescription>
-              </documentReference>
-              <documentReference alterationRef="alt-2020-11">
-                <fileInternalId>1</fileInternalId>
-                <pageNumbers>8</pageNumbers>
-                <pageDescription>Лист 7</pageDescription>
-              </documentReference>
-              <documentReference alterationRef="alt-2020-11">
-                <fileInternalId>2</fileInternalId>
-                <pageNumbers>9</pageNumbers>
-                <pageDescription>Лист 9</pageDescription>
-              </documentReference>
-              <documentReference alterationRef="alt-2020-11">
-                <fileInternalId>3</fileInternalId>
-                <pageNumbers>13</pageNumbers>
-                <pageDescription>Лист 13</pageDescription>
-              </documentReference>
-            </documentationList>
-          </item>
-        </itemList></item>
-      </itemList></section>
-    </sectionList></bd:estimate>
-  </bd:estimateList>
-  <bd:exportDateTime>2025-03-01T10:00:00Z</bd:exportDateTime>
-</cqt:comparativeQuantityTakeoff>
+<?xml version='1.0' encoding='UTF-8'?>
+<ns0:comparativeQuantityTakeoff xmlns:ns0="http://cqt/ComparativeQuantityTakeoff.xsd" xmlns:ns2="http://types/BaseDocument.xsd" xmlns:ns3="http://types/CommonTypes.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cqt/ComparativeQuantityTakeoff.xsd ComparativeQuantityTakeoff.xsd http://types/BaseDocument.xsd types/BaseDocument.xsd http://types/CommonTypes.xsd types/CommonTypes.xsd http://types/BaseTypes.xsd types/BaseTypes.xsd">
+  
+  
+  <ns2:documentMeta>
+    
+    
+    <ns3:software>
+      
+      
+      <ns3:softwareName>Сметная программа</ns3:softwareName>
+      
+      
+      <ns3:softwareVersion>1.0</ns3:softwareVersion>
+      
+    
+    </ns3:software>
+    
+    
+    <ns3:file>
+      
+      
+      <ns3:fileType>Сводная ведомость объемов работ</ns3:fileType>
+      
+      
+      <ns3:schemaVersion>1.0</ns3:schemaVersion>
+      
+    
+    </ns3:file>
+    
+  
+  </ns2:documentMeta>
+  
+  
+  <ns2:accessLevelCode>общедоступная информация</ns2:accessLevelCode>
+  
+  
+  <ns2:objectName> </ns2:objectName>
+  
+  
+  <ns2:constructionName> </ns2:constructionName>
+  
+  
+  <ns2:objectNumber> 01-01</ns2:objectNumber>
+  
+  
+  <ns2:documentDate>2025-03-01</ns2:documentDate>
+  
+  
+  <ns2:customerName> " "</ns2:customerName>
+  
+  
+  <ns2:signatures>
+    
+    
+    <ns2:composer>
+      
+      
+      <ns3:surname/>
+      
+      
+      <ns3:name/>
+      
+      
+      <ns3:patronymic/>
+      
+      
+      <ns3:position/>
+      
+    
+    </ns2:composer>
+    
+    
+    <ns2:verifier>
+      
+      
+      <ns3:surname/>
+      
+      
+      <ns3:name>ϸ</ns3:name>
+      
+      
+      <ns3:patronymic/>
+      
+      
+      <ns3:position> </ns3:position>
+      
+    
+    </ns2:verifier>
+    
+  
+  </ns2:signatures>
+  
+  
+  <ns2:fileList>
+    
+    
+    <ns2:file>
+      
+      
+      <ns3:fileInternalId>1</ns3:fileInternalId>
+      
+      
+      <ns3:fileName>1310.0.00-01-1  5.1.pdf</ns3:fileName>
+      
+      
+      <ns3:fileId>44444444-4444-4444-8444-444444444444</ns3:fileId>
+      
+      
+      <ns3:fileCheckSum>D4E5F6A7</ns3:fileCheckSum>
+      
+    
+    </ns2:file>
+    
+    
+    <ns2:file>
+      
+      
+      <ns3:fileInternalId>2</ns3:fileInternalId>
+      
+      
+      <ns3:fileName>2  5.2.pdf</ns3:fileName>
+      
+      
+      <ns3:fileId>55555555-5555-4555-8555-555555555555</ns3:fileId>
+      
+      
+      <ns3:fileCheckSum>E5F6A7B8</ns3:fileCheckSum>
+      
+    
+    </ns2:file>
+    
+    
+    <ns2:file>
+      
+      
+      <ns3:fileInternalId>3</ns3:fileInternalId>
+      
+      
+      <ns3:fileName>1310.0.00-01-2 .pdf</ns3:fileName>
+      
+      
+      <ns3:fileId>66666666-6666-4666-8666-666666666666</ns3:fileId>
+      
+      
+      <ns3:fileCheckSum>F6A7B8C9</ns3:fileCheckSum>
+      
+    
+    </ns2:file>
+    
+  
+  </ns2:fileList>
+  
+  
+  <ns2:alterationList>
+    
+    
+    <ns2:alteration id="base">
+      
+      
+      <ns3:year>2017</ns3:year>
+      
+      
+      <ns3:month>--05</ns3:month>
+      
+    
+    </ns2:alteration>
+    
+    
+    <ns2:alteration id="alt-2020-11">
+      
+      
+      <ns3:year>2020</ns3:year>
+      
+      
+      <ns3:month>--11</ns3:month>
+      
+    
+    </ns2:alteration>
+    
+  
+    <ns2:alteration id="alt-2021-04">
+      <ns3:year>2021</ns3:year>
+      <ns3:month>--04</ns3:month>
+    </ns2:alteration>
+    <ns2:alteration id="alt-2021-10">
+      <ns3:year>2021</ns3:year>
+      <ns3:month>--10</ns3:month>
+    </ns2:alteration>
+  </ns2:alterationList>
+  
+  
+  <ns2:estimateList>
+    
+    
+    <ns2:estimate estimateNumber="02-01-01">
+      
+      
+      <ns3:estimateName>    -156      -155 --        ""            7+000- 12+000, - </ns3:estimateName>
+      
+      
+      <ns3:sectionList>
+        <ns3:section sectionNumber="1">
+          
+        
+          <ns3:sectionName> </ns3:sectionName>
+          
+        
+          <ns3:itemList>
+            
+          
+            <ns3:freeStringItem>
+              
+            
+              <ns3:freeStringName>    </ns3:freeStringName>
+              
+          
+            </ns3:freeStringItem>
+            
+          
+            <ns3:item itemPositionId="1">
+              
+          
+              <ns3:work>
+                
+            
+                <ns3:workName>     10   : 96  (130 ..),   1</ns3:workName>
+                
+            
+                <ns3:measurementUnit>1000 3</ns3:measurementUnit>
+                
+            
+                <ns3:normCodePrefix/>
+                
+            
+                <ns3:normCode>01-01-023-01</ns3:normCode>
+                
+          
+              </ns3:work>
+              
+          
+              <ns3:volumeList>
+                
+            
+                <ns3:volume alterationRef="base">
+                  
+              
+                  <ns3:volumeQuantity>2.6</ns3:volumeQuantity>
+                  
+            
+                </ns3:volume>
+                
+            
+                <ns3:volume alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:volumeQuantity>2.50</ns3:volumeQuantity>
+                  
+            
+                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                
+          
+                <ns3:volume alterationRef="alt-2021-04">
+                  <ns3:volumeQuantity>2.35</ns3:volumeQuantity>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount><ns3:reason>Снижение относительно корректировки 11.2020</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                <ns3:volume alterationRef="alt-2021-10">
+                  <ns3:volumeQuantity>2.05</ns3:volumeQuantity>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount><ns3:reason>Снижение относительно корректировки 04.2021</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+              </ns3:volumeList>
+              
+          
+              <ns3:documentationList>
+                
+            
+                <ns3:documentReference alterationRef="base">
+                  
+              
+                  <ns3:fileInternalId>1</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>8</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 7</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="base">
+                  
+              
+                  <ns3:fileInternalId>2</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>8</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 8</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="base">
+                  
+              
+                  <ns3:fileInternalId>3</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>12</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 12</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:fileInternalId>1</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>8</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 7</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:fileInternalId>2</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>9</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 9</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:fileInternalId>3</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>13</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 13</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+          
+              </ns3:documentationList>
+              
+        
+            </ns3:item>
+            
+        
+            <ns3:freeStringItem>
+              
+          
+              <ns3:freeStringName>    </ns3:freeStringName>
+              
+        
+            </ns3:freeStringItem>
+            
+        
+            <ns3:item itemPositionId="2">
+              
+          
+              <ns3:work>
+                
+            
+                <ns3:workName> :  ,   1</ns3:workName>
+                
+            
+                <ns3:measurementUnit>10000 2</ns3:measurementUnit>
+                
+            
+                <ns3:normCodePrefix/>
+                
+            
+                <ns3:normCode>01-02-027-01</ns3:normCode>
+                
+          
+              </ns3:work>
+              
+          
+              <ns3:volumeList>
+                
+            
+                <ns3:volume alterationRef="base">
+                  
+              
+                  <ns3:volumeQuantity>2.6</ns3:volumeQuantity>
+                  
+            
+                </ns3:volume>
+                
+            
+                <ns3:volume alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:volumeQuantity>2.50</ns3:volumeQuantity>
+                  
+              
+                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                
+          
+                <ns3:volume alterationRef="alt-2021-04">
+                  <ns3:volumeQuantity>2.35</ns3:volumeQuantity>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount><ns3:reason>Снижение относительно корректировки 11.2020</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                <ns3:volume alterationRef="alt-2021-10">
+                  <ns3:volumeQuantity>2.05</ns3:volumeQuantity>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount><ns3:reason>Снижение относительно корректировки 04.2021</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+              </ns3:volumeList>
+              
+          
+              <ns3:documentationList>
+                
+            
+                <ns3:documentReference alterationRef="base">
+                  
+              
+                  <ns3:fileInternalId>1</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>8</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 7</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="base">
+                  
+              
+                  <ns3:fileInternalId>2</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>8</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 8</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="base">
+                  
+              
+                  <ns3:fileInternalId>3</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>12</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 12</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:fileInternalId>1</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>8</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 7</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:fileInternalId>2</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>9</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 9</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:fileInternalId>3</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>13</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 13</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+          
+              </ns3:documentationList>
+              
+        
+            </ns3:item>
+            
+      
+          </ns3:itemList>
+        </ns3:section>
+        
+      
+        <ns3:section sectionNumber="2">
+          
+        
+          <ns3:sectionName>      (     )</ns3:sectionName>
+          
+        
+          <ns3:itemList>
+            <ns3:item itemPositionId="1">
+              
+          
+              <ns3:work>
+                
+            
+                <ns3:workName>      ()   : </ns3:workName>
+                
+            
+                <ns3:measurementUnit>1000 2</ns3:measurementUnit>
+                
+            
+                <ns3:normCodePrefix/>
+                
+            
+                <ns3:normCode>27-04-016-04</ns3:normCode>
+                
+          
+              </ns3:work>
+              
+          
+              <ns3:volumeList>
+                
+            
+                <ns3:volume alterationRef="base">
+                  
+              
+                  <ns3:volumeQuantity>0.74</ns3:volumeQuantity>
+                  
+            
+                </ns3:volume>
+                
+            
+                <ns3:volume alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:volumeQuantity>0.64</ns3:volumeQuantity>
+                  
+            
+                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                
+          
+                <ns3:volume alterationRef="alt-2021-04">
+                  <ns3:volumeQuantity>0.49</ns3:volumeQuantity>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount><ns3:reason>Снижение относительно корректировки 11.2020</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                <ns3:volume alterationRef="alt-2021-10">
+                  <ns3:volumeQuantity>0.19</ns3:volumeQuantity>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount><ns3:reason>Снижение относительно корректировки 04.2021</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+              </ns3:volumeList>
+              
+          
+              <ns3:documentationList>
+                
+            
+                <ns3:documentReference alterationRef="base">
+                  
+              
+                  <ns3:fileInternalId>1</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>8</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 7</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="base">
+                  
+              
+                  <ns3:fileInternalId>2</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>8</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 8</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="base">
+                  
+              
+                  <ns3:fileInternalId>3</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>12</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 12</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:fileInternalId>1</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>8</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 7</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:fileInternalId>2</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>9</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 9</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:fileInternalId>3</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>13</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 13</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+          
+              </ns3:documentationList>
+              
+          
+              <ns3:itemList>
+                <ns3:item itemPositionId="1">
+                  
+            
+                  <ns3:work>
+                    
+              
+                    <ns3:workName>  , , ,   400 /2</ns3:workName>
+                    
+              
+                    <ns3:measurementUnit>2</ns3:measurementUnit>
+                    
+              
+                    <ns3:normCode>01.7.12.05-0162</ns3:normCode>
+                    
+            
+                  </ns3:work>
+                  
+            
+                  <ns3:volumeList>
+                    
+              
+                    <ns3:volume alterationRef="base">
+                      
+                
+                      <ns3:volumeQuantity>888</ns3:volumeQuantity>
+                      
+              
+                    </ns3:volume>
+                    
+              
+                    <ns3:volume alterationRef="alt-2020-11">
+                      
+                
+                      <ns3:volumeQuantity>887.90</ns3:volumeQuantity>
+                      
+              
+                      <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                    
+            
+                    <ns3:volume alterationRef="alt-2021-04">
+                      <ns3:volumeQuantity>887.75</ns3:volumeQuantity>
+                      <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount><ns3:reason>Снижение относительно корректировки 11.2020</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                    <ns3:volume alterationRef="alt-2021-10">
+                      <ns3:volumeQuantity>887.45</ns3:volumeQuantity>
+                      <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount><ns3:reason>Снижение относительно корректировки 04.2021</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  </ns3:volumeList>
+                  
+            
+                  <ns3:itemList>
+                    <ns3:item itemPositionId="1">
+                      
+              
+                      <ns3:work>
+                        
+                
+                        <ns3:workName>  I      20      (, , ,   )     30 </ns3:workName>
+                        
+                
+                        <ns3:measurementUnit/>
+                        
+                
+                        <ns3:normCodePrefix/>
+                        
+                
+                        <ns3:normCode>03-01-01-030</ns3:normCode>
+                        
+              
+                      </ns3:work>
+                      
+              
+                      <ns3:volumeList>
+                        
+                
+                        <ns3:volume alterationRef="base">
+                          
+                  
+                          <ns3:volumeQuantity>-0.3552</ns3:volumeQuantity>
+                          
+                
+                        </ns3:volume>
+                        
+                
+                        <ns3:volume alterationRef="alt-2020-11">
+                          
+                  
+                          <ns3:volumeQuantity>0</ns3:volumeQuantity>
+                          
+                
+                          <ns3:volumeIncrease><ns3:amount>0.3552</ns3:amount><ns3:reason>Уточнение объема по корректировки 11.2020</ns3:reason></ns3:volumeIncrease></ns3:volume>
+                        
+              
+                        <ns3:volume alterationRef="alt-2021-04">
+                          <ns3:volumeQuantity>0</ns3:volumeQuantity>
+                          </ns3:volume>
+                        <ns3:volume alterationRef="alt-2021-10">
+                          <ns3:volumeQuantity>0</ns3:volumeQuantity>
+                          </ns3:volume>
+                      </ns3:volumeList>
+                      
+            
+                    </ns3:item>
+                    
+            
+                    <ns3:item itemPositionId="2">
+                      
+              
+                      <ns3:work>
+                        
+                
+                        <ns3:workName>  I      20      (, , ,   )     130 </ns3:workName>
+                        
+                
+                        <ns3:measurementUnit/>
+                        
+                
+                        <ns3:normCodePrefix/>
+                        
+                
+                        <ns3:normCode>03-01-01-130</ns3:normCode>
+                        
+              
+                      </ns3:work>
+                      
+              
+                      <ns3:volumeList>
+                        
+                
+                        <ns3:volume alterationRef="base">
+                          
+                  
+                          <ns3:volumeQuantity>0.3552</ns3:volumeQuantity>
+                          
+                
+                        </ns3:volume>
+                        
+                
+                        <ns3:volume alterationRef="alt-2020-11">
+                          
+                  
+                          <ns3:volumeQuantity>0.2552</ns3:volumeQuantity>
+                          
+                
+                          <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.1000</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.1000</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                        
+              
+                        <ns3:volume alterationRef="alt-2021-04">
+                          <ns3:volumeQuantity>0.1052</ns3:volumeQuantity>
+                          <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.1500</ns3:amount><ns3:reason>Снижение относительно корректировки 11.2020</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.2500</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                        <ns3:volume alterationRef="alt-2021-10">
+                          <ns3:volumeQuantity>0</ns3:volumeQuantity>
+                          <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.1052</ns3:amount><ns3:reason>Снижение относительно корректировки 04.2021</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.3552</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                      </ns3:volumeList>
+                      
+            
+                    </ns3:item>
+                    
+          
+                  </ns3:itemList>
+                </ns3:item>
+                
+        
+              </ns3:itemList>
+            </ns3:item>
+            
+      
+          </ns3:itemList>
+        </ns3:section>
+        
+    
+      </ns3:sectionList>
+    </ns2:estimate>
+    
+    
+    <ns2:estimate estimateNumber="02-01-02">
+      
+      
+      <ns3:estimateName> . </ns3:estimateName>
+      
+      
+      <ns3:sectionList>
+        <ns3:section sectionNumber="1">
+          
+        
+          <ns3:sectionName> 1  02-01-02</ns3:sectionName>
+          
+        
+          <ns3:itemList>
+            <ns3:item itemPositionId="1">
+              
+          
+              <ns3:work>
+                
+            
+                <ns3:workName>   ,  : 1-2</ns3:workName>
+                
+            
+                <ns3:measurementUnit>100 3</ns3:measurementUnit>
+                
+            
+                <ns3:normCodePrefix/>
+                
+            
+                <ns3:normCode>01-02-005-01</ns3:normCode>
+                
+          
+              </ns3:work>
+              
+          
+              <ns3:volumeList>
+                
+            
+                <ns3:volume alterationRef="base">
+                  
+              
+                  <ns3:volumeQuantity>10</ns3:volumeQuantity>
+                  
+            
+                </ns3:volume>
+                
+            
+                <ns3:volume alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:volumeQuantity>9.90</ns3:volumeQuantity>
+                  
+              
+                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                
+          
+                <ns3:volume alterationRef="alt-2021-04">
+                  <ns3:volumeQuantity>9.75</ns3:volumeQuantity>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount><ns3:reason>Снижение относительно корректировки 11.2020</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                <ns3:volume alterationRef="alt-2021-10">
+                  <ns3:volumeQuantity>9.45</ns3:volumeQuantity>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount><ns3:reason>Снижение относительно корректировки 04.2021</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+              </ns3:volumeList>
+              
+          
+              <ns3:documentationList>
+                
+            
+                <ns3:documentReference alterationRef="base">
+                  
+              
+                  <ns3:fileInternalId>1</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>8</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 7</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="base">
+                  
+              
+                  <ns3:fileInternalId>2</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>8</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 8</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="base">
+                  
+              
+                  <ns3:fileInternalId>3</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>12</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 12</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:fileInternalId>1</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>8</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 7</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:fileInternalId>2</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>9</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 9</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:fileInternalId>3</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>13</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 13</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+          
+              </ns3:documentationList>
+              
+        
+            </ns3:item>
+            
+        
+            <ns3:item itemPositionId="2">
+              
+          
+              <ns3:work>
+                
+            
+                <ns3:workName>  </ns3:workName>
+                
+            
+                <ns3:measurementUnit>100 3</ns3:measurementUnit>
+                
+            
+                <ns3:normCodePrefix/>
+                
+            
+                <ns3:normCode>06-01-001-01</ns3:normCode>
+                
+          
+              </ns3:work>
+              
+          
+              <ns3:volumeList>
+                
+            
+                <ns3:volume alterationRef="base">
+                  
+              
+                  <ns3:volumeQuantity>7</ns3:volumeQuantity>
+                  
+            
+                </ns3:volume>
+                
+            
+                <ns3:volume alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:volumeQuantity>6.90</ns3:volumeQuantity>
+                  
+              
+                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                
+          
+                <ns3:volume alterationRef="alt-2021-04">
+                  <ns3:volumeQuantity>6.75</ns3:volumeQuantity>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount><ns3:reason>Снижение относительно корректировки 11.2020</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                <ns3:volume alterationRef="alt-2021-10">
+                  <ns3:volumeQuantity>6.45</ns3:volumeQuantity>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount><ns3:reason>Снижение относительно корректировки 04.2021</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+              </ns3:volumeList>
+              
+          
+              <ns3:documentationList>
+                
+            
+                <ns3:documentReference alterationRef="base">
+                  
+              
+                  <ns3:fileInternalId>1</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>8</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 7</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="base">
+                  
+              
+                  <ns3:fileInternalId>2</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>8</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 8</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="base">
+                  
+              
+                  <ns3:fileInternalId>3</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>12</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 12</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:fileInternalId>1</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>8</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 7</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:fileInternalId>2</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>9</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 9</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+            
+                <ns3:documentReference alterationRef="alt-2020-11">
+                  
+              
+                  <ns3:fileInternalId>3</ns3:fileInternalId>
+                  
+              
+                  <ns3:pageNumbers>13</ns3:pageNumbers>
+                  
+              
+                  <ns3:pageDescription> 13</ns3:pageDescription>
+                  
+            
+                </ns3:documentReference>
+                
+          
+              </ns3:documentationList>
+              
+          
+              <ns3:itemList>
+                <ns3:item itemPositionId="1">
+                  
+            
+                  <ns3:work>
+                    
+              
+                    <ns3:workName>    (),  7,5 (100)</ns3:workName>
+                    
+              
+                    <ns3:measurementUnit>3</ns3:measurementUnit>
+                    
+              
+                    <ns3:normCode>04.1.02.05-0074</ns3:normCode>
+                    
+            
+                  </ns3:work>
+                  
+            
+                  <ns3:volumeList>
+                    
+              
+                    <ns3:volume alterationRef="base">
+                      
+                
+                      <ns3:volumeQuantity>800</ns3:volumeQuantity>
+                      
+              
+                    </ns3:volume>
+                    
+              
+                    <ns3:volume alterationRef="alt-2020-11">
+                      
+                
+                      <ns3:volumeQuantity>799.90</ns3:volumeQuantity>
+                      
+                
+                      <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                    
+            
+                    <ns3:volume alterationRef="alt-2021-04">
+                      <ns3:volumeQuantity>799.75</ns3:volumeQuantity>
+                      <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount><ns3:reason>Снижение относительно корректировки 11.2020</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                    <ns3:volume alterationRef="alt-2021-10">
+                      <ns3:volumeQuantity>799.45</ns3:volumeQuantity>
+                      <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount><ns3:reason>Снижение относительно корректировки 04.2021</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  </ns3:volumeList>
+                  
+            
+                  <ns3:documentationList>
+                    
+              
+                    <ns3:documentReference alterationRef="base">
+                      
+                
+                      <ns3:fileInternalId>1</ns3:fileInternalId>
+                      
+                
+                      <ns3:pageNumbers>8</ns3:pageNumbers>
+                      
+                
+                      <ns3:pageDescription> 7</ns3:pageDescription>
+                      
+              
+                    </ns3:documentReference>
+                    
+              
+                    <ns3:documentReference alterationRef="base">
+                      
+                
+                      <ns3:fileInternalId>2</ns3:fileInternalId>
+                      
+                
+                      <ns3:pageNumbers>8</ns3:pageNumbers>
+                      
+                
+                      <ns3:pageDescription> 8</ns3:pageDescription>
+                      
+              
+                    </ns3:documentReference>
+                    
+              
+                    <ns3:documentReference alterationRef="base">
+                      
+                
+                      <ns3:fileInternalId>3</ns3:fileInternalId>
+                      
+                
+                      <ns3:pageNumbers>12</ns3:pageNumbers>
+                      
+                
+                      <ns3:pageDescription> 12</ns3:pageDescription>
+                      
+              
+                    </ns3:documentReference>
+                    
+              
+                    <ns3:documentReference alterationRef="alt-2020-11">
+                      
+                
+                      <ns3:fileInternalId>1</ns3:fileInternalId>
+                      
+                
+                      <ns3:pageNumbers>8</ns3:pageNumbers>
+                      
+                
+                      <ns3:pageDescription> 7</ns3:pageDescription>
+                      
+              
+                    </ns3:documentReference>
+                    
+              
+                    <ns3:documentReference alterationRef="alt-2020-11">
+                      
+                
+                      <ns3:fileInternalId>2</ns3:fileInternalId>
+                      
+                
+                      <ns3:pageNumbers>9</ns3:pageNumbers>
+                      
+                
+                      <ns3:pageDescription> 9</ns3:pageDescription>
+                      
+              
+                    </ns3:documentReference>
+                    
+              
+                    <ns3:documentReference alterationRef="alt-2020-11">
+                      
+                
+                      <ns3:fileInternalId>3</ns3:fileInternalId>
+                      
+                
+                      <ns3:pageNumbers>13</ns3:pageNumbers>
+                      
+                
+                      <ns3:pageDescription> 13</ns3:pageDescription>
+                      
+              
+                    </ns3:documentReference>
+                    
+            
+                  </ns3:documentationList>
+                  
+          
+                </ns3:item>
+                
+        
+              </ns3:itemList>
+            </ns3:item>
+            
+      
+          </ns3:itemList>
+        </ns3:section>
+        
+    
+      </ns3:sectionList>
+    </ns2:estimate>
+    
+  
+  </ns2:estimateList>
+  
+  
+  <ns2:exportDateTime>2025-03-01T10:00:00Z</ns2:exportDateTime>
+  
+
+</ns0:comparativeQuantityTakeoff>
