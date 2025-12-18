@@ -432,11 +432,6 @@ id строятся по следующему принципу: "alt-ГГГГ-М
                       <xs:documentation>Величина увеличения.</xs:documentation>
                     </xs:annotation>
                   </xs:element>
-                  <xs:element name="reason" type="xs:string" minOccurs="0">
-                    <xs:annotation>
-                      <xs:documentation>Обоснование увеличения.</xs:documentation>
-                    </xs:annotation>
-                  </xs:element>
                 </xs:sequence>
               </xs:complexType>
             </xs:element>
@@ -457,11 +452,6 @@ id строятся по следующему принципу: "alt-ГГГГ-М
                             <xs:documentation>Величина снижения.</xs:documentation>
                           </xs:annotation>
                         </xs:element>
-                        <xs:element name="reason" type="xs:string" minOccurs="0">
-                          <xs:annotation>
-                            <xs:documentation>Обоснование снижения.</xs:documentation>
-                          </xs:annotation>
-                        </xs:element>
                       </xs:sequence>
                       <xs:attribute name="fromRef" type="ct:alterationIdRefType" use="required">
                         <xs:annotation>
@@ -472,6 +462,11 @@ id строятся по следующему принципу: "alt-ГГГГ-М
                   </xs:element>
                 </xs:sequence>
               </xs:complexType>
+            </xs:element>
+            <xs:element name="reason" type="xs:string" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Обоснование корректировки объема (увеличения/снижения) по стадии.</xs:documentation>
+              </xs:annotation>
             </xs:element>
                 </xs:sequence>
 

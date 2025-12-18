@@ -257,15 +257,15 @@
                   <ns3:volumeQuantity>2.50</ns3:volumeQuantity>
                   
             
-                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно базы</ns3:reason></ns3:volume>
                 
           
                 <ns3:volume alterationRef="alt-2021-04">
                   <ns3:volumeQuantity>2.35</ns3:volumeQuantity>
-                  <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount><ns3:reason>Снижение относительно корректировки 11.2020</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно корректировки 11.2020; Снижение относительно базы</ns3:reason></ns3:volume>
                 <ns3:volume alterationRef="alt-2021-10">
                   <ns3:volumeQuantity>2.05</ns3:volumeQuantity>
-                  <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount><ns3:reason>Снижение относительно корректировки 04.2021</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно корректировки 04.2021; Снижение относительно базы</ns3:reason></ns3:volume>
               </ns3:volumeList>
               
           
@@ -416,15 +416,15 @@
                   <ns3:volumeQuantity>2.50</ns3:volumeQuantity>
                   
               
-                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно базы</ns3:reason></ns3:volume>
                 
           
                 <ns3:volume alterationRef="alt-2021-04">
                   <ns3:volumeQuantity>2.35</ns3:volumeQuantity>
-                  <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount><ns3:reason>Снижение относительно корректировки 11.2020</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно корректировки 11.2020; Снижение относительно базы</ns3:reason></ns3:volume>
                 <ns3:volume alterationRef="alt-2021-10">
                   <ns3:volumeQuantity>2.05</ns3:volumeQuantity>
-                  <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount><ns3:reason>Снижение относительно корректировки 04.2021</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно корректировки 04.2021; Снижение относительно базы</ns3:reason></ns3:volume>
               </ns3:volumeList>
               
           
@@ -577,15 +577,15 @@
                   <ns3:volumeQuantity>0.64</ns3:volumeQuantity>
                   
             
-                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно базы</ns3:reason></ns3:volume>
                 
           
                 <ns3:volume alterationRef="alt-2021-04">
                   <ns3:volumeQuantity>0.49</ns3:volumeQuantity>
-                  <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount><ns3:reason>Снижение относительно корректировки 11.2020</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно корректировки 11.2020; Снижение относительно базы</ns3:reason></ns3:volume>
                 <ns3:volume alterationRef="alt-2021-10">
                   <ns3:volumeQuantity>0.19</ns3:volumeQuantity>
-                  <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount><ns3:reason>Снижение относительно корректировки 04.2021</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно корректировки 04.2021; Снижение относительно базы</ns3:reason></ns3:volume>
               </ns3:volumeList>
               
           
@@ -722,15 +722,15 @@
                       <ns3:volumeQuantity>887.90</ns3:volumeQuantity>
                       
               
-                      <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                      <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно базы</ns3:reason></ns3:volume>
                     
             
                     <ns3:volume alterationRef="alt-2021-04">
                       <ns3:volumeQuantity>887.75</ns3:volumeQuantity>
-                      <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount><ns3:reason>Снижение относительно корректировки 11.2020</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                      <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно корректировки 11.2020; Снижение относительно базы</ns3:reason></ns3:volume>
                     <ns3:volume alterationRef="alt-2021-10">
                       <ns3:volumeQuantity>887.45</ns3:volumeQuantity>
-                      <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount><ns3:reason>Снижение относительно корректировки 04.2021</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                      <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно корректировки 04.2021; Снижение относительно базы</ns3:reason></ns3:volume>
                   </ns3:volumeList>
                   
             
@@ -774,7 +774,7 @@
                           <ns3:volumeQuantity>0</ns3:volumeQuantity>
                           
                 
-                          <ns3:volumeIncrease><ns3:amount>0.3552</ns3:amount><ns3:reason>Уточнение объема по корректировки 11.2020</ns3:reason></ns3:volumeIncrease></ns3:volume>
+                          <ns3:volumeIncrease><ns3:amount>0.3552</ns3:amount></ns3:volumeIncrease><ns3:reason>Уточнение объема по корректировки 11.2020</ns3:reason></ns3:volume>
                         
               
                         <ns3:volume alterationRef="alt-2021-04">
@@ -828,15 +828,15 @@
                           <ns3:volumeQuantity>0.2552</ns3:volumeQuantity>
                           
                 
-                          <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.1000</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.1000</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                          <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.1000</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.1000</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно базы</ns3:reason></ns3:volume>
                         
               
                         <ns3:volume alterationRef="alt-2021-04">
                           <ns3:volumeQuantity>0.1052</ns3:volumeQuantity>
-                          <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.1500</ns3:amount><ns3:reason>Снижение относительно корректировки 11.2020</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.2500</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                          <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.1500</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.2500</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно корректировки 11.2020; Снижение относительно базы</ns3:reason></ns3:volume>
                         <ns3:volume alterationRef="alt-2021-10">
                           <ns3:volumeQuantity>0</ns3:volumeQuantity>
-                          <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.1052</ns3:amount><ns3:reason>Снижение относительно корректировки 04.2021</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.3552</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                          <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.1052</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.3552</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно корректировки 04.2021; Снижение относительно базы</ns3:reason></ns3:volume>
                       </ns3:volumeList>
                       
             
@@ -912,15 +912,15 @@
                   <ns3:volumeQuantity>9.90</ns3:volumeQuantity>
                   
               
-                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно базы</ns3:reason></ns3:volume>
                 
           
                 <ns3:volume alterationRef="alt-2021-04">
                   <ns3:volumeQuantity>9.75</ns3:volumeQuantity>
-                  <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount><ns3:reason>Снижение относительно корректировки 11.2020</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно корректировки 11.2020; Снижение относительно базы</ns3:reason></ns3:volume>
                 <ns3:volume alterationRef="alt-2021-10">
                   <ns3:volumeQuantity>9.45</ns3:volumeQuantity>
-                  <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount><ns3:reason>Снижение относительно корректировки 04.2021</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно корректировки 04.2021; Снижение относительно базы</ns3:reason></ns3:volume>
               </ns3:volumeList>
               
           
@@ -1062,15 +1062,15 @@
                   <ns3:volumeQuantity>6.90</ns3:volumeQuantity>
                   
               
-                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно базы</ns3:reason></ns3:volume>
                 
           
                 <ns3:volume alterationRef="alt-2021-04">
                   <ns3:volumeQuantity>6.75</ns3:volumeQuantity>
-                  <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount><ns3:reason>Снижение относительно корректировки 11.2020</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно корректировки 11.2020; Снижение относительно базы</ns3:reason></ns3:volume>
                 <ns3:volume alterationRef="alt-2021-10">
                   <ns3:volumeQuantity>6.45</ns3:volumeQuantity>
-                  <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount><ns3:reason>Снижение относительно корректировки 04.2021</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно корректировки 04.2021; Снижение относительно базы</ns3:reason></ns3:volume>
               </ns3:volumeList>
               
           
@@ -1207,15 +1207,15 @@
                       <ns3:volumeQuantity>799.90</ns3:volumeQuantity>
                       
                 
-                      <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                      <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.10</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно базы</ns3:reason></ns3:volume>
                     
             
                     <ns3:volume alterationRef="alt-2021-04">
                       <ns3:volumeQuantity>799.75</ns3:volumeQuantity>
-                      <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount><ns3:reason>Снижение относительно корректировки 11.2020</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                      <ns3:decreaseList><ns3:decrease fromRef="alt-2020-11"><ns3:amount>0.15</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.25</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно корректировки 11.2020; Снижение относительно базы</ns3:reason></ns3:volume>
                     <ns3:volume alterationRef="alt-2021-10">
                       <ns3:volumeQuantity>799.45</ns3:volumeQuantity>
-                      <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount><ns3:reason>Снижение относительно корректировки 04.2021</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                      <ns3:decreaseList><ns3:decrease fromRef="alt-2021-04"><ns3:amount>0.30</ns3:amount></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.55</ns3:amount></ns3:decrease></ns3:decreaseList><ns3:reason>Снижение относительно корректировки 04.2021; Снижение относительно базы</ns3:reason></ns3:volume>
                   </ns3:volumeList>
                   
             

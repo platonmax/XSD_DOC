@@ -828,7 +828,6 @@
         <xsl:variable name="stage-pos" select="position()"/>
         <xsl:variable name="volume" select="$item/*:volumeList/*:volume[@alterationRef=$stageId]"/>
         <xsl:variable name="inc" select="$volume/*:volumeIncrease/*:amount"/>
-        <xsl:variable name="inc-reason" select="$volume/*:volumeIncrease/*:reason"/>
         <xsl:variable name="prior-stages" select="reverse(($base-stage, $stages-order[position() lt $stage-pos]))"/>
         <xsl:variable name="prev-stage-id" select="( ($stages-order[position() lt $stage-pos])[last()]/@id, 'base')[1]"/>
 
@@ -857,17 +856,8 @@
         <xsl:variable name="stageId" select="@id"/>
         <xsl:variable name="stageLabel" select="f:stage-label(.)"/>
         <xsl:variable name="volume" select="$item/*:volumeList/*:volume[@alterationRef=$stageId]"/>
-        <xsl:variable name="inc-amount" select="$volume/*:volumeIncrease/*:amount"/>
-        <xsl:variable name="inc-reason" select="$volume/*:volumeIncrease/*:reason"/>
-        <xsl:variable name="decreases" select="$volume/*:decreaseList/*:decrease"/>
+        <xsl:variable name="reason" select="normalize-space($volume/*:reason)"/>
         <xsl:variable name="has-schematron-issue" select="false()"/>
-        <xsl:variable name="reason-id" select="concat('reason-', generate-id($item), '-', $stageId)"/>
-        <xsl:variable name="reason-lines"
-                      select="(
-                                if (normalize-space($inc-reason[1])) then normalize-space($inc-reason[1]) else (),
-                                for $d in $decreases
-                                  return (if (normalize-space($d/*:reason)) then normalize-space($d/*:reason) else ())
-                              )"/>
         <td class="notes-cell col-reason">
           <xsl:if test="$has-schematron-issue">
             <xsl:attribute name="style">background:#ffe6e6;border:2px solid #cc0000;</xsl:attribute>
@@ -875,39 +865,11 @@
           <xsl:attribute name="title">
             <xsl:value-of
               select="f:tooltip(
-                        concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&quot;',$stageId,'&quot;]/(volumeIncrease/reason|decreaseList/decrease/reason)'),
+                        concat('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/volumeList/volume[@alterationRef=&quot;',$stageId,'&quot;]/reason'),
                         concat('Обоснования изменений по стадии ', $stageLabel)
                      )"/>
           </xsl:attribute>
-          <xsl:choose>
-            <xsl:when test="exists($reason-lines)">
-              <xsl:variable name="reason-count" select="count($reason-lines)"/>
-              <xsl:choose>
-                <xsl:when test="$reason-count gt 3">
-                  <div class="comment-wrapper">
-                    <input type="checkbox" id="{$reason-id}" class="comment-toggle"/>
-                    <div class="comment-body">
-                      <xsl:for-each select="$reason-lines">
-                        <xsl:if test="position() gt 1"><br/></xsl:if>
-                        <xsl:value-of select="."/>
-                      </xsl:for-each>
-                    </div>
-                    <label class="comment-more" for="{$reason-id}">
-                      <span class="more-text">Показать полностью</span>
-                      <span class="less-text">Скрыть</span>
-                    </label>
-                  </div>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:for-each select="$reason-lines">
-                    <xsl:if test="position() gt 1"><br/></xsl:if>
-                    <xsl:value-of select="."/>
-                  </xsl:for-each>
-                </xsl:otherwise>
-              </xsl:choose>
-            </xsl:when>
-            <xsl:otherwise/>
-          </xsl:choose>
+          <xsl:value-of select="$reason"/>
         </td>
       </xsl:for-each>
       <xsl:variable name="baseDocs" select="$item/*:documentationList/*:documentReference[not(@alterationRef) or @alterationRef='base']"/>
