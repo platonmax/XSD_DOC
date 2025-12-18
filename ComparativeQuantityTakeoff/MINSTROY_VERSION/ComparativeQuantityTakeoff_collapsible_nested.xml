@@ -1,0 +1,359 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ns0:comparativeQuantityTakeoff xmlns:ns0="http://cqt/ComparativeQuantityTakeoff.xsd" xmlns:ns2="http://types/BaseDocument.xsd" xmlns:ns3="http://types/CommonTypes.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cqt/ComparativeQuantityTakeoff.xsd ComparativeQuantityTakeoff.xsd                       http://types/BaseDocument.xsd types/BaseDocument.xsd                       http://types/CommonTypes.xsd types/CommonTypes.xsd                       http://types/BaseTypes.xsd types/BaseTypes.xsd">
+
+  <ns2:documentMeta>
+    <ns3:software>
+      <ns3:softwareName>CQTF Demo</ns3:softwareName>
+      <ns3:softwareVersion>1.0</ns3:softwareVersion>
+    </ns3:software>
+    <ns3:file>
+      <ns3:fileType>Сводная ведомость объемов работ</ns3:fileType>
+      <ns3:schemaVersion>1.0</ns3:schemaVersion>
+    </ns3:file>
+  </ns2:documentMeta>
+
+  <ns2:accessLevelCode>общедоступная информация</ns2:accessLevelCode>
+  <ns2:objectName>Демо объект</ns2:objectName>
+  <ns2:constructionName>Демо объект</ns2:constructionName>
+  <ns2:objectNumber>CQTF-001</ns2:objectNumber>
+  <ns2:documentDate>2025-03-01</ns2:documentDate>
+  <ns2:customerName>ООО "Демо Заказчик"</ns2:customerName>
+
+  <ns2:signatures>
+    <ns2:composer>
+      <ns3:surname>Иванов</ns3:surname>
+      <ns3:name>Иван</ns3:name>
+      <ns3:patronymic>Отчество</ns3:patronymic>
+      <ns3:position>Инженер</ns3:position>
+    </ns2:composer>
+    <ns2:verifier>
+      <ns3:surname>Петров</ns3:surname>
+      <ns3:name>Пётр</ns3:name>
+      <ns3:patronymic>Петрович</ns3:patronymic>
+      <ns3:position>Главный инженер</ns3:position>
+    </ns2:verifier>
+  </ns2:signatures>
+
+  <ns2:fileList>
+    <ns2:file>
+      <ns3:fileInternalId>1</ns3:fileInternalId>
+      <ns3:fileName>spec-sheet.pdf</ns3:fileName>
+      <ns3:fileId>11111111-1111-4111-8111-111111111111</ns3:fileId>
+      <ns3:fileCheckSum>A1B2C3D4</ns3:fileCheckSum>
+    </ns2:file>
+    <ns2:file>
+      <ns3:fileInternalId>2</ns3:fileInternalId>
+      <ns3:fileName>structural-plan.dwg</ns3:fileName>
+      <ns3:fileId>22222222-2222-4222-8222-222222222222</ns3:fileId>
+      <ns3:fileCheckSum>B2C3D4E5</ns3:fileCheckSum>
+    </ns2:file>
+    <ns2:file>
+      <ns3:fileInternalId>3</ns3:fileInternalId>
+      <ns3:fileName>ifc-model.ifc</ns3:fileName>
+      <ns3:fileId>33333333-3333-4333-8333-333333333333</ns3:fileId>
+      <ns3:fileCheckSum>C3D4E5F6</ns3:fileCheckSum>
+    </ns2:file>
+  </ns2:fileList>
+
+  <ns2:alterationList>
+    <ns2:alteration id="base">
+      <ns3:year>2024</ns3:year>
+      <ns3:month>--01</ns3:month>
+    </ns2:alteration>
+    <ns2:alteration id="alt-2025-01">
+      <ns3:year>2025</ns3:year>
+      <ns3:month>--01</ns3:month>
+    </ns2:alteration>
+    <ns2:alteration id="alt-2025-06">
+      <ns3:year>2025</ns3:year>
+      <ns3:month>--06</ns3:month>
+    </ns2:alteration>
+    <ns2:alteration id="alt-2025-12">
+      <ns3:year>2025</ns3:year>
+      <ns3:month>--12</ns3:month>
+    </ns2:alteration>
+  </ns2:alterationList>
+
+  <ns2:estimateList>
+    <ns2:estimate estimateNumber="ЛС-100">
+      <ns3:estimateName>Демо без рекурсии</ns3:estimateName>
+
+      <ns3:sectionList>
+        <ns3:section sectionNumber="1">
+          <ns3:sectionName>Основные работы</ns3:sectionName>
+          <ns3:itemList>
+            <ns3:item itemPositionId="1">
+              <ns3:work>
+                <ns3:workName>Бетонирование плиты</ns3:workName>
+                <ns3:measurementUnit>м³</ns3:measurementUnit>
+              </ns3:work>
+              <ns3:volumeList>
+                <ns3:volume alterationRef="base">
+                  <ns3:volumeQuantity>10</ns3:volumeQuantity>
+                </ns3:volume>
+                <ns3:volume alterationRef="alt-2025-01">
+                  <ns3:volumeQuantity>10.5</ns3:volumeQuantity>
+                  <ns3:volumeIncrease><ns3:amount>0.5</ns3:amount><ns3:reason>Уточнение объема по корректировки 01.2025</ns3:reason></ns3:volumeIncrease></ns3:volume>
+                <ns3:volume alterationRef="alt-2025-06">
+                  <ns3:volumeQuantity>10.1</ns3:volumeQuantity>
+                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.4</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.35</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.4</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.35</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                <ns3:volume alterationRef="alt-2025-12">
+                  <ns3:volumeQuantity>9.2</ns3:volumeQuantity>
+                  <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.7</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-06"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.7</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-06"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+              </ns3:volumeList>
+              <ns3:documentationList>
+                <ns3:documentReference alterationRef="base">
+                  <ns3:fileInternalId>1</ns3:fileInternalId>
+                  <ns3:pageNumbers>2 3</ns3:pageNumbers>
+                  <ns3:pageDescription>Листы 2-3: спецификация бетона</ns3:pageDescription>
+                </ns3:documentReference>
+                <ns3:documentReference alterationRef="base">
+                  <ns3:fileInternalId>3</ns3:fileInternalId>
+                  <ns3:propertyName>ConcreteClass</ns3:propertyName>
+                  <ns3:propertyDescription>Класс бетона по прочности</ns3:propertyDescription>
+                  <ns3:propertyValue>B30</ns3:propertyValue>
+                </ns3:documentReference>
+                <ns3:documentReference alterationRef="alt-2025-01">
+                  <ns3:fileInternalId>1</ns3:fileInternalId>
+                  <ns3:pageNumbers>4</ns3:pageNumbers>
+                  <ns3:pageDescription>Добавлено армирование</ns3:pageDescription>
+                </ns3:documentReference>
+                <ns3:documentReference alterationRef="alt-2025-06">
+                  <ns3:fileInternalId>2</ns3:fileInternalId>
+                  <ns3:pageNumbers>5 6</ns3:pageNumbers>
+                  <ns3:pageDescription>Листы усиления плит</ns3:pageDescription>
+                </ns3:documentReference>
+                <ns3:documentReference alterationRef="alt-2025-12">
+                  <ns3:fileInternalId>3</ns3:fileInternalId>
+                  <ns3:ifcGuids>0a1b2c3d-4e5f-6789-abcd-ef0123456789 2222-3333-4444-5555</ns3:ifcGuids>
+                  <ns3:ifcDescription>Slab-12 финальная модель</ns3:ifcDescription>
+                </ns3:documentReference>
+              </ns3:documentationList>
+            </ns3:item>
+
+            <ns3:item itemPositionId="2">
+              <ns3:work>
+                <ns3:workName>Подготовка основания</ns3:workName>
+                <ns3:measurementUnit>м³</ns3:measurementUnit>
+              </ns3:work>
+            <ns3:volumeList>
+              <ns3:volume alterationRef="base">
+                <ns3:volumeQuantity>120</ns3:volumeQuantity>
+              </ns3:volume>
+              <ns3:volume alterationRef="alt-2025-01">
+                <ns3:volumeQuantity>126</ns3:volumeQuantity>
+                <ns3:volumeIncrease><ns3:amount>6</ns3:amount><ns3:reason>Уточнение объема по корректировки 01.2025</ns3:reason></ns3:volumeIncrease></ns3:volume>
+              <ns3:volume alterationRef="alt-2025-06">
+                <ns3:volumeQuantity>132</ns3:volumeQuantity>
+                <ns3:volumeIncrease><ns3:amount>6</ns3:amount><ns3:reason>Уточнение объема по корректировки 06.2025</ns3:reason></ns3:volumeIncrease><ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.4</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.3</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.4</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.35</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+              <ns3:volume alterationRef="alt-2025-12">
+                <ns3:volumeQuantity>130</ns3:volumeQuantity>
+                <ns3:decreaseList><ns3:decrease fromRef="alt-2025-06"><ns3:amount>2</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.6</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-06"><ns3:amount>0.5</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.7</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-06"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+            </ns3:volumeList>
+              <ns3:documentationList>
+                <ns3:documentReference alterationRef="base">
+                  <ns3:fileInternalId>1</ns3:fileInternalId>
+                  <ns3:pageNumbers>1</ns3:pageNumbers>
+                  <ns3:pageDescription>План основания, лист 1</ns3:pageDescription>
+                </ns3:documentReference>
+                <ns3:documentReference alterationRef="alt-2025-01">
+                  <ns3:fileInternalId>1</ns3:fileInternalId>
+                  <ns3:pageNumbers>3</ns3:pageNumbers>
+                  <ns3:pageDescription>Уточнение площадей под подготовку</ns3:pageDescription>
+                </ns3:documentReference>
+                <ns3:documentReference alterationRef="alt-2025-06">
+                  <ns3:fileInternalId>2</ns3:fileInternalId>
+                  <ns3:propertyName>SoilType</ns3:propertyName>
+                  <ns3:propertyDescription>Тип грунта после обследования</ns3:propertyDescription>
+                  <ns3:propertyValue>Супесь</ns3:propertyValue>
+                </ns3:documentReference>
+                <ns3:documentReference alterationRef="alt-2025-12">
+                  <ns3:fileInternalId>2</ns3:fileInternalId>
+                  <ns3:pageNumbers>9</ns3:pageNumbers>
+                  <ns3:pageDescription>Оптимизация основания</ns3:pageDescription>
+                </ns3:documentReference>
+              </ns3:documentationList>
+
+              <ns3:itemList>
+                <ns3:item itemPositionId="1">
+                  <ns3:work>
+                    <ns3:workName>Очистка площадки</ns3:workName>
+                    <ns3:measurementUnit>м³</ns3:measurementUnit>
+                  </ns3:work>
+                    <ns3:volumeList>
+                      <ns3:volume alterationRef="base">
+                        <ns3:volumeQuantity>300</ns3:volumeQuantity>
+                      </ns3:volume>
+                      <ns3:volume alterationRef="alt-2025-01">
+                        <ns3:volumeQuantity>315</ns3:volumeQuantity>
+                        <ns3:volumeIncrease><ns3:amount>15</ns3:amount><ns3:reason>Уточнение объема по корректировки 01.2025</ns3:reason></ns3:volumeIncrease></ns3:volume>
+                      <ns3:volume alterationRef="alt-2025-06">
+                        <ns3:volumeQuantity>330</ns3:volumeQuantity>
+                        <ns3:volumeIncrease><ns3:amount>15</ns3:amount><ns3:reason>Уточнение объема по корректировки 06.2025</ns3:reason></ns3:volumeIncrease><ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.4</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.3</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.4</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.35</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                      <ns3:volume alterationRef="alt-2025-12">
+                        <ns3:volumeQuantity>320</ns3:volumeQuantity>
+                        <ns3:decreaseList><ns3:decrease fromRef="alt-2025-06"><ns3:amount>10</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.6</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-06"><ns3:amount>0.5</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.7</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-06"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                    </ns3:volumeList>
+                  <ns3:documentationList>
+                    <ns3:documentReference alterationRef="base">
+                      <ns3:fileInternalId>1</ns3:fileInternalId>
+                      <ns3:pageNumbers>2</ns3:pageNumbers>
+                      <ns3:pageDescription>Акт очистки площадки</ns3:pageDescription>
+                    </ns3:documentReference>
+                    <ns3:documentReference alterationRef="alt-2025-12">
+                      <ns3:fileInternalId>1</ns3:fileInternalId>
+                      <ns3:pageNumbers>1</ns3:pageNumbers>
+                      <ns3:pageDescription>Обновление актов после корректировки</ns3:pageDescription>
+                    </ns3:documentReference>
+                  </ns3:documentationList>
+                </ns3:item>
+
+                <ns3:item itemPositionId="2">
+                  <ns3:work>
+                    <ns3:workName>Устройство опалубки</ns3:workName>
+                    <ns3:measurementUnit>м³</ns3:measurementUnit>
+                  </ns3:work>
+                      <ns3:volumeList>
+                        <ns3:volume alterationRef="base">
+                          <ns3:volumeQuantity>80</ns3:volumeQuantity>
+                        </ns3:volume>
+                        <ns3:volume alterationRef="alt-2025-01">
+                          <ns3:volumeQuantity>84</ns3:volumeQuantity>
+                          <ns3:volumeIncrease><ns3:amount>4</ns3:amount><ns3:reason>Уточнение объема по корректировки 01.2025</ns3:reason></ns3:volumeIncrease></ns3:volume>
+                        <ns3:volume alterationRef="alt-2025-06">
+                          <ns3:volumeQuantity>82</ns3:volumeQuantity>
+                          <ns3:decreaseList><ns3:decrease fromRef="alt-2025-01"><ns3:amount>2</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.4</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.3</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.4</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.35</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                        <ns3:volume alterationRef="alt-2025-12">
+                          <ns3:volumeQuantity>83</ns3:volumeQuantity>
+                          <ns3:volumeIncrease><ns3:amount>1</ns3:amount><ns3:reason>Уточнение объема по корректировки 12.2025</ns3:reason></ns3:volumeIncrease><ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.6</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-06"><ns3:amount>0.5</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.7</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-06"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                      </ns3:volumeList>
+                  <ns3:documentationList>
+                    <ns3:documentReference alterationRef="base">
+                      <ns3:fileInternalId>1</ns3:fileInternalId>
+                      <ns3:pageNumbers>4</ns3:pageNumbers>
+                      <ns3:pageDescription>Опалубка: ведомость материалов</ns3:pageDescription>
+                    </ns3:documentReference>
+                    <ns3:documentReference alterationRef="alt-2025-01">
+                      <ns3:fileInternalId>1</ns3:fileInternalId>
+                      <ns3:pageNumbers>4</ns3:pageNumbers>
+                      <ns3:pageDescription>Изменение схемы опалубки</ns3:pageDescription>
+                    </ns3:documentReference>
+                    <ns3:documentReference alterationRef="alt-2025-12">
+                      <ns3:fileInternalId>2</ns3:fileInternalId>
+                      <ns3:pageNumbers>8</ns3:pageNumbers>
+                      <ns3:pageDescription>Итоговая схема опалубки</ns3:pageDescription>
+                    </ns3:documentReference>
+                  </ns3:documentationList>
+
+                  <ns3:itemList>
+                    <ns3:item itemPositionId="1">
+                      <ns3:work>
+                        <ns3:workName>Подача бетона</ns3:workName>
+                        <ns3:measurementUnit>м³</ns3:measurementUnit>
+                      </ns3:work>
+                        <ns3:volumeList>
+                          <ns3:volume alterationRef="base">
+                            <ns3:volumeQuantity>8</ns3:volumeQuantity>
+                          </ns3:volume>
+                          <ns3:volume alterationRef="alt-2025-01">
+                            <ns3:volumeQuantity>8.5</ns3:volumeQuantity>
+                            <ns3:volumeIncrease><ns3:amount>0.5</ns3:amount><ns3:reason>Уточнение объема по корректировки 01.2025</ns3:reason></ns3:volumeIncrease></ns3:volume>
+                          <ns3:volume alterationRef="alt-2025-06">
+                            <ns3:volumeQuantity>8.2</ns3:volumeQuantity>
+                            <ns3:decreaseList><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.3</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.4</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.3</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.4</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.35</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                          <ns3:volume alterationRef="alt-2025-12">
+                            <ns3:volumeQuantity>8.6</ns3:volumeQuantity>
+                            <ns3:volumeIncrease><ns3:amount>0.4</ns3:amount><ns3:reason>Уточнение объема по корректировки 12.2025</ns3:reason></ns3:volumeIncrease><ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.6</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-06"><ns3:amount>0.5</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.7</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-06"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                        </ns3:volumeList>
+                      <ns3:documentationList>
+                        <ns3:documentReference alterationRef="alt-2025-01">
+                          <ns3:fileInternalId>1</ns3:fileInternalId>
+                          <ns3:pageNumbers>1</ns3:pageNumbers>
+                          <ns3:pageDescription>Подача бетона: лист 1</ns3:pageDescription>
+                        </ns3:documentReference>
+                        <ns3:documentReference alterationRef="alt-2025-12">
+                          <ns3:fileInternalId>3</ns3:fileInternalId>
+                          <ns3:ifcGuids>1111-2222-3333-4444</ns3:ifcGuids>
+                          <ns3:ifcDescription>Concrete pour record</ns3:ifcDescription>
+                        </ns3:documentReference>
+                      </ns3:documentationList>
+                    </ns3:item>
+
+                    <ns3:item itemPositionId="2">
+                      <ns3:work>
+                        <ns3:workName>Контроль качества опалубки</ns3:workName>
+                        <ns3:measurementUnit>шт</ns3:measurementUnit>
+                      </ns3:work>
+                          <ns3:volumeList>
+                            <ns3:volume alterationRef="base">
+                              <ns3:volumeQuantity>2</ns3:volumeQuantity>
+                            </ns3:volume>
+                            <ns3:volume alterationRef="alt-2025-01">
+                              <ns3:volumeQuantity>3</ns3:volumeQuantity>
+                              <ns3:volumeIncrease><ns3:amount>1</ns3:amount><ns3:reason>Уточнение объема по корректировки 01.2025</ns3:reason></ns3:volumeIncrease></ns3:volume>
+                            <ns3:volume alterationRef="alt-2025-06">
+                              <ns3:volumeQuantity>3</ns3:volumeQuantity>
+                            <ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.4</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.3</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.4</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.35</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                            <ns3:volume alterationRef="alt-2025-12">
+                              <ns3:volumeQuantity>2</ns3:volumeQuantity>
+                              <ns3:decreaseList><ns3:decrease fromRef="alt-2025-06"><ns3:amount>1</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.6</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-06"><ns3:amount>0.5</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.7</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-06"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                          </ns3:volumeList>
+                      <ns3:documentationList>
+                        <ns3:documentReference alterationRef="alt-2025-01">
+                          <ns3:fileInternalId>1</ns3:fileInternalId>
+                          <ns3:pageNumbers>1</ns3:pageNumbers>
+                          <ns3:pageDescription>Контроль опалубки, промежуточный</ns3:pageDescription>
+                        </ns3:documentReference>
+                        <ns3:documentReference alterationRef="alt-2025-12">
+                          <ns3:fileInternalId>1</ns3:fileInternalId>
+                          <ns3:propertyName>FormworkCheck</ns3:propertyName>
+                          <ns3:propertyDescription>Итог проверки опалубки</ns3:propertyDescription>
+                          <ns3:propertyValue>Принято</ns3:propertyValue>
+                        </ns3:documentReference>
+                      </ns3:documentationList>
+                    </ns3:item>
+                  </ns3:itemList>
+                </ns3:item>
+              </ns3:itemList>
+            </ns3:item>
+
+            <ns3:item itemPositionId="3">
+              <ns3:work>
+                <ns3:workName>Армирование</ns3:workName>
+                <ns3:measurementUnit>т</ns3:measurementUnit>
+              </ns3:work>
+              <ns3:volumeList>
+                <ns3:volume alterationRef="base">
+                  <ns3:volumeQuantity>3.2</ns3:volumeQuantity>
+                </ns3:volume>
+                <ns3:volume alterationRef="alt-2025-01">
+                  <ns3:volumeQuantity>3.2</ns3:volumeQuantity>
+                </ns3:volume>
+                <ns3:volume alterationRef="alt-2025-06">
+                  <ns3:volumeQuantity>3.6</ns3:volumeQuantity>
+                  <ns3:volumeIncrease><ns3:amount>0.4</ns3:amount><ns3:reason>Уточнение объема по корректировки 06.2025</ns3:reason></ns3:volumeIncrease><ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.4</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.3</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.4</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.35</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+                <ns3:volume alterationRef="alt-2025-12">
+                  <ns3:volumeQuantity>3.4</ns3:volumeQuantity>
+                  <ns3:decreaseList><ns3:decrease fromRef="alt-2025-06"><ns3:amount>0.2</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.6</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-06"><ns3:amount>0.5</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="base"><ns3:amount>0.7</ns3:amount><ns3:reason>Снижение относительно базы</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-06"><ns3:amount>0.55</ns3:amount><ns3:reason>Снижение относительно корректировки 06.2025</ns3:reason></ns3:decrease><ns3:decrease fromRef="alt-2025-01"><ns3:amount>0.25</ns3:amount><ns3:reason>Снижение относительно корректировки 01.2025</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume>
+              </ns3:volumeList>
+              <ns3:documentationList>
+                <ns3:documentReference alterationRef="alt-2025-06">
+                  <ns3:fileInternalId>2</ns3:fileInternalId>
+                  <ns3:pageNumbers>6 7</ns3:pageNumbers>
+                  <ns3:pageDescription>Армирование: листы 6-7</ns3:pageDescription>
+                </ns3:documentReference>
+                <ns3:documentReference alterationRef="alt-2025-12">
+                  <ns3:fileInternalId>1</ns3:fileInternalId>
+                  <ns3:ifcGuids>aaaa-bbbb-cccc-dddd</ns3:ifcGuids>
+                  <ns3:ifcDescription>Армирование финальное в IFC</ns3:ifcDescription>
+                </ns3:documentReference>
+              </ns3:documentationList>
+            </ns3:item>
+          </ns3:itemList>
+        </ns3:section>
+      </ns3:sectionList>
+    </ns2:estimate>
+  <ns2:estimate estimateNumber="NEST-TEST"><ns3:estimateName>Тест вложенных разделов (валидная структура)</ns3:estimateName><ns3:sectionList><ns3:section sectionNumber="10"><ns3:sectionName>Раздел 10 (есть позиции и вложенные)</ns3:sectionName><ns3:itemList><ns3:item itemPositionId="101"><ns3:work><ns3:workName>Позиция 10.1</ns3:workName><ns3:measurementUnit>м3</ns3:measurementUnit></ns3:work><ns3:volumeList><ns3:volume alterationRef="base"><ns3:volumeQuantity>5</ns3:volumeQuantity></ns3:volume><ns3:volume alterationRef="alt-2025-01"><ns3:volumeQuantity>5.5</ns3:volumeQuantity><ns3:volumeIncrease><ns3:amount>0.5</ns3:amount><ns3:reason>Увеличение 10.1</ns3:reason></ns3:volumeIncrease></ns3:volume><ns3:volume alterationRef="alt-2025-06"><ns3:volumeQuantity>5.1</ns3:volumeQuantity><ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.4</ns3:amount><ns3:reason>Снижение 10.1</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume></ns3:volumeList></ns3:item><ns3:freeStringItem><ns3:freeStringName>Метка внутри 10</ns3:freeStringName></ns3:freeStringItem></ns3:itemList><ns3:sectionList><ns3:section sectionNumber="101"><ns3:sectionName>Подраздел 10.1</ns3:sectionName><ns3:itemList><ns3:item itemPositionId="1011"><ns3:work><ns3:workName>Позиция 10.1.1</ns3:workName><ns3:measurementUnit>шт</ns3:measurementUnit></ns3:work><ns3:volumeList><ns3:volume alterationRef="base"><ns3:volumeQuantity>2</ns3:volumeQuantity></ns3:volume><ns3:volume alterationRef="alt-2025-01"><ns3:volumeQuantity>2.4</ns3:volumeQuantity><ns3:volumeIncrease><ns3:amount>0.4</ns3:amount><ns3:reason>Увеличение 10.1.1</ns3:reason></ns3:volumeIncrease></ns3:volume><ns3:volume alterationRef="alt-2025-06"><ns3:volumeQuantity>2.1</ns3:volumeQuantity><ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.3</ns3:amount><ns3:reason>Снижение 10.1.1</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume></ns3:volumeList></ns3:item></ns3:itemList><ns3:sectionList><ns3:section sectionNumber="1011"><ns3:sectionName>Подподраздел 10.1.1</ns3:sectionName><ns3:itemList><ns3:item itemPositionId="10111"><ns3:work><ns3:workName>Позиция 10.1.1.1</ns3:workName><ns3:measurementUnit>т</ns3:measurementUnit></ns3:work><ns3:volumeList><ns3:volume alterationRef="base"><ns3:volumeQuantity>1</ns3:volumeQuantity></ns3:volume><ns3:volume alterationRef="alt-2025-01"><ns3:volumeQuantity>1.3</ns3:volumeQuantity><ns3:volumeIncrease><ns3:amount>0.3</ns3:amount><ns3:reason>Увеличение 10.1.1.1</ns3:reason></ns3:volumeIncrease></ns3:volume><ns3:volume alterationRef="alt-2025-06"><ns3:volumeQuantity>1.0</ns3:volumeQuantity><ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.3</ns3:amount><ns3:reason>Снижение 10.1.1.1</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume></ns3:volumeList></ns3:item></ns3:itemList></ns3:section></ns3:sectionList></ns3:section></ns3:sectionList></ns3:section><ns3:section sectionNumber="20"><ns3:sectionName>Раздел 20 (без вложенных)</ns3:sectionName><ns3:itemList><ns3:item itemPositionId="201"><ns3:work><ns3:workName>Позиция 20.1</ns3:workName><ns3:measurementUnit>м</ns3:measurementUnit></ns3:work><ns3:volumeList><ns3:volume alterationRef="base"><ns3:volumeQuantity>10</ns3:volumeQuantity></ns3:volume><ns3:volume alterationRef="alt-2025-01"><ns3:volumeQuantity>9.5</ns3:volumeQuantity><ns3:decreaseList><ns3:decrease fromRef="base"><ns3:amount>0.5</ns3:amount><ns3:reason>Снижение 20.1</ns3:reason></ns3:decrease></ns3:decreaseList></ns3:volume></ns3:volumeList></ns3:item></ns3:itemList></ns3:section><ns3:section sectionNumber="30"><ns3:sectionName>Раздел 30 (только вложенные)</ns3:sectionName><ns3:itemList><ns3:freeStringItem><ns3:freeStringName>Вложенные ниже</ns3:freeStringName></ns3:freeStringItem></ns3:itemList><ns3:sectionList><ns3:section sectionNumber="301"><ns3:sectionName>Подраздел 30.1</ns3:sectionName><ns3:itemList><ns3:item itemPositionId="3011"><ns3:work><ns3:workName>Позиция 30.1.1</ns3:workName><ns3:measurementUnit>шт</ns3:measurementUnit></ns3:work><ns3:volumeList><ns3:volume alterationRef="base"><ns3:volumeQuantity>4</ns3:volumeQuantity></ns3:volume><ns3:volume alterationRef="alt-2025-01"><ns3:volumeQuantity>4.2</ns3:volumeQuantity><ns3:volumeIncrease><ns3:amount>0.2</ns3:amount><ns3:reason>Увеличение 30.1.1</ns3:reason></ns3:volumeIncrease></ns3:volume></ns3:volumeList></ns3:item></ns3:itemList></ns3:section><ns3:section sectionNumber="302"><ns3:sectionName>Подраздел 30.2</ns3:sectionName><ns3:itemList><ns3:item itemPositionId="3021"><ns3:work><ns3:workName>Позиция 30.2.1</ns3:workName><ns3:measurementUnit>м2</ns3:measurementUnit></ns3:work><ns3:volumeList><ns3:volume alterationRef="base"><ns3:volumeQuantity>6</ns3:volumeQuantity></ns3:volume><ns3:volume alterationRef="alt-2025-01"><ns3:volumeQuantity>6.5</ns3:volumeQuantity><ns3:volumeIncrease><ns3:amount>0.5</ns3:amount><ns3:reason>Увеличение 30.2.1</ns3:reason></ns3:volumeIncrease></ns3:volume></ns3:volumeList></ns3:item></ns3:itemList></ns3:section></ns3:sectionList></ns3:section></ns3:sectionList></ns2:estimate></ns2:estimateList>
+
+  <ns2:exportDateTime>2025-03-01T10:00:00Z</ns2:exportDateTime>
+</ns0:comparativeQuantityTakeoff>

@@ -284,6 +284,15 @@
           }
           .comment-toggle:not(:checked) ~ .comment-more .less-text { display: none; }
           .comment-toggle:checked ~ .comment-more .more-text { display: none; }
+          .section-toggle {
+            background: none;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 2px 6px 2px 0;
+            color: #2f3b52;
+          }
+          .section-toggle:focus { outline: 1px dashed #888; outline-offset: 2px; }
           table.data-table td.right { min-width: 80px; }
           .th-label-muted { display: block; font-size: 10pt; color: var(--muted); line-height: 1.2; margin-bottom: 2px; }
         .th-label-strong { display: block; font-weight: 700; line-height: 1.3; }
@@ -405,6 +414,47 @@
           </div>
         </div>
         <!-- Schematron JS removed -->
+        <script type="text/javascript">
+          <![CDATA[
+          (function() {
+            function collapseFromRow(sectionRow) {
+              const rows = Array.from(document.querySelectorAll('table.data-table tr'));
+              const idx = rows.indexOf(sectionRow);
+              if (idx === -1) return [];
+              const level = parseInt(sectionRow.getAttribute('data-level') || '0', 10);
+              const affected = [];
+              for (let i = idx + 1; i < rows.length; i++) {
+                const r = rows[i];
+                if (r.getAttribute('data-row-type') === 'section') {
+                  const lvl = parseInt(r.getAttribute('data-level') || '0', 10);
+                  if (lvl <= level) break;
+                }
+                affected.push(r);
+              }
+              return affected;
+            }
+
+            const toggles = Array.from(document.querySelectorAll('.section-toggle'));
+            toggles.forEach(btn => {
+              btn.addEventListener('click', () => {
+                const secId = btn.getAttribute('data-target');
+                const row = btn.closest('tr.section-row');
+                const isCollapsed = btn.getAttribute('data-collapsed') === 'true';
+                const targets = collapseFromRow(row);
+                targets.forEach(r => { r.style.display = isCollapsed ? '' : 'none'; });
+                btn.setAttribute('data-collapsed', isCollapsed ? 'false' : 'true');
+                btn.textContent = isCollapsed ? '▾' : '▸';
+              });
+            });
+
+            // ensure default state expanded
+            toggles.forEach(btn => {
+              btn.setAttribute('data-collapsed', 'false');
+              btn.textContent = '▾';
+            });
+          })();
+          ]]>
+        </script>
       </body>
     </html>
   </xsl:template>
@@ -601,9 +651,21 @@
     <xsl:param name="base-stage" as="element()?"/>
 
     <xsl:for-each select="$sections">
-      <tr class="section-row">
+      <xsl:variable name="section-id" select="concat('sec-', generate-id(.))"/>
+      <tr class="section-row"
+          data-row-type="section"
+          data-section-id="{$section-id}"
+          data-level="{$level}">
         <td colspan="{$column-count}"
             title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/(@sectionNumber|sectionName)','Номер и наименование раздела сметы')}">
+          <xsl:attribute name="style">
+            <xsl:text>padding-left: </xsl:text>
+            <xsl:value-of select="xs:integer($level * 16)"/>
+            <xsl:text>px;</xsl:text>
+          </xsl:attribute>
+          <button type="button" class="section-toggle" data-target="{$section-id}" aria-label="Свернуть/развернуть раздел">
+            <xsl:text>▾</xsl:text>
+          </button>
           <xsl:variable name="sectionNumber" select="normalize-space(@sectionNumber)"/>
           <xsl:variable name="sectionName" select="normalize-space(*:sectionName)"/>
           <xsl:value-of select="concat(if ($sectionNumber) then concat($sectionNumber, '. ') else '', $sectionName)"/>
@@ -615,6 +677,8 @@
             <xsl:call-template name="render-free-string">
               <xsl:with-param name="free-string" select="."/>
               <xsl:with-param name="column-count" select="$column-count"/>
+              <xsl:with-param name="section-id" select="$section-id"/>
+              <xsl:with-param name="section-level" select="$level"/>
             </xsl:call-template>
           </xsl:when>
           <xsl:otherwise>
@@ -625,6 +689,8 @@
               <xsl:with-param name="estimate-number" select="$estimate-number"/>
               <xsl:with-param name="estimate-name" select="$estimate-name"/>
               <xsl:with-param name="base-stage" select="$base-stage"/>
+              <xsl:with-param name="section-id" select="$section-id"/>
+              <xsl:with-param name="section-level" select="$level"/>
             </xsl:call-template>
           </xsl:otherwise>
         </xsl:choose>
@@ -653,6 +719,8 @@
     <xsl:param name="base-stage" as="element()?"/>
     <xsl:param name="depth" as="xs:integer" select="0"/>
     <xsl:param name="display-prefix" as="xs:string" select="''"/>
+    <xsl:param name="section-id" as="xs:string" select="''"/>
+    <xsl:param name="section-level" as="xs:integer" select="0"/>
 
     <xsl:variable name="indent" select="string-join(for $i in 1 to $depth return '   ', '')"/>
     <xsl:variable name="base-value" select="f:quantity($item, 'base')"/>
@@ -667,9 +735,13 @@
     <xsl:variable name="item-has-issue" select="false()"/>
     <xsl:variable name="item-issue-messages" select="()"/>
 
-    <tr>
+    <tr data-row-type="item">
       <xsl:attribute name="title"/>
       <xsl:attribute name="title"/>
+      <xsl:if test="string($section-id)">
+        <xsl:attribute name="data-parent-section" select="$section-id"/>
+        <xsl:attribute name="data-parent-level" select="$section-level"/>
+      </xsl:if>
       <xsl:variable name="pos-title-base"
         select="f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/item/@itemPositionId','Номер позиции сметы (атрибут itemPositionId)')"/>
       <xsl:variable name="pos-title"
@@ -908,8 +980,14 @@
   <xsl:template name="render-free-string">
     <xsl:param name="free-string" as="element()"/>
     <xsl:param name="column-count" as="xs:integer"/>
+    <xsl:param name="section-id" as="xs:string" select="''"/>
+    <xsl:param name="section-level" as="xs:integer" select="0"/>
 
-    <tr class="free-string-row">
+    <tr class="free-string-row" data-row-type="item">
+      <xsl:if test="string($section-id)">
+        <xsl:attribute name="data-parent-section" select="$section-id"/>
+        <xsl:attribute name="data-parent-level" select="$section-level"/>
+      </xsl:if>
       <td colspan="{$column-count}"
           title="{f:tooltip('/comparativeQuantityTakeoff/estimateList/estimate/sectionList/section/itemList/freeStringItem/freeStringName','Свободная строка раздела')}">
         <xsl:value-of select="normalize-space($free-string/*:freeStringName)"/>
