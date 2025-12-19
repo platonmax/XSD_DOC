@@ -1162,19 +1162,6 @@
                 </xs:simpleContent>
               </xs:complexType>
             </xs:element>
-            <xs:element name="ConversionFactor" minOccurs="0">
-              <xs:annotation>
-                <xs:documentation>Коэффициент пересчета в единицу измерения в соответствии с графой 5
-                            Округление элемента производить до трех значимых чисел после запятой</xs:documentation>
-              </xs:annotation>
-              <xs:complexType>
-                <xs:simpleContent>
-                  <xs:extension base="xs:decimal">
-                    <xs:attribute name="ConversionFactorComment" type="xs:string"/>
-                  </xs:extension>
-                </xs:simpleContent>
-              </xs:complexType>
-            </xs:element>
             <xs:element name="OfferUnitFormula" maxOccurs="1" minOccurs="0">
               <xs:annotation>
                 <xs:documentation><text> Формула расчета текущей отпускной цены без НДС, руб. за единицу измерения ресурса, в соответствии с графой 5 формы конъюнктурного анализа (за единицу измерения в соответствии с классификатором строительных ресурсов) при различных единицах измерения ресурсов по ценовому предложению и по проекту.</text></xs:documentation>
@@ -1196,6 +1183,20 @@
                 <xs:simpleContent>
                   <xs:extension base="xs:decimal">
                     <xs:attribute name="EstimateWithoutVATComment" type="xs:string"/>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+
+            <xs:element name="ConversionFactor" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Коэффициент пересчета в единицу измерения в соответствии с графой 5
+                            Округление элемента производить до трех значимых чисел после запятой</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:decimal">
+                    <xs:attribute name="ConversionFactorComment" type="xs:string"/>
                   </xs:extension>
                 </xs:simpleContent>
               </xs:complexType>

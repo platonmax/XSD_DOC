@@ -1,0 +1,254 @@
+﻿<?xml version="1.0"?>
+<MarketAnalysis xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MarketAnalysis-4_03.xsd">
+  <Meta>
+    <Soft>
+      <Name>ГОССТРОЙСМЕТА</Name>
+      <Version>3.22.10.14808</Version>
+    </Soft>
+    <File>
+      <Type>КА</Type>
+      <Version>4.03</Version>
+    </File>
+  </Meta>
+  <PriceLevel>
+    <Year>2025</Year>
+    <Month>3</Month>
+    <Day>21</Day>
+    <Quarter>1</Quarter>
+    <Note/>
+  </PriceLevel>
+  <Legal>
+    <Metodology>
+      <Name>Методика определения сметной стоимости строительства, реконструкции капитального ремонта, сноса объектов капитального строительства, работ по сохранению объектов культурного наследия (памятников истории и культуры) народов Российской Федерации на территории Российской Федерации</Name>
+      <Type>ГСН</Type>
+      <Date>
+        <Year>2020</Year>
+        <Quarter>3</Quarter>
+        <Date>2020-09-29</Date>
+      </Date>
+      <Num>348</Num>
+      <Orders>Приказ Минстроя России от 07.07.2022 № 557/пр; Приказ Минстроя России от 30.01.2024 № 55/пр; Приказ Минстроя России от 23.01.2025 № 30/пр</Orders>
+    </Metodology>
+  </Legal>
+  <Industry/>
+  <AccessLevel>общедоступная информация</AccessLevel>
+  <ObjectName>Технический пример</ObjectName>
+  <Region>
+    <RegionCode>51</RegionCode>
+    <RegionName>Мурманская область</RegionName>
+  </Region>
+  <Signatures>
+    <Composer>
+      <Name>Составитель</Name>
+      <Position/>
+    </Composer>
+    <Verifier>
+      <Name>Проверяющий</Name>
+      <Position/>
+    </Verifier>
+    <Developer>
+      <Name>Пендряк Анатолий Евстахиевич</Name>
+      <Position>генеральный директор</Position>
+    </Developer>
+  </Signatures>
+  <ExportDateTime>2025-11-17T12:35:07</ExportDateTime>
+  <Sections>
+    <Section>
+      <Code>1</Code>
+      <Name>Материалы и Оборудование</Name>
+      <Items>
+        <Item>
+          <Num>1</Num>
+          <Code>21.1.02.01</Code>
+          <Name>Кабель силовой с медными жилами ВВГнг(A) 5х120мк(N, PE)-1000</Name>
+          <Unit>м</Unit>
+          <Type>материал</Type>
+          <Offer>
+            <OfferNum>1</OfferNum>
+            <OfferCode>ТЦ_21.1.02.01_78_7810266636_16.04.2025_01_1.1</OfferCode>
+            <OfferName>Кабель силовой с медными жилами ВВГнг(A) 5х120мк(N, PE)-1000</OfferName>
+            <OfferUnit>м</OfferUnit>
+            <OfferDate>
+              <Year>2025</Year>
+              <Quarter>1</Quarter>
+              <Date>2025-04-16</Date>
+            </OfferDate>
+            <OfferCompany>
+              <CompanyName>АО "ХОЛДИНГ-78"</CompanyName>
+              <KPP>781001001</KPP>
+              <INN>7810266636</INN>
+              <Site>https://cable.ru/cable/marka-vvgng_4x4_0_66.php</Site>
+              <Email>pppp@mail.ru</Email>
+              <Status>1</Status>
+              <StorePlace>196240, ГОРОД САНКТ-ПЕТЕРБУРГ, ПР-Д 4-Й ПРЕДПОРТОВЫЙ, Д. 5, ЛИТЕР Л, ПОМЕЩ. 6-Н ЧАСТЬ ЧАСТИ №47</StorePlace>
+            </OfferCompany>
+            <Region>
+              <RegionCode>78</RegionCode>
+              <RegionName>Санкт-Петербург</RegionName>
+            </Region>
+            <OfferPrice>
+              <OfferWithVAT>5618.33</OfferWithVAT>
+              <PercentVAT>20</PercentVAT>
+              <OfferWithoutVAT>4681.94</OfferWithoutVAT>
+              <OfferUnitWithoutVAT>4637.42</OfferUnitWithoutVAT>
+              <DeflationCoefficient>1.0096</DeflationCoefficient>
+              <ConversionFactor>1</ConversionFactor>
+              <OfferUnitFormula>(5618.33*1/(1+20/100))/1.0096</OfferUnitFormula>
+              <DeliveryTerms/>
+              <DeliveryTermsCode>01</DeliveryTermsCode>
+              <EstimateWithoutVAT>4730.17</EstimateWithoutVAT>
+            </OfferPrice>
+            <Netto>0</Netto>
+            <Brutto>0</Brutto>
+            <Storage>
+              <Percent>2</Percent>
+              <Price>92.75</Price>
+            </Storage>
+            <ExpensesTotal>0.00</ExpensesTotal>
+            <OriginCountry/>
+            <OfferLinkFile>
+              <FileName/>
+              <Page>1</Page>
+            </OfferLinkFile>
+            <Winner>0</Winner>
+          </Offer>
+          <Offer>
+            <OfferNum>2</OfferNum>
+            <OfferCode>ТЦ_21.1.02.01_76_5040125615_21.05.2025_01_1.2</OfferCode>
+            <OfferName>Кабель силовой с медными жилами ВВГнг(A) 5х120мк(N, PE)-1000</OfferName>
+            <OfferUnit>100 м</OfferUnit>
+            <OfferDate>
+              <Year>2025</Year>
+              <Quarter>1</Quarter>
+              <Date>2025-05-21</Date>
+            </OfferDate>
+            <OfferCompany>
+              <CompanyName>АО "НАТОН-76"</CompanyName>
+              <KPP>760401001</KPP>
+              <INN>5040125615</INN>
+              <Site>https://cable.ru/cable/cable-vvgng_a_5h50_1.php</Site>
+              <Email>pppp1@mail.ru</Email>
+              <Status>2</Status>
+              <StorePlace>150000, Ярославская обл, г Ярославль, ул Депутатская, д 3, офис 38</StorePlace>
+            </OfferCompany>
+            <Region>
+              <RegionCode>76</RegionCode>
+              <RegionName>Ярославская область</RegionName>
+            </Region>
+            <OfferPrice>
+              <OfferWithVAT>500698.33</OfferWithVAT>
+              <PercentVAT>20</PercentVAT>
+              <OfferWithoutVAT>417248.61</OfferWithoutVAT>
+              <OfferUnitWithoutVAT>4119.35</OfferUnitWithoutVAT>
+              <DeflationCoefficient>1.0129</DeflationCoefficient>
+              <ConversionFactor>0.01</ConversionFactor>
+              <OfferUnitFormula>(500698.33*0.01/(1+20/100))/1.0129</OfferUnitFormula>
+              <DeliveryTerms/>
+              <DeliveryTermsCode>01</DeliveryTermsCode>
+              <EstimateWithoutVAT>4201.74</EstimateWithoutVAT>
+            </OfferPrice>
+            <Netto>0</Netto>
+            <Brutto>0</Brutto>
+            <Storage>
+              <Percent>2</Percent>
+              <Price>82.39</Price>
+            </Storage>
+            <ExpensesTotal>0.00</ExpensesTotal>
+            <OriginCountry/>
+            <OfferLinkFile>
+              <FileName/>
+              <Page>1</Page>
+            </OfferLinkFile>
+            <Winner>1</Winner>
+          </Offer>
+          <Offer>
+            <OfferNum>3</OfferNum>
+            <OfferCode>ТЦ_21.1.02.01_66_6685045547_16.04.2025_01_1.3</OfferCode>
+            <OfferName>Кабель силовой с медными жилами ВВГнг(A) 5х120мк(N, PE)-1000</OfferName>
+            <OfferUnit>м</OfferUnit>
+            <OfferDate>
+              <Year>2025</Year>
+              <Quarter>1</Quarter>
+              <Date>2025-04-16</Date>
+            </OfferDate>
+            <OfferCompany>
+              <CompanyName>ООО "СВАРКА 66"</CompanyName>
+              <KPP>668601001</KPP>
+              <INN>6685045547</INN>
+              <Site>https://cable.ru/cable/cable-vvgng_a_2h50_1.php</Site>
+              <Email>pppp2@mail.ru</Email>
+              <Status>1</Status>
+              <StorePlace>620137, Свердловская обл, г Екатеринбург, Орджоникидзевский р-н, Промышленный проезд, д 11, офис 1</StorePlace>
+            </OfferCompany>
+            <Region>
+              <RegionCode>66</RegionCode>
+              <RegionName>Свердловская область</RegionName>
+            </Region>
+            <OfferPrice>
+              <OfferWithVAT>5698.15</OfferWithVAT>
+              <PercentVAT>20</PercentVAT>
+              <OfferWithoutVAT>4748.46</OfferWithoutVAT>
+              <OfferUnitWithoutVAT>4703.31</OfferUnitWithoutVAT>
+              <DeflationCoefficient>1.0096</DeflationCoefficient>
+              <ConversionFactor>1</ConversionFactor>
+              <OfferUnitFormula>(5698.15*1/(1+20/100))/1.0096</OfferUnitFormula>
+              <DeliveryTerms/>
+              <DeliveryTermsCode>01</DeliveryTermsCode>
+              <EstimateWithoutVAT>4797.38</EstimateWithoutVAT>
+            </OfferPrice>
+            <Netto>0</Netto>
+            <Brutto>0</Brutto>
+            <Storage>
+              <Percent>2</Percent>
+              <Price>94.07</Price>
+            </Storage>
+            <ExpensesTotal>0.00</ExpensesTotal>
+            <OriginCountry/>
+            <OfferLinkFile>
+              <FileName/>
+              <Page>1</Page>
+            </OfferLinkFile>
+            <Winner>0</Winner>
+          </Offer>
+          <ClientLetter>
+            <FileName/>
+            <Title/>
+          </ClientLetter>
+          <FreeString>Материалы (св строка) + индекс дефлятор</FreeString>
+        </Item>
+      </Items>
+    </Section>
+    <SectionFSBC>
+      <Code>2</Code>
+      <Name>Ресурсы из ФСБЦ-2022</Name>
+      <Items>
+        <ItemFSBC>
+          <Num>2</Num>
+          <Name>Блок дверной металлический противопожарный однопольный, предел огнестойкости EI 30, с заполнением минеральной ватой, окрашенный порошковыми красками, с замком-защелкой, без доводчика, размеры 1000х1900 мм</Name>
+          <Unit>шт</Unit>
+          <Type>материал</Type>
+          <Offer>
+            <OfferNum>1</OfferNum>
+            <OfferCode>ТЦ_07.1.01.01-0014_2.1</OfferCode>
+            <OfferName>Блок дверной металлический противопожарный однопольный, предел огнестойкости EI 30, с заполнением минеральной ватой, окрашенный порошковыми красками, с замком-защелкой, без доводчика, размеры 1000х1900 мм</OfferName>
+            <OfferUnit>шт</OfferUnit>
+            <OfferPrice>
+              <OfferWithoutVAT>12262.09</OfferWithoutVAT>
+              <OfferUnitWithoutVAT>15818.10</OfferUnitWithoutVAT>
+              <DeflationCoefficient>1.29</DeflationCoefficient>
+              <ConversionFactor>1</ConversionFactor>
+              <OfferUnitFormula>(12262.09*1)*1.29</OfferUnitFormula>
+              <EstimateWithoutVAT>15818.10</EstimateWithoutVAT>
+            </OfferPrice>
+            <ExpensesTotal>0.00</ExpensesTotal>
+          </Offer>
+          <ClientLetter>
+            <FileName>Письмо для ресурсов 2го раздела.pdf</FileName>
+            <Title>Письмо для ресурсов 2го раздела.pdf</Title>
+          </ClientLetter>
+          <FreeString>Ресурсы из ФСБЦ-2022 с индексом по ГОСР</FreeString>
+        </ItemFSBC>
+      </Items>
+    </SectionFSBC>
+  </Sections>
+</MarketAnalysis>
