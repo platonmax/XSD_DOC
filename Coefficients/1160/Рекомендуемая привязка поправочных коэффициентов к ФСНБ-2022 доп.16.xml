@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Coefficients xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:noNamespaceSchemaLocation="Coefficients-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ xsi:noNamespaceSchemaLocation="Coefficients-1.0.relaxed.xsd"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Section code="С.">
     <Name>Строительные и специальные строительные работы</Name>
     <Section code="С.-Ч.1">
