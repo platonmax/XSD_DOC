@@ -20,3 +20,10 @@ Thumbs.db
 
 # Generated schema docs (oXygen Schema Documentation)
 oxygen_schema_doc*/
+
+# Generated visuals / local artifacts
+CostsSummary/Archive/*.html
+QuantityTakeoff/Archive/*.html
+ComparativeQuantityTakeoff/MINSTROY_VERSION/ComparativeQuantityTakeoff_collapsible_nested — копия.html
+Coefficients/1160/MINSTROY_VERSION/
+Coefficients/1160/Исходники/
