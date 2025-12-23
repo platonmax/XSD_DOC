@@ -1,9 +1,45 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    exclude-result-prefixes="xs"
+    xmlns:util="http://www.gge.ru/utils"
+    exclude-result-prefixes="xs util"
     version="2.0">
 	<xsl:output omit-xml-declaration="yes" encoding="UTF-8"  indent="yes"/>
 	<xsl:strip-space elements="*"/>
+
+	<xsl:function name="util:formatNumberWithZeroCheck">
+		<xsl:param name="number"/>
+
+		<xsl:variable name="raw" select="normalize-space(string($number))"/>
+
+		<xsl:choose>
+			<xsl:when test="$raw = '' or $raw = 'NaN'">
+				<xsl:text/>
+			</xsl:when>
+			<xsl:when test="not(matches($raw, '^-?\d+([.,]\d+)?$'))">
+				<xsl:value-of select="$raw"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:variable name="sign" select="if (starts-with($raw, '-')) then '-' else ''"/>
+				<xsl:variable name="unsigned" select="if ($sign = '-') then substring($raw, 2) else $raw"/>
+				<xsl:variable name="sep" select="if (contains($unsigned, ',')) then ',' else if (contains($unsigned, '.')) then '.' else ''"/>
+				<xsl:variable name="intPart" select="if ($sep != '') then substring-before($unsigned, $sep) else $unsigned"/>
+				<xsl:variable name="fracPart" select="if ($sep != '') then substring-after($unsigned, $sep) else ''"/>
+
+				<xsl:variable name="formattedInt">
+					<xsl:value-of select="translate(format-number(number($intPart), '#,##0'), ',', ' ')"/>
+				</xsl:variable>
+
+				<xsl:choose>
+					<xsl:when test="$fracPart != ''">
+						<xsl:value-of select="concat($sign, $formattedInt, ',', $fracPart)"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="concat($sign, $formattedInt)"/>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:function>
 	
 	<!-- Главный шаблон и описание стилей CSS -->
     <xsl:template match="/">
@@ -128,7 +164,7 @@
 
 			<div class="heading-left2"><div class="headingname">Утверждена</div><div class="headingvalue center"><xsl:value-of select="concat(substring(Approved,9,2),'.',substring(Approved,6,2),'.',substring(Approved,1,4))"/> г.</div></div>
 
-			<div class="heading-left2"><div class="headingname"><b>Сводка затрат в сумме</b></div><div class="headingvalue center"><b><xsl:value-of select="Summary"/> тыс. руб.</b></div></div>
+			<div class="heading-left2"><div class="headingname"><b>Сводка затрат в сумме</b></div><div class="headingvalue center"><b><xsl:value-of select="util:formatNumberWithZeroCheck(Summary)"/> тыс. руб.</b></div></div>
 			<br/>
 			<div class="heading"><div class="headingvalue center"><xsl:value-of select="ApprovedDoc"/></div></div>
 			<div class="heading" style="margin-top: 0;"><div class="helptext">(ссылка на документ об утверждении)</div></div>
@@ -174,44 +210,44 @@
 				<tr>
 					<td class="left">1</td>
 					<td class="left">&#160;<b>Сметная стоимость:</b></td>
-					<td class="right"><xsl:value-of select="Costs/Estimate/Production"/></td>
-					<td class="right"><xsl:value-of select="Costs/Estimate/NotProduction"/></td>
-					<td class="right"><xsl:value-of select="Costs/Estimate/Total"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/Estimate/Production)"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/Estimate/NotProduction)"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/Estimate/Total)"/></td>
 				</tr>
 				<tr>
 					<td class="left">1.1</td>
 					<td class="left">&#160;&#160;&#160;&#160;&#160;строительных и монтажных работ</td>
-					<td class="right"><xsl:value-of select="Costs/Building/Production"/></td>
-					<td class="right"><xsl:value-of select="Costs/Building/NotProduction"/></td>
-					<td class="right"><xsl:value-of select="Costs/Building/Total"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/Building/Production)"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/Building/NotProduction)"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/Building/Total)"/></td>
 				</tr>
 				<tr>
 					<td class="left">1.2</td>
 					<td class="left">&#160;&#160;&#160;&#160;&#160;оборудования</td>
-					<td class="right"><xsl:value-of select="Costs/Equipment/Production"/></td>
-					<td class="right"><xsl:value-of select="Costs/Equipment/NotProduction"/></td>
-					<td class="right"><xsl:value-of select="Costs/Equipment/Total"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/Equipment/Production)"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/Equipment/NotProduction)"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/Equipment/Total)"/></td>
 				</tr>
 				<tr>
 					<td class="left">1.3</td>
 					<td class="left">&#160;&#160;&#160;&#160;&#160;прочих затрат</td>
-					<td class="right"><xsl:value-of select="Costs/Other/Production"/></td>
-					<td class="right"><xsl:value-of select="Costs/Other/NotProduction"/></td>
-					<td class="right"><xsl:value-of select="Costs/Other/Total"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/Other/Production)"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/Other/NotProduction)"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/Other/Total)"/></td>
 				</tr>
 				<tr>
 					<td class="left">2</td>
 					<td class="left">&#160;<b>Сметная стоимость всего,</b><br/><i>в том числе</i></td>
-					<td class="right"><xsl:value-of select="Costs/EstimateTotal/Production"/></td>
-					<td class="right"><xsl:value-of select="Costs/EstimateTotal/NotProduction"/></td>
-					<td class="right"><xsl:value-of select="Costs/EstimateTotal/Total"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/EstimateTotal/Production)"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/EstimateTotal/NotProduction)"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/EstimateTotal/Total)"/></td>
 				</tr>
 				<tr>
 					<td class="left">2.1</td>
 					<td class="left">&#160;&#160;&#160;&#160;&#160;НДС</td>
-					<td class="right"><xsl:value-of select="Costs/EstimateTotalVAT/Production"/></td>
-					<td class="right"><xsl:value-of select="Costs/EstimateTotalVAT/NotProduction"/></td>
-					<td class="right"><xsl:value-of select="Costs/EstimateTotalVAT/Total"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/EstimateTotalVAT/Production)"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/EstimateTotalVAT/NotProduction)"/></td>
+					<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Costs/EstimateTotalVAT/Total)"/></td>
 				</tr>
 				</tbody>
 			</table>
@@ -299,19 +335,19 @@
 			<td class="center"><xsl:value-of select="Num"/></td>
 			<td class="center"><a href="{Link}"><xsl:value-of select="Link"/></a></td>
 			<td class="left"><xsl:value-of select="Name"/></td>
-			<td class="right"><xsl:value-of select="Direct"/></td>
-			<td class="right"><xsl:value-of select="WorkerSalary"/></td>
-			<td class="right"><xsl:value-of select="Machines"/></td>
-			<td class="right"><xsl:value-of select="MachinistSalary"/></td>
-			<td class="right"><xsl:value-of select="Materials"/></td>
-			<td class="right"><xsl:value-of select="Transport"/></td>
-			<td class="right"><xsl:value-of select="Equipment"/></td>
-			<td class="right"><xsl:value-of select="Salary"/></td>
-			<td class="right"><xsl:value-of select="Overhead"/></td>
-			<td class="right"><xsl:value-of select="Profit"/></td>
-			<td class="right"><xsl:value-of select="Total"/></td>
-			<td class="right"><xsl:value-of select="LaborCosts"/></td>
-			<td class="right"><xsl:value-of select="MachinistLaborCosts"/></td>
+			<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Direct)"/></td>
+			<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(WorkerSalary)"/></td>
+			<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Machines)"/></td>
+			<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(MachinistSalary)"/></td>
+			<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Materials)"/></td>
+			<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Transport)"/></td>
+			<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Equipment)"/></td>
+			<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Salary)"/></td>
+			<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Overhead)"/></td>
+			<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Profit)"/></td>
+			<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(Total)"/></td>
+			<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(LaborCosts)"/></td>
+			<td class="right"><xsl:value-of select="util:formatNumberWithZeroCheck(MachinistLaborCosts)"/></td>
 		</tr>
 	</xsl:template>
 	
@@ -320,19 +356,19 @@
 			<td></td>
 			<td></td>
 			<td class="center b">Всего:</td>
-			<td class="right b"><xsl:value-of select="Direct"/></td>
-			<td class="right b"><xsl:value-of select="WorkerSalary"/></td>
-			<td class="right b"><xsl:value-of select="Machines"/></td>
-			<td class="right b"><xsl:value-of select="MachinistSalary"/></td>
-			<td class="right b"><xsl:value-of select="Materials"/></td>
-			<td class="right b"><xsl:value-of select="Transport"/></td>
-			<td class="right b"><xsl:value-of select="Equipment"/></td>
-			<td class="right b"><xsl:value-of select="Salary"/></td>
-			<td class="right b"><xsl:value-of select="Overhead"/></td>
-			<td class="right b"><xsl:value-of select="Profit"/></td>
-			<td class="right b"><xsl:value-of select="Total"/></td>
-			<td class="right b"><xsl:value-of select="LaborCosts"/></td>
-			<td class="right b"><xsl:value-of select="MachinistLaborCosts"/></td>
+			<td class="right b"><xsl:value-of select="util:formatNumberWithZeroCheck(Direct)"/></td>
+			<td class="right b"><xsl:value-of select="util:formatNumberWithZeroCheck(WorkerSalary)"/></td>
+			<td class="right b"><xsl:value-of select="util:formatNumberWithZeroCheck(Machines)"/></td>
+			<td class="right b"><xsl:value-of select="util:formatNumberWithZeroCheck(MachinistSalary)"/></td>
+			<td class="right b"><xsl:value-of select="util:formatNumberWithZeroCheck(Materials)"/></td>
+			<td class="right b"><xsl:value-of select="util:formatNumberWithZeroCheck(Transport)"/></td>
+			<td class="right b"><xsl:value-of select="util:formatNumberWithZeroCheck(Equipment)"/></td>
+			<td class="right b"><xsl:value-of select="util:formatNumberWithZeroCheck(Salary)"/></td>
+			<td class="right b"><xsl:value-of select="util:formatNumberWithZeroCheck(Overhead)"/></td>
+			<td class="right b"><xsl:value-of select="util:formatNumberWithZeroCheck(Profit)"/></td>
+			<td class="right b"><xsl:value-of select="util:formatNumberWithZeroCheck(Total)"/></td>
+			<td class="right b"><xsl:value-of select="util:formatNumberWithZeroCheck(LaborCosts)"/></td>
+			<td class="right b"><xsl:value-of select="util:formatNumberWithZeroCheck(MachinistLaborCosts)"/></td>
 		</tr>
 	</xsl:template>	
 </xsl:stylesheet>
