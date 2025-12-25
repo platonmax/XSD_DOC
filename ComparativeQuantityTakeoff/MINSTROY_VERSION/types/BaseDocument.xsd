@@ -48,7 +48,7 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="documentDate" type="ct:dateType">
+      <xs:element name="documentDate" type="xs:date">
         <xs:annotation>
           <xs:documentation>Дата составления сопоставительной ведомости объемов работ
           </xs:documentation>

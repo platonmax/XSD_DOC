@@ -126,12 +126,6 @@ id строятся по следующему принципу: "alt-ГГГГ-М
     </xs:sequence>
   </xs:complexType>
 
-  <xs:simpleType name="dateType">
-    <xs:restriction base="xs:date"/>
-  </xs:simpleType>
-
-
-
 
   <xs:complexType name="estimateCqtType">
     <xs:annotation>
