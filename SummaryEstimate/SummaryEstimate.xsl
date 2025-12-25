@@ -35,16 +35,46 @@
         <xsl:value-of select="concat($day, '&quot; ', $monthName, ' ', $year, ' г.')"/>
     </xsl:function>
 
-    <!-- Функция для форматирования чисел с проверкой на 0 (оставляем как было) -->
+    <!-- Функция для форматирования чисел с проверкой на 0 -->
     <xsl:function name="util:formatNumberWithZeroCheck" as="xs:string">
-        <xsl:param name="number" as="xs:double?"/> 
+        <xsl:param name="number" as="xs:double?"/>
+        <xsl:value-of select="util:formatNumberWithZeroCheck($number, 2)"/>
+    </xsl:function>
+
+    <xsl:function name="util:formatNumberWithZeroCheck" as="xs:string">
+        <xsl:param name="number" as="xs:double?"/>
+        <xsl:param name="decimalPlaces" as="xs:integer"/>
+
+        <xsl:variable name="decimalPlacesValue" select="$decimalPlaces"/>
+
         <xsl:choose>
             <xsl:when test="not($number) or $number = 0">
                 <xsl:text>0,00</xsl:text>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:variable name="formattedNumber" select="format-number($number, '#,##0.00')"/>
-                <xsl:value-of select="replace($formattedNumber, ',', ' ')"/>
+                <xsl:variable name="formatPattern">
+                    <xsl:text>#,##0</xsl:text>
+                    <xsl:if test="$decimalPlacesValue &gt; 0">
+                        <xsl:text>.</xsl:text>
+                        <xsl:for-each select="1 to $decimalPlacesValue">
+                            <xsl:text>#</xsl:text>
+                        </xsl:for-each>
+                    </xsl:if>
+                </xsl:variable>
+
+                <xsl:variable name="formattedNumber">
+                    <xsl:value-of select="format-number($number, $formatPattern)"/>
+                </xsl:variable>
+
+                <xsl:variable name="translatedThousands">
+                    <xsl:value-of select="translate($formattedNumber, ',', ' ')"/>
+                </xsl:variable>
+
+                <xsl:variable name="finalNumber">
+                    <xsl:value-of select="translate($translatedThousands, '.', ',')"/>
+                </xsl:variable>
+
+                <xsl:value-of select="$finalNumber"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
@@ -218,7 +248,7 @@
 				<tr>
 				    <td class="bold" width="270" colspan="2">Сводный сметный расчет сметной стоимостью</td>
 					<td class="bordered right" width="27%">
-						<xsl:value-of select="translate(format-number(Summary/Total, '#,###.00'), ',', ' ')"/>
+                        <xsl:value-of select="util:formatNumberWithZeroCheck(Summary/Total, 2)"/>
 					</td>
 					<td width="5%">тыс. руб.</td>
 					<td width="40%"></td>
