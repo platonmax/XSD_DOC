@@ -484,11 +484,6 @@ xsi:noNamespaceSchemaLocation = "LocalEstimateResourceIndexMethod-3_01.xsd".
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="QuantityFormula" type="xs:string" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>Формула, использовавшаяся для расчета количества строительного ресурса. Информационное поле.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
             <xs:element name="QuantityTotal" type="xs:decimal">
                 <xs:annotation>
                     <xs:documentation>Результирующее количество на весь объем и с учетом коэффициентов к количеству. 
@@ -538,29 +533,6 @@ xsi:noNamespaceSchemaLocation = "LocalEstimateResourceIndexMethod-3_01.xsd".
                     <xs:documentation><text>Результирующее количество строительного ресурса на весь объем сметной нормы и с учетом коэффициентов к количеству.</text>
                         <formula> ConsumptionTotal = Consumption (Количество ресурса на единицу измерения сметной нормы) * QuantityTotal (Результирующий объем работ по расценке) * Coefficients (Коэффициенты применяемые к количеству). Округление до 7-ми знаков. Округление производится один раз после всех математических операций.</formula>
                         
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
-        </xs:sequence>
-    </xs:group>
-
-    <xs:group name="costQuantityGroup">
-        <xs:sequence>
-            <xs:element name="Quantity" type="xs:decimal">
-                <xs:annotation>
-                    <xs:documentation><text>Объем работ - количество в соответствии с проектной и (или) иной технической документацией и с учетом единицы измерения сметной нормы или расценки (без применения коэффициентов к количеству).</text>
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="QuantityFormula" type="xs:string" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation>Формула, использовавшаяся для расчета объема работ. Информационное поле.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="QuantityTotal" type="xs:decimal">
-                <xs:annotation>
-                    <xs:documentation>	<text>Результирующий объем работ с учетом поправочных коэффициентов.</text>
-	<formula>QuantityTotal (Результирующий объем работ с учетом поправочных коэффициентов) = Quantity (Объем работ) * Coefficient (Итоговый поправочный коэффициент к объему работ). Округление до 7-ми знаков. Округление производится один раз после всех математических операций.</formula>
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -1239,6 +1211,15 @@ xsi:noNamespaceSchemaLocation = "LocalEstimateResourceIndexMethod-3_01.xsd".
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
+            <xs:element name="ConsumptionTotal" type="xs:decimal">
+                <xs:annotation>
+                    <xs:documentation>Результирующее количество на весь объем и с учетом коэффициентов к количеству. 
+Округление до 7-ми знаков. Округление производится один раз после всех математических операций.
+                       
+                        
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
             <xs:element name="PricePerUnitBase" type="xs:decimal" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation><text>Сметная цена на перевозку грузов за единицу измерения в базисном уровне цен в соответствии с данными, включенными в ФРСН или в соответствии с проектной и иной технической документацией.</text>  
@@ -1288,6 +1269,11 @@ xsi:noNamespaceSchemaLocation = "LocalEstimateResourceIndexMethod-3_01.xsd".
                         </xs:element>
                     </xs:sequence>
                 </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="QuantityFormula" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Формула, использовавшаяся для расчета количества строительного ресурса. Информационное поле.</xs:documentation>
+                </xs:annotation>
             </xs:element>
         </xs:sequence>
     </xs:complexType>
@@ -1362,6 +1348,13 @@ xsi:noNamespaceSchemaLocation = "LocalEstimateResourceIndexMethod-3_01.xsd".
                 <xs:annotation>
                     <xs:documentation><text>Итоговая стоимость оплаты труда машинистов в базисном уровне цен с учетом количества по позиции.</text>
                         <formula>PriceTotalBase (Итоговая стоимость в базисном уровне цен) = ConsumptionTotal (Количество с учетом коэффициентов к количеству) * PricePerUnitBase (Сметная цена за единицу в текущем уровне цен) * Coefficients (Результирующий коэффициент к стоимости). Округление до 2-х знаков после запятой. Округление производится один раз после всех математических операций.</formula>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ConsumptionTotal" type="xs:decimal">
+                <xs:annotation>
+                    <xs:documentation><text>Результирующее количество строительного ресурса на весь объем сметной нормы и с учетом коэффициентов к количеству</text>
+                        <formula> ConsumptionTotal = Machinist.Consumption (Количество чел.-ч. машиниста на единицу измерения сметной нормы) * QuantityTotal (Результирующий объем работ по расценке) * Coefficients (Коэффициенты применяемые к количеству). Округление до 7-ми знаков. Округление производится один раз после всех математических операций.</formula>
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -1473,6 +1466,14 @@ xsi:noNamespaceSchemaLocation = "LocalEstimateResourceIndexMethod-3_01.xsd".
                     </xs:annotation>
                 </xs:element>
             </xs:sequence>
+            <xs:element name="ConsumptionTotal" type="xs:decimal">
+                <xs:annotation>
+                    <xs:documentation><text>Результирующее количество строительного ресурса на весь объем сметной нормы и с учетом коэффициентов к количеству.</text>
+                        <formula> ConsumptionTotal = Consumption (Количество ресурса на единицу измерения сметной нормы) * QuantityTotal (Результирующий объем работ по расценке) * Coefficients (Коэффициенты применяемые к количеству). Округление до 7-ми знаков. Округление производится один раз после всех математических операций.</formula>
+                        
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
             <xs:element name="Coefficients" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation><text>Коэффициенты учета условий производства работ, применяемые к стоимости и к количеству ресурса. Округление до 7-ми знаков. Округление производится один раз после всех математических операций.</text>  
@@ -1710,7 +1711,24 @@ xsi:noNamespaceSchemaLocation = "LocalEstimateResourceIndexMethod-3_01.xsd".
                                         <xs:documentation>Примечание к сметной норме или единичной расценке в локальном сметном расчете.</xs:documentation>
                                     </xs:annotation>
                                 </xs:element>
-                                <xs:group ref="costQuantityGroup"/>
+                                <xs:element name="Quantity" type="xs:decimal">
+                                    <xs:annotation>
+                                        <xs:documentation><text>Объем работ - количество в соответствии с проектной и (или) иной технической документацией и с учетом единицы измерения сметной нормы или расценки (без применения коэффициентов к количеству).</text>
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="QuantityFormula" type="xs:string" minOccurs="0">
+                                    <xs:annotation>
+                                        <xs:documentation>Формула, использовавшаяся для расчета объема работ. Информационное поле.</xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
+                                <xs:element name="QuantityTotal" type="xs:decimal">
+                                    <xs:annotation>
+                                        <xs:documentation>	<text>Результирующий объем работ с учетом поправочных коэффициентов.</text>
+	<formula>QuantityTotal (Результирующий объем работ с учетом поправочных коэффициентов) = Quantity (Объем работ) * Coefficient (Итоговый поправочный коэффициент к объему работ). Округление до 7-ми знаков. Округление производится один раз после всех математических операций.</formula>
+                                        </xs:documentation>
+                                    </xs:annotation>
+                                </xs:element>
 
                                 <xs:element name="Unit" type="xs:string">
                                     <xs:annotation>
