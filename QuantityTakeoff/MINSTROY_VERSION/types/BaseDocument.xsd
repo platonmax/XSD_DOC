@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:bt="http://types/BaseTypes.xsd"
+  xmlns:ct="http://types/CommonTypes.xsd"
+  xmlns:bd="http://types/BaseDocument.xsd"
+  targetNamespace="http://types/BaseDocument.xsd"
+  attributeFormDefault="unqualified"
+  elementFormDefault="qualified"
+  version="3.01">
+
+  <xs:import namespace="http://types/CommonTypes.xsd" schemaLocation="CommonTypes.xsd"/>
+  <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="BaseTypes.xsd"/>
+
+  <xs:complexType name="fileFormatType">
+    <xs:annotation>
+      <xs:documentation><text>Комплексный тип для описания типа и версии передаваемого файла.</text></xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="type">
+        <xs:annotation>
+          <xs:documentation><text>Тип передаваемого файла.</text></xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Ведомость объемов работ"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="version" default="3.01">
+        <xs:annotation>
+          <xs:documentation>Номер версии схемы.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="metaType">
+    <xs:annotation>
+      <xs:documentation><text>Информация о программном комплексе и версии формата.</text></xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="soft">
+        <xs:annotation>
+          <xs:appinfo>Информация о программном комплексе и его версии, откуда выгружен файл.</xs:appinfo>
+          <xs:documentation>Наименование программного продукта (сметной программы).</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Наименование программного комплекса.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="version" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Версия программного комплекса.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="file" type="bd:fileFormatType">
+        <xs:annotation>
+          <xs:documentation>Тип и версия передаваемого файла.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="fileType">
+    <xs:annotation>
+      <xs:documentation>Описание для файлов обоснований.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="fileInternalId" type="xs:positiveInteger" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Уникальный идентификатор файла для ссылок (id).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="fileName" type="xs:string" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation><text>Название файла (только название с расширением).</text></xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dateType">
+    <xs:annotation>
+      <xs:documentation>Дата составления документа.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="year" type="xs:unsignedShort">
+        <xs:annotation>
+          <xs:documentation>Год.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="month" type="xs:unsignedShort">
+        <xs:annotation>
+          <xs:documentation>Месяц.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="day" type="xs:unsignedShort">
+        <xs:annotation>
+          <xs:documentation>День.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="representativeType">
+    <xs:annotation>
+      <xs:documentation><text>Комплексный тип для передачи данных об ответственных лицах.</text>
+</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="name">
+        <xs:annotation>
+          <xs:documentation><text>ФИО.</text>
+</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="position">
+        <xs:annotation>
+          <xs:documentation><text>Должность.</text>
+</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="quantityTakeoffDocumentType">
+    <xs:sequence>
+      <xs:element name="documentMeta" type="bd:metaType">
+        <xs:annotation>
+          <xs:appinfo>Информация о программном комплексе, его версии, версии формата передаваемого файла
+Визуализируется в титуле в строке Наименование программного продукта</xs:appinfo>
+          <xs:documentation>Информация о программном продукте и версии формата.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="accessLevelCode" type="bt:accessLevelCodeType">
+        <xs:annotation>
+          <xs:documentation>Информация о уровне доступа. Возможные варианты заполнения - "общедоступная информация", "для служебного пользования" или "коммерческая тайна".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="constructionName" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>визуализируется в титул в строку Наименование стройки</xs:appinfo>
+          <xs:documentation>Наименование стройки, к которой относится объект капитального строительства (реконструкции, капитального ремонта).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+
+      <xs:element name="objectName" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>Выводится в титул в строку Наименование объекта капитального строительства</xs:appinfo>
+          <xs:documentation>Наименование объекта строительства.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="documentNumber" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:appinfo>Выводится в титул в троку Ведомость объемов работ №</xs:appinfo>
+          <xs:documentation>Номер ведомости объемов работ.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+
+      <xs:element name="reason" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>Выводится в титул в строку Основание</xs:appinfo>
+          <xs:documentation>Основание - наименование раздела (подраздела) проектной документации.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+
+
+      <xs:element name="documentDate" type="bd:dateType" minOccurs="1">
+        <xs:annotation>
+          <xs:appinfo>Выводится в титул в строку Дата сставления документов</xs:appinfo>
+          <xs:documentation>Дата составления документов.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="exportDateTime" type="xs:dateTime" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Дата и время выгрузки документа из программного продукта (сметной программы) с учетом часового пояса в формате ISO 8601 (ГГГГ-ММ-ДД ЧЧ:ММ:СС).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="signatures">
+        <xs:annotation>
+          <xs:documentation><text>Подписи и ФИО уполномоченных лиц.</text>
+</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="composer" type="bd:representativeType" minOccurs="1" maxOccurs="1">
+              <xs:annotation>
+                <xs:appinfo>Выводится после таблицы ВОР в строку Составил. Снаяала Должность, потом ФИО</xs:appinfo>
+                <xs:documentation>Подпись составляющего (ФИО).</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+
+            <xs:element name="verifier" type="bd:representativeType" minOccurs="1" maxOccurs="1">
+              <xs:annotation>
+                <xs:appinfo>Выводится после таблицы ВОР в строку Проверил. Сначала Должность, затем ФИО</xs:appinfo>
+                <xs:documentation>Подпись проверяющего (ФИО).</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fileList" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Файлы обоснований, которые передаются на экспертизу и на которые будут ссылки из данного документа. Расширения файлов представлены в приказе Минстроя Российской Федерации от 12 мая 2017 г. № 783/пр.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="file" maxOccurs="unbounded" minOccurs="1" type="bd:fileType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="sectionList" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Основная таблица ведомости объемов работ.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:choice maxOccurs="unbounded">
+            <xs:element name="section" minOccurs="1" maxOccurs="unbounded" type="ct:sectionType">
+              <xs:annotation>
+                <xs:documentation>Блоки (секции/разделы) таблицы.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

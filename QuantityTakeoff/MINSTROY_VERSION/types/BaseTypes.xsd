@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:bt="http://types/BaseTypes.xsd"
+  targetNamespace="http://types/BaseTypes.xsd"
+  attributeFormDefault="unqualified"
+  elementFormDefault="qualified"
+  version="3.01">
+
+  <xs:simpleType name="accessLevelCodeType">
+    <xs:annotation>
+      <xs:documentation><text>Классификация информации по грифу ограничения доступа.</text></xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="общедоступная информация"/>
+      <xs:enumeration value="для служебного пользования"/>
+      <xs:enumeration value="коммерческая тайна"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="guidIdType">
+    <xs:annotation>
+      <xs:documentation>Глобальный уникальный идентификатор файла.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\{[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}\}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:bt="http://types/BaseTypes.xsd"
+  xmlns:ct="http://types/CommonTypes.xsd"
+  xmlns:bd="http://types/BaseDocument.xsd"
+  xmlns:qt="http://qt/QuantityTakeoff.xsd"
+  targetNamespace="http://qt/QuantityTakeoff.xsd"
+  attributeFormDefault="unqualified"
+  elementFormDefault="qualified"
+  version="3.01"
+  vc:minVersion="1.1"
+  xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+  <xs:import namespace="http://types/BaseDocument.xsd" schemaLocation="types/BaseDocument.xsd"/>
+  <xs:import namespace="http://types/CommonTypes.xsd" schemaLocation="types/CommonTypes.xsd"/>
+  <xs:import namespace="http://types/BaseTypes.xsd" schemaLocation="types/BaseTypes.xsd"/>
+
+  <xs:element name="quantityTakeoff" type="bd:quantityTakeoffDocumentType">
+    <xs:annotation>
+      <xs:documentation>Ведомость объемов работ для последующего определения стоимости строительства объекта капитального строительства (реконструкции, капитального ремонта) в составе стройки. Элемент обязан содержать атрибуты, указывающие на применяемый xsd-шаблон описания сметы:
+xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance";
+xsi:noNamespaceSchemaLocation = "QuantityTakeoff-3_01.xsd".
+Электронные документы, представляемые для проведения государственной экспертизы проектной документации и (или) результатов инженерных изысканий и проверки достоверности определения сметной стоимости строительства, реконструкции, капитального ремонта, должны иметь расширение файла .gge.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+</xs:schema>

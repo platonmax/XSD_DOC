@@ -1,0 +1,316 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:quantityTakeoff xmlns:ns0="http://qt/QuantityTakeoff.xsd" xmlns:ns2="http://types/BaseDocument.xsd" xmlns:ns3="http://types/CommonTypes.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://qt/QuantityTakeoff.xsd QuantityTakeoff.xsd http://types/BaseDocument.xsd types/BaseDocument.xsd http://types/CommonTypes.xsd types/CommonTypes.xsd http://types/BaseTypes.xsd types/BaseTypes.xsd"><ns2:documentMeta>
+    <ns2:soft>
+      <ns2:name>Сметная программа</ns2:name>
+      <ns2:version>1.1</ns2:version>
+    </ns2:soft>
+    <ns2:file>
+      <ns2:type>Ведомость объемов работ</ns2:type>
+      <ns2:version>3.01</ns2:version>
+    </ns2:file>
+  </ns2:documentMeta>
+  <ns2:accessLevelCode>общедоступная информация</ns2:accessLevelCode>
+  <ns2:constructionName>Строительство объекта капитального строительства</ns2:constructionName>
+  <ns2:objectName>Строительство сооружения</ns2:objectName>
+  <ns2:documentNumber>ВОР-38.2023/002-КР-0001</ns2:documentNumber>
+  <ns2:reason>Раздел ПД №4 том №4</ns2:reason>
+  <ns2:documentDate>
+    <ns2:year>2025</ns2:year>
+    <ns2:month>01</ns2:month>
+    <ns2:day>01</ns2:day>
+  </ns2:documentDate>
+  <ns2:exportDateTime>2025-12-15T14:14:47</ns2:exportDateTime>
+  <ns2:signatures>
+    <ns2:composer>
+      <ns2:name>Иванов И.И.</ns2:name>
+      <ns2:position>Инженер</ns2:position>
+    </ns2:composer>
+    <ns2:verifier>
+      <ns2:name>Петров А.А.</ns2:name>
+      <ns2:position>Главный инженер проекта</ns2:position>
+    </ns2:verifier>
+  </ns2:signatures>
+  <ns2:fileList>
+    <ns2:file>
+      <ns2:fileInternalId>10</ns2:fileInternalId>
+      <ns2:fileName>Раздел ПД №4 том №4-38.2023_002-КР.pdf</ns2:fileName>
+    </ns2:file>
+    <ns2:file>
+      <ns2:fileInternalId>15</ns2:fileInternalId>
+      <ns2:fileName>Раздел ПД №4 том №4 - 38.2023_002-ПОС.pdf</ns2:fileName>
+    </ns2:file>
+  </ns2:fileList>
+  <ns2:sectionList>
+    <ns2:section sectionNumber="1">
+      <ns3:nameSection>Подготовка котлована</ns3:nameSection>
+      <ns3:workList>
+        <ns3:work itemPositionId="1" type="работа">
+          <ns3:name>Устройство основания под фундаменты: песчаного</ns3:name>
+          <ns3:unit>м3</ns3:unit>
+          <ns3:quantity>39.176</ns3:quantity>
+          <ns3:quantityFormula>11.8*8.3*0.4</ns3:quantityFormula>
+          <ns3:documentationList>
+            <ns3:documentReference>
+              <ns3:fileInternalId>10</ns3:fileInternalId>
+              <ns3:pageNumbers>114 115</ns3:pageNumbers>
+              <ns3:pageDescription>38.2023/002-КР-ГЧ</ns3:pageDescription>
+            </ns3:documentReference>
+          </ns3:documentationList>
+          <ns3:resourceList>
+            <ns3:resource itemPositionId="1" type="материал">
+              <ns3:name>Песок природный для строительных работ I класс, средний</ns3:name>
+              <ns3:unit>м3</ns3:unit>
+              <ns3:quantity>43.094</ns3:quantity>
+              <ns3:quantityFormula>11.8*8.3*0.4*1.1</ns3:quantityFormula>
+              <ns3:documentationList>
+                <ns3:documentReference>
+                  <ns3:fileInternalId>10</ns3:fileInternalId>
+                  <ns3:pageNumbers>114</ns3:pageNumbers>
+                  <ns3:pageDescription>38.2023/002-КР-ГЧ</ns3:pageDescription>
+                </ns3:documentReference>
+              </ns3:documentationList>
+              <ns3:comment>количество в графе 4 указано с учётом нормы расхода 10%</ns3:comment>
+            </ns3:resource>
+            <ns3:resource itemPositionId="2" type="перевозка">
+              <ns3:name>Перевозка песка на 60 км от карьера до строительной площадки</ns3:name>
+              <ns3:unit>т</ns3:unit>
+              <ns3:quantity>64.64</ns3:quantity>
+              <ns3:quantityFormula>11.8*8.3*0.4*1.1*1.5</ns3:quantityFormula>
+              <ns3:documentationList>
+                <ns3:documentReference>
+                  <ns3:fileInternalId>15</ns3:fileInternalId>
+                  <ns3:pageNumbers>65 80</ns3:pageNumbers>
+                  <ns3:pageDescription>38.2023/002-ПОС</ns3:pageDescription>
+                </ns3:documentReference>
+              </ns3:documentationList>
+              <ns3:comment>количество в графе 4 указано с учётом насыпной плотности согласно данным паспорта - 1,5 т/м3</ns3:comment>
+            </ns3:resource>
+          </ns3:resourceList>
+        </ns3:work>
+        <ns3:work itemPositionId="2" type="работа">
+          <ns3:name>Уплотнение грунта пневматическими трамбовками, группа грунтов: 1-2 (уплотнение подушки)</ns3:name>
+          <ns3:unit>м3</ns3:unit>
+          <ns3:quantity>39.176</ns3:quantity>
+          <ns3:quantityFormula>11.8*8.3*0.4</ns3:quantityFormula>
+          <ns3:documentationList>
+            <ns3:documentReference>
+              <ns3:fileInternalId>10</ns3:fileInternalId>
+              <ns3:pageNumbers>114 115</ns3:pageNumbers>
+              <ns3:pageDescription>38.2023/002-КР-ГЧ</ns3:pageDescription>
+            </ns3:documentReference>
+          </ns3:documentationList>
+        </ns3:work>
+      </ns3:workList>
+    </ns2:section>
+    <ns2:section sectionNumber="2">
+      <ns3:nameSection>Фундамент</ns3:nameSection>
+      <ns3:workList>
+        <ns3:work itemPositionId="3" type="работа">
+          <ns3:name>Устройство подбетонки: t=100 мм, плоской</ns3:name>
+          <ns3:unit>м3</ns3:unit>
+          <ns3:quantity>8.25</ns3:quantity>
+          <ns3:quantityFormula>11*7.5*0.1</ns3:quantityFormula>
+          <ns3:documentationList>
+            <ns3:documentReference>
+              <ns3:fileInternalId>10</ns3:fileInternalId>
+              <ns3:pageNumbers>115 116</ns3:pageNumbers>
+              <ns3:pageDescription>38.2023/002-КР-ГЧ</ns3:pageDescription>
+            </ns3:documentReference>
+          </ns3:documentationList>
+          <ns3:comment>выполнение работ в стесненных условиях, обусловленных следующими факторами (здесь и далее): сети подземных коммуникаций, подлежащие перекладке или подвеске; стесненные условия складирования материалов; ограничение поворота стрелы грузоподъемного крана в соответствии с данными проекта организации строительства</ns3:comment>
+          <ns3:resourceList>
+            <ns3:resource itemPositionId="1" type="материал">
+              <ns3:name>Смеси бетонные тяжелого бетона (БСТ), класс В7,5 (М100)</ns3:name>
+              <ns3:unit>м3</ns3:unit>
+              <ns3:quantity>8.42</ns3:quantity>
+              <ns3:quantityFormula>11*7.5*0.1*1.02</ns3:quantityFormula>
+              <ns3:documentationList>
+                <ns3:documentReference>
+                  <ns3:fileInternalId>10</ns3:fileInternalId>
+                  <ns3:pageNumbers>115</ns3:pageNumbers>
+                  <ns3:pageDescription>38.2023/002-КР-ГЧ</ns3:pageDescription>
+                </ns3:documentReference>
+              </ns3:documentationList>
+              <ns3:comment>количество в графе 4 указано с учетом нормы расхода 2%</ns3:comment>
+            </ns3:resource>
+          </ns3:resourceList>
+        </ns3:work>
+        <ns3:work itemPositionId="4" type="работа">
+          <ns3:name>Устройство монолитных железобетонных конструкций фундаментных плит с бетонированием автобетононасосом и применением инвентарной опалубки</ns3:name>
+          <ns3:unit>м3</ns3:unit>
+          <ns3:quantity>19.71</ns3:quantity>
+          <ns3:quantityFormula>10.8*7.3*0.25</ns3:quantityFormula>
+          <ns3:documentationList>
+            <ns3:documentReference>
+              <ns3:fileInternalId>10</ns3:fileInternalId>
+              <ns3:pageNumbers>114</ns3:pageNumbers>
+              <ns3:pageDescription>38.2023/002-КР-ГЧ </ns3:pageDescription>
+            </ns3:documentReference>
+          </ns3:documentationList>
+          <ns3:comment>выполнение работ в стесненных условиях</ns3:comment>
+          <ns3:resourceList>
+            <ns3:resource itemPositionId="1" type="материал">
+              <ns3:name>Смеси бетонные тяжелого бетона (БСТ), класс В25 (М350)</ns3:name>
+              <ns3:unit>м3</ns3:unit>
+              <ns3:quantity>20.01</ns3:quantity>
+              <ns3:quantityFormula>10.8*7.3*0.25*1.015</ns3:quantityFormula>
+              <ns3:documentationList>
+                <ns3:documentReference>
+                  <ns3:fileInternalId>10</ns3:fileInternalId>
+                  <ns3:pageNumbers>114</ns3:pageNumbers>
+                  <ns3:pageDescription>38.2023/002-КР-ГЧ </ns3:pageDescription>
+                </ns3:documentReference>
+              </ns3:documentationList>
+              <ns3:comment>количество в графе 4 указано с  учетом нормы расхода 1,5 %</ns3:comment>
+            </ns3:resource>
+            <ns3:resource itemPositionId="2" type="материал">
+              <ns3:name>Опалубка инвентарная (амортизация)</ns3:name>
+              <ns3:unit>м2</ns3:unit>
+              <ns3:quantity>9.05</ns3:quantity>
+              <ns3:quantityFormula>(7.3+10.8)*2*0.25</ns3:quantityFormula>
+              <ns3:documentationList>
+                <ns3:documentReference>
+                  <ns3:fileInternalId>15</ns3:fileInternalId>
+                  <ns3:pageNumbers>27</ns3:pageNumbers>
+                  <ns3:pageDescription>38.2023/002-ПОС</ns3:pageDescription>
+                </ns3:documentReference>
+              </ns3:documentationList>
+              <ns3:comment>(указывается нормативная оборачиваемость палубы и опорных, поддерживающих, крепежных элементов опалубки, которые принимаются по данным общих положений ГЭСН 81-02-06-… или техническим данным)</ns3:comment>
+            </ns3:resource>
+            <ns3:resource itemPositionId="3" type="материал">
+              <ns3:name>Сталь арматурная рифленая свариваемая, класс А240, диаметр 10 мм</ns3:name>
+              <ns3:unit>т</ns3:unit>
+              <ns3:quantity>0.0866</ns3:quantity>
+              <ns3:quantityFormula>86.6*0.001</ns3:quantityFormula>
+              <ns3:documentationList>
+                <ns3:documentReference>
+                  <ns3:fileInternalId>10</ns3:fileInternalId>
+                  <ns3:pageNumbers>114</ns3:pageNumbers>
+                  <ns3:pageDescription>38.2023/002-КР-ГЧ </ns3:pageDescription>
+                </ns3:documentReference>
+              </ns3:documentationList>
+              <ns3:comment>аримрование предусмотрено пространственными каркасами, изготовленными в построечных условиях</ns3:comment>
+            </ns3:resource>
+            <ns3:resource itemPositionId="4" type="материал">
+              <ns3:name>Сталь арматурная рифленая свариваемая,  класс А500С, диаметр 12 мм</ns3:name>
+              <ns3:unit>т</ns3:unit>
+              <ns3:quantity>1.0273</ns3:quantity>
+              <ns3:quantityFormula>1027.3*0.001</ns3:quantityFormula>
+              <ns3:documentationList>
+                <ns3:documentReference>
+                  <ns3:fileInternalId>10</ns3:fileInternalId>
+                  <ns3:pageNumbers>114</ns3:pageNumbers>
+                  <ns3:pageDescription>38.2023/002-КР-ГЧ</ns3:pageDescription>
+                </ns3:documentReference>
+              </ns3:documentationList>
+              <ns3:comment>аримрование предусмотрено пространственными каркасами, изготовленными в построечных условиях</ns3:comment>
+            </ns3:resource>
+          </ns3:resourceList>
+        </ns3:work>
+        <ns3:work itemPositionId="5" type="работа">
+          <ns3:name>Покрытие поверхностей фундамента, соприкасающихся с грунтом битумной мастикой за 2 раза по грунтовке</ns3:name>
+          <ns3:unit>м2</ns3:unit>
+          <ns3:quantity>9.05</ns3:quantity>
+          <ns3:quantityFormula>(10.8*2+7.3*2)*0.25</ns3:quantityFormula>
+          <ns3:documentationList>
+            <ns3:documentReference>
+              <ns3:fileInternalId>10</ns3:fileInternalId>
+              <ns3:pageNumbers>114</ns3:pageNumbers>
+              <ns3:pageDescription>38.2023/002-КР-ГЧ </ns3:pageDescription>
+            </ns3:documentReference>
+          </ns3:documentationList>
+          <ns3:comment>выполнение работ в стесненных условиях</ns3:comment>
+          <ns3:resourceList>
+            <ns3:resource itemPositionId="1" type="материал">
+              <ns3:name>Битумная мастика (ТехноНиколь №21 или аналог)</ns3:name>
+              <ns3:unit>т</ns3:unit>
+              <ns3:quantity>0.0637</ns3:quantity>
+              <ns3:quantityFormula>(9.1*3.5*0.001)*2</ns3:quantityFormula>
+              <ns3:documentationList>
+                <ns3:documentReference>
+                  <ns3:fileInternalId>10</ns3:fileInternalId>
+                  <ns3:pageNumbers>114</ns3:pageNumbers>
+                  <ns3:pageDescription>38.2023/002-КР-ГЧ </ns3:pageDescription>
+                </ns3:documentReference>
+              </ns3:documentationList>
+              <ns3:comment>количество в графе 4 указано на 2 слоя</ns3:comment>
+            </ns3:resource>
+            <ns3:resource itemPositionId="2" type="материал">
+              <ns3:name>Грунтовка битумная  (ТехноНиколь №01 или аналог)</ns3:name>
+              <ns3:unit>т</ns3:unit>
+              <ns3:quantity>0.0027</ns3:quantity>
+              <ns3:quantityFormula>9.1*0.3*0.001</ns3:quantityFormula>
+              <ns3:documentationList>
+                <ns3:documentReference>
+                  <ns3:fileInternalId>10</ns3:fileInternalId>
+                  <ns3:pageNumbers>114</ns3:pageNumbers>
+                  <ns3:pageDescription>38.2023/002-КР-ГЧ</ns3:pageDescription>
+                </ns3:documentReference>
+              </ns3:documentationList>
+            </ns3:resource>
+          </ns3:resourceList>
+        </ns3:work>
+      </ns3:workList>
+    </ns2:section>
+    <ns2:section sectionNumber="3">
+      <ns3:nameSection>Устройство СВСиУ</ns3:nameSection>
+      <ns3:workList>
+        <ns3:work itemPositionId="6" type="работа">
+          <ns3:name>Сборка стальных подмостей из инвентарных конструкций</ns3:name>
+          <ns3:unit>т</ns3:unit>
+          <ns3:quantity>31.1</ns3:quantity>
+          <ns3:quantityFormula>31.1</ns3:quantityFormula>
+          <ns3:documentationList>
+            <ns3:documentReference>
+              <ns3:fileInternalId>15</ns3:fileInternalId>
+              <ns3:pageNumbers>56</ns3:pageNumbers>
+              <ns3:pageDescription>38.2023/002-ПОС</ns3:pageDescription>
+            </ns3:documentReference>
+          </ns3:documentationList>
+          <ns3:resourceList>
+            <ns3:resource itemPositionId="1" type="материал">
+              <ns3:name>Конструкция стальная мостовая инвентарная стоечная и пакетная</ns3:name>
+              <ns3:unit>т</ns3:unit>
+              <ns3:quantity>3.11</ns3:quantity>
+              <ns3:quantityFormula>31.1/10</ns3:quantityFormula>
+              <ns3:documentationList>
+                <ns3:documentReference>
+                  <ns3:fileInternalId>15</ns3:fileInternalId>
+                  <ns3:pageNumbers>56</ns3:pageNumbers>
+                  <ns3:pageDescription>38.2023/002-ПОС</ns3:pageDescription>
+                </ns3:documentReference>
+              </ns3:documentationList>
+              <ns3:comment>количество в графе 4 указано в соответствии с решениями ПОС - с учетом 10-ти кратной оборачиваемости</ns3:comment>
+            </ns3:resource>
+            <ns3:resource itemPositionId="2" type="материал">
+              <ns3:name>Перевозка стальных подмостей до строительной площадки на расстояние 70 км</ns3:name>
+              <ns3:unit>т</ns3:unit>
+              <ns3:quantity>31.1</ns3:quantity>
+              <ns3:quantityFormula>31.1</ns3:quantityFormula>
+              <ns3:documentationList>
+                <ns3:documentReference>
+                  <ns3:fileInternalId>15</ns3:fileInternalId>
+                  <ns3:pageNumbers>56</ns3:pageNumbers>
+                  <ns3:pageDescription>38.2023/002-ПОС</ns3:pageDescription>
+                </ns3:documentReference>
+              </ns3:documentationList>
+            </ns3:resource>
+          </ns3:resourceList>
+        </ns3:work>
+        <ns3:work itemPositionId="7" type="работа">
+          <ns3:name>Разборка стальных подмостей</ns3:name>
+          <ns3:unit>т</ns3:unit>
+          <ns3:quantity>31.1</ns3:quantity>
+          <ns3:quantityFormula>31.1</ns3:quantityFormula>
+          <ns3:documentationList>
+            <ns3:documentReference>
+              <ns3:fileInternalId>15</ns3:fileInternalId>
+              <ns3:pageNumbers>56</ns3:pageNumbers>
+              <ns3:pageDescription>38.2023/002-ПОС</ns3:pageDescription>
+            </ns3:documentReference>
+          </ns3:documentationList>
+        </ns3:work>
+      </ns3:workList>
+    </ns2:section>
+  </ns2:sectionList>
+</ns0:quantityTakeoff>

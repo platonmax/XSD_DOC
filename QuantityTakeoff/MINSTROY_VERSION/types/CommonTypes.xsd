@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:ct="http://types/CommonTypes.xsd"
+  targetNamespace="http://types/CommonTypes.xsd"
+  attributeFormDefault="unqualified"
+  elementFormDefault="qualified"
+  version="3.01">
+
+  <xs:complexType name="documentLinkType">
+    <xs:annotation>
+      <xs:documentation>Описание связи позиции с обосновывающими документами.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="fileInternalId" type="xs:positiveInteger" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation><text>Уникальный идентификатор файла.</text> </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice minOccurs="1" maxOccurs="1">
+        <xs:sequence>
+          <xs:element name="pageNumbers" minOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Номера страниц обосновывающего документа, разделенных пробелом.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:list itemType="xs:positiveInteger"/>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element minOccurs="1" name="pageDescription" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Текст ссылки на элементы проекта (модели), название элементов (графа 6).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:choice>
+
+
+          <xs:sequence>
+            <xs:element name="ifcGuid">
+              <xs:annotation>
+                <xs:documentation>Список уникальных ifc идентификаторов элементов в файле, разделенных пробелом. Заполняется, если файл на проверку пришёл в формате ifc. Ссылки на объекты делаются через ifc гуиды.</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:list itemType="xs:string"/>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element minOccurs="1" name="ifcDescription" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Текст ссылки на элементы проекта (модели), название элементов (графа 6).</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+          <xs:sequence maxOccurs="1">
+            <xs:sequence>
+              <xs:element name="propertyName" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Название свойства элемента в ifc файле. Заполняется если файл на проверку пришёл в формате ifc и ссылки на объект делаются через свойства ifc объектов.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="propertyDescription" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Текст ссылки на элементы проекта (модели), название элементов (графа 6).</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:element name="propertyValue" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Значение свойства propertyName элемента в ifc файле. Заполняется если файл на проверку пришёл в формате ifc и ссылки на объект делаются через свойства ifc объектов.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:choice>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="itemType">
+    <xs:annotation>
+      <xs:documentation><text>Комплексный тип для позиции (строки) ведомости объемов работ (ВОР).</text>
+   </xs:documentation>
+    </xs:annotation>
+
+    <xs:sequence>
+      <xs:element name="freeString" maxOccurs="unbounded" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Строка, содержащая справочную информацию в свободной форме.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:appinfo>Выводится в столбец 2 таблицы ВОР</xs:appinfo>
+          <xs:documentation>Наименование  работ (затрат, ресурсов).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="unit" type="xs:string" maxOccurs="1" minOccurs="1">
+        <xs:annotation>
+          <xs:appinfo>Выводится в столбец 3 таблицы ВОР</xs:appinfo>
+          <xs:documentation>Единица измерения для позиции.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantity" type="xs:decimal">
+        <xs:annotation>
+          <xs:appinfo>Выводится в столбец 4 таблицы ВОР</xs:appinfo>
+          <xs:documentation>Объем работ.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantityFormula" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>Выводится в столбец 5 таблицы ВОР</xs:appinfo>
+          <xs:documentation>Формула расчета объемов работ и расхода строительных ресурсов (материалов).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="documentationList" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Ссылки на чертежи, спецификации в проектной документации (файлы со справочными материалами, чертежами или ЦИМ).</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="documentReference" maxOccurs="unbounded" minOccurs="1" type="ct:documentLinkType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="comment" type="xs:string" maxOccurs="1" minOccurs="0">
+        <xs:annotation>
+          <xs:appinfo>Выводится в столбец 7 таблицы ВОР</xs:appinfo>
+          <xs:documentation>Дополнительная информация.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+
+
+    </xs:sequence>
+    <xs:attribute name="itemPositionId" type="xs:positiveInteger" use="required">
+      <xs:annotation>
+        <xs:appinfo>Выводится в столбец 1 таблицы ВОР</xs:appinfo>
+        <xs:documentation>Порядковый номер позиции.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="type" use="optional">
+      <xs:annotation>
+        <xs:appinfo>Нигде не визуализируется</xs:appinfo>
+        <xs:documentation>Тип позиции: материал, оборудование, работа, машина, перевозка грузов, прочее.</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="материал"/>
+          <xs:enumeration value="оборудование"/>
+          <xs:enumeration value="работа"/>
+          <xs:enumeration value="машина"/>
+          <xs:enumeration value="перевозка"/>
+          <xs:enumeration value="прочее"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="workType">
+    <xs:annotation>
+      <xs:documentation>Комплексный тип для строки работ в ведомости объемов работ (ВОР).</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ct:itemType">
+        <xs:sequence minOccurs="0">
+          <xs:element name="resourceList" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Ценообразующие ресурсы, соответствующие позиции работы.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence minOccurs="0">
+                <xs:element name="resource" maxOccurs="unbounded" minOccurs="0" type="ct:itemType">
+                  <xs:annotation>
+                    <xs:documentation>Ценообразующий ресурс, соответствующий позиции работы.</xs:documentation>
+                  </xs:annotation>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="sectionType">
+    <xs:annotation>
+      <xs:documentation>Раздел ведомости объемов работ (ВОР).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="nameSection" type="xs:string" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation><text>Название раздела.</text></xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="workList" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Строки таблицы.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="work" type="ct:workType">
+              <xs:annotation>
+                <xs:documentation>Строка таблицы.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="resource" type="ct:itemType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Ценообразующий ресурс, соответствующий позиции работы.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="freeString" type="xs:string">
+              <xs:annotation>
+                <xs:documentation>Строка, содержащая справочную информацию в свободной форме.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+
+      <xs:element name="section" type="ct:sectionType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Вложенный подраздел.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="freeString" maxOccurs="unbounded" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Строка, содержащая справочную информацию в свободной форме.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+    </xs:sequence>
+    <xs:attribute name="sectionNumber" type="xs:positiveInteger" use="required">
+      <xs:annotation>
+        <xs:documentation><text>Номер раздела. Только положительное целое</text></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+</xs:schema>

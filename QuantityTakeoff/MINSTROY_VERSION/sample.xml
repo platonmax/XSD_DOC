@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:quantityTakeoff xmlns:ns0="http://qt/QuantityTakeoff.xsd" xmlns:ns2="http://types/BaseDocument.xsd" xmlns:ns3="http://types/CommonTypes.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://qt/QuantityTakeoff.xsd QuantityTakeoff.xsd http://types/BaseDocument.xsd types/BaseDocument.xsd http://types/CommonTypes.xsd types/CommonTypes.xsd http://types/BaseTypes.xsd types/BaseTypes.xsd"><ns2:documentMeta><ns2:soft><ns2:name>Сметная программа</ns2:name><ns2:version>1.0</ns2:version></ns2:soft><ns2:file><ns2:type>Ведомость объемов работ</ns2:type><ns2:version>3.01</ns2:version></ns2:file></ns2:documentMeta><ns2:constructionName>Пример</ns2:constructionName><ns2:objectName>Пример</ns2:objectName><ns2:reason>Пример</ns2:reason><ns2:documentDate><ns2:year>2025</ns2:year><ns2:month>01</ns2:month><ns2:day>01</ns2:day></ns2:documentDate><ns2:exportDateTime>2025-01-01T00:00:00</ns2:exportDateTime><ns2:signatures><ns2:composer><ns2:name>Иванов И.И.</ns2:name><ns2:position>Инженер</ns2:position></ns2:composer><ns2:verifier><ns2:name>Петров П.П.</ns2:name><ns2:position>Главный инженер</ns2:position></ns2:verifier></ns2:signatures><ns2:fileList>
+    <ns2:file>
+      <ns2:fileInternalId>1</ns2:fileInternalId>
+      <ns2:fileName>link.pdf</ns2:fileName>
+    </ns2:file>
+  </ns2:fileList>
+  <ns2:sectionList>
+    <ns2:section sectionNumber="1">
+      <ns3:nameSection>Раздел 1</ns3:nameSection>
+      <ns3:workList>
+        <ns3:work itemPositionId="1">
+          <ns3:name>Работа 1</ns3:name>
+          <ns3:unit>шт</ns3:unit>
+          <ns3:quantity>10</ns3:quantity>
+          <ns3:quantityFormula>2*5</ns3:quantityFormula>
+          <ns3:documentationList>
+            <ns3:documentReference>
+              <ns3:fileInternalId>1</ns3:fileInternalId>
+              <ns3:pageNumbers>1 2</ns3:pageNumbers>
+              <ns3:pageDescription>desc</ns3:pageDescription>
+            </ns3:documentReference>
+          </ns3:documentationList>
+          <ns3:comment>комм</ns3:comment>
+          <ns3:resourceList>
+            <ns3:resource itemPositionId="1">
+              <ns3:name>Ресурс вложенный</ns3:name>
+              <ns3:unit>м</ns3:unit>
+              <ns3:quantity>3</ns3:quantity>
+              <ns3:quantityFormula>3</ns3:quantityFormula>
+              <ns3:documentationList>
+                <ns3:documentReference>
+                  <ns3:fileInternalId>1</ns3:fileInternalId>
+                <ns3:pageNumbers>1</ns3:pageNumbers><ns3:pageDescription>desc</ns3:pageDescription></ns3:documentReference>
+              </ns3:documentationList>
+              <ns3:comment>р комм</ns3:comment>
+            </ns3:resource>
+          </ns3:resourceList>
+        </ns3:work>
+        <ns3:resource itemPositionId="2">
+          <ns3:name>Свободный ресурс</ns3:name>
+          <ns3:unit>кг</ns3:unit>
+          <ns3:quantity>5</ns3:quantity>
+          <ns3:quantityFormula>5</ns3:quantityFormula>
+          <ns3:documentationList>
+            <ns3:documentReference>
+              <ns3:fileInternalId>1</ns3:fileInternalId>
+            <ns3:pageNumbers>1</ns3:pageNumbers><ns3:pageDescription>desc</ns3:pageDescription></ns3:documentReference>
+          </ns3:documentationList>
+          <ns3:comment>free</ns3:comment>
+        </ns3:resource>
+      </ns3:workList>
+    </ns2:section>
+  </ns2:sectionList>
+</ns0:quantityTakeoff>
